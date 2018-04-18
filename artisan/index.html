@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/page.css" />
+		<link rel="stylesheet" href="css/page_3.css" />
+	</head>
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			})
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">首页</h1>
+			<a id="me-setings" style="display: none;color: #FFFFFF;" class="mui-icon mui-icon-compose mui-pull-right"></a>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#index" data-index="0">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#setings" data-index="1">
+				<span class="mui-icon mui-icon-settings"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+			<a class="mui-tab-item" href="#me" data-index="2">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">Me</span>
+			</a>
+			<a class="mui-tab-item" href="#message" data-index="3">
+				<span class="mui-icon mui-icon-chat"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-control-content mui-active" id="index">
+				<div class="index-banner">
+					<img src="img/banner.png" width="100%"/>
+				</div>
+				<ul class="mui-table-view mui-grid-view mui-grid-9" id="index-box">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='1'>
+						<a href="#">
+							<img src="img/index_sjxx.png" />
+							<div class="mui-media-body">商机信息</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='2'>
+						<a href="#">
+							<img src="img/index-sjsx.png" />
+							<div class="mui-media-body">商机筛选</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='3'>
+						<a href="#">
+							<img src="img/index-sjpd.png" />
+							<div class="mui-media-body">商机派单</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='4'>
+						<a href="#">
+							<img src="img/index-khbf.png" />
+							<div class="mui-media-body">客户拜访</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='5'>
+						<a href="#">
+							<img src="img/index-xqpg.png" />
+							<div class="mui-media-body">需求评估</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='6'>
+						<a href="#">
+							<img src="img/index-xmbj.png" />
+							<div class="mui-media-body">方案报价</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='7'>
+						<a href="#">
+							<img src="img/index-qdht.png" />
+							<div class="mui-media-body">签单合同</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-index='8'>
+						<a href="#">
+							<img src="img/index-zbdt.png" />
+							<div class="mui-media-body">招标大厅</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='9'>
+						<a href="#">
+							<img src="img/index-bzxx.png" />
+							<div class="mui-media-body">帮助信息</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-control-content" id="setings">
+				<div class="mui-card" style="margin-top: 20px;">
+					<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">
+							<img src="img/kehu.png" height="10" />操作员管理</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('pages/caozyck.html','pages/caozyck.html')">
+										<img src="img/kehu-1.png" />
+										操作员查看
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('xiugai/xinzeng.html','xiugai/xinzeng.html')">
+										<img src="img/user.png" />
+										操作员新增
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">
+							<img src="img/kehu.png" height="10" />
+							客户信息管理</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('pages/page_kehu.html','pages/page_kehu.html')">
+										<img src="img/kehu-1.png" />
+										客户信息查看
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('xiugai/xinzengkehu.html','xiugai/xinzengkehu.html')">
+										<img src="img/user.png" />
+										客户信息新增
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">
+							<img src="img/kehu.png" height="10" />
+							文件下载管理</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('../download/download.html','../download/download.html')">
+										<img src="img/down-block.png" />
+										下载列表
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">
+							<img src="img/kehu.png" height="10" />
+							个人信息管理</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('xiugai/up_me.html','xiugai/up_me.html')">
+										<img src="img/user.png" />
+										个人资料修改
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:mui.openWindow('xiugai/upPasw.html','xiugai/upPasw.html')">
+										<img src="img/user.png" />
+										个人密码修改
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right mui-table-view-cell-item" href="javascript:app.methods.loginOut()">
+										<img src="img/user.png" />
+										注销登陆
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class="mui-control-content" id="me">
+				<div class="me-header">
+					<div class="me-msg"><span class="mui-badge" style="background-color: #0062CC;color: #FFFFFF;">14</span></div>
+					<div class="me-img-head">
+						<img src="{{T_photoUrl.data[0].Url}}" />
+						<span>{{T_name}}</span>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<ul class="mui-table-view">
+							<li class="mui-table-view-cell mui-media">
+								<label>姓名</label>
+								<span>{{T_name}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>性     别</label>
+								<span>{{T_Sex}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>籍     贯</label>
+								<span>{{T_nativeplace}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>部     门</label>
+								<span>{{T_demartment}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>职     务</label>
+								<span>{{T_duct}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>手     机</label>
+								<span>{{T_phone}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>生日</label>
+								<span>{{T_Birth|birth}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>现居住地</label>
+								<span>{{T_Nowhous}}</span>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<label>身份证号</label>
+								<span>{{T_IDcard}}</span>
+							</li>
+						</ul>
+				</div>
+			</div>
+			<div class="mui-control-content" id="message">
+				444
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+	</body>
+</html>

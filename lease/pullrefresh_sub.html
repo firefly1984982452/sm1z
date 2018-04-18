@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../library/css/mui.picker.min.css"/>
+		<style>
+		html,body{
+			min-height: 100%;
+			background-color: #FFFFFF;
+		}
+			.mui-table-view.mui-grid-view{
+				padding: 0px;
+			}
+			ul{
+				margin-bottom: 20px;
+			}
+			.mui-content{
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="loding" style="display: none;" v-show="isLoding">
+					加载中...
+				</div>
+				<div class="mui-scroll" id="show">
+					<!--数据列表-->
+						<ul class="mui-table-view mui-grid-view mui-grid-6" id="hot-lease-cz">
+						<template  v-for="key in dataCz" >
+							<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" v-gesture:tap.stop.prevent="CzTap(key.Rents_productID,$event)" >
+								<div class="hot-box">
+									<img src="{{key.Rents_picture|picture}}" width="100%" height="150em" />
+									<div class="hot-box-info">
+										{{key.Rents_name}}
+									</div>
+									<div class="hot-box-price">￥{{key.Rents_price}}</div>
+								</div>
+							</li>
+						</template>
+						</ul>
+						<ul class="mui-table-view" id="hot-lease-qz">
+							<template  v-for="key in dataQz">
+							<li class="mui-table-view-cell ellipsis"  v-gesture:tap.stop.prevent="QzTap(key.ID,$event)">
+								{{key.Device_Name}}
+								<span class="mui-badge mui-badge-success">{{key.publishDate}}</span>
+							</li>
+							</template>
+						</ul>
+						<ul class="mui-table-view mui-table-view-chevron" id="hot-lease-zr">
+							<template  v-for="key in dataZr" >
+							<li class="mui-table-view-cell mui-media" v-gesture:tap.stop.prevent="ZrTap(key.ID,$event)">
+								<a class="mui-navigate-right">
+									<img class="mui-media-object mui-pull-left" width="100%" src="{{key.pd_picture|picture}}">
+									<div class="mui-media-body">
+										{{key.pd_name}}
+										<span class="server_step_content">
+											{{key.pd_rentstxt}}
+										</span>
+										<div class="server_step_show">
+											<span class="server_step_look">
+												￥{{key.pd_vipprice}}
+											</span>
+										</div>
+									</div>
+								</a>
+							</li>
+						</template>
+						</ul>
+				</div>
+			</div>
+		</div>
+		<div class="index-mark">
+			<span class="info">单击选定内容,点击右上角按钮搜索</span>
+			<img src="../service/img/left_nav_close.png" height="20px" class="close-mark" />
+			<div class="mark-content">
+				<div class="title">
+					按地区搜索
+				</div>
+				<input class="city mui-input-clear" type="text" placeholder="点击选择城市查询" />
+				</input>
+				<div class="title">
+					按设备类型
+				</div>
+				<div class="mark-tr kindDatas" v-for="itemp in jsonData">
+					<div class="title">
+						{{itemp.rt_name}}
+					</div>
+					<ul>
+						<li data-pic="{{itemp.rt_code}}" data-cid="0" data-show="0"  v-gesture:tap.stop.prevent="selTap($event)">{{itemp.rt_name}}</li>
+						<template  v-for="itemc in itemp.list">
+							<li data-pic="{{itemp.rt_code}}" data-show="0" data-cid="{{itemc.rt_code}}" v-gesture:tap.stop.prevent="selTap($event)">{{itemc.rt_name}}</li>
+						</template>
+					</ul>	
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script>
+			$(".index-mark").on("touchstart",function(e){
+				mui('#pullrefresh').pullRefresh().setStopped(false);
+			}).on("touchend",function(){
+				mui('#pullrefresh').pullRefresh().setStopped(true);
+			})
+		</script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="../library/js/city.data-3.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.picker.min.js" ></script>
+		<script>
+			mui.init({
+				swipeBack: false,
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载数据，请稍等...',
+						callback: pullupRefresh
+					}
+				},
+				gestureConfig:{
+					longtap:true
+				}
+			});
+			mui.plusReady(function() {
+				plus.webview.currentWebview().parent().evalJS("start()");
+			})
+			var router;
+			var vm;
+			function show(x) {//初始化函数，很重要。瞎几把改了就直接GG思密达
+				window.index = parseInt(x)-1;
+				window.url_ = "http://139.196.113.126";
+				Xeval.setUrl(url_+"/");
+				router = [Xeval.Mode.HTTP_GET_LEASE_CZ,Xeval.Mode.HTTP_GET_LEASE_QZ,Xeval.Mode.HTTP_GET_LEASE_ZR];
+				getAllSeek();//获取分类信息,做查询
+				setTimeout(function(){//计时器和队列。百度百度
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				},0);
+			}
+			
+			var cityPicker = new mui.PopPicker({layer: 3});
+			var pickerOptions = cityData3;
+			mui(".index-mark").on("tap",".city",function(e){
+				var slef = e.target;
+				cityPicker.setData(pickerOptions);
+				cityPicker.show(function(SelectedItem) {
+					slef.value = SelectedItem[0].text+"-"+SelectedItem[1].text+"-"+SelectedItem[2].text+"(长按取消选择)";
+					searchs.province = SelectedItem[0].value;
+					searchs.city = SelectedItem[1].value;
+					searchs.district = SelectedItem[2].value;
+					setTimeout(function(){
+						search();
+						plus.webview.currentWebview().parent().evalJS("fabu()");
+					},0)
+				});
+				cityPicker.blur;
+			})
+			mui(".index-mark").on("longtap",".city",function(e){
+				var self = e.target;
+				searchs.province = "0";
+				searchs.city = "0";
+				searchs.district = "0";
+				self.value="";
+				self.blur();
+				
+			});
+			function pulldownRefresh(e) {
+				searchs.isDown = true;
+				toSearch();
+			}
+			function toSearch(){
+				searchs.page+=1;
+				searchs.isSearch = false;
+				getDatas();
+			}
+			function pullupRefresh (e) {
+				searchs.isDown = false;
+				toSearch();
+			}
+			function getDatas(){
+				if(router){
+					Xeval.Http(router[index],searchs,dataFormart,true);
+				}
+			}
+			var methodOptions = {
+				
+			}
+			var searchs = {
+				province:"0",
+				city:"0",
+				district:"0",
+				kindone:"",
+				kindtwo:"", 
+				brand:"",
+				page:0,
+				rows:10,
+				isDown:false,
+				isSearch:false
+			};
+			var  searchVm = new Vue({
+				el:".index-mark",
+				data:{
+					jsonData:[]
+				},
+				methods:{
+					selTap:function(e){//op判断是父级还是子级
+						var self = e.target;
+						var items = mui(".kindDatas ul li");
+						for(var i=0;i<items.length;i++){
+							items[i].style.color='#333333';
+							items[i].style.backgroundColor='#ffffff';
+						}
+						if(self.getAttribute("data-show")=='0'){
+							searchs.kindone = self.getAttribute("data-pid");
+							searchs.kindtwo = self.getAttribute("data-cid");
+							self.style.color='#ffffff';
+							self.style.backgroundColor='#9c052e';
+							self.setAttribute("data-show","1")
+						}else{
+							searchs.kindone = "";
+							searchs.kindtwo = "";
+							self.setAttribute("data-show","0")
+						}
+						search();
+						plus.webview.currentWebview().parent().evalJS("fabu()");
+					}
+				}
+			})
+			function dataFormart(isOk,data){
+				var els = ["dataCz","dataQz","dataZr"];
+				if(isOk){
+					vm.$data.isLoding = false;
+					eLog.l(JSON.stringify(data));
+					mui(".loding")[0].style.display='none';
+					if(searchs.isDown){
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
+					}else{
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+					}
+					if(vm.$data[els[index]].length == data.rows){
+						if(searchs.isSearch){
+							mui.alert("没有搜索到数据奥！");
+						}else{
+							mui.alert("没有更多数据了！");
+						}
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh(true);
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+						return;
+					}
+					if(data.data.length>0){
+						if(searchs.isDown){
+							vm.$data[els[index]] = data.data.concat(vm.$data[els[index]]);
+						}else{
+							vm.$data[els[index]] = vm.$data[els[index]].concat(data.data);
+						}
+					}else{
+						searchs.page-=1;
+					}
+				}else{
+					if(searchs.page>0){
+						searchs.page-=1;
+					}
+					mui.alert("网络错误，加载数据失败！");
+					//mui.back();
+				}
+				
+			}
+			var tapS = {
+				CzTap:function(id,e){
+					openPage(id,1);
+				},
+				QzTap:function(id,e){
+					openPage(id,2);
+				},
+				ZrTap:function(id,e){
+					openPage(id,3);
+				}
+			}
+			vm = new Vue({
+				el:"#show",
+				data:{
+					dataCz:[],
+					dataQz:[],
+					dataZr:[],
+					isLoding:false
+				},
+				methods:tapS
+			})
+			function openPage(id,op){
+				mui.openWindow({
+					url:"classfly.html",
+					id:"classfly.html",
+					createNew:true,
+					extras:{
+						data_op:op,
+						data_id:id
+					}
+				})
+			}
+			Vue.filter( 'picture' , function(value) {
+		       if(value && Array.isArray(value)){
+		       		var index = Math.ceil(Math.random()*value.length)-1;
+		       		return value[index].Url;
+		       }else{
+		       		return "../images/img_loading.jpg";
+		       }
+		  	});
+		  	function expertSearch(show) {
+				var dis = show==1 ? "block" : "none";
+				mui(".index-mark")[0].style.display = dis;
+			}
+		  	function search(keyword){
+		  		expertSearch(0);
+		  		searchs.page = 1;
+		  		searchs.isSearch = true;
+		  		if(typeof(keyword)=="string"){
+		  			searchs.brand = keyword;
+		  		}
+		  		vm.$data.dataCz = [];
+		  		vm.$data.dataQz = [];
+		  		vm.$data.dataZr = [];
+		  		mui(".loding")[0].style.display='block';
+		  		plus.webview.currentWebview().parent().evalJS("inputBlur()");
+		  		getDatas();
+		  		return;
+		  	}
+		  	mui(".index-mark").on("tap",".close-mark",function(){
+		  		expertSearch(0);
+		  		plus.webview.currentWebview().parent().evalJS("fabu()");
+		  	})
+		  	function getAllSeek(){
+		  		var clientNum = 0;
+		  		var http = function(){
+		  			Xeval.Http(Xeval.Mode.HTTP_GET_LEASE_GET_SEEK,{},seekListener,true)
+		  		};
+		  		http();
+		  		function seekListener(isOk,data){
+		  			if(isOk){
+		  				var Jsondata = formarSeek(data);
+		  				searchVm.$data.jsonData = Jsondata;
+		  			}else{
+		  				clientNum++;
+		  				if(clientNum>5){
+		  					mui.alert("网络错误,请检查您的网络环境！");
+		  				}else{
+		  					setTimeout(http,2000);
+		  				}
+		  			}
+		  		}
+		  	}
+		  	function formarSeek(data){//坑爹的架构师设计的数据原型，次卧！！！MLGB
+		  							// 222233          666        先死个吗--
+		  							// 彡 好巧奥 我都比构架师强    666            666666    999
+		  		var jsonc = [],jsonp = [];
+					data.forEach(function(item){
+						if(item.rt_kind==0){
+							jsonp.push(item);
+						}else{
+							jsonc.push(item);
+						}
+					})
+					jsonp.forEach(function(itemp,i){
+						var pid = itemp.rt_code;
+						jsonp[i].list = [];
+						jsonc.forEach(function(itemc,j){
+							if(itemc.rt_parent==pid){
+								jsonp[i].list.push(itemc);
+								jsonc.splice(j,1);
+							}
+						})
+					})
+					return jsonp;
+				}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.register_btn>button{
+				height: 40px;
+				width: 100%;
+				background-color: #9C005E;
+				color: #FFFFFF;
+				border: 1px solid #9C005E;
+				margin-left: 0px;
+				display: block;
+				transition: margin-left 1s;
+			}
+			#register,#next{
+				width: 100%;
+				height: 60px;
+				padding: 10px;
+			}
+			.mui-input-row input{
+				color: #666666;
+			}
+			.mui-input-group textarea {
+				font-size: 14px;
+				height: 100%;
+				line-height: 20px;
+				display: block;
+			}
+			.mui-input-group #clear{
+				min-height: 40px;
+			}
+		</style>
+		<link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../library/css/uphoto.css" />
+	</head>
+
+	<body>
+				<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../library/js/formjs.js" ></script>
+		<script type="text/javascript" src="../library/js/city.data-3.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../library/js/uphoto.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">发布租赁</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group mui-content-padded">
+				<div class="mui-input-row">
+					<label>商品品牌</label>
+					<input type="text" id="ppai" placeholder="请输入商品品牌" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row">
+					<label>型号规格</label>
+					<input type="text" placeholder="请输入商品型号规格" id="xhao" class="mui-input mui-input-clear"/>
+				</div>
+				<div class="mui-input-row" >
+					<label>所在地区</label>
+					<input type="text" placeholder="请输入产品所在地区"  id="dqu" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>库存数量</label>
+					<input type="number" placeholder="请输入库存数量" id="sliang" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>租金价格</label>
+					<input type="number" id="jge" placeholder="请输入租金价格" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>商品名称</label>
+					<input type="text" id="lbie" placeholder="请输入商品类别" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>商品重量</label>
+					<input type="text" placeholder="请输入商品重量" id="zliang" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>有效期</label>
+					<input type="text" placeholder="请输入商品有效期" id="yxq" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>使用时长</label>
+					<input type="text" id="schang" placeholder="请输入使用时长"  class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>时长单位</label>
+					<input type="text" id="dwei" placeholder="请输入时长单位"  class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-content-padded">
+					<h5>设备描述</h5>
+					<div class="row mui-input-row" id="clear">
+						<textarea id='mshu' class="mui-input-clear question" placeholder="请详细描述..." ></textarea>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<h5>使用步骤</h5>
+					<div class="row mui-input-row">
+						<textarea id='bzou' class="mui-input-clear question" placeholder="请输入使用步骤说明..." ></textarea>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<h5>注意事项</h5>
+					<div class="row mui-input-row" id="clear">
+						<textarea id='sxiang' class="mui-input-clear question" placeholder="请输入注意事项" ></textarea>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<h5>售后服务</h5>
+					<div class="row mui-input-row" id="clear">
+						<textarea id='fwu' class="mui-input-clear question" placeholder="请输入售后服务..." ></textarea>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<h5>图片(大小1M以下,大于1M,自动压缩文档)</h5>
+					<div class="pro">
+						<progress value="0" max="100" id="imgSeek"></progress>
+						<div>
+							图片上传进度：
+							<span class="protxt">0%</span>
+						</div>
+					</div>
+					<ul id='image-list' class="row image-list">
+						<li class="add">
+							<label>+</label>
+						</li>
+					</ul>
+				</div>
+				<div class="mui-input-row register_btn" id="register">
+					<button id="btn">提交</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+				var val = Strings.indexData.index.lease.updataRegs;
+				var data_op = self.data_op;
+				var data_data = self.data_data;
+				var JoinData = {};
+				getAllSeek();
+				var cityPicker = new mui.PopPicker({layer: 3});
+				var seekPicker = new mui.PopPicker({layer: 2});
+				var seekOptions = [];
+				var pickerOptions = cityData3;
+					//高中（包括：高中，职高，中专，技校），大专（大学学专科），大本（大学本科），硕士（硕士研究生），博士（博士研究生）
+				mui(".mui-input-row").on("tap","input,button",function(e){
+					var thisId = e.target.getAttribute("id");
+					var slef = this;
+					cityPicker.blur;
+					seekPicker.blur;
+					switch(thisId){
+						case "dqu":{
+							cityPicker.setData(pickerOptions)
+							cityPicker.show(function(item) {
+								inputText(item,slef,3)
+							});
+						};break;
+						case "lbie":{
+							leibie();
+						};break;
+						case "btn":{
+							postData(slef);
+						};break;
+						default:{
+
+						};break;
+					}
+					e.stopPropagation();
+				})
+				function inputText(SelectedItem,self,num){
+						var that;
+						if(typeof(self)=="string"){
+							that = document.getElementById(self);
+						}else{
+							that = self;
+						}
+						var text = SelectedItem[0].text;
+						var val = SelectedItem[0].value;
+						if(num==2){
+							text+="-"+SelectedItem[1].text;
+							val +="-"+SelectedItem[1].value;
+						}
+						if(num==3){
+							text+="-"+SelectedItem[1].text;
+							val +="-"+SelectedItem[1].value;
+							text+="-"+SelectedItem[2].text;
+							val +="-"+SelectedItem[2].value;
+						}
+						that.value = text;
+						that.setAttribute("data-value",val);
+					}
+				function postData(e){
+					if(getNewData()){
+						var slef = e;
+						slef.setAttribute("disabled","disabled");
+						slef.innerHTML = "正在提交您的信息..";
+						console.log(JSON.stringify(JoinData));
+						Xeval.Http(Xeval.Mode.HTTP_POST_CHUZU,JoinData,function(isOk,data){
+							slef.removeAttribute("disabled");
+							slef.innerHTML = "提交";
+							if(isOk){
+								mui.alert(data.msg,val.title,val.btnValue);
+								if(data.state==1){
+									setTimeout(function(){
+										mui.back();
+									},18)
+								}
+							}else{
+								mui.confirm(val.postError,val.title,val.postBtn,function(e){
+									eLog.l(e.index);
+									if(e.index==0){
+										postData(self);
+									}
+								});
+							}
+						},true);
+					}else{
+					}
+				}
+				function getNewData(){
+					JoinData.ppai = mui("#ppai")[0].value;
+					JoinData.xhao = mui("#xhao")[0].value;
+					JoinData.dqu = $("#dqu").attr("data-value");
+					JoinData.sliang = mui("#sliang")[0].value;
+					JoinData.jge = mui("#jge")[0].value;
+					JoinData.lbie = $("#lbie").attr("data-value");
+					JoinData.zliang = mui("#zliang")[0].value;
+					JoinData.yxq = mui("#yxq")[0].value;
+					JoinData.schang = mui("#schang")[0].value;
+					JoinData.dwei = mui("#dwei")[0].value;
+					JoinData.mshu = mui("#mshu")[0].value;
+					JoinData.bzou = mui("#bzou")[0].value;
+					JoinData.sxiang = mui("#sxiang")[0].value;
+					JoinData.fwu = mui("#fwu")[0].value;
+					for(var item in JoinData){
+						var value_ = JoinData[item];
+						if(value_.trim()=="" || value_==null){
+							mui.alert(val[item].msg);
+							return false;
+						}else{//表单正则验证
+							var regx = val[item];
+							var regxJson = new Object(regx);
+							var reg = regxJson.reg;
+							if(reg!=null && typeof(reg)!="undefined"){
+								if(!reg.test(value_)){
+									mui.alert(regxJson.msg);
+									return false;
+								}
+							}
+						}
+					}
+					var imgstr = [];
+					var imgs = $("#image-list .imgbox");
+					var dq = JoinData.dqu;
+					var lb = JoinData.lbie;
+					var diqus = dq.split("-");
+					var leibies = lb.split("-");
+					imgs.each(function(){
+						imgstr.push($(this).attr("data-id"));
+					})
+					JoinData.imgs = imgstr.join(",");
+					if(imgstr==""){
+						alert("请上传图片");
+						return false;
+					}else{
+						var upData = {
+							Rents_brand:JoinData.ppai, 
+							T_Product_Kind5:leibies[1],
+							T_Product_Kind4:leibies[0], 
+							Rents_modle:JoinData.xhao,
+							province:diqus[0], 
+							city:diqus[1], 
+							district:diqus[2], 
+							Rents_price:JoinData.jge,//（价格）, 
+							Rents_quantity:JoinData.sliang,//（库存）, 
+							Rents_weight:JoinData.zliang,//（重量）, 
+							Rents_description:JoinData.mshu,//（使用说明）, 
+							Rents_validDate:JoinData.yxq,//（发布有效期/天）, 
+							Rents_rentstxt:JoinData.bzou,//（租用说明）, 
+							Rents_announcements:JoinData.sxiang,//（注意事项）,
+							Rents_term:JoinData.schang,//（使用时常）,
+							Rents_unit:JoinData.dwei,//（使用时间的单位年/天）,
+							Rents_notes:JoinData.fwu,//（售后）, s
+							Rents_picture:JoinData.imgs,//（图片id））
+						};
+					JoinData = upData;
+					}
+						return true;
+					}
+			function leibie(data){
+				if(seekOptions.length==0){
+					getAllSeek();
+				}else{
+					seekPicker.setData(seekOptions)
+					seekPicker.show(function(item){
+						inputText(item,"lbie",2);
+					});
+				}
+			}
+			function getAllSeek() {
+				var clientNum = 0;
+				var http = function() {
+					Xeval.setUrl("http://139.196.113.126/");
+					Xeval.Http(Xeval.Mode.HTTP_GET_LEASE_GET_SEEK, {}, seekListener, true)
+					Xeval.setUrl("http://139.224.164.193/");
+				};
+				http();
+				function seekListener(isOk, data) {
+					if(isOk) {
+						seekOptions = formarSeek(data);
+					} else {
+						if(clientNum<3){
+							clientNum++;
+							setTimeout(http,1000);
+						}else{
+							mui.alert("网络错误,请检查您的网络环境！");
+						}
+					}
+				}
+			}
+			function formarSeek(data){
+		  		var jsonc = [],jsonp = [];
+					data.forEach(function(item){
+						if(item.rt_kind==0){
+							jsonp.push(item);
+						}else{
+							jsonc.push(item);
+						}
+					})
+					var result = [];
+					jsonp.forEach(function(itemp,i){
+						var pid = itemp.rt_code;
+						jsonp[i].children = [];
+						var sl = {};
+						sl.text = jsonp[i].rt_name;
+						sl.value = jsonp[i].rt_code;
+						sl.children  = [];
+						jsonc.forEach(function(itemc,j){
+							if(itemc.rt_parent==pid){
+								var cd = {};
+								cd.text = itemc.rt_name;
+								cd.value = itemc.rt_code;
+								sl.children.push(cd);
+							}
+						})
+						result.push(sl);
+					})
+					return result;
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/classfly.css" />
+		<link rel="stylesheet" href="../../css/preimages.css" />
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">商品名称</h1>
+			<div class="mui-pull-right">
+				<img src="../img/carts.png" height="22px" style="margin: 10px 5px;" />
+			</div>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<span class="bot-btn" id="cats">加入购物车</span>
+			<span class="bot-btn" id="pay">立即购买</span>
+		</nav>
+		<div class="mui-content">
+			<div class="img-title">
+				<img src="{{product.pd_picture|icon}}" data-preview-src="" data-preview-group="1" width="100%"/>
+			</div>
+			<div class="row title">
+				{{product.pd_name}}
+			</div>
+			<div class="row info" v-if="deal">
+				{{deal.Title}}
+			</div>
+			<div class="row price">
+				<label>价格<i class="money">￥</i>{{product.pd_price}}
+					<b class="vip">会员价<i class="money">￥</i>{{product.pd_vip_price}}</b>
+				</label>
+				<span>价格:<i class="throughline">{{product.pd_price}}</i></span>
+			</div>
+			<ul class="trs">
+				<li class="ellipsis">购买人数：{{100000000|nums}}</li>
+				<li class="ellipsis">月销量：{{statictis.SaleVolumn|nums}}</li>
+				<li class="ellipsis">评价：{{statictis.Comments|nums}}</li>
+			</ul>
+			<div class="row ppai">
+				品牌：{{product.pd_brand}}
+			</div>
+			<div class="row open" style="background-color: #E8E8E8;">
+				<a class="nohide mui-navigate-right" href="javascript:void()" >
+					选择型号规格
+				</a>
+			</div>
+			<div id="popdialog">
+			<div class="top-i open"></div>
+			<div class="pop-content">
+				<div class="pop-title">
+					<img class="hidden pop-close" src="../../service/img/left_nav_close.png"  />
+				</div>
+				<div class="mui-content-padded">
+					<div class="good-info">
+						<div class="left">
+							<img src="{{product.pd_picture|icon}}"data-preview-src="" data-preview-group="2"v-gesture:tap.stop.prevent="numTaps($event)" />
+						</div>
+						<div class="left">
+							<ul>
+								<li class="title">{{groups[0].pd_name}}</li>
+								<li>品牌:{{groups[0].pd_brand}}</li>
+								<li>价格:{{groups[0].pd_price}}</li>
+								<li>总价:</li>
+								<li>总数量:</li>
+							</ul>
+						</div>
+					</div>
+					<div class="good-list">
+						规格
+						<ul>
+							<li v-for='item in groups' data-id="{{item.id}}">
+								<div class="left">
+									{{item.pd_model}}
+								</div>
+								<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+									<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+									<input  class="mui-input-numbox" type="number" value="1" v-on:blur="numBlur($event)">
+									<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../library/js/mui.zoom.js"></script>
+	<script type="text/javascript" src="../../library/js/mui.previewimage.js"></script>
+	<script>
+		mui.previewImage({
+			footer:"双指可操作缩放，双击放大/缩小",
+			open:function(){
+				//app.methods.Pop.hide();
+			}
+		})
+		var app = {
+			datas:{
+				vm:null,
+				vmData:{}
+			},
+			methods:{
+				_HTTP:{
+					reloadNum:0,
+					Model:Xeval.Mode.HTTP_MAIL_GET_DETAIL_BYID,
+					get:function(model,options){
+						var self = this;
+						var params = {};
+						if(typeof model=="object"){
+							params = model;
+						}else if(typeof model == 'number'){
+							self.Model = model;
+						}
+						if(typeof options =="object"){
+							params = options;
+						}
+						console.log(JSON.stringify(options))
+						Xeval.Http(self.Model,params,self.back);
+					},
+					back:function(isOk,data){
+						console.log(JSON.stringify(data))
+						if(isOk){
+							app.datas.vm.$data = data;
+						}else{
+							alert("加载商品信息失败,请重试！");
+							//mui.back();
+						}
+					}
+				},
+				Pop:{
+					isShow:false,
+					init:function(){
+						var self = this;
+						$("#popdialog").css("top",$(window).height());
+//						mui("html").off("tap",".mui-content");
+//						mui("html").on("tap",".mui-content",function(e){
+//							if(e.target.className.indexOf("nohide")<0 && self.isShow){
+//								self.hide();
+//							}
+//						})
+					},
+					show:function(){
+						app.methods.Pop.isShow = true;
+						$("#popdialog").animate({"top":0},200);
+					},
+					hide:function(){
+						app.methods.Pop.isShow = false;
+						$("#popdialog").animate({"top":$(window).height()},200);
+					}
+				},
+				_PAY:function(){
+					if(app.methods.Pop.isShow){
+						app.methods.Pop.hide();
+					}else{
+						app.methods.Pop.show();
+					}
+				},
+				numTaps:function(e){
+					var clazz = e.target.className;
+					var p = e.currentTarget;
+					var limits = [p.getAttribute("data-numbox-min"),p.getAttribute("data-numbox-max")]
+					var c = p.children;
+					if(clazz.indexOf("minus")>=0){
+						var v = parseInt(c[1].value);
+						if(v>parseInt(limits[0])){
+							c[0].removeAttribute("disabled");
+							c[2].removeAttribute("disabled");
+							c[1].value = v-1;
+						}else{
+							c[0].setAttribute("disabled",true);
+						}
+					}else if(clazz.indexOf("plus")>=0){
+						var v = parseInt(c[1].value);
+						if(v<parseInt(limits[1])){
+							c[1].value = v+1;
+							c[0].removeAttribute("disabled");
+							c[2].removeAttribute("disabled");
+						}else{
+							c[2].setAttribute("disabled",true);
+						}
+					}
+				},
+				numBlur:function(e){
+					var el = e.target;
+					var val = el.value;
+					var number_ = val.replace(/[^0-9]+/ig,"");
+					var p = el.parentElement;
+					var limits = [p.getAttribute("data-numbox-min"),p.getAttribute("data-numbox-max")];
+					if(limits[0]<=number_ && number_<=limits[1]){
+						el.value = number_;
+					}else{
+						el.value = 1;
+					}
+				}
+			},
+			init:function(){
+				var self = this;
+				var hash = location.hash;
+				var id = hash.substring(1,hash.length);
+				self.methods._HTTP.get({id:id});
+				app.methods.Pop.init();
+				mui("nav").on("tap","#pay",self.methods.Pop.show)
+				$(".open").on("touchstart",self.methods._PAY);
+				$(".hidden").on("touchstart",self.methods._PAY);
+				$("#popdialog").on("touchstart",".mui-numbox",self.methods.numTaps)
+				self.datas.vm = new Vue({
+					el:".mui-content",
+					data:self.datas.vmData,
+					methods:app.methods,
+					filters:{
+						icon:function(val){
+							if(val && val.trim()!=""){
+								var src_ = Xeval.UrlModel.TEST +val;
+							    return src_;
+							}else{
+								return "../images/img_loading.jpg";
+							}
+						},
+						nums:function(val){
+							if(parseInt(val)>999){
+								return "999+"
+							}else{
+								return val;
+							}
+						}
+					}
+				})
+			}
+		}
+	mui.ready(function(){
+		Xeval.setUrl("http://139.224.164.193:8081/");
+		app.init();
+	})
+	</script>
+</html>

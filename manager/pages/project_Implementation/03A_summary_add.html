@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>员工考核新增</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mana-index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mana-set.css" />
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">员工考核新增</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>项目名称：</label>
+						<input class="input-search" type="text" >
+							<a href="03A_summary_select.html" class="search-icon"></a>
+						</input>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目计划：</label>
+						<input class="input-search" type="text" >
+							<a href="03A_summary_select_bid.html" class="search-icon"></a>
+						</input>
+					</li>
+				</ul>
+			</div>
+
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>计划日期：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>人员：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>施工区域：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>部位：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>工种：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>实际工作量：</label>
+						<input class="input-search" type="text" />
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="mui-card text-show">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell-item text-title">
+							质量要求：
+						</li>
+						<li class="mui-table-view-cell-item">
+							<div class="text-txt" style="width: 100%;">
+								{{data.B_needcause}}
+							</div>
+						</li>
+					</ul>
+				</div>
+					
+			<div class="mui-card text-show">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell-item text-title">
+							备注：
+						</li>
+						<li class="mui-table-view-cell-item">
+							<div class="text-txt" style="width: 100%;">
+								{{data.B_needcause}}
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			<a class="edit-btn mui-card btn-save btn-save1" href="#">保存并继续添加</a>
+			<a class="edit-btn mui-card btn-save btn-save2 mui-action-back">保存并返回</a>
+		</div>
+		<script src="../../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

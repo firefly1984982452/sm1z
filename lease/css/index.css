@@ -1,0 +1,242 @@
+.mui-table-view .mui-grid-view{
+	margin-top: 10px;
+}
+.index-shouc{
+	margin-top: 10px;
+	height: 22px;
+	float: right;
+}
+#index_select .mui-table-view-cell>a:not(.mui-btn) img{
+	height: 2.5em;
+	width: 2.5em;
+	border-radius:2.5em;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+	color: #333;
+}
+#hot-lease{
+	width: 100%;
+	background-color: #FFFFFF;
+	border-top: 1px solid #DDDDDD;
+	height: 100px;
+}
+.hot-title{
+	height: 2em;
+	display: block;
+	width: 100%;
+	line-height: 2em;
+	text-align: center;
+	color: #333;
+	font-size: 0.8em;
+	font-weight: 700;
+	color: #9C005E;
+}
+.hot-box{
+	position: relative;
+	border-radius: 2px;
+	border: 1px solid #9C005E;
+	overflow: hidden;
+}
+.hot-box img{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: -4px;
+}
+.hot-box .hot-box-info{
+	padding: 0px 4px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	bottom: 0px;
+	font-size: 0.8em;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	color: #FFFFFF;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+#hot-lease-qz{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #FFFFFF;
+}
+.ellipsis{
+	display:block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.mui-table-view-cell{
+	padding: 11px 85px 11px 15px;
+	font-size: 0.8em;
+}
+.mui-badge-success{
+	background-color: #9C005E;
+}
+.mui-table-view .mui-media-object {
+	max-width: 100px;
+	height: 90px;
+}
+
+.mui-ellipsis {}
+
+.mui-media .server_step_content {
+	height: 45px;
+	display: block;
+	white-space: normal;
+	font-size: 12px;
+	color: #666;
+	line-height: 15px;
+}
+.server_step_show {
+	height: 25px;
+	position: absolute;
+	width: 60%;
+}
+
+.server_step_show .server_step_show_money {
+	display: inline-block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	width: 60px;
+	text-align: center;
+	margin-top: 3px;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #9C005E;
+	border: none;
+	border-radius: 4px;
+}
+
+.server_step_show_money>span {
+	font-size: 12px;
+	padding: 0px -1px;
+}
+
+.server_step_show .server_step_look {
+	display: inline-block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	width: 60px;
+	text-align: center;
+	margin-top: 3px;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #9C005E;
+	border: none;
+	border-radius: 4px;
+}
+.hot-lease-zr{
+	margin-bottom: 40px;
+}
+.index-mark{
+	height: auto;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	padding: 0px 2%;
+	position: fixed;
+	z-index: 8;
+	background-color: #EFEFF4;
+	display: none;
+}
+.close-mark{
+	float: right;
+	width: 20px;
+	height: 20px;
+	display: block;
+}
+.hot-box-price{
+	padding: 1px 4px;
+	background-color: rgba(255,255,255,0.5);
+	color: #9C005E;
+	border-radius: 4px;
+	position: absolute;
+	right: 2px;top: 2px;
+	font-size: 0.6em;
+	font-weight: 400;
+	border: 1px solid #999;
+}
+.index-mark .info{
+	font-size: 0.8em;
+	color: #333;
+	font-weight: bold;
+}
+.mark-content{
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+}
+.mark-content .loding{
+	display: block;
+	height: 30px;
+	width: 100%;
+	line-height: 20px;
+	text-align: center;
+}
+.loding span{
+	display: inline-block;
+}
+.mark-content .mui-spinner{
+	height:20px;
+}
+.title{
+	line-height: 22px;
+	padding-left: 10px;
+	font-size: 1em;
+	font-weight: 500;
+	color: #9C005E;
+	padding: 4px;
+	background-color: #EFEFF4;
+}
+.mark-tr{
+	min-height: 20px;
+	margin: 4px 0px;
+	display: block;
+	font-size: 0.8em;
+}
+.mark-tr ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	min-height: 20px;
+	background-color: #FFFFFF;
+	width: 100%;
+	float: left;
+}
+.content-tr{
+	background-color: #FFFFFF;
+}
+.mark-tr ul li{
+	height: 20px;
+	line-height: 16px;
+	font-size: 0.8em;
+	float: left;
+	padding: 2px 4px;
+	border: 1px solid #9C005E;
+	border-radius: 4px;
+	margin: 2px 4px;
+}
+.city{
+	height: 25px;
+	width: 90%;
+	float: left;
+	margin-top: 5px;
+	font-size: 0.8em;
+	text-align: center;
+	border: 1px solid #666666;
+	border-radius: 4px;
+}
+.loding{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 0.6em;
+	color: #666666;
+}

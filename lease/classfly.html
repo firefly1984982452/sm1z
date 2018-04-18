@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/classfly.css" />
+		<link rel="stylesheet" href="../css/preimages.css" />
+	</head>
+	<body onscroll="return false;">
+		<header id="header" class="mui-bar mui-bar-transparent" style="background-color: rgba(247, 247, 247, 0);">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+		</header>
+		<div class="mui-content">
+			<template v-if="showOp==2" ><!--求租-->
+				<h3 class="title-qz">求租说明</h3>
+				<div id="like">
+					<div class="like_magin">
+						<span style="padding: 4px;width:auto;color: #333333;letter-spacing: 0.2px;font-size: 0.8em;" class="server_title like_tr" id="Text">
+							{{Rents.Description}}
+						</span>
+					</div>
+				</div>
+				<div class="div-show phone-show-box" style="height: 2.5em;">
+						<label id="ID">{{Rents.Contactor }}</label>
+						<a class="phone-show" v-gesture:tap.stop.prevent="call(Rents.Phone)">
+							<img src="img/lease_phone.png" />
+							拨打电话
+						</a>
+				</div>
+				<div class="div-show">
+					<div class="server_title like_tr">
+						<label>求租地区</label><span>{{Rents.Province }}-{{Rents.City}}-{{Rents.District}}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>商品名称</label><span>{{Rents.Device_Kind }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>规格</label><span>{{Rents.Device_Mode }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>品牌</label><span>{{Rents.Device_Brand }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>发布日期</label><span>{{Rents.publishDate }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>求租数量</label><span>{{Rents.Quantity}}({{Rents.Device_Unit}})</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>期望价格</label><span>{{Rents.Rental  }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>交易方式</label><span>{{Rents.Delivery }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>联系人</label><span>{{Rents.Contactor  }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>手机号码</label>
+						<span v-gesture:tap.stop.prevent="call(Rents.Phone)" style="font-weight: 400;">
+							{{{Rents.Phone|phone}}}
+						</span>
+					</div>
+				</div>
+			</template>
+			<template v-else><!--出租和转让-->
+				<!--图片-->
+				<div class="mui-slider" id="slider" style="display: none;">
+					<div class="mui-slider-group mui-slider-loop">
+					</div>
+					<div class="mui-slider-indicator">
+						
+					</div>
+				</div>
+				<div id="like">
+					<div class="like_magin">
+						<span class="server_title like_tr" id="Text">{{Rents.title}}</span>
+						<div class="server_price like_tr">
+							{{Rents.kind}}
+						</div>
+					</div>
+					<div class="like-sc" v-show="showOp==1" v-gesture:tap.stop.prevent="shoucang(Rents.id)">
+						<img src="img/lease_sc.png" />
+						收藏
+					</div>
+				</div>
+				<div class="div-show phone-show-box">
+						<span>￥</span>
+						<label id="ID">{{Rents.price }}</label>
+						<a class="phone-show" v-gesture:tap.stop.prevent="call(Rents.phone)">
+							<img src="img/lease_phone.png" />
+							拨打电话
+						</a>
+				</div>
+				<div class="div-show">
+					<div class="server_title like_tr">
+						<label>地区：</label><span>{{Rents.place }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>类别：</label><span>{{Rents.kind }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>规格：</label><span>{{Rents.model }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>重量：</label><span>{{Rents.weight }}
+							
+					</div>
+					<div class="server_title like_tr">
+						<label>品牌：</label><span>{{Rents.brand }}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>已用时间：</label><span>{{Rents.term}}
+								{{Rents.unit}}
+					</div>
+					<div class="server_title like_tr">
+						<label>发布日期：</label><span>{{Rents.submitDate}}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>有效期：</label><span>{{Rents.validDate}}(天)</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>库存：</label><span>{{Rents.quantity}}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>联系人：</label><span>{{Rents.name}}</span>
+					</div>
+					<div class="server_title like_tr">
+						<label>手机号码:</label>
+						<span v-gesture:tap.stop.prevent="call(Rents.phone)" style="font-weight: 400;">{{{Rents.phone|phone}}}</span>
+					</div>
+				</div>
+				<div class="div-show">
+					<div class="div-show-box">
+						<div class="show-title" v-gesture:tap.stop.prevent="showX(1)">使用说明</div>
+						<div class="show-info" v-if="show.syflag" v-bind:transition="'expand'">
+							{{Rents.description }}
+						</div>
+					</div>
+					<div class="div-show-box">
+						<div class="show-title"  v-gesture:tap.stop.prevent="showX(2)">
+							<template v-if="showOp==1">租赁说明</template>
+							<template v-else>转让说明</template>
+						</div>
+						<div class="show-info" v-if="show.zyflag" v-bind:transition="'expand'">{{Rents.rentstxt }}</div>
+					</div>
+					<div class="div-show-box">
+						<div class="show-title"  v-gesture:tap.stop.prevent="showX(3)">注意事项</div>
+						<div class="show-info" v-if="show.zhyflag" v-bind:transition="'expand'">{{Rents.announcements}}</div>
+					</div>
+					<div class="div-show-box">
+						<div class="show-title"  v-gesture:tap.stop.prevent="showX(4)">
+							<template v-if="showOp==1">租后服务</template>
+							<template v-else>售后</template>
+						</div>
+						<div class="show-info" v-if="show.shflag" v-bind:transition="'expand'">{{Rents.notes}}</div>
+					</div>
+				</div>
+			</template>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.zoom.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.previewimage.js" ></script>
+		<script>
+			mui.previewImage();
+		</script>
+		<script>
+			$(".index-mark").on("touchmove",function(e){
+				mui('#pullrefresh').pullRefresh().setStopped(false);
+			}).on("touchend",function(){
+				mui('#pullrefresh').pullRefresh().setStopped(true);
+			})
+		</script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script>
+			mui.plusReady(function(){
+				var lease_url = "http://139.196.113.126";
+				var that = plus.webview.currentWebview();
+				var showId = that.data_id;
+				var showOp = that.data_op;
+				var val = Strings.indexData.index.lease;
+				var route = [Xeval.Mode.HTTP_GET_LEASE_GET_CZ,Xeval.Mode.HTTP_GET_LEASE_GET_QZ,Xeval.Mode.HTTP_GET_LEASE_GET_ZR];
+				eLog.l(showOp+":"+route)
+				var tapS = {
+					showX:function(e){
+						switch(e){
+							case 1:{
+								vm.$data.show.syflag = !vm.$data.show.syflag;
+							};break;
+							case 2:{
+								vm.$data.show.zyflag = !vm.$data.show.zyflag;
+							};break;
+							case 3:{
+								vm.$data.show.zhyflag = !vm.$data.show.zhyflag;
+							};break;
+							case 4:{
+								vm.$data.show.shflag = !vm.$data.show.shflag;
+							};break;
+							default:break;
+						}
+					},
+					shoucang:function(Cid){
+						var storage_ = new evalStorage();
+						var mode_ = storage_.Mode;
+						var userInfo = JSON.parse(storage_.getStorage(mode_.localStorage, "userinfo"));
+						if(!!userInfo){
+							Xeval.Http(
+								Xeval.Mode.HTTP_GET_LEASE_POST_COLLEC,
+								{id:Cid},
+								function(isOk,data){
+									console.log(JSON.stringify(data));
+									if(isOk){
+										mui.alert(data.msg,val.leaseTitle,val.leaseBtn);
+										if(data.msg.indexOf("未登录")>=0){
+											login();
+										}
+									}else{
+										mui.alert(val.leaseNetworkError,val.leaseTitle,val.leaseBtn);
+									}
+								},
+								true
+							)
+						}else{
+							login();
+						}
+						function login(){
+							mui.openWindow({
+								url: "../login.html",
+								id: "_login.html",
+								createNew: true,
+								extras: {
+									isBack: true
+								}
+							})
+						}
+					},
+					call:function(e){
+						callPhone(e);
+					}
+				}
+				Vue.filter("phone",function(val){
+					console.log(val)
+					if(val && val.length==11){
+						var msg = "<font color='#9c052e'>(点击拨打)</font>"
+						return val.replace(/(\d{3})\d{4}(\d{4})/,"$1****$2"+msg);
+					}else{
+						return val;
+					}
+				})
+				var vm = new Vue({
+					el:".mui-content",
+					data:{
+						showOp:showOp,
+						Rents:{
+							id:"",
+							title:"",
+							name:"",
+							phone:"",
+							kind:"",
+							model:"",
+							picture:"",
+							place:"",
+							price:"",
+							brand:"",
+							weight:"",
+							validDate:"",
+							isVali:false,
+							term:"",//设备已用时间
+							unit:"",
+							unitkg:"",
+							submitDate:"",//发布时间
+							quantity:"",//库存
+							rentstxt:"",//租赁说明
+							description:"",//使用说明
+							notes:"",//售后服务
+							announcements:"",//注意事项
+						},
+						show:{
+							syflag:false,
+							zyflag:false,
+							zhyflag:false,
+							shflag:false
+						}
+					},
+					methods:tapS
+				})
+				Xeval.setUrl(lease_url+"/");
+				Xeval.Http(route[showOp-1],{Id:showId},formData);
+				function formData(isOk,data){
+					if(isOk){
+						eLog.l(JSON.stringify(data));
+						if(showOp==2){
+							vm.$data.Rents = data;
+						}else{
+							vm.$data.Rents.id = data.Rents_productID||data.pd_supplierID;
+							vm.$data.Rents.title  = data.Rents_name||data.pd_name;
+							vm.$data.Rents.kind=data.Rents_kind||data.pd_kind;
+							vm.$data.Rents.model = data.Rents_modle||data.pd_model;
+							vm.$data.Rents.picture = data.Rents_picture||data.pd_picture;
+							vm.$data.Rents.price = data.Rents_price||data.pd_vipprice;
+							vm.$data.Rents.quantity = data.Rents_quantity||data.pd_stock;
+							vm.$data.Rents.brand = data.Rents_brand||data.pd_brand;
+							vm.$data.Rents.weight = data.Rents_weight||data.pd_weight;
+							vm.$data.Rents.description = data.Rents_description||data.pd_instruction;
+							vm.$data.Rents.submitDate = data.Rents_submitDate||data.pd_publishdate;
+							vm.$data.Rents.rentstxt = data.Rents_rentstxt||data.pd_rentstxt;
+							vm.$data.Rents.place = data.Rents_place||data.pd_place;
+							vm.$data.Rents.announcements = data.Rents_announcements||data.pd_annouce;
+							vm.$data.Rents.phone  = data.phone||data.Phone||data.sdPhone;
+							vm.$data.Rents.name = data.name||data.sdName; 
+							vm.$data.Rents.term = data.pd_term||data.Rents_term;
+							vm.$data.Rents.notes = data.Rents_notes||data.pd_notes;
+							vm.$data.Rents.validDate = data.Rents_validDate||data.pd_validdate;
+							if(data.pd_unit){
+								vm.$data.Rents.unit = "("+data.pd_unit+")";
+							}
+							if(data.Rents_unit){
+								vm.$data.Rents.unitkg = "(" +data.Rents_unit+")";
+							}
+							initImg(data.Rents_picture||data.pd_picture);
+						}
+					}else{
+						mui.alert("网络错误");
+					}
+				}
+		function initImg(value) { //初始化播轮图片
+				try{
+					var imgs = value;
+					$("#slider").show();
+					var groupImg = $(".mui-slider-group");
+					var indicator = $(".mui-slider-indicator");
+					var showsFast = $('<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src='+imgs[imgs.length-1].Url+' /></a></div>');
+					var showsLast = $('<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src='+imgs[0].Url+' /></a></div>');
+					groupImg.append(showsFast);
+					imgs.forEach(function(item){
+						var img_ = $('<div class="mui-slider-item"><a href="#"><img  src="'+item.Url+'" data-preview-src="" data-preview-group="1" /></a></div>');
+						groupImg.append(img_);
+						indicator.append('<div class="mui-indicator"></div>');
+					})
+					groupImg.append(showsLast);
+					 mui('#slider').slider({
+					  interval:3000
+					});
+				}catch(e){
+					eLog.l("e");
+				}
+			}
+			})
+		</script>
+	</body>
+</html>

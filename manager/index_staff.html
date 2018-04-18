@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<style type="text/css">
+			.db{
+				background: url(img/Do-manager_gray.png) no-repeat;
+				background-size: 100%;
+			}
+			.bb{
+				background: url(img/Report-management_gray.png) no-repeat;
+				background-size: 100%;
+			}
+			.set{
+				background: url(img/set_gray.png) no-repeat;
+				background-size: 100%;
+			}
+			.mui-bar-nav{
+				background-color: #25c8c8;
+			}
+			
+			.mui-title{
+				color: #FFFFFF;
+				font-size: 17px;
+			}
+			
+			.mui-bar>.mui-icon{
+				color: #FFFFFF;
+				right: 6px;
+				top: 0px;
+				position: inherit;
+			}
+			.mui-pull-left{
+				right:0px;
+				left: 6px;
+			}
+			.mui-bar-tab .mui-tab-item{
+				position: absolute;
+				height: 50px;
+				width: 50px;
+				display: block;
+				border-radius: 30px;
+				left: 50%;
+				margin-left: -30px;
+				border: 1px solid #0062CC;
+				background-color: #f3f3f3;
+			}
+			.mui-bar-tab .mui-tab-item .mui-icon{
+				height: 40px;
+				width: 40px;
+				top: 5px;
+			}
+			
+			.mui-bar  .mui-icon-home{
+				font-size: 30px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<script src="../js/mui.min.js"></script>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">项目管理</h1>
+			<a class="mui-icon mui-icon-settings mui-pull-right mui-icon-right-nav"></a>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="tabbar" class="mui-control-content mui-active">
+				<div class="mui-slider" id="slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="img/sample.png" width="100%" /></a>
+						</div>
+					</div>
+				</div>
+
+				<!--主页-信息列表-->
+				<ul id="index_select" class="mui-table-view mui-grid-view mui-grid-6">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" data-select='0'>
+						<a href="#">
+							<img src="img/project-node.png" />
+							<div class="mui-media-body">
+								项目结点
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" data-select='1'>
+						<a href="#">
+							<img src="img/payment-node.png" />
+							<div class="mui-media-body">
+								付款结点
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" data-select='2'>
+						<a href="#">
+							<img src="img/completion-report.png" />
+							<div class="mui-media-body">
+								完工报告
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!--主页 - 最新消息推荐-->
+				<ul class="mui-table-view mui-table-view-chevron">
+			</div>
+		</div>
+	</body>
+</html>

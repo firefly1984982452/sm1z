@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<style type="text/css">
+			.login img {
+				width: 220px;
+				height: 85px;
+			}
+			
+			.login-user {
+				background-color: #1a8640;
+				width: 55px;
+				height: 40px;
+				line-height: 40px;
+				color: #FFFFFF;
+				text-align: center;
+			}
+			
+			.get-pwd {
+				color: #FFFFFF;
+				width: 80%;
+				position: relative;
+				overflow: hidden;
+				margin-left: 10%;
+				margin-top: 5px;
+				margin-bottom: 30px;
+				text-align: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">ERP登陆</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+
+				<div class="login-input">
+					<div class="input-box">
+						<div class="login-user">
+							帐号
+						</div>
+						<input type="text" placeholder="请输入ERP账号" id="user" />
+					</div>
+					<div class="input-box">
+						<div class="login-user">
+							密码
+						</div>
+						<input type="password" placeholder="请输入ERP密码" id="pasw" />
+					</div>
+
+					<div class="get-pwd">
+						忘记密码
+					</div>
+					<div class="input-box">
+						<a href="javascript:void(0)" id="login">登录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/evalHttp.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script type="text/javascript">
+			mui.ready(function() {
+				Xeval.setUrl("http://192.168.191.1/");
+				var user = localStorage.getItem("art_user");
+				if(user) {
+					try {
+						var juser = JSON.parse(user);
+						mui("#user")[0].value = juser.data.T_accountnumber;
+					} catch(e) {
+
+					}
+				}
+				mui('.input-box').on("tap", "#login", function() {
+					var params = {
+						name: mui("#user")[0].value,
+						pwd: mui("#pasw")[0].value
+					}
+					Xeval.Http(Xeval.Mode.HTTP_ART_POST_LOGIN, params, cb);
+
+					function cb(isOk, data) {
+						console.log(JSON.stringify(data))
+						if(isOk) {
+							mui.toast(data.msg);
+							if(data.state == 1 || data.state == 2) {
+								mui("#pasw")[0].value = "";
+								localStorage.setItem("art_user", JSON.stringify(data));
+								/*
+								 * 更改一下主页面的guid！,保证退出crm后，不影响其他功能。
+								 *                  <---不背锅！
+								 * */
+								var userinfo = localStorage.getItem("userinfo");
+								if(userinfo) {
+									try {
+										var indexUser = JSON.parse(userinfo);
+										if(indexUser.user == data.data.T_accountnumber) {
+											indexUser.guid = data.guid;
+											localStorage.setItem("userinfo", JSON.stringify(indexUser));
+										}
+									} catch(e) {
+
+									}
+								}
+								mui.openWindow({
+									url: "index.html",
+									id: "artisan_index.html"
+								})
+							}
+						} else {
+							mui.alert("网络错误，请检查您的网络情况")
+						}
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

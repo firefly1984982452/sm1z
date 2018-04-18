@@ -1,0 +1,184 @@
+.msg {
+	width: 100%;
+	padding-left: 20px;
+	color: #9C005E;
+	font-size: 14px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.mui-navigate-right {
+	height: 80px;
+}
+
+.list-content .info .ellipsis:first-child {
+	width: 50%;
+}
+
+.list-content .info .ellipsis:last-child {
+	width: 50%;
+}
+
+.register_btn>button {
+	height: 40px;
+	width: 100%;
+	background-color: #9C005E;
+	color: #FFFFFF;
+	border: 1px solid #9C005E;
+	margin-left: 0px;
+	display: block;
+	transition: margin-left 1s;
+}
+
+#register,
+#next {
+	width: 100%;
+	height: 60px;
+	padding: 10px;
+}
+
+.mui-input-row input {
+	color: #666666;
+}
+
+.mui-input-group textarea {
+	font-size: 14px;
+	height: 100%;
+	line-height: 20px;
+	display: block;
+}
+
+.mui-input-group #clear {
+	min-height: 40px;
+}
+#image-list {
+	height: 80px;
+	padding: 10px 10px;
+	border-radius: 6px;
+	overflow: hidden;
+	list-style: none;
+	margin-top: 6px;
+}
+
+#image-list li {
+	width: 30%;
+	margin-left: 2.5%;
+	height: 100%;
+	float: left;
+	position: relative;
+}
+
+.imgbox img {
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+}
+
+.imgbox span {
+	height: 20px;
+	width: 20px;
+	font-size: 16px;
+	color: #FFFFFF;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 20px;
+	text-align: center;
+	line-height: 20px;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+
+.add {
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.add label {
+	height: 100%;
+	width: 100%;
+	line-height: 50px;
+	background-color: #A46080;
+	display: block;
+	float: left;
+	font-size: 40px;
+	color: #FFFFFF;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.add form {
+	width: 100%;
+	height: 100%;
+	background-color: royalblue;
+}
+
+.add form input {
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	bottom: 0px;
+	opacity: 0px;
+	font-size: 100px;
+	padding-left: 100%;
+	position: absolute;
+}
+
+#imgSeek {
+	border: none;
+	height: 100%;
+	width: 100%;
+	background-color: #9C005E;
+}
+
+.pro {
+	width: 100%;
+	height: 4px;
+	position: relative;
+	margin-top: 6px;
+}
+
+.pro div {
+	position: absolute;
+	height: 12px;
+	top: -6px;
+	right: 0px;
+	font-size: 12px;
+}
+
+.pro .protxt {
+	color: #9C005E;
+	font-weight: bold;
+}
+.down-btn{
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	display: block;
+	width: 100px;
+	color: #0062CC;
+	font-size: 14px;
+	padding-left: 2px;
+	border: 1px solid #0062CC;
+	border-radius: 4px;
+	
+}
+.down-btn img{
+	height: 16px;
+	margin:7px;
+	float: left;
+}
+.msg{
+	position: relative;
+	height: 30px;
+}
+.msg .ellipsis{
+	float: left;
+	position: absolute;
+	left: 130px;
+	right: 10px;
+	top: 0px;
+	font-size: 12px;
+	color: #666666;
+	line-height: 30px;
+	bottom: 0px;
+}

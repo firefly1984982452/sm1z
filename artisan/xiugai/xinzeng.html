@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			.mui-table-view-cell select {
+				width: 30%;
+				direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			
+			.mui-table-view-cell select option {
+				text-align: center;
+			}
+			
+			.mui-table-view-cell i {
+				color: #9C005E;
+				font-size: 14px;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">用户信息新增</h1>
+		</header>
+		<div class="mui-content"  style="background-color: #FFFFFF;padding-bottom: 20px;">
+			<div class="me-header">
+				<div class="me-img-head" id="image-list">
+					<img src="{{photoUrl}}" class="add" data-id='{{photoUrlID}}' />
+					<span>{{name}}</span>
+				</div>
+			</div>
+			<div class="mui-content-padded" >
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>姓名<i>必填*</i></label>
+						<input type="text" v-model='name'placeholder="请输入员工姓名"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>账号<i>必填*</i></label>
+						<input type="text" v-model='accountnumber' placeholder="请输入账号"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>密码<i>必填*</i></label>
+						<input type="text" v-model='pwd'placeholder="请输入密码"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>角色<i>选择-必填*</i></label>
+						<span id="role">{{role|role}}<i>&nbsp;</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>员工工号</label>
+						<input type="text" v-model='jobnumber'placeholder="请输入员工工号"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>性别<i>请选择</i></label>
+						<span id="sex">{{Sex}}<i>&nbsp;</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>籍贯</label>
+						<input type="text" v-model='nativeplace' placeholder="请输入籍贯"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>部门</label>
+						<input type="text" v-model='demartment' placeholder="请输入部门"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>职务</label>
+						<input type="text" v-model='duct' placeholder="请输入职务"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>手机</label>
+						<input type="text" v-model='phone' placeholder="请输入手机号码"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>生日<i>请选择</i></label>
+						<span id="birth">{{Birth|birth}}<i>&nbsp;</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>现居住地</label>
+						<input type="text" v-model='Nowhous' placeholder="请输入现居住地"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>身份证号</label>
+						<input type="text"  v-model='IDcard' placeholder="请输入身份证号码"/>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)"  class="mui-card edit-btn" id="submit" >
+				提交修改
+			</a>
+		</div>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../library/js/uphoto.js" ></script>
+		<script>
+			var app = {
+				datas:{
+					vm:null,
+					sexOptions:[
+						{text:"男",value:"1"},
+						{text:"女",value:"0"}
+					],
+					roleOptions:[
+						{text:"总经理",value:"2"},
+						{text:"业务员",value:"3"}
+					],
+					meData:{
+						name: "",
+						demartment: "",
+						duct: "",
+						phone: "",
+						pwd: "",
+						Birth: "",
+						role:"3",
+						Sex: "男",
+						nativeplace: "",
+						Nowhous: "",
+						IDcard: "",
+						photoUrl:"",
+						Username:"",
+						Token:"",
+						accountnumber:"",
+						jobnumber:""
+					},
+					sexPicker:new mui.PopPicker(),
+					rolePicker:new mui.PopPicker(),
+					params:{}
+				},
+				methods:{
+					_BIRTH:function(){
+						var birth = app.datas.meData.Birth;
+						var yearB = birth.replace(".","-");
+						var picker = new mui.DtPicker({
+						    type: "month",//设置日历初始视图模式 
+						    beginDate: new Date(1900, 1,1),//设置开始日期 
+						    endDate: new Date()//设置结束日期 
+						});
+						picker.setSelectedValue(yearB);
+						picker.show(function(rs){
+							var time = rs.y.text+"."+rs.m.text;
+							app.datas.meData.Birth = time;
+							app.datas.meData.Birth1 = rs.y.text;
+							app.datas.meData.Birth2 = rs.m.text;
+							picker.dispose();
+						});
+					},
+					_SEX:function(){
+						app.datas.sexPicker.setData(app.datas.sexOptions);
+						app.datas.sexPicker.show(function(item){
+							app.datas.meData.Sex = item[0].text;
+						})
+					},
+					_SUBMIT:function(){
+						var imgId = document.querySelector("#image-list .add").getAttribute("data-id");
+						if(imgId){
+							app.datas.meData.photoUrl = imgId
+						}
+						if(!app.datas.meData.Birth){
+							var birth = app.datas.meData.Birth;
+							var births = birth.split(".");
+							if(births.length>0){
+								app.datas.meData.Birth1 = births[0];
+								app.datas.meData.Birth2 = births[1];
+							}else{
+								app.datas.meData.Birth1 = "";
+								app.datas.meData.Birth2 = "";
+							}
+						}
+						var params = app.datas.meData;
+						if(params.name=="" || params.name.trim()==""){
+							plus.nativeUI.alert("用户姓名必填！");
+							return;
+						}
+						if(params.accountnumber=="" || params.accountnumber.trim()==""){
+							plus.nativeUI.alert("用户账号必填！");
+							return;
+						}
+						if(params.pwd=="" || params.pwd.trim()==""){
+							plus.nativeUI.alert("用户密码必填！");
+							return;
+						}
+						plus.nativeUI.showWaiting("修改信息中,请稍等...")
+						Xeval.Http(Xeval.Mode.HTTp_ART_POST_USER,params,function(isOk,data){
+						plus.nativeUI.closeWaiting();
+							if(isOk){
+								plus.nativeUI.toast(data.msg);
+								if(data.state==1){
+									mui.back();
+								}
+							}else{
+								plus.nativeUI.alert("网络错误，请检查您的网络！");
+							}
+						})
+					},
+					_UPFILE:function(url,id){
+						if(!!id){
+							var dom = document.querySelector("#image-list .add");
+							app.datas.meData.photoUrl=url;
+							dom.setAttribute("data-id",id);
+						}
+					},
+					_ROLE:function(){
+						app.datas.rolePicker.setData(app.datas.roleOptions);
+						app.datas.rolePicker.show(function(item){
+							app.datas.meData.role = item[0].value;
+						})
+					}
+				},
+				init:function(){
+					app.utils.getMsg();
+					app.datas.vm = new Vue({
+						el:".mui-content",
+						data:app.datas.meData,
+						methods:app.methods,
+						filters:{
+							birth:function(val){
+								if(typeof(val)=="string"&&val.indexOf(".")>0){
+									var vals = val.split(".");
+									return vals[0]+"年"+vals[1]+"月"
+								}else{
+									return val;
+								}
+							},
+							role:function(val){
+								if(val==2){
+									return "总经理"
+								}else if(val==3){
+									return "业务员"
+								}
+							}
+						}
+					})
+					document.getElementById("birth").addEventListener("touchend",app.methods._BIRTH);
+					document.getElementById("sex").addEventListener("touchend",app.methods._SEX);
+					document.getElementById("role").addEventListener("touchend",app.methods._ROLE);
+					document.getElementById("submit").addEventListener("touchend",app.methods._SUBMIT);
+					mui(".mui-table-view-cell").on("tap","input",function(){
+						app.datas.sexPicker.blur;
+						app.datas.rolePicker.blur;
+					})
+				},
+				utils:{
+					getMsg:function(){
+						var jsonData = JSON.parse(localStorage.getItem("art_user"));
+						app.datas.meData.Token = jsonData.guid;
+						app.datas.meData.Username =  jsonData.data.T_accountnumber;
+						app.datas.meData.UserID = jsonData.data.T_UserID;
+					}
+				}
+			}
+		mui.plusReady(function(){
+			saveUrl = Xeval.UrlModel.CRM+"PicturesService/PicPunlic";
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			model = Xeval.Mode.HTTP_ART_DELFILE_BYIF;
+			app.init();
+			var par = {
+				Username:app.datas.meData.Username,
+				Token:app.datas.meData.Token
+			};
+			setPhotUrl(saveUrl,model,par,app.methods._UPFILE);
+		})
+		</script>
+	</body>
+
+</html>

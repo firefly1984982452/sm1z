@@ -1,0 +1,268 @@
+
+.mui-bar .mui-action-back {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	margin-top: 5px;
+	display: block;
+	padding-top: 4px;
+	padding-left: 1px;
+	background-color: #666666;
+}
+.title-qz{
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 40px;
+}
+.div-show{
+	padding: 10px 10px;
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+.mui-slider-indicator.mui-indicator {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+#slider{
+	width: 100%;
+}
+#slider img{
+	width: 100%;
+	max-height: 240px;
+}
+.error{
+	text-align: center;
+	width: 100%;
+}
+.mui-slider-indicator.mui-active {
+	background-color: #9C005E;
+}
+.error>.msg{
+	color: #9C005E;
+	font-weight: bold;
+	padding: 4px;
+	font-size: 0.8em;
+}
+.mui-slider-group{
+	width: 100%;
+	border-bottom: 2px solid #0062CC;
+}
+.mui-slider-group .mui-slider-item img {
+	max-height: 240px;
+	width: 100%;
+}
+.mui-slider-group .mui-slider-item a{
+	width: 100%;
+	max-height: 240px;
+}
+#like {
+	min-height: 40px;
+	background-color: #FFFFFF;
+	width: 100%;
+	position: relative;
+}
+.like-sc{
+	height: 20px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: #9C005E;
+	color: #FFFFFF;
+	border-radius: 4px;
+	padding-right: 6px;
+	font-size: 0.6em;
+	line-height: 20px;
+}
+.like-sc img{
+	height: 16px;
+	float: left;
+	margin: 2px 4px;
+}
+.like_magin {
+	width: 96%;
+	margin: 0px auto;
+	position: relative;
+}
+
+.like_tr {
+	width: 100%;
+	display: block;
+	min-height: 20px;
+	line-height: 20px;
+	margin-top: 3.3333px;
+}
+
+.server_title {
+	font-size: 1em;
+	color: #333333;
+}
+.server_title label{
+	width: 35%;
+	display: block;
+	float: left;
+	font-size: 1em;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.server_title span{
+	width: 65%;
+	font-size: 0.8em;
+	color: #666;
+	float: left;
+	line-height: 1rem;
+	min-height: 100%;
+	display: block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.phone-show-box{
+	background-color: #9C005E;
+}
+.phone-show-box>label,.phone-show-box>span{
+	color: #FFFFFF;
+	font-size: 0.8em;
+}
+.phone-show-box>span{
+	font-size: 0.6em;
+}
+.phone-show{
+	float: right;
+	color: #FFFFFF;
+	font-size: 0.8em;
+}
+.phone-show img{
+	height: 16px;
+	margin: 2px 4px;
+	float: left;
+}
+.server_number {
+	font-size: 12px;
+	color: #666666;
+}
+
+.server_price {
+	font-size: 0.8em;
+	color: #666666;
+}
+.mui-control-content {
+	background-color: #FFFFFF;
+	min-height: 215px;
+}
+
+.mui-control-content .mui-loading {
+	margin-top: 50px;
+}
+.mui-scroll-wrapper{
+}
+.mui-content {
+	padding: 10px;
+}
+
+.mui-scroll {
+	overflow: overlay;
+}
+.label_box{
+	width: 100%;
+	padding-left: 120px;
+}
+.label_box_tr{
+	width: 100%;
+	height: 30px;
+	margin-top: 2.5px;
+	line-height: 30px;
+}
+.label_box_tr>label{
+	font-size: 12px;
+	color: #333333;
+}
+.classfly>li{
+	height: 16px;
+	list-style: none;
+	line-height: 16px;
+	padding: 0px 2px;
+	float: left;
+	border-radius: 2px;
+	margin: 2px;
+	font-size: 10px;
+	border: 1px solid #0062CC;
+}
+.classfly{
+	margin: 0px;
+	padding: 0px;
+	min-height: 30px;
+}
+.classfly>p{
+	height: 30px;
+	line-height: 32.5px;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+.classfly_box{
+	width: 100%;
+	min-height: 20px;
+	overflow: auto;
+}
+.classfly_box>label{
+	height: 20px;
+	background-color: #efeff4;
+	line-height: 20px;
+	font-size: 12px;
+	padding-left: 10px;
+	display: block;
+	width: 100%;
+	font-size: ;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+	color: #9C005E;
+}
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar{
+	background-color: #9C005E;	
+}
+.mui-segmented-control.mui-segmented-control-inverted {
+	background-color: #FFFFFF;
+	margin-top: 5px;
+	font-size: 12px;
+}
+.close{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.money{
+	font-size: 10px;
+	color: #9C005E;
+}
+.price{
+	color: #9C005E;
+	font-size: 14px;
+}
+.img_box>img{
+	height: 100px;
+	width: 100px;
+}
+.show-title{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 0.8em;
+	color: #333333;
+	font-weight: 400;
+	background-color: #9C005E;
+	color: #FFFFFF;
+	border-radius: 4px;
+	margin: 4px 0px;
+}
+.show-info{
+	padding: 4px 8px;
+	font-size: 0.8em;
+	color: #666666;
+	line-height: 20px;
+	 table-layout:fixed; word-break: break-all; overflow:auto;
+}
+.expand-enter, .expand-leave {
+  height: 0;
+  opacity: 0;
+  padding: 0;
+}

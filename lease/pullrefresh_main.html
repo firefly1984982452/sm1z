@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-transparent">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <div class="index-input">
+		    	<input class="mui-input-clear" type="text" placeholder="请输入您需要信息的品牌" />
+		    	<img src="img/search.png" />
+		    </div>
+		    <div class="index-fabu">发布+</div>
+		</header>
+		<div class="mui-content">
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script type="text/javascript">
+		//启用双击监听
+		mui.init({
+			gestureConfig:{
+				doubletap:true,
+				swipeBack: false
+			},
+			subpages:[{ 
+				url:'pullrefresh_sub.html',
+				id:'pullrefresh_sub.html',
+				styles:{
+					top: '45px',
+					bottom: '0px', 
+				}
+			}] 
+		});
+		mui.plusReady(function(){
+			var that = plus.webview.currentWebview();
+			var data_op = that.data_op;
+			mui(".index-input").on("tap","input",function(){
+				mui(".index-fabu")[0].innerText = '检索';
+				plus.webview.currentWebview().children()[0].evalJS('expertSearch(1)');
+			});
+			
+			window.self = that;
+			window.data_op = data_op;
+			mui(".mui-bar").on("tap",".index-fabu",function(e){
+				if(e.target.innerText=='检索'){
+					var keyword = mui(".index-input input")[0].value;
+					plus.webview.currentWebview().children()[0].evalJS('search("'+keyword+'")');
+				}else{
+					fabu(true);
+				}
+			})
+		})
+		function start(){
+			self.children()[0].evalJS('show("'+data_op+'")');
+		}
+		function inputBlur(){
+			var input_ = mui(".index-fabu")[0];
+			input_.value = "";
+			input_.blur();
+		}
+		function fabu(isFabu){
+			if(!!isFabu){
+				var storage_ = new evalStorage();
+				var mode_ = storage_.Mode;
+				var userInfo = null;
+				try{
+					userInfo = JSON.parse(storage_.getStorage(mode_.localStorage, "userinfo"))
+				}catch(e){
+					//TODO handle the exception
+				}
+				if(!!userInfo){
+					mui.openWindow({
+						url:"fabu"+data_op+".html",
+						id:"fabu"+data_op+".html",
+						crateNew:false,
+						extras:{
+							data_op:data_op
+						}
+					})
+				}else{
+					mui.openWindow({
+						url: "../login.html",
+						id: "../login.html",
+						createNew: true,
+						extras: {
+							isBack: true,
+							backUrl:"lease/pullrefresh_main.html"
+						}
+					})
+				}
+			}else{
+				var input_ = mui(".index-fabu")[0];
+				if(mui(".index-input input")[0].value.length==0){
+					input_.innerText = "发布+";
+				}
+			}
+		}
+	</script>
+	<script type="text/javascript" src="../library/js/scrollZIP.js" ></script>
+</html>

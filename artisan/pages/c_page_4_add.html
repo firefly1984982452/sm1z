@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<link rel="stylesheet" href="../css/page_4.css" />
+		<link rel="stylesheet" href="../../library/css/uphoto.css" />
+		<style>
+		.mui-table-view-cell .upimg{
+			width: 100%;
+			display: block;
+			float: left;
+		}
+		h5{
+			font-size: 14px;
+			color: #333;
+			padding-left: 4px;
+			font-size: 12px;
+		}
+		#image-list li{
+			margin-top: 5px;
+		}
+		.add label{
+			background-color: #3A6C92;
+		}
+		.pro .protxt{
+			color: #0062CC;
+		}
+		#imgSeek{
+			background-color: #3A6C92;
+		}
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新增拜访记录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>商机名称<i>&lt;选择&gt;</i></label>
+						<span id="sjmc">{{data.CV_businessName}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户名称</label>
+						<span id="khmc">{{data.CV_consumerName}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>拜访形式<i>&lt;选择&gt;</i></label>
+						<span id="bfxs">{{data.CV_ways|bfxs}}&nbsp;</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>对方人员</label>
+						<input type="text" placeholder="请输入对方名称" v-model="data.CV_oppositepeople" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>拜访目的<i>&lt;选择&gt;</i></label>
+						<span id="bfmd">{{data.CV_purpose|bfmd}}&nbsp;</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户反馈<i>&lt;选择&gt;</i></label>
+						<span id="khfk">{{data.CV_feedback|khfk}}&nbsp;</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>图片附件</label>
+						<div class="upimg">
+							<h5>图片(大小1M以下,大于1M,自动压缩文档)</h5>
+							<div class="pro">
+								<progress value="0" max="100" id="imgSeek"></progress>
+								<div>
+									图片上传进度：
+									<span class="protxt">0%</span>
+								</div>
+							</div>
+							<ul id='image-list' class="row image-list">
+								<li class="add">
+									<label>+</label>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					交谈内容
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="请输入沟通内容" v-model="data.CV_talkdetails" style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					下步计划
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="请输入下部计划" v-model="data.CV_lowerplan" style="width: 100%;">
+							
+					</textarea>
+				</li>
+			</ul>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					备注
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="" v-model="data.CV_remark1" style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="submit">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/uphoto.js" ></script>
+	<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script>
+		mui.plusReady(function() {
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			saveUrl = "http://192.168.191.1/PicturesService/PicPunlic";
+			model = Xeval.Mode.HTTP_ART_DELFILE_BYIF;
+			app.utils.getToken();
+			setPhotUrl(saveUrl,model,{
+				Username:app.datas.vmData.data.Username,
+				Token:app.datas.vmData.data.Token
+			});
+			app.init();
+		})
+		var app = {
+			datas:{
+				pickers:{
+					bfxs:new mui.PopPicker(),
+					bfmd:new mui.PopPicker(),
+					khfk:new mui.PopPicker()
+				},
+				options:{
+					bfxs:[
+						{text:"电话",value:"1"},
+						{text:"上门",value:"2"}
+					],
+					bfmd:[
+						{text:"熟悉客户建立感情",value:"1"},
+						{text:"了解客户需求",value:"2"},
+						{text:"现场勘查诊断",value:"3"},
+						{text:"方案论证",value:"4"},
+						{text:"报价论证",value:"5"},
+						{text:"商定合同",value:"6"},
+						{text:"挖掘商机需求",value:"7"},
+						{text:"其他",value:"8"}
+					],
+					khfk:[
+						{text:"认可",value:"1"},
+						{text:"观望",value:"2"},
+						{text:"冷漠",value:"3"}
+					]
+				},
+				webData:{},
+				vm:null,
+				vmData:{
+					data:{
+						CV_businessName:"请选择商机",
+						CV_consumerName:"请选择商机",
+						CV_documentaryID:"",
+						CV_consumerID:"",
+						CV_businessID:"",
+						CV_ways:"",//拜访形式
+						CV_oppositepeople:"",
+						CV_purpose:"",//拜访目的
+						CV_talkdetails:"",
+						CV_feedback:"",//客户反馈
+						CV_lowerplan:"",
+						CV_remark1:"",
+						Username:"",
+						Token:"",
+						UserID:"",
+						CV_fileurl:""
+					}
+				},
+				backData:{}
+			},
+			methods:{
+				sw:function(){
+					var id = this.id;
+					var that = this;
+					app.datas.pickers.bfxs.blur;
+					app.datas.pickers.bfmd.blur;
+					app.datas.pickers.khfk.blur;
+					switch(id){
+						case "sjmc":{
+							mui.openWindow({
+								url:"page_1_s.html",
+								id:"page_1_s.html",
+								creatNew:true,
+								extras:{
+									backs:{
+										back:true,
+										id:plus.webview.currentWebview().id
+									}
+								}
+							})
+						};break;
+						case "bfxs":{
+							app.datas.pickers.bfxs.show(function(item){
+								app.datas.vmData.data.CV_ways = item[0].value;
+							})
+						};break;
+						case "bfmd":{
+							app.datas.pickers.bfmd.show(function(item){
+								app.datas.vmData.data.CV_purpose = item[0].value;
+							})
+						};break;
+						case "khfk":{
+							app.datas.pickers.khfk.show(function(item){
+								app.datas.vmData.data.CV_feedback = item[0].value;
+							})
+						};break;
+						default:break;
+					}
+				},
+				submit_:function(){
+					var data = app.datas.vmData.data;
+					console.log(data.CV_documentaryID)
+					if(data.CV_businessID.trim()==""){
+						plus.nativeUI.alert("请先选择一个商机");
+						return;
+					}
+					if(data.CV_ways.trim()==""){
+						plus.nativeUI.alert("请选择拜访形式");
+						return;
+					}
+					if(data.CV_oppositepeople.trim()==""){
+						plus.nativeUI.alert("请输入对方联系人员");
+						return;
+					}
+					if(data.CV_purpose.trim()==""){
+						plus.nativeUI.alert("请选择拜访目的");
+						return;
+					}
+					if(data.CV_feedback.trim()==""){
+						plus.nativeUI.alert("请选择客户反馈");
+						return;
+					}
+					var imgs = [];
+					$("#image-list .imgbox").each(function(){
+						imgs.push($(this).attr("data-id"));
+					})
+					if(imgs.length<1){
+						plus.nativeUI.alert("请上传拜访图片");
+						return;
+					}
+					if(data.CV_talkdetails.trim()==""){
+						plus.nativeUI.alert("请输入交谈内容");
+						return;
+					}
+					if(data.CV_lowerplan.trim()==""){
+						plus.nativeUI.alert("请输入下部计划");
+						return;
+					}
+					
+					data.CV_fileurl = imgs.join(",");
+					console.log(JSON.stringify(data))
+					Xeval.Http(Xeval.Mode.HTTP_ART_POST_PF,data,app.methods._HTTP_CB_ADD)
+				},
+				_HTTP_CB_ADD:function(isOk,data){
+					if(isOk){
+						if(data.state==1){
+							mui.back();
+						}
+						plus.nativeUI.toast(data.msg);
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络！");
+					}
+				}
+			},
+			init:function(){
+				var webView = plus.webview.currentWebview();
+				var data = webView.data;
+				if(data!=null && data!=""){
+					app.datas.vmData.data.CV_businessName = data.C_name;
+					app.datas.vmData.data.CV_consumerName = data.B_name;
+					app.datas.vmData.data.CV_businessID = data.ID;
+					app.datas.vmData.data.CV_consumerID = data.CustomerID;
+				}
+				app.datas.pickers.bfxs.setData(app.datas.options.bfxs);
+				app.datas.pickers.khfk.setData(app.datas.options.khfk);
+				app.datas.pickers.bfmd.setData(app.datas.options.bfmd);
+				var txtItems = mui(".text-txt");
+				app.utils.getToken();
+				mui(".mui-table-view-cell").on("tap","span",app.methods.sw);
+				window.addEventListener("evalback",function(e){
+					var data = e.detail.data;
+					app.datas.vmData.data.CV_businessName = data.B_name;
+					app.datas.vmData.data.CV_consumerName = data.C_name;
+					app.datas.vmData.data.CV_businessID = data.ID;
+					app.datas.vmData.data.CV_consumerID = data.CustomerID;
+				})
+				app.datas.vm = new Vue({
+					el:".mui-content",
+					data:app.datas.vmData,
+					methods:app.methods
+				})
+				document.getElementById("submit").addEventListener("touchend",app.methods.submit_);
+		},
+		utils:{
+			getToken:function(){
+				var jsonData = JSON.parse(localStorage.getItem("art_user"));
+				app.datas.vmData.data.Username = jsonData.data.T_accountnumber;
+				app.datas.vmData.data.Token = jsonData.guid;
+				app.datas.vmData.data.UserID = jsonData.data.T_UserID;
+				app.datas.vmData.data.CV_documentaryID = jsonData.data.ID;
+			}
+		}
+	}
+	</script>
+
+</html>

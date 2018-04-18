@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/newAdd.css" />
+		<style>
+		.mui-table-view-cell span{
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">收货地址新增</h1>
+		</header>
+		<div class="mui-content" id="user">
+			<div class="mui-card" >
+				<ul class="mui-table-view" >
+					<li class="mui-table-view-cell mui-media">
+						<label>收货人</label>
+						<input type="text" v-model='data.C_name' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系电话</label>
+						<input type="text" v-model='data.C_linkphone' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>所属地区</label>
+						<span id="city">&nbsp;</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>街道</label>
+						<input type="text" v-model='data.C_address'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>详细地址</label>
+						<input type="text" v-model='data.C_address'/>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="xiugai"  v-bind:style="{display: data.display}">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../library/js/city.data-3.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			Xeval.setUrl("http://192.168.191.1/");
+			app.init();
+		})
+		var app = {
+			datas:{
+				plusData:{},
+				vm:null,
+				vmData:{
+					data:{
+						C_name:"",
+						C_linkname:"",
+						C_linkphone:"",
+						C_industry:"",
+						C_kind:"1",
+						C_address:"",
+						C_cooperation:"1",
+						C_scale:"1",
+						C_linkphone:"", 
+						C_province:"", 
+						C_city:"",
+						C_district:""
+					}
+				},
+				webData:{},
+				cityOptions:{
+					city:cityData3,
+					cityPicker:new mui.PopPicker({layer: 3})
+				}
+			},
+			methods:{
+				_HTTP_CB:function(isOk,data){
+					if(isOk){
+						if(data.state == 1){
+							if(app.datas.webData.data.T_UserRole == 1 || app.datas.webData.data.T_role==1){
+								 data.data.isubmit = "block";
+							}
+							app.datas.vmData.data = data.data;
+						}else{
+							plus.nativeUI.alert(data.msg);
+						}
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络环境！");
+					}
+				},
+				_PICKER_OPTIONS:function(){
+					var pics = app.datas.cityOptions.cityPicker.blur;
+					var that = this;
+					picssetData(app.datas.cityOptions.city);
+					pics.show(function(item){
+						that.innerText = item[0].text+"-"+item[1].text+"-"+item[2].text;
+						app.datas.vmData.data.C_province = item[0].value;
+						app.datas.vmData.data.C_city = item[1].value;
+						app.datas.vmData.data.C_district = item[2].value;
+					});
+				},
+				_HTTP_XIUGAI:function(){
+					var data = app.datas.vmData.data;
+					var updata = app.utils.copyObject(data);
+					updata.Username=app.datas.webData.data.T_accountnumber;
+					updata.Token=app.datas.webData.guid;
+					updata.C_UserID = app.datas.webData.data.T_UserID;
+					app.utils.regUpdata(updata);
+					Xeval.Http(Xeval.Mode.HTTP_ART_POST_USER,updata,app.methods.__HTTP_XIUGAI_LISTENER)
+				},
+				__HTTP_XIUGAI_LISTENER:function(isOk,data){
+					if(isOk){
+						if(data.state==1){
+							mui.back();
+						}
+						plus.nativeUI.alert(data.msg);
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络环境！");
+					}
+				}
+			},
+			init:function(){
+				mui(".mui-table-view-cell").on("tap","#city",app.methods._PICKER_OPTIONS);
+				document.getElementById("xiugai").addEventListener("touchend",app.methods._HTTP_XIUGAI,false);
+				var data = localStorage.getItem("art_user");
+				app.datas.webData = JSON.parse(data);
+				console.log(JSON.stringify(app.datas.webData));
+				app.datas.vm = new Vue({
+					el:"#user",
+					data:app.datas.vmData,
+					methods:app.methods
+				})
+			},
+			utils:{
+				copyObject:function(obj){
+					var _result = {};
+					for(var item in obj){
+						console.log(item);
+						_result[item] = obj[item];
+					}
+					return _result;
+					
+				},
+				regUpdata:function(updata){
+					var regx = {
+						C_name:{
+							txt:"客户名称不能为空！",
+							reg: null
+						}, 
+						C_linkname:{
+							txt:"联系人输入错误！",
+							reg: null
+						},
+						C_linkphone:{
+							txt:"联系电话输入错误！",
+							reg:/^1[3|4|5|7|8]\d{9}$/
+						},
+						C_industry:{
+							txt:"行业不能为空！",
+							reg: null
+						}, 
+						C_province:{
+							txt:"所属区域不能为空！",
+							reg: null
+						},
+						C_address:{
+							txt:"联系地址不能为空！",
+							reg: null
+						}, 
+					}
+					for(var item in regx){
+						var val = updata[item];
+						if(regx[item].reg==null){
+							if(val.trim()==""){
+								plus.nativeUI.alert(regx[item].txt);
+								throw new Error("for in con't return!");
+								return;
+							}
+						}else{
+							if(regx[item].reg.test()){
+								plus.nativeUI.alert(regx[item].txt);
+								throw new Error("for in con't return!");
+								return;
+							}
+						}
+					}
+				}
+			}
+		}
+	</script>
+</html>

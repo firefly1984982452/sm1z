@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>员工考勤详情查看</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mana-index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mana-set.css" />
+		<style type="text/css">				
+			.bolck .mui-media label {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">员工考勤详情查看</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>项目名称：</label>
+						<span>{{P_cookiename}}</span>
+						<!--<i class="icon-search"></i>-->
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目编号：</label>
+						<span>{{P_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目地址：</label>
+						<span>沪松公路1177号佳预信息大厦</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>考勤日期：</label>
+						<span>2017.02.06</span>
+					</li>
+				</ul>
+			</div>
+						
+			<div class="mui-card">
+				<ul class="mui-table-view bolck">
+					<li class="mui-table-view-cell-item text-title text-title">考勤记录</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>签到时间：2017.01.19 18:30</label>
+						<label>地址：宝安公路3718号永润星辰休闲广场2幢1层</label>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>外出时间：2017.01.19 18:30</label>
+						<label>地址：宝安公路3718号永润星辰休闲广场2幢1层</label>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>到岗时间：2017.01.19 18:30</label>
+						<label>地址：宝安公路3718号永润星辰休闲广场2幢1层</label>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>外出时间：2017.01.19 18:30</label>
+						<label>地址：宝安公路3718号永润星辰休闲广场2幢1层</label>
+					</li>
+				</ul>
+			</div>
+						
+			<a href="02B_content_add.html"  class="edit-btn mui-card btn-save btn-save1">去补签</a>
+
+		</div>
+		<script src="../../../js/mui.min.js"></script>
+	</body>
+
+</html>

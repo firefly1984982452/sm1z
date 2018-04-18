@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/mana-set.css" />
+		<link rel="stylesheet" type="text/css" href="css/mana-index.css" />
+		<style type="text/css">
+			
+			.mui-table-view-cell> a:not(.mui-btn) {
+				margin: -11px 20px -11px -11px;
+			}
+			
+			.mui-table-view-cell {
+				margin-bottom: 10px;
+			}
+			
+			.img-box img {
+				height: auto;
+				float: left;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-table-view:after {
+				height: 0px;
+			}
+			
+			.mui-table-view:before {
+				height: 0px;
+			}
+			
+			@media only screen and (min-width: 320px) and (max-width: 360px) {
+				.mui-table-view.mui-grid-view .mui-table-view-cell {
+					padding: 14px 0px 0px 14px;
+				}
+			}
+			
+			@media only screen and (max-width: 320px) {
+				.mui-table-view.mui-grid-view .mui-table-view-cell {
+					padding: 10px 0px 0px 14px;
+				}
+			}
+			
+			@media only screen and (min-width: 360px) {
+				.mui-table-view.mui-grid-view .mui-table-view-cell {
+					padding: 20px 0px 0px 14px;
+				}
+			}
+			
+			.mui-bar>.mui-icon {
+				right: 0;
+				left: 10px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../js/mui.min.js"></script>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">项目管理</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#index">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#daiban">
+				<span class="mui-icon db"></span>
+				<span class="mui-tab-label">待办管理</span>
+			</a>
+			<a class="mui-tab-item" href="#baobiao">
+				<span class="mui-icon bb"></span>
+				<span class="mui-tab-label">报表管理</span>
+			</a>
+			<a class="mui-tab-item" href="#shezhi">
+				<span class="mui-icon set"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<!--主页 - 最新消息推荐-->
+			<div id="index" class="mui-control-content mui-active">
+				<div class="img-box"><img src="img/sample.png" width="100%" /></div>
+				<!--主页-信息列表-->
+				<ul id="index_select" class="mui-table-view mui-grid-view mui-grid-6">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='0'>
+						<a href="pages/project_Implementation/index.html">
+							<img src="img/project.png" />
+							<div class="mui-media-body">项目执行</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='1'>
+						<a href="pages/financial-managements/index.html">
+							<img src="img/finance.png" />
+							<div class="mui-media-body">财务管理</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='2'>
+						<a href="pages/material-managements/index.html">
+							<img src="img/materiel.png" />
+							<div class="mui-media-body">物料管理</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='3'>
+						<a href="pages/warehouse/index.html">
+							<img src="img/warehouse.png" />
+							<div class="mui-media-body">仓库管理</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='4'>
+						<a href="pages/system-setting/index.html">
+							<img src="img/system.png" />
+							<div class="mui-media-body">系统设置</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--社区-->
+			<div id="daiban" class="mui-control-content">
+				<div class="title">该功能模块正在努力开发中...</div>
+			</div>
+			<!--我的-->
+			<div id="baobiao" class="mui-control-content">
+				<div class="title">该功能模块正在努力开发中...</div>
+			</div>
+			<!--帮助-->
+			<div id="shezhi" class="mui-control-content">
+				<div class="mui-content">
+					<ul id="list" class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="pages/setting/person_info.html">个人信息查看</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="pages/setting/password_updata.html">密码修改</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

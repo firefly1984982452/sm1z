@@ -1,0 +1,36 @@
+#popover {
+	width: 200px;
+	height: 200px;
+	top: 50% !important;
+	margin-top: -100px;
+	left: 50% !important;
+	margin-left: -100px;
+	position: fixed;
+}
+#popover .mui-spinner{
+	width: 60px;
+	height: 60px;
+	margin-left: 70px;
+	margin-top: 40px;
+	padding: 10px;
+}
+#popover .txt{
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 14px;
+}
+@media (min-width: 400px) {
+	#popover {
+		width: 80%;
+		margin-left: -40%;
+	}
+}
+.mui-popover .mui-popover-arrow {
+	display: none !important;
+}
+
+.operate {
+	text-align: center;
+	margin-top: 20px
+}

@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../library/css/pages.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			.mui-table-view-cell select {
+				width: 32%;
+				text-align: center;
+				margin-left: 1%;
+			}
+			
+			.mui-table-view-cell select option {
+				text-align: center;
+			}
+			
+			.mui-table-view-cell i {
+				width: 4%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			
+			.mui-table-view-cell a {
+				width: 20%;
+				float: left;
+				border: none;
+				background-color: #3A6C92;
+				color: #FFFFFF;
+				font-size: 12px;
+				height: 26px;
+				text-align: center;
+				display: block;
+				line-height: 16px;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 0px;
+			}
+			
+			.mui-page .mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			
+			.mui-card {
+				margin: 20px 8px;
+			}
+			.mui-scroll-wrapper{
+				overflow: auto;
+			}
+			.mui-table-view-cell select{
+				width: 30%;
+				  direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			.mui-table-view-cell select option{
+				text-align: center;
+			}
+			.mui-table-view-cell i{
+				width: 2%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			.mui-table-view-cell label i{
+				width: auto;
+				font-size: 10px;
+				font-weight: 400;
+				float: none;
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">添加商机信息</h1>
+		</header>
+			<div id="app" class="mui-views">
+				<div class="mui-view">
+					<div class="mui-navbar">
+					</div>
+					<div class="mui-pages">
+					</div>
+				</div>
+			</div>
+			<div id="index" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav">
+					<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+					<h1 class="mui-center mui-title">添加商机信息</h1>
+				</div>
+				<div class="mui-page-content">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll"  id="show">
+							<div class="mui-card" style="margin-top: 20px;">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-media">
+										<label>客户名称</label>
+										<input style="width: 50%;" id="khmc" v-model='data.name' placeholder="请选定一个客户" />
+										<a href="#search" class="mui-btn search">去选择</a>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>联系人名称</label>
+										<span>{{data.C_linkname}}</span>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>客户地址</label>
+										<span>{{data.C_address}}</span>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>商机名称</label>
+										<input type="text" v-model='data.B_name' placeholder="请输入商机名称" />
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>商机来源<i>&lt;请选择&gt;</i></label>
+										<span id="sjly">{{data.B_source|sjly}}&nbsp;</span>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>商机类型<i>&lt;请选择&gt;</i></label>
+										<span id="sjlx">{{data.B_kind|sjlx}}&nbsp;</span>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>需求类型</label>
+										<select v-on:change="change($event,0)">
+											<template v-for="item in kind1">
+												<option value="{{item.ID}}" v-bind:style="{selected:item.ID==data.B_servicekind1}">{{item.Text}}</option>
+											</template>
+										</select>
+										<i>></i>
+										<select v-on:change="change($event,1)">
+											<template v-for="item in kind2">
+												<option value="{{item.ID}}" v-bind:style="{selected:item.ID==data.B_servicekind2}">{{item.Text}}</option>
+											</template>
+										</select>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>商机提供者</label>
+										<span>{{data.Addbusinessman}}</span>
+									</li>
+									<li class="mui-table-view-cell mui-media">
+										<label>需求量</label>
+										<input type="number" v-model='data.B_neednumber' placeholder="请输入需求量（带单位）"></input>
+									</li>
+								</ul>
+							</div>
+							<div class="mui-card text-show">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell-item text-title">
+										需求原因
+									</li>
+									<li class="mui-table-view-cell-item">
+										<textarea class="text-txt" v-model='data.B_needcause' placeholder="请输入需求原因" style="color: #333333;" style="width: 100%;">
+											
+										</textarea>
+									</li>
+								</ul>
+							</div>
+							<a href="javascript:void(0)" class="mui-card edit-btn" id="submit">
+								提交信息
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="search" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav">
+					<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+								<span class="mui-icon mui-icon-left-nav"></span>增加商机信息
+							</button>
+					<h1 class="mui-center mui-title">选择客户</h1>
+				</div>
+				<div class="mui-page-content">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="p-search">
+								<div class="p-input">
+									<input type="text" id="keyworld" placeholder="请输入关键字搜索" />
+								</div>
+								<a class="p-button" href="javascript:app.methods._HTTP_SEARCH_USER()">搜索</a>
+							</div>	
+							<div class="mui-card" style="margin-top: 20px;">
+								<ul class="mui-table-view" id="users">
+									<li class="mui-table-view-cell mui-media" v-for="item in data" v-gesture:tap.stop.prevent="addLink($index)">
+										<div class="mui-media-body">
+											客户姓名:{{item.C_name}}
+											<p class="mui-ellipsis">联系人名称:{{item.C_linkname}}</p>
+											<p class="mui-ellipsis">联系人号码:{{item.C_linkphone}}</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+		<script type="text/javascript" src="../../library/js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.view.js"></script>
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../js/pageFilter.js"></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../js/evalHttp.js"></script>
+		<script>
+			var viewApi = mui('#app').view({
+				defaultPage: '#index'
+			});
+			var view = viewApi.view;
+			(function($) {
+				var oldBack = $.back;
+				$.back = function() {
+					if(viewApi.canBack()) {
+						viewApi.back();
+					} else {
+						oldBack();
+					}
+				};
+			})(mui);
+			mui.plusReady(function() {
+				Xeval.setUrl(Xeval.UrlModel.CRM);
+				app.init();
+			});
+			var app = {
+				datas: {
+					plusData: {},
+					vm: null,
+					vmSearch:null,
+					searData:{
+						data:[]
+					},
+					vmData: {
+						kind1: [],
+						kind2: [],
+						data: {
+							B_servicekind1: "",
+							B_servicekind1: "",
+							B_neednumber: "",
+							B_name:"",
+							B_source:"",
+							B_kind: "",
+							name:"",
+							C_linkname:"",
+							C_address:"",
+							Addbusinessman: "",
+							B_needcause: "",
+							B_servicekind1: "",
+							B_servicekind2: "",
+							CustomerID: "",
+							B_fistuseerID: ""
+						}
+					},
+					sjlyOptions: [{
+						text: "合作伙伴",
+						value: "1"
+					}, {
+						text: "老客户介绍",
+						value: "2"
+					}, {
+						text: "平台",
+						value: "3"
+					}, {
+						text: "公司资源",
+						value: "4"
+					}, {
+						text: "网络渠道",
+						value: "5"
+					}, {
+						text: "本人开发",
+						value: "6"
+					}],
+					sjlxOptions: [{
+						text: "项目施工",
+						value: "1"
+					}, {
+						text: "服务保养",
+						value: "2"
+					}],
+					sjlxPicker: new mui.PopPicker(),
+					sjlyPicker: new mui.PopPicker()
+				},
+				methods: {
+					_HTTP_CB_KIND1: function(isOk, data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data))
+						if(isOk && data.state == 1) {
+							app.datas.vmData.kind1 = data.data;
+							app.datas.vmData.data.B_servicekind1 = data.data[0].ID;
+							app.utils.getKind2(data.data[0].ID);
+						}
+					},
+					_HTTP_CB_KIND2: function(isOk, data) {
+						console.log(data.state)
+						if(isOk && data.state == 1) {
+							app.datas.vmData.kind2 = data.data;
+							app.datas.vmData.data.B_servicekind2 = data.data[0].ID;
+						}
+					},
+					change: function(e, index) {
+						var val = e.target.value;
+						if(index == 0) {
+							app.utils.getKind2(val);
+						}
+					},
+					submit_: function() {
+						var token = app.utils.getToken();
+						app.datas.vmData.data.Username = token.Username;
+						app.datas.vmData.data.Token = token.Token;
+						app.datas.vmData.data.B_fistuseerID = token.B_fistuseerID;
+						if(app.datas.vmData.data.CustomerID.trim() == "") {
+							plus.nativeUI.alert("请选择一个用户");
+							return;
+						}
+						if(app.datas.vmData.data.B_name.trim() == "") {
+							plus.nativeUI.alert("商机名称不能为空！");
+							return;
+						}
+						if(app.datas.vmData.data.B_needcause.trim() == "") {
+							plus.nativeUI.alert("需求原因不能为空！");
+							return;
+						}
+						if(!/\d/.test(app.datas.vmData.data.B_neednumber) || pareInt(app.datas.vmData.data.B_neednumber) < 0) {
+							plus.nativeUI.alert("需求量只能为大于0数字！");
+							return;
+						}
+						plus.nativeUI.showWaiting("提交信息中....");
+						Xeval.Http(Xeval.Mode.HTTP_ART_POSG_SJ, app.datas.vmData.data, app.methods._HTTP_UPDATA_LISTENER)
+					},
+					_HTTP_UPDATA_LISTENER: function(isOk, data) {
+						console.log(JSON.stringify(data));
+						plus.nativeUI.closeWaiting();
+						if(isOk) {
+							plus.nativeUI.alert(data.msg);
+							if(data.state==1){
+								mui.back();
+							}
+						} else {
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					sjly_listener: function() {
+						app.datas.sjlyPicker.blur;
+						app.datas.sjlxPicker.blur;
+						app.datas.sjlyPicker.setData(app.datas.sjlyOptions);
+						app.datas.sjlyPicker.show(function(item) {
+							app.datas.vmData.data.B_source = item[0].value;
+						})
+					},
+					sjlx_listener: function() {
+						app.datas.sjlyPicker.blur;
+						app.datas.sjlxPicker.blur;
+						app.datas.sjlxPicker.setData(app.datas.sjlxOptions);
+						app.datas.sjlxPicker.show(function(item) {
+							app.datas.vmData.data.B_kind = item[0].value;
+						})
+					},
+					_HTTP_SEARCH_USER:function(){
+						var val = document.getElementById("keyworld").value;
+						plus.nativeUI.showWaiting("搜索用户中...");
+						var params = app.utils.getToken();
+						params.C_name = val;
+						Xeval.Http(Xeval.Mode.HTTP_ATR_GET_USERID_BYNAME,params,app.methods._HTTP_CB_GETUSERS);
+					},
+					_HTTP_CB_GETUSERS:function(isOk,data){
+						plus.nativeUI.closeWaiting();
+						if(isOk){
+							if(data.state==1){
+								app.datas.searData.data = data.data;
+							}else if(data.state==2){
+								plus.nativeUI.confirm("没有找到此用户，是否新增？",function(e){
+									if(e.index==1){
+										mui.openWindow({
+											url:"../xiugai/xinzengkehu.html",
+											id:".._xiugai_xinzengkehu_html"
+										})
+									}
+								},"没有搜到该用户",["朕重试一下","新增"]);
+							}
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					addLink:function(index){
+						var sel = app.datas.searData.data[index];
+						app.datas.vmData.data.name = sel.C_name;
+						app.datas.vmData.data.C_linkname = sel.C_linkname;
+						app.datas.vmData.data.C_address = sel.C_address;
+						app.datas.vmData.data.CustomerID = sel.ID;
+						viewApi.back();
+					}
+				},
+				init: function() {
+					app.datas.vm = new Vue({
+						el: "#show",
+						data: app.datas.vmData,
+						methods: app.methods
+					});//search-user
+					app.datas.searchVm = new Vue({
+						el: "#users",
+						data: app.datas.searData,
+						methods: app.methods
+					});
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					var params1 = this.utils.getToken();
+					params1.index = 0;
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_FW_SELECT, params1, app.methods._HTTP_CB_KIND1);
+					document.getElementById("submit").addEventListener("touchend", app.methods.submit_);
+					document.getElementById("sjly").addEventListener("touchend", app.methods.sjly_listener);
+					document.getElementById("sjlx").addEventListener("touchend", app.methods.sjlx_listener);
+				},
+				utils: {
+					getToken: function() {
+						var jsonData = JSON.parse(localStorage.getItem("art_user"));
+						var params = {
+							Username:jsonData.data.T_accountnumber,
+							Token:jsonData.guid,
+							C_UserID:jsonData.data.T_UserID,
+							B_fistuseerID:jsonData.data.T_UserID
+						}
+						app.datas.vmData.data.Addbusinessman = jsonData.data.T_name;
+						return params;
+					},
+					getKind2: function(id) {
+						var params2 = app.utils.getToken();
+						params2.index = 1;
+						params2.childId = id;
+						Xeval.Http(Xeval.Mode.HTTP_ART_GET_FW_SELECT, params2, app.methods._HTTP_CB_KIND2);
+					},
+					copyObject: function(obj) {
+						var _result = {};
+						for(var item in obj) {
+							_result[item] = obj[item];
+						}
+						return _result;
+
+					}
+				}
+
+			}
+		</script>
+</html>

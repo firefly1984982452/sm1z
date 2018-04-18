@@ -1,0 +1,84 @@
+.title{
+	color: #333333;
+	font-weight: 400;
+	font-size: 12px;
+}
+.title .phone{
+	padding-left: 20px;
+}
+.mui-table-view-cell>a:not(.mui-btn){
+	white-space:initial;
+}
+.info{
+	font-size: 10px;
+	color: #666666;
+	font-weight: 400;
+	line-height: 20px;
+	max-height: 40px;
+	letter-spacing: 1px;
+}
+.control{
+	padding: 0px 0px 11px 15px;
+	border-top: 1px solid #e0e0e0;
+	position: relative;
+	height: 50px;
+	overflow: hidden;
+}
+.mui-table-view-cell>a:not(.mui-btn){
+	/*margin: 0px;*/
+}
+.mui-table-view-cell{
+	padding: 0px;
+}
+.mui-media-body{
+	padding: 22px 30px 11px 30px;
+}
+.mui-checkbox input[type=checkbox]:before, .mui-radio input[type=radio]:before{
+	font-size: 16px;
+	color: #9C005E;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before{
+	color: #9C005E;
+}
+.mui-checkbox input[type=checkbox], .mui-radio input[type=radio]{
+	top: 5px;
+}
+.mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio]{
+	left: 5px;
+}
+.mui-checkbox.mui-left label, .mui-radio.mui-left label{
+	padding-left: 22px;
+	font-size: 12px;
+	color: #e00b1f;
+}
+.control .mui-radio{
+	width: 110px;
+}
+.control .set-item{
+	width: 160px;
+	float: right;
+	height: 38px;
+	line-height:38px;
+}
+.mui-input-row {
+	float: left;
+}
+.set-item .set{
+	float: right;
+	width: 80px;
+	font-size: 12px;
+	height: 100%;
+}
+.mui-table-view-cell a img{
+	height: 20px;
+	width: auto;
+	float: left;
+	margin: 7.5px;
+}
+.mui-table-view-cell{
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+.mui-table-view{
+	background-color: #efeff4;
+}

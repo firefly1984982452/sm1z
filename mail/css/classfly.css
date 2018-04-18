@@ -1,0 +1,185 @@
+.bot-btn{
+	width: 50%;
+	float: left;
+	display: block;
+	height: 100%;
+	font-size: 16px;
+	text-align: center;
+	line-height: 50px;
+	color: #FFFFFF;
+	background-color: #fb9721;
+	box-shadow:none;
+}
+.bot-btn:last-child{
+	background-color: #ff0000;
+}
+.mui-bar-tab{
+	z-index: 3;
+}
+.row{
+	position: relative;
+	line-height: 24px;
+	min-height: 20px;
+	max-height: 60px;
+	color: #333333;
+	padding: 2px 10px;
+}
+.mui-navigate-right{
+	height: 40px;
+	display: block;
+	font-size: 14px;
+	color: #333333;
+	line-height: 40px;
+	padding: 0px;
+}
+.vip{
+	font-weight: 400;
+	font-size: 12px;
+	padding: 0px 10px;
+}
+.money{
+	font-size: 10px;
+	padding: 0px 2px;
+	color: #333333;
+}
+.price{
+	font-size: 12px;
+}
+.price label{
+	font-size: 12px;
+	color: #e00e0e;
+	display: block;
+}
+.trs{
+	height: 40px;
+	margin: 0;
+	line-height: 40px;
+	padding: 0px 10px;
+	background-color: #eaeaea;
+	color: #333333;
+	list-style: none;
+}
+.trs li{
+	display: block;
+	float: left;
+	height: 100%;
+	width: 33.3333%;
+	text-align: center;
+}
+.price span{
+	font-size: 12px;
+	color: #666666;
+	display: block;
+}
+.ppai{
+	background-color: #FFFFFF;
+}
+.throughline{
+	text-decoration: line-through;
+}
+.title{
+	font-size: 14px;
+}
+.info{
+	font-size: 12px;
+	color: #8c8c8c;
+}
+#popdialog{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 100%;
+	border: none;
+	z-index: 2;
+	/*background-color: rgba(255,255,255,0.8);*/
+}
+.top-i{
+	height: 140px;
+	width: 100%;
+	top: 0px;
+}
+.pop-content{
+	position: absolute;
+	top: 140px;
+	bottom: 0px;
+	width: 100%;
+	background-color: rgba(255,255,255,0.8);
+}
+.pop-title{
+	height: 24px;
+	position: relative;
+}
+.pop-close{
+	height: 24px;
+	top: -10px;
+	right: 5px;
+	position: absolute;j,
+	padding-right:5px;
+	float: right;
+}
+.good-info{
+	height: 100px;
+}
+.good-info .left{
+	width: 40%;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+}
+.good-info .left:last-child{
+	width: 60%;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+}
+.good-info .left img{
+	width: 100%;
+	height: 100%;
+}
+ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	
+}
+.good-info .left ul .title{
+	color: #333333;
+	font-size: 14px;
+}
+.good-info .left ul li{
+	height: 20px;
+	line-height: 20px;
+	padding-left: 10px;
+	color: #666666;
+	font-size: 12px;
+}
+.good-list{
+	font-size: 12px;
+	color: #333333;
+	margin-top: 10px;
+	overflow-y: auto;
+	position: absolute;
+	bottom: 50px;
+	top: 140px;
+}
+.good-list ul li{
+	height: 40px;
+	margin-bottom: 10px;
+	line-height: 40px;
+	padding-left: 10%;
+}
+.good-list ul li .left{
+	width: 30%;
+	background-color: #37d300;
+	float: left;
+	height: 40px;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+}
+.good-list ul li .mui-numbox{
+	width: 50%;
+	height: 40px;
+	margin-left: 10%;
+	float: left;
+}

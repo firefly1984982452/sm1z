@@ -1,0 +1,678 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="../css/preimages.css" />
+		
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false, //启用右滑关闭功能
+			})
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">服务预约</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#server" data-index="0">
+				<span class="mui-icon mui-icon-phone"></span>
+				<span class="mui-tab-label">服务预约</span>
+			</a>
+			<a class="mui-tab-item" href="#case" data-index="1">
+				<span class="mui-icon mui-icon-star"></span>
+				<span class="mui-tab-label">经典案例</span>
+			</a>
+			<a class="mui-tab-item" href="#league" data-index="2">
+				<span class="mui-icon mui-icon-personadd"></span>
+				<span class="mui-tab-label">招商加盟</span>
+			</a>
+			<a class="mui-tab-item" href="#connect" data-index="3">
+				<span class="mui-icon mui-icon-bars"></span>
+				<span class="mui-tab-label">联系我们</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-control-content mui-active" id="server">
+				<div class="img_loop">
+					<img src="img/server-index.jpg" />
+				</div>
+				<!--服务导航-->
+				<ul id="index_select" class="mui-table-view mui-grid-view mui-grid-6">
+					<span class="mui-spinner"></span>
+					
+				</ul>
+				<!--服务推荐项目-->
+				<div id="show_service">
+					<h5 style="background-color:#efeff4;padding-left: 10px;">热门推荐</h5>
+				</div>
+				<ul class="mui-table-view mui-grid-view" id="services_list">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" data-clickid="1">
+						<a href="#" data-openid="">
+							<img class="mui-media-object" src="img/item_box1.jpg">
+							<div class="mui-media-body show_service_title mui-ellipsis">石材釉面处理</div>
+							<div class="mui-media-body show_service_btn">立即预约</div>
+						</a>
+						<li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<a href="#" data-clickid="2">
+								<img class="mui-media-object" src="img/item_box2.jpg">
+								<div class="mui-media-body show_service_title mui-ellipsis">石材空鼓治理</div>
+								<div class="mui-media-body show_service_btn">立即预约</div>
+							</a>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="3">
+									<img class="mui-media-object" src="img/item_box3.jpg">
+									<div class="mui-media-body show_service_title mui-ellipsis">各种石材反碱治理</div>
+									<div class="mui-media-body show_service_btn">立即预约</div>
+								</a>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#" data-clickid="4">
+										<img class="mui-media-object" src="img/item_box4.jpg">
+										<div class="mui-media-body show_service_title mui-ellipsis">白色石材翻新后缝合暗影</div>
+										<div class="mui-media-body show_service_btn">立即预约</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#" data-clickid="5">
+										<img class="mui-media-object" src="img/item_box5.jpg">
+										<div class="mui-media-body show_service_title mui-ellipsis">热带雨林等大花石材不均匀</div>
+										<div class="mui-media-body show_service_btn">立即预约</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#" data-clickid="6">
+										<img class="mui-media-object" src="img/item_box6.jpg">
+										<div class="mui-media-body show_service_title mui-ellipsis">硅质石材翻新后光度不清晰</div>
+										<div class="mui-media-body show_service_btn">立即预约</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#" data-clickid="7">
+										<img class="mui-media-object" src="img/item_box7.jpg">
+										<div class="mui-media-body show_service_title mui-ellipsis">木纹石,白沙米黄等 各种松软石材抛不凉</div>
+										<div class="mui-media-body show_service_btn">立即预约</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#" data-clickid="8">
+										<img class="mui-media-object" src="img/item_box8.jpg">
+										<div class="mui-media-body show_service_title mui-ellipsis">孔洞，脱皮，断裂，冻 融等石材破损修复</div>
+										<div class="mui-media-body show_service_btn">立即预约</div>
+									</a>
+								</li>
+				</ul>
+			</div>
+			<div class="mui-control-content" id="case">
+				<ul class="mui-table-view" id="step_list">
+					
+				</ul>
+		</div>
+			<div class="mui-control-content" id="league">
+				<div class="mui-media">
+					<div class="mui-media-body laegue_img">
+						<img src="img/join-logo.png" class="bg" width="100%" />
+						<img src="img/server_LOGO.png" class="logo" width="40%" />
+						<div class="show-btns">
+							<ul>
+								<li>地坪维保服务型电商</li>
+								<li>饰 管 家</li>
+								<li>诚招“城市合伙人”</li>
+							</ul>
+						</div>
+						<div class="show-phone">
+							<a  href="javascript:void(0);" class="tel-phone" rel="4007566076">客服热线：4007-566-076</a>
+						</div>
+					</div>
+					<div class="laegue-content">
+						<div class="laegue-content-padded">
+							<div class="show-msg">
+								<div class="show-info-title">万亿级市场风口来临</div>
+								<div class="show-info-content">
+								      <span class="nav-index"></span>目前，我国既有各类地坪总面积已经超过800亿平方米，其中 石材、木地板、瓷砖、地毯、PVC、磨石等
+									地坪面积占有650亿平方米。庞大的存量市场及之前行业紊乱、低价中标、以此充好、偷工减料造成大量地坪陈旧、破损，消费者为了提升居住品质或延长地坪使用寿命，而选择专业清洗、保养、翻新维保服务，每年已经达到近万亿的市场份额
+								</div>
+								<div class="show-info-footer">
+									<span class="msg">“地坪维保电商时代”</span>
+									<span class="line"></span>
+									<label>中国地坪市场已正式进入</label>
+								</div>
+							</div>
+							<div class="show-msg">
+								<div class="show-info-title">饰管家优势</div>
+								<div class="show-info-content">
+								   <span class="nav-index"></span>瓷砖、木地板、地毯、PVC、磨石等各材质地坪的清洁防护、病症治理、
+								      美容修饰、破损维修、养护翻新的原理及使用的设备设备甚至工法都与石材养护基本一样，只是药剂略有差别而已，
+								      先扎根于石材维保、再裂变全材质地坪维保是我们多年前的战略规划！石大夫源自美国，专注石材修饰15年，
+								      作为中国石材养护产业联盟发起单位和国标起草单位，在业界已极具权威，已得到了社会各界的高度认可，掌握着产业各种优势资源，
+								      从石大夫裂变而生，具有强大的基因裂变优势。
+								</div>
+								<div class="show-info-footer">
+									<span class="msg">“基因裂变优势”</span>
+									<span class="line"></span>
+									<label>从石大夫裂变而生的</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="laegue-content rybooks">
+						<div class="show-info-title">荣誉证书</div>
+						<ul class="mui-table-view mui-grid-view">
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="1">
+									<img class="mui-media-object" src="img/le_1.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">养护施工十强企业</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="2">
+									<img class="mui-media-object" src="img/le_2.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">养护施工十大知名企业</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="3">
+									<img class="mui-media-object" src="img/le_3.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">十大石材护理服务商</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="4">
+									<img class="mui-media-object" src="img/le_4.jpg" data-preview-src="" data-preview-group="10086" />
+									
+									<div class="mui-media-body show_service_title mui-ellipsis">养护施工一级资质</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="5">
+									<img class="mui-media-object" src="img/le_5.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">品牌金奖</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="6">
+									<img class="mui-media-object" src="img/le_6.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">领军人物	</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="7">
+									<img class="mui-media-object" src="img/le_7.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">领军企业</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#" data-clickid="8">
+									<img class="mui-media-object" src="img/le_8.jpg" data-preview-src="" data-preview-group="10086" />
+									<div class="mui-media-body show_service_title mui-ellipsis">质量、诚信品牌</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="laegue-content">
+						<div class="info-l">
+							<label class="title">完善的体系</label>
+							<img src="img/le_tixi.png" class="img" />
+							<div class="img info">
+								饰管家自主研发了国内第一套地坪维保服务系统，将订
+								单分派、签单、合同、派工、派料、验收、跟单等环节
+								完全电子化实施。
+							</div>
+						</div>
+						<div class="info-l">
+							<label class="title">50+互联网获客矩阵</label>
+							<img src="img/le_logo.png" class="img"/>
+							<div class="img info">
+								1、消费者可通过饰管家APP客户端、微信端、400服务热线线上预约下单
+								2、消费者也可以通过百度、360、搜狗、UC等浏览器搜索饰管家在线预约下单
+								3、携手中国中国地坪维保展览会、中国石材养护产业联盟、中国硬饰面修饰产业联盟、中国地坪协会等85家社团组织，在全国范围内定期举办地坪维保宣传；举办大型团购活动。
+							</div>
+						</div>
+					</div>
+					<div class="laegue-content c">
+						<label class="c-title">商学院统一培训</label>
+						<ul class="c-img">
+							<li><img src="img/c-img-1.png" width="100%" alt="" data-preview-src="" data-preview-group="10010" /></li>
+							<li><img src="img/c-img-2.png" width="100%" alt="" data-preview-src="" data-preview-group="10010" /></li>
+							<li><img src="img/c-img-1.png" width="100%" alt="" data-preview-src="" data-preview-group="10010" /></li>
+						</ul>
+						<div class="info">
+							饰管家的母公司齐度集团将携手中国地坪维保展览会、中国石材养护产业联盟、
+							中国硬饰面修饰产业联盟、中国地坪协会等85家社团组织，
+							在全国范围内定期举办各种地坪维保管理及施工技术培训，
+							为各城市公司输出标准化产业工人，申请了维保产品体系、质量管理体系、
+							规范标准等商标及多项专利认证，各工种工人必须通过实操、考核、定级、
+							颁发国家权威认证机构认证证书才能上岗。
+						</div>
+						
+					</div>
+					<div class="c-show-btn">
+						<a href="javascript:void(0);">点击报名</a>
+					</div>
+					<div class="laegue-content d">
+						<label class="c-title">合作品牌</label>
+						<img src="img/hzpp.png" width="100%" />
+						
+					</div>
+					<div class="laegue-content e">
+						<label class="c-title">饰管家服务体系</label>
+						<label class="c-title d-title">HOUSEKEEPING  SERVICE SYSTEM</label>
+						<div class="show">
+							<span class="red">低碳、环保、高品质，饰管家与您相伴永远！</span>
+							纯正的O2O互联网基因，自有ERP管理系统、自有培训基地、自有产业工人、自有设备及药剂生产基地，一键下单，饰管家解决您任何装饰面材修饰问题。
+						</div>
+					</div>
+					<div class="laegue-content f">
+						<img src="img/f.png" width="100%" />
+					</div>
+					<div class="laegue-content e g">
+						<label class="c-title">售卖服务体系</label>
+						<label class="c-title d-title">SALE SERVICE SYSTEM</label>
+						<img src="img/g.png" width="100%" />
+						<div class="info-title">七大材质维保商品</div>
+						<div class="show">
+							<span class="nav-index"></span>饰管家四维一体化旗舰店售卖体系主要包括：研磨、保养设备，磨片、磨料及耗材，清洗防护药剂，病症治理药剂，破损维修药剂，养护翻新药剂等，饰管家总部将不断优化现有产品体系。
+						</div>
+					</div>
+					<div class="laegue-content h">
+						<div class="info-l">
+							<div class="title">
+								五大专业系统
+							</div>
+							<div class="context">
+								<span class="line"></span>
+								<div class="content">
+								       <span class="nav-index"></span>饰管家四维一体化旗舰店售卖体系主要包括：研磨、保养设备，磨片、磨料及耗材，
+								       清洗防护药剂，病症治理药剂，破损维修药剂，养护翻新药剂等，饰管家总部将不断优化现有产品体系。
+								</div>
+							</div>
+						</div>
+						<div class="info-l">
+							<img src="img/h.png" width="100%" style="margin-top: 20px;" />
+						</div>
+					</div>
+					<div class="c-show-btn">
+						<a href="javascript:void(0);">点击报名</a>
+					</div>
+					<div class="laegue-content i">
+						<div class="show-msg">
+							<div class="show-info-title">万亿级市场风口来临</div>
+							<div class="show-info-info">互联网时代就要用互联网思维办事，全网覆盖、精准对接、高效快捷</div>
+						</div>
+						<div class="content-img">
+							<img src="img/i.png" width="100%" />
+						</div>
+					</div>
+					<div class="laegue-content j">
+						<div class="show-msg">
+							<div class="show-info-title">从游击队到正规军</div>
+							<div class="show-info-info">有我们帮您</div>
+						</div>
+						<div class="content-box">
+							<ul>
+								<li>
+									<span class="title">招兵买马，训练部队</span>
+									<span class="btn">管带管培</span>
+									<span class="info">12万技工数据，直接培训编制 管理人员培训</span>
+								</li>
+								<li>
+									<span class="title">顶级作战系统</span>
+									<span class="btn">平台支持</span>
+									<span class="info">成熟电商平台支持 一步升级互联网企业</span>
+								</li>
+								<li>
+									<span class="title">靠谱数据，直接成交</span>
+									<span class="btn">数据支持</span>
+									<span class="info">100万产业数据 精准支持各项决策</span>
+								</li>
+								<li>
+									<span class="title">巨额军费支持</span>
+									<span class="btn">推广支持</span>
+									<span class="info">每年1000万广告投放 25万总部原始股配送</span>
+								</li>
+								<li>
+									<span class="title">军纪严明，战甲鲜明</span>
+									<span class="btn">品牌支持</span>
+									<span class="info">统一配置 店面标准、视觉标准</span>
+								</li>
+								<li>
+									<span class="title">从战略到战术，因地制宜</span>
+									<span class="btn">制定市场战略</span>
+									<span class="info">根据当地市场 量身定制市场战略</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="laegue-content k">
+						<div class="title">成为饰管家城市合伙人，抢占地坪装饰后市场，智慧夺取市场主动权</div>
+						<div class="content">
+							<ul>
+								合作对象
+								<li>1、高中以上学历，极富创业热情。</li>
+								<li>2、遵守总部对合资公司的经营管理和指导。</li>
+								<li>3、信赖饰管家品牌卓越影响力，认同饰管家品牌的企业文化与经营理念。</li>
+								<li>4、具有强烈的团队合作意识，能够与人和谐相处，注重协调关系。</li>
+								<li>5、具备一定的资金实力，良好的个人信誉和商业信誉。</li>
+							</ul>
+							<ul>
+								拒绝合作对象
+								<li>1、合资只是短期投资、赶潮流、并不热爱建筑饰面修饰后市场者；</li>
+								<li>2、合资只是为了改变无力持续经营的现状，伺机自立品牌者；</li>
+								<li>3、合资目的不是为了经营，而是为了显示、炫耀显赫身份者；</li>
+								<li>4、唯利是图，不重视消费者利益，缺乏以客为尊的服务理念；</li>
+								<li>5、自以为是、自主性太强、很难与人沟通者；</li>
+								<li>6、认为合资后，一切全靠总部，自身不需努力者；</li>
+								<li>7、认为合资后，能否赚钱总部须负最大责任者；</li>
+								<li>8、对行业缺少信心，缺乏勇气与魄力，怕失败输不起者；</li>
+								<li>9、以窃取公司技术、信息等为目的者。</li>
+							</ul>
+						</div>
+					</div>
+					<div class="c-show-btn">
+						<a href="javascript:void(0);">点击报名</a>
+					</div>
+					<div class="laegue-content e l">
+						<label class="c-title">成为合伙人</label>
+						<label class="c-title d-title">To become a partner</label>
+						<div class="show">
+							<img src="img/l.png" width="100%" />
+						</div>
+						<div class="show">
+							<img src="img/l_2.jpg" width="100%" />
+						</div>
+					</div>
+					<div class="c-show-btn">
+						<a href="javascript:void(0);">点击报名</a>
+					</div>
+				</div>
+				
+			</div>
+			<div class="mui-control-content" id="connect">
+				<div class="conneect-img">
+					<img src="img/sgj-us.png" height="220px" width="100%"/>
+				</div>
+				<div class="conneect-msg">
+					<p>
+						地坪维保、翻新产业集成痛点解决平台
+					</p>
+					<p>
+						 聚焦地坪维保、翻新细分领域
+					</p>
+					<p>
+						一站式解决产业集成痛点 
+					</p>
+					<p>
+						让中国地坪保新100年 
+					</p>
+					<p>
+						 让中国地坪使用寿命延长100年
+					</p>
+				</div>
+				<div class="conneect-info">
+					<div class="connect-info-left">
+						<img src="img/sgj-er.jpg" />
+					</div>
+					<div class="connect-info-right">
+						<div class="phone">
+							<label>
+								联系电话：
+							</label>
+							<a href="javascript:void(0);" class="tel-phone" rel="4007566076">
+								4007-566-076
+							</a>
+						</div>
+						<div class="add">
+							<label>
+								公司地址：上海市松江区沪松路1177号 佳预信息科技大厦3栋603室
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--预约插件-->
+		<div id="service_mark">
+			<div class="mark_content">
+				<span class="mui-spinner"></span>
+				<label>
+					正在预约中，请稍等...
+				</label>
+			</div>
+		</div>
+	</body>
+	<script src="http://pv.sohu.com/cityjson?ie=utf-8">//获取城市地址信息。定位获取不到的情况下</script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../library/js/mui.zoom.js" ></script>
+	<script type="text/javascript" src="../library/js/mui.previewimage.js" ></script>
+	<script src="../js/Strings.js"></script>
+	<script type="text/javascript" src="../js/evalHttp.js"></script>
+	<script type="text/javascript" src="../js/util.js"></script>
+	<script src="js/getSevices.js"></script>
+	<script type="text/javascript" src="../library/js/doT.min.js" ></script>
+	<script type="text/javascript" src="js/extras.js" ></script>
+	<script>
+		mui.previewImage({
+			footer:"经典案例"
+		});
+	</script>
+	<script>
+		mui.plusReady(function() {
+			Xeval.setUrl(Xeval.UrlModel.SERVER)
+			var service = new evalService("正在预约，请稍等...");
+			mui("#services_list").on("tap", ".show_service_btn", function(e) {
+				var title = $(this).prev().text()||"--未知预约项目--";
+				service.show({title:title,list:[]});
+				e.stopPropagation();
+				//throw new Error("eval -->not a error ^_^");//超级无敌阻止事件冒泡
+			})
+			mui("#services_list").on("tap", "a", function() { //这里需要做处理！！！！！
+				var that = this;
+				var img = $(this).find("img")[0].src;
+				mui.openWindow({
+					url: "server_classfly.html",
+					id: "server_classfly.html",
+					createNew: false,
+					extras: {
+						data: {
+							ID: "01",
+							Text: $(that).find(".show_service_title").text(),
+							InforText: "最新热荐预约项目",
+							img:img
+						}
+					}
+				});
+			})
+			mui("#index_select").on("tap", "li", function() {
+				var data_id = this.getAttribute("data-id");
+				var data_index = this.getAttribute("data-index");
+				var url_ = "server_step.html"
+				var data = JsonData[parseInt(data_index)];
+				mui.openWindow({
+					url: url_,
+					id: url_,
+					extras: {
+						data: data
+					}
+				});
+			})
+			mui(".mui-bar-tab").on("tap", ".mui-tab-item", function() {
+				var strs = ["服务预约", "经典案例", "招商加盟", "联系我们"];
+				var index = this.getAttribute("data-index");
+				mui(".mui-title")[0].innerHTML = strs[index];
+			})
+			window.addEventListener("closePop", function(e) {
+				eLog.l(e.detail.fromId)
+				if(e.detail.fromId == "server_step.html") {
+					mui('#popover').popover("hide");
+				}
+			})
+			getData(); //数据加载失败后，用于递归获取
+			var getDataI = 0;
+			var getDataNum = 3; //递归总次数
+			var getDataTime = 1000; //下次递归开始时间
+			var JsonData;
+
+			function getData() {
+				Xeval.Http(Xeval.Mode.HTTP_GET_SERVERS_LIST,{}, Xsuccess,true);
+			}
+
+			function Xsuccess(isOk, data) {
+				if(isOk) {
+					$("#index_select").children().remove();
+					JsonData = data;
+					var li_box = $("#index_select>li");
+					var oldtime = new Date().getTime();
+					for(var i = 0; i < JsonData.length; i++) {
+						var showJson = JsonData[i];
+						var box = new box_li();
+						box.setText(showJson.Text);
+						box.setID(showJson.ID);
+						box.setImgSrc(showJson.Images);
+						box.setIndex(i);
+						box.show();
+					}
+					eLog.l("eval -->box time:"+(new Date().getTime() - oldtime));
+				} else {
+					getDataI++;
+					if(getDataI >= getDataNum) {
+						plus.nativeUI.alert("数据获取失败，请检查网络");
+						mui.back();
+					} else {
+						setTimeout(getData, getDataTime);
+						eLog.l("eval --> getdata" + getDataI + " to " + getDataNum);
+					}
+
+				}
+			}
+			function box_li() {
+				this.Text = "Text";
+				this.ID = "01";
+				this.imgSrc = "http://www.baidu.com/12345.jpg";
+				this.Index = 0;
+				this.box = $("<li class='mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4' data-select='5'></li>");
+				this.hrefBox = $("<a href='#'></a>");
+				this.titleBox = $("<div class='mui-media-body'></div>");
+				this.imgBox = $("<img></img>");
+				this.setText = function(Text) {
+					this.Text = Text;
+				}
+				this.setImgSrc = function(src) {
+					this.imgSrc = src;
+				}
+				this.setIndex = function(index) {
+					this.Index = index;
+				}
+				this.setID = function(id) {
+					this.ID = id;
+				}
+				this.show = function() {
+					var src_ = this.imgSrc;
+					$(this.titleBox).text(this.Text);
+					if(src_.indexOf("http://") < 0) {
+						src_ = "img/server_" + (this.Index + 1) + ".png";
+					}
+					$(this.imgBox).attr("src", src_);
+					$(this.box).attr({
+						"data-id": this.ID,
+						"data-index": this.Index
+					});
+					$(this.hrefBox).append(this.imgBox).append(this.titleBox);
+					$(this.box).append(this.hrefBox);
+					$("#index_select").append(this.box);
+				}
+			}
+			getCaseListByData();
+			function getCaseListByData(){
+				mui.ajax({
+					url:"data/case.json",
+					type:"get",
+					dataType:"json",
+					success:function(data){
+						eLog.l(JSON.stringify(data));
+						addCase2Box(data);
+					}
+				})
+			}
+			function addCase2Box(data){
+				var oldtime = new Date().getTime();
+				var jsonData = data.dataList;
+				var myTemplate = doT.template($("#case_box").html());
+        		$('#step_list').append(myTemplate(jsonData));
+        		eLog.l("eval -->dot time:"+(new Date().getTime() - oldtime));
+			}
+			mui("#league").on("tap",".laegue_select_box",function(){
+				var indxe = this.getAttribute("data-index");
+				var action = "index3_mendian.html";
+				switch(parseInt(indxe)){
+					case 1:{
+						action = "index3_gongchang.html";
+					};break;
+					case 2:{
+						action = "index3_shigong.html";                                      
+					};break;
+					default:break;
+				}
+				mui.openWindow({
+					url:action,
+					id:action,
+					createNew:false,
+					extras:{
+						test:"test"
+					}
+				})
+			})
+			mui(".c-show-btn").on("tap","a",function(){
+				mui.openWindow({
+					url:"join.html",
+					id:"join.html",
+					createNew:false
+				})
+			})
+		});
+		window.onload = function() {
+			var ewidth = $(window).width();
+			var left = (ewidth - $("#popover").outerWidth()) / 2;
+			$("#popover").css("left", left);
+		}
+	</script>
+<script id="case_box" type="text/x-handlebars-template">
+ {{~ it:value:index}}
+<li>
+	<label class="case_title">{{= it[index].projectName}}</label>
+	<div class="case_img">
+		<div class="case_img_box case_img_box_left">
+			<img src="{{= it[index].preImg}}" data-preview-src="" data-preview-group="{{= index}}" />"
+			<span>养护前</span>
+		</div>
+		<div class="case_img_box case_img_box_right">
+			<img src="{{= it[index].newImg}}" data-preview-src="" data-preview-group="{{= index}}" />
+			<span>养护后</span>
+		</div>
+	</div>
+	<div class="case_tr">
+		<span class="case_lable_td ">
+				石材用量：{{= it[index].weight}}
+			</span>
+		<span class="case_lable_td">
+				养活原因：{{= it[index].reason}}
+			</span>
+	</div>
+	<div class="case_tr">
+		<span class="case_lable_td">
+				石材品种：{{= it[index].classfly}}
+			</span>
+		<span class="case_lable_td">
+				距上次维护时间：{{= it[index].preTime}}
+			</span>
+	</div>
+</li>
+{{~}}
+</script>
+</html>

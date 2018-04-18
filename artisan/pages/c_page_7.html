@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../../library/css/dialog.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<link rel="stylesheet" href="../css/page_6.css" />
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a href="javascript:edialog.back();" class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #FFFFFF;"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>签单日期</label>
+						<span>{{P_datetime|sjrq}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>合同名称</label>
+						<span>{{P_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>合同编号</label>
+						<span>{{ID}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>合同签订人</label>
+						<span>{{P_cookiename}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>合同开始日期</label>
+						<span>{{P_startdatetime}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>结束日期</label>
+						<span>{{P_enddatetime}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>商机日期</label>
+						<span>{{remark1 }}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-card" style="margin-top: 20px;">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>合同类型</label>
+						<span>{{P_kindone|htlx}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>合同性质</label>
+						<span>{{P_kindtwo|htxz}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="msg" v-for="var index in P_URL1.data" v-gesture:tap.stop.prevent="down(P_URL1.data[$index].Url,P_URL1.data[$index].Name)">
+				<div class="down-btn" >
+					<img src="../img/down.png" />
+					下载文件
+				</div>
+				<span class="ellipsis">{{P_URL1.data[$index].Name}}</span>
+			</div>
+			<ul class="mui-card text-show mui-table-view" style="margin-bottom: 40px;">
+				<li class="mui-table-view-cell-item text-title">
+					备注
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" v-model='remark2' style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+		</div>
+		<div id="dialog" style="display: none;">
+			<div class="dialog">
+				<div class="loging">
+					<span class="mui-spinner"></span>
+				</div>
+				<div class="msg">
+					下载中
+				</div>
+				<div class="btn">
+					取消
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/file.js" ></script>
+		<script type="text/javascript" src="../../library/js/dialog.js" ></script>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	</body>
+	<script>
+		mui.plusReady(function() {
+			app.init();
+		});
+		var app = {
+			datas:{
+				vm:null,
+				webData:{}
+			},
+			methods:{
+				down:function(url,fileName){
+					edialog.show();
+					evalFile.down(url,fileName,function(download,status){
+						var pro = Math.ceil(download.downloadedSize/download.totalSize*100);
+						if(pro){
+							edialog.updataPro("下载中："+pro+"%");
+						}
+						if ( download.state == 4 && status == 200 ) {
+							edialog.cancel();
+							plus.nativeUI.confirm("下载成功,是否打开下载目录",function(e){
+								if(e.index==0){
+									mui.openWindow({
+										url:"../../download/download.html",
+										id:"download.html"
+									})
+								}else{
+									plus.nativeUI.toast("在首页我的信息中可以查看");
+								}
+							},"下载完成",["打开看看","取消"])
+						}
+					});
+				}
+			},
+			init:function(){
+				var that = this;
+				edialog.init("下载中,请稍等",function(){
+					console.log(edialog.isShow())
+					if(edialog.isShow()){
+						plus.nativeUI.confirm("文件下载中,是否取消下载?",function(e){
+							if(e.index==0){
+								edialog.cancel();
+								evalFile.clearDown();
+							}
+						},"提示",["确定","取消"])
+					}else{
+						edialog.doms.back();
+					}
+				},function(){
+					edialog.back();
+				});
+				var webView = plus.webview.currentWebview();
+				that.datas.webData = webView.data;
+				mui(".mui-title")[0].innerText = that.datas.webData.P_name;
+				that.datas.vm = new Vue({
+					el:".mui-content",
+					data:that.datas.webData,
+					methods:that.methods
+				})
+			}
+		}
+	</script>
+</html>

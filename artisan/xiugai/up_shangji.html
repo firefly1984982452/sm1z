@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			.mui-table-view-cell select{
+				width: 30%;
+				  direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			.mui-table-view-cell select option{
+				text-align: center;
+			}
+			.mui-table-view-cell i{
+				width: 2%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">商机信息详情</h1>
+		</header>
+		<div class="mui-content" id="sj-list">
+			<div class="mui-card" >
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+							<label>商机名称</label>
+							<input type="text" v-model='data.B_name' />
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机日期</label>
+							<span v-gesture:tap.stop.prevent='dataAdd($event)'>{{data.B_datetime|sjrq}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机来源</label>
+							<span id="sjly">{{data.B_source|sjly}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机类型</label>
+							<span id="sjlx">{{data.B_kind|sjlx}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>需求类型</label>
+							<select v-on:change="change($event,0)">
+								<template  v-for="item in kind1">
+									<option value="{{item.ID}}" v-bind:style="{selected:item.ID==data.B_servicekind1}">{{item.Text}}</option>
+								</template>
+							</select>
+							<i>></i>
+							<select v-on:change="change($event,1)">
+								<template  v-for="item in kind2">
+									<option value="{{item.ID}}" v-bind:style="{selected:item.ID==data.B_servicekind2}">{{item.Text}}</option>
+								</template>
+							</select>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机提供者</label>
+							<span>{{data.Addbusinessman}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>需求量</label>
+							<input type="text" v-model='data.B_neednumber'></input>
+						</li>
+				</ul>
+			</div>
+			<div class="mui-card text-show" >
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell-item text-title">
+						需求原因
+					</li>
+					<li class="mui-table-view-cell-item">
+						<textarea class="text-txt" v-model='data.B_needcause' placeholder="请输入派单人职责"  style="width: 100%;">
+							
+						</textarea>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="submit" >
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			Xeval.setUrl("http://192.168.191.1/");
+			app.init();
+		});
+		var app = {
+			datas:{
+				plusData:{}, 
+				vm:null,
+				vmData:{
+					kind1:[],
+					kind2:[],
+					data:{}
+				},
+				sjlyOptions:[
+					{
+						text:"合作伙伴",
+						value:"1"
+					},
+					{
+						text:"老客户介绍",
+						value:"2"
+					},
+					{
+						text:"平台",
+						value:"3"
+					},
+					{
+						text:"公司资源",
+						value:"4"
+					},
+					{
+						text:"网络渠道",
+						value:"5"
+					},
+					{
+						text:"本人开发",
+						value:"6"
+					}
+				],
+				sjlxOptions:[
+					{
+						text:"项目施工",
+						value:"1"
+					},
+					{
+						text:"服务保养",
+						value:"2"
+					}
+				],
+				sjlxPicker:new mui.PopPicker(),
+				sjlyPicker:new mui.PopPicker()
+			},
+			methods:{
+				_HTTP_CB_KIND1:function(isOk,data){
+					app.datas.vmData.kind1 = data.data;
+					app.utils.getKind2(app.datas.plusData.data.B_servicekind1);
+				},
+				_HTTP_CB_KIND2:function(isOk,data){
+					app.datas.vmData.kind2 = data.data;
+					app.datas.vmData.data.B_servicekind2 = data.data[0].ID;
+				},
+				change:function(e,index){
+					var val = e.target.value;
+					if(index==0){
+						app.datas.vmData.data.B_servicekind1 = val;
+						app.utils.getKind2(val);
+					}else{
+						app.datas.vmData.data.B_servicekind2 = val;
+					}
+				},
+				submit_:function(){
+					var updata = {};
+					console.log(JSON.stringify(app.datas.vmData.data))
+					updata = app.utils.copyObject(app.datas.vmData.data);
+					var token = app.utils.getToken();
+					updata.Username = token.Username;
+					updata.Token = token.Token;
+					//B_name B_neednumber
+					if(updata.B_name.trim()==""){
+						plus.nativeUI.alert("商机名称不能为空！");
+						return;
+					}
+					if(updata.B_neednumber.trim()==""){
+						plus.nativeUI.alert("需求量不能为空！");
+						return;
+					}
+					Xeval.Http(Xeval.Mode.HTTP_ART_UPDATA_SJ_BYID,updata,app.methods._HTTP_UPDATA_LISTENER)
+				},
+				dataAdd:function(e){
+//					var picker = new mui.DtPicker({"type":"date"});
+//					picker.show(function(rs){
+//						console.log(JSON.stringify(rs))
+//						e.target.innerText = rs.text;
+//						picker.dispose();
+//					});
+				},
+				_HTTP_UPDATA_LISTENER:function(isOk,data){
+					if(isOk){
+						plus.nativeUI.alert(data.msg);
+						if(data.state==1){
+							mui.back();
+						}
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络！");
+					}
+				},
+				sjly_listener:function(){
+					app.datas.sjlyPicker.blur;
+					app.datas.sjlxPicker.blur;
+					app.datas.sjlyPicker.setData(app.datas.sjlyOptions);
+					app.datas.sjlyPicker.show(function(item){
+						app.datas.vmData.data.B_source = item[0].value;
+					})
+				},
+				sjlx_listener:function(){
+					app.datas.sjlyPicker.blur;
+					app.datas.sjlxPicker.blur;
+					app.datas.sjlxPicker.setData(app.datas.sjlxOptions);
+					app.datas.sjlxPicker.show(function(item){
+						app.datas.vmData.data.B_kind = item[0].value;
+					})
+				}
+			},
+			init:function(){
+				app.datas.plusData = plus.webview.currentWebview();
+				app.datas.vmData.data = app.datas.plusData.data;
+				console.log(JSON.stringify(app.datas.vmData))
+				app.datas.vm = new Vue({
+					el:"#sj-list",
+					data:app.datas.vmData,
+					methods:app.methods
+				});
+				var jsonData = JSON.parse(localStorage.getItem("art_user"));
+				var params1 = this.utils.getToken();params1.index=0;
+				Xeval.Http(Xeval.Mode.HTTP_ART_GET_FW_SELECT,params1,app.methods._HTTP_CB_KIND1);
+				document.getElementById("submit").addEventListener("touchend",app.methods.submit_);
+				document.getElementById("sjly").addEventListener("touchend",app.methods.sjly_listener);
+				document.getElementById("sjlx").addEventListener("touchend",app.methods.sjlx_listener);
+			},
+			utils:{
+				getToken:function(){
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					var params = {
+						Username:jsonData.data.T_accountnumber,
+						Token:jsonData.guid
+					}
+					return params;
+				},
+				getKind2:function(id){
+					var params2 = app.utils.getToken();params2.index=1;
+					params2.childId = id;
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_FW_SELECT,params2,app.methods._HTTP_CB_KIND2);
+				},
+				copyObject:function(obj){
+					var _result = {};
+					for(var item in obj){
+						_result[item] = obj[item];
+					}
+					return _result;
+					
+				}
+			}
+			
+		}
+	</script>
+</html>

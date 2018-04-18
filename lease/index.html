@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false, //启用右滑关闭功能
+			})
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">设备租赁</h1>
+		    <img src="img/collect.png" class="index-shouc"/>
+		</header>
+		<div class="mui-content">
+			<div class="mui-slider" id="slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="img/lease_3.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="img/lease_1.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="img/lease_2.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="img/lease_3.jpg" /></a>
+					</div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="img/lease_1.jpg" /></a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<ul id="index_select" class="mui-table-view mui-grid-view mui-grid-6">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-index = "1">
+						<a href="#">
+							<img src="img/lease_cz.png" />
+							<div class="mui-media-body">
+								出租
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-index = "2">
+						<a href="#">
+							<img src="img/lease_qz.png" />
+							<div class="mui-media-body">
+								求租
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-index = "3">
+						<a href="#">
+							<img src="img/lease_zr.png" />
+							<div class="mui-media-body">
+								二手转让
+							</div>
+						</a>
+					</li>
+				</ul>
+				<div class="hot-content">
+					<div class="hot-title">热门出租</div>
+					<ul class="mui-table-view mui-grid-view mui-grid-6" id="hot-lease-cz">
+						<template v-for="key in Rents">
+						<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" v-gesture:tap.stop.prevent="CzTap(key.Rents_productID,$event)" >
+							<div class="hot-box">
+								<img src="{{key.Rents_picture|picture}}" width="100%" height="150em" />
+								<div class="hot-box-info">
+									{{key.Rents_name}}
+								</div>
+								<div class="hot-box-price">￥{{key.Rents_price}}</div>
+							</div>
+						</li>
+						</template>
+					</ul>
+					<div class="hot-title">热门求租</div>
+				<ul class="mui-table-view" id="hot-lease-qz">
+					<template v-for="key in seek">
+					<li class="mui-table-view-cell ellipsis" v-gesture:tap.stop.prevent="QzTap(key.ID,$event)">
+						{{key.Device_Name}}
+						<span class="mui-badge mui-badge-success">{{key.publishDate}}</span>
+					</li>
+					</template>
+				</ul>
+					<div class="hot-title">热门转让</div>
+				<ul class="mui-table-view mui-table-view-chevron" id="hot-lease-zr">
+					<template v-for="key in second">
+					<li class="mui-table-view-cell mui-media" v-gesture:tap.stop.prevent="ZrTap(key.ID,$event)">
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left" width="100%" src="{{key.pd_picture|picture}}">
+							<div class="mui-media-body">
+								{{key.pd_name}}
+								<span class="server_step_content">
+									{{key.pd_rentstxt}}
+								</span>
+								<div class="server_step_show">
+									<span class="server_step_look">
+										￥{{key.pd_vipprice}}
+									</span>
+								</div>
+							</div>
+						</a>
+					</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+	</body>
+</html>

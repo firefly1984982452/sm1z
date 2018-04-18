@@ -1,0 +1,3138 @@
+{
+	"@platforms": ["android", "iPhone", "iPad"],
+	"id": "H5808C567",/*必选，应用的标识*/
+	"name": "饰管家",/*必选，应用名称*/
+	"version": {
+		"name": "0.1.0",/*必选，版本名称*/
+		"code": ""
+	},
+	"description": "",/*可选，应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"fullscreen":false,
+	"launch_path": "index.html",/*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
+	"developer": {
+		"email": "",/*可选，开发者名称*/
+		"name": "",/*可选，开发者邮箱地址*/
+		"url": ""/*可选，开发者自定义地址*/
+	},
+	"permissions": {
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		"Webview":{
+			"description": "窗口管理"
+		},
+		"NativeUI":{
+			"description": "原生UI控件"
+		},
+		"Navigator":{
+			"description": "浏览器信息"
+		},
+		
+		"Uploader": {},"Share":{},"Payment":{},"Geolocation":{},"Push":{},"Downloader":{}
+	},
+	"plus": {
+		"popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，none为无侧滑返回功能，hide为侧滑隐藏Webview窗口。参考ask.dcloud.net.cn/article/102*/
+		"splashscreen": {
+			"autoclose": true,/*如果为true，程序启动的图片可以自动关闭，如果为false，开发者需要手动关闭*/
+			"waiting": true,"delay":"0"/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+		},
+		"runmode": "normal",/*两个值，liberate或normal，前者在应用安装时释放资源，后者不需要释放资源*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {"plugins":{"push":{"igexin":{"appid":"gAet9j0MtQAQeZRHKgePo6","appkey":"E0ePrtLBbE9WsK54e7dhl6","appsecret":"Gk0Ep1irwy8FLW0Ls1k5v7"}},"payment":{"alipay":{"description":"阿里支付","scheme":""}},"share":{"qq":{"appid":"1105753353","description":"QQ分享"}}},
+			"debug": "",/*可选，是否为debug模式，可取值：true表示debug模式运行，false表示release模式运行，默认值为false*/
+			"apple": {
+				"appid": "",/*iOS必选，苹果开发网站申请的appid，如com.dheaven.hbuilder*/
+				"mobileprovision": "",/*iOS必选，打包配置文件*/
+				"StatusBarBackground":"#9c052e",
+				"password": "",/*iOS必选，导入配置文件密码*/
+				"p12": "",/*iOS必选，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iphone，可取值iphone/ipad/universal*/
+				"frameworks":[]/*用户在调用 Native.js 或开发第三方插件时使用到的 FrameWork 名*/
+			},
+			"google": {
+				"packagename": "",/*Android必选，程序包名，如com.dheaven.hbuilder*/
+				"keystore": "",/*Android必选，打包证书文件*/
+				"password": "",/*Android必选，打包证书密码*/
+				"aliasname": "",/*Android必选，打包证书别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.GET_TASKS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+				/*使用 Native.js 调用原生安卓 API 需要申请的系统权限，用户可以添加多个权限的字符串*/
+			},
+			"orientation": ["portrait-primary","portrait-secondary"],/*必选*/
+			"icons": {
+				"ios": {
+					"prerendered": "", /*必选，是否高亮显示*/
+					"auto": "", /*可选，512x512，用于自动生成各种尺寸图标的大分辨率程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png",/*可选，57x57，iPhone普通屏幕程序图标*/
+						"retina": "unpackage/res/icons/114x114.png",/*可选，114x114，iPhone高分屏程序图标*/
+						"retina7": "unpackage/res/icons/120x120.png",/*可选，120x120，iPhone iOS7高分屏程序图标*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*可选，29x29，iPhone Spotlight搜索程序图标*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*可选，58x58，iPhone高分屏Spotlight搜索程序图标*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*可选，80x80，iPhone iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*可选，29x29，iPhone设置页面程序图标*/
+						"settings-retina": "unpackage/res/icons/58x58.png","retina8":"unpackage/res/icons/180x180.png","settings-retina8":"unpackage/res/icons/87x87.png" /*iPhone 高分屏设置页面程序图标*/
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*可选，72x72，iPad普通屏幕程序图标*/
+						"retina": "unpackage/res/icons/144x144.png", /*可选，144x144，iPad高分屏程序图标*/
+						"normal7": "unpackage/res/icons/76x76.png", /*可选，76x76，iPad iOS7程序图标*/
+						"retina7": "unpackage/res/icons/152x152.png", /*可选，152x152，iPad iOS7高分屏程序图标*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*可选，50x50，iPad Spotlight搜索程序图标*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*可选，100x100，iPad高分屏Spotlight搜索程序图标*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*可选，40x40，iPad iOS7 Spotlight搜索程序图标*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*可选，80x80，iPad iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*可选，29x29，iPad设置页面程序图标*/
+						"settings-retina": "unpackage/res/icons/58x58.png" /*iPad 高分屏设置页面程序图标*/
+					}
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*必选，48x48，普通屏程序图标*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*必选，48x48，大屏程序图标*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*必选，72x72，高分屏程序图标*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*必选，96x96，720P高分屏程序图标*/
+					"xxhdpi": "unpackage/res/icons/144x144.png" /*1080P 高分屏程序图标*/
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "images/splash.png", /*必选，320x480，iPhone3启动图片*/
+						"retina35": "images/splash.png",/*必选，640x960，3.5英寸设备(iPhone4)启动图片*/
+						"retina40": "images/splash.png","retina55":"images/splash.png","retina47":"images/splash.png","retina55l":"images/splash.png" /*4.0 英寸设备(iPhone5)启动图片*/
+					},
+					"ipad": {
+						"portrait": "", /*可选，768x1004，需支持iPad时必选，iPad竖屏启动图片*/
+						"portrait-retina": "",/*可选，1536x2008，需支持iPad时必选，iPad高分屏竖屏图片*/
+						"landscape": "", /*可选，1024x748，需支持iPad时必选，iPad横屏启动图片*/
+						"landscape-retina": "", /*可选 ，2048x1496，需支持iPad时必选，iPad高分屏横屏启动图片*/
+						"portrait7": "", /*可选，768x1024，需支持iPad iOS7时必选，iPad竖屏启动图片*/
+						"portrait-retina7": "",/*可选，1536x2048，需支持iPad iOS7时必选，iPad高分屏竖屏图片*/
+						"landscape7": "", /*可选，1024x768，需支持iPad iOS7时必选，iPad横屏启动图片*/
+						"landscape-retina7": "" /*需支持 iPad iOS7 时必选，iPad 高分屏横屏启动*/
+					}
+				},
+				"android": {
+					"mdpi": "images/splash.png", /*必选，240x282，普通屏启动图片*/
+					"ldpi": "images/splash.png", /*必选，320x442，大屏启动图片*/
+					"hdpi": "images/splash.png", /*必选，480x762，高分屏启动图片*/
+					"xhdpi": "images/splash.png", /*必选，720x1242，720P高分屏启动图片*/
+					"xxhdpi": "images/splash.png" /*1080p 高分屏启动图片*/
+				}
+			}
+		}
+	},
+	"dependencies" : {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/update.js",
+					"list.html",
+					"images/index_6.png",
+					"images/index_1.png",
+					"js/jquery.min.js",
+					"images/lb_1.jpg",
+					"css/indx.css",
+					"css/preimages.css",
+					"css/mui.css",
+					"library/js/mui.zoom.js",
+					"images/login/logo.png",
+					"images/index_3.png",
+					"images/lb_3.jpg",
+					"images/index_2.png",
+					"js/util.js",
+					"images/lb_4.jpg",
+					"images/index_4.png",
+					"js/Strings.js",
+					"images/index_5.png",
+					"library/js/mui.previewimage.js",
+					"images/lb_2.jpg",
+					"js/evalHttp.js"
+				],
+				"refer": [
+					"index-menu.html",
+					"artisan/index.html",
+					"service/index.html",
+					"login.html",
+					"lease/index.html",
+					"download/download.html",
+					"artisan/login.html",
+					"mail/index.html",
+					"tender/index.html",
+					"manager/index.html",
+					"info.html"
+				],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-contact.html": {
+				"resources": [
+					"images/60x60.gif",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-main.html": {
+				"resources": [
+					"examples/tab-webview-subpage-setting.html",
+					"examples/tab-webview-subpage-chat.html",
+					"examples/tab-webview-subpage-contact.html",
+					"examples/tab-webview-subpage-about.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/template.html",
+					"examples/tab-webview-main.html",
+					"examples/pullrefresh_main.html",
+					"examples/ajax.html",
+					"examples/accordion.html",
+					"examples/buttons.html",
+					"examples/guide.html",
+					"examples/badges.html",
+					"examples/actionsheet.html",
+					"examples/actionsheet-plus.html",
+					"examples/ad.html",
+					"examples/buttons-with-icons.html",
+					"examples/buttons-with-badges.html",
+					"examples/buttons-with-block.html",
+					"examples/checkbox.html",
+					"examples/clouddb_wilddog.html",
+					"examples/dtpicker.html",
+					"examples/date.html",
+					"examples/dialog.html",
+					"examples/slider-default.html",
+					"examples/slider-with-title.html",
+					"examples/slider-table-default.html",
+					"examples/slider-table-pagination.html",
+					"examples/grid-default.html",
+					"examples/grid-pagination.html",
+					"examples/icons.html",
+					"examples/input.html",
+					"examples/echarts.html",
+					"examples/imageviewer.html",
+					"examples/indexed-list.html",
+					"examples/indexed-list-select.html",
+					"examples/lazyload-image.html",
+					"examples/locker-dom.html",
+					"examples/login.html",
+					"examples/setting.html",
+					"examples/offcanvas-drag-right-plus-main.html",
+					"examples/offcanvas-drag-left-plus-main.html",
+					"examples/offcanvas-drag-right.html",
+					"examples/offcanvas-drag-left.html",
+					"examples/offcanvas-drag-down.html",
+					"examples/picker.html",
+					"examples/pagination.html",
+					"examples/popovers.html",
+					"examples/pullrefresh_with_tab.html",
+					"examples/radio.html",
+					"examples/range.html",
+					"examples/switches.html",
+					"examples/tabbar.html",
+					"examples/tabbar-with-submenus.html",
+					"examples/tab-with-viewpagerindicator.html",
+					"examples/tab-with-segmented-control.html",
+					"examples/tab-with-segmented-control-vertical.html",
+					"examples/typography.html",
+					"examples/im-chat.html",
+					"examples/info.html",
+					"examples/tableviews.html",
+					"examples/tableviews-with-badges.html",
+					"examples/list-with-input.html",
+					"examples/list-triplex-row.html",
+					"examples/tableviews-with-collapses.html",
+					"examples/tableviews-with-swipe.html",
+					"examples/media-list.html",
+					"examples/nav.html",
+					"examples/numbox.html",
+					"examples/feedback.html"
+				],
+				"priority": 0
+			},
+			"examples/pullrefresh_main.html": {
+				"resources": [
+					"examples/pullrefresh_sub.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ajax.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/accordion.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-setting.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"index-menu.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left.html"
+				],
+				"priority": 0
+			},
+			"examples/template.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-about.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/guide.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/actionsheet.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/actionsheet-plus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ad.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/ad.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-icons.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-block.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/checkbox.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-chat.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/clouddb_wilddog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dtpicker.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.picker.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/date.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dialog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-with-title.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-pagination.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-default.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-pagination.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/icons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pullrefresh_sub.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/echarts.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/echarts-all.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/imageviewer.html": {
+				"resources": [
+					"js/mui.zoom.js",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.previewimage.js",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/indexed-list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/indexed-list-select.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/lazyload-image.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"images/60x60.gif",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/locker-dom.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.locker.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/login.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/login-1.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/setting.html": {
+				"resources": [
+					"images/logo.png",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"js/feedback.js",
+					"css/feedback-page.css",
+					"js/feedback-page.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-right-plus-menu.html"
+				],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right-plus-menu.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-menu.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left-plus-menu.html"
+				],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-down.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/picker.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pagination.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/popovers.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pullrefresh_with_tab.html": {
+				"resources": [
+					"js/mui.pullToRefresh.js",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.material.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/radio.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/range.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/switches.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"images/60x60.gif",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar-with-submenus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-viewpagerindicator.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control-vertical.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/typography.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/im-chat.html": {
+				"resources": [
+					"js/mui.imageViewer.js",
+					"images/logo.png",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.imageviewer.css",
+					"js/arttmpl.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/info.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/qrcode.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/beecloud.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/beecloud.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-with-input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-triplex-row.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-collapses.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-swipe.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/media-list.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/nav.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/numbox.html": {
+				"resources": [
+					"css/app.css",
+					"css/mui.min.css",
+					"js/mui.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/feedback.html": {
+				"resources": [
+					"css/feedback.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/feedback.js",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/index.html": {
+				"resources": [
+					"artisan/js/index.js",
+					"artisan/img/index-xqpg.png",
+					"artisan/img/index-qdht.png",
+					"artisan/css/index.css",
+					"artisan/img/index-zbdt.png",
+					"artisan/img/index-sjsx.png",
+					"artisan/img/index_sjxx.png",
+					"artisan/img/index-bzxx.png",
+					"css/mui.min.css",
+					"artisan/img/index-sjpd.png",
+					"artisan/img/index-xmbj.png",
+					"artisan/img/banner.png",
+					"artisan/img/index-khbf.png",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/img/me-bg.png",
+					"artisan/css/page.css",
+					"js/vue.js",
+					"artisan/img/me-msg.png",
+					"artisan/img/down-block.png",
+					"artisan/img/kehu-1.png",
+					"artisan/img/kehu.png",
+					"artisan/img/user.png"
+				],
+				"refer": [
+					"artisan/pages/page_2.html",
+					"artisan/pages/page_1.html",
+					"artisan/pages/page_4.html",
+					"artisan/pages/page_3.html",
+					"artisan/pages/page_7.html",
+					"artisan/pages/page_6.html",
+					"artisan/pages/page_5.html",
+					"artisan/pages/page_9.html",
+					"artisan/pages/page_8.html",
+					"artisan/xiugai/up_me.html",
+					"artisan/pages/caozyck.html",
+					"artisan/xiugai/xinzeng.html",
+					"artisan/xiugai/upPasw.html",
+					"download/download.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_2.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/pages/page2_sub.html",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_1.html": {
+				"resources": [
+					"artisan/css/page_1.css",
+					"js/mui.view.js",
+					"library/css/pages.css",
+					"js/vue.js",
+					"lease/js/vue-gesture.js",
+					"js/evalHttp.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/pages/page1_sub.html",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_1.html",
+					"artisan/pages/c_page_3_add.html",
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page2_sub.html": {
+				"resources": [
+					"js/vue.js",
+					"lease/js/vue-gesture.js",
+					"artisan/css/page_2.css",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jquery.min.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_2.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page4_sub.html": {
+				"resources": [
+					"js/vue.js",
+					"lease/js/vue-gesture.js",
+					"js/evalHttp.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_4.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_4.html": {
+				"resources": [
+					"artisan/pages/page4_sub.html",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_4_add.html",
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_4_add.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"artisan/css/page_4.css",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"library/css/uphoto.css",
+					"js/jquery.min.js",
+					"library/js/uphoto.js",
+					"js/vue.js",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [
+					"artisan/pages/page_1.html",
+					"artisan/pages/page_1_s.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_3.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/pages/page3_sub.html",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_4.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/css/page_4.css",
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"js/file.js",
+					"css/preimages.css",
+					"library/js/mui.zoom.js",
+					"js/vue.js",
+					"js/evalHttp.js",
+					"artisan/js/pageFilter.js",
+					"lease/js/vue-gesture.js",
+					"library/js/mui.previewimage.js",
+					"library/css/dialog.css",
+					"library/js/dialog.js"
+				],
+				"refer": [
+					"download/download.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page3_sub.html": {
+				"resources": [
+					"js/vue.js",
+					"artisan/css/page_3.css",
+					"lease/js/vue-gesture.js",
+					"js/evalHttp.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"artisan/pages/c_page_3.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_3.html": {
+				"resources": [
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"js/vue.js",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/page6_sub.html": {
+				"resources": [
+					"artisan/css/page_6.css",
+					"js/vue.js",
+					"lease/js/vue-gesture.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_6.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_6.html": {
+				"resources": [
+					"artisan/pages/page6_sub.html",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_6_add.html",
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_6_add.html": {
+				"resources": [
+					"lease/js/phot.js",
+					"js/jquery.min.js",
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"js/evalHttp.js",
+					"library/js/mui.picker.min.js",
+					"artisan/css/page_6.css",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"service/index.html": {
+				"resources": [
+					"service/img/sgj-us.png",
+					"service/img/item_box3.jpg",
+					"service/img/le_4.jpg",
+					"service/img/server-index.jpg",
+					"service/img/item_box2.jpg",
+					"service/css/index.css",
+					"service/img/server_LOGO.png",
+					"service/img/le_7.jpg",
+					"service/img/c-img-1.png",
+					"service/img/le_tixi.png",
+					"service/js/getSevices.js",
+					"js/evalHttp.js",
+					"service/img/c-img-2.png",
+					"service/img/le_2.jpg",
+					"service/img/l.png",
+					"service/img/f.png",
+					"service/img/le_1.jpg",
+					"service/img/hzpp.png",
+					"service/img/join-logo.png",
+					"service/img/item_box8.jpg",
+					"service/img/le_logo.png",
+					"service/img/i.png",
+					"service/img/sgj-er.jpg",
+					"service/img/l_2.jpg",
+					"service/img/item_box7.jpg",
+					"service/img/g.png",
+					"service/img/item_box1.jpg",
+					"service/img/le_5.jpg",
+					"service/img/le_8.jpg",
+					"service/img/item_box6.jpg",
+					"library/js/doT.min.js",
+					"service/img/h.png",
+					"service/img/item_box4.jpg",
+					"service/img/le_3.jpg",
+					"css/mui.min.css",
+					"service/img/le_6.jpg",
+					"service/js/extras.js",
+					"service/img/item_box5.jpg",
+					"service/data/case.json",
+					"service/img/s1_2.png",
+					"service/img/s5_1.jpg",
+					"service/img/s4_1.png",
+					"service/img/s5_2.jpg",
+					"service/img/s3_2.jpg",
+					"service/img/s1_1.png",
+					"service/img/s3_1.jpg",
+					"service/img/s2_1.png",
+					"service/img/s2_2.png",
+					"service/img/s4_2.png",
+					"service/img/server_5.png",
+					"service/img/server_2.png",
+					"service/img/server_4.png",
+					"service/img/server_6.png",
+					"service/img/server_1.png",
+					"service/img/server_3.png",
+					"js/util.js",
+					"fonts/mui.ttf",
+					"css/preimages.css",
+					"js/Strings.js",
+					"library/js/mui.previewimage.js",
+					"library/js/mui.zoom.js",
+					"js/mui.min.js",
+					"js/jquery.min.js"
+				],
+				"refer": [
+					"service/server_step.html",
+					"service/server_classfly.html"
+				],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [
+					"css/login.css",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"fonts/mui.ttf",
+					"images/login/logo.png",
+					"js/util.js",
+					"js/mui.min.js",
+					"js/Strings.js"
+				],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_5.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/pages/page5_sub.html",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_5_add.html",
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"lease/index.html": {
+				"resources": [
+					"lease/img/collect.png",
+					"lease/img/lease_3.jpg",
+					"js/vue.js",
+					"lease/css/index.css",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"lease/img/lease_zr.png",
+					"lease/img/lease_qz.png",
+					"lease/js/vue-gesture.js",
+					"lease/img/lease_cz.png",
+					"lease/img/lease_1.jpg",
+					"lease/js/index.js",
+					"lease/img/lease_2.jpg",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/Strings.js"
+				],
+				"refer": [
+					"lease/pullrefresh_main.html",
+					"lease/collect.html",
+					"lease/classfly.html"
+				],
+				"priority": 0
+			},
+			"test1.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"download/download.html": {
+				"resources": [
+					"download/css/index.css",
+					"js/vue.js",
+					"css/mui.min.css",
+					"lease/js/vue-gesture.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"download/img/apk.png",
+					"download/img/other.png",
+					"download/img/jpg.png",
+					"js/file.js",
+					"download/img/doc.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/c_page_6.html": {
+				"resources": [
+					"artisan/img/down.png",
+					"artisan/css/page_3.css",
+					"artisan/css/page_6.css",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/file.js",
+					"library/css/dialog.css",
+					"library/js/dialog.js",
+					"js/vue.js",
+					"artisan/js/pageFilter.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [
+					"download/download.html"
+				],
+				"priority": 0
+			},
+			"lease/pullrefresh_main.html": {
+				"resources": [
+					"js/util.js",
+					"lease/css/main.css",
+					"lease/pullrefresh_sub.html",
+					"lease/img/search.png",
+					"library/js/scrollZIP.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"lease/pullrefresh_sub.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"library/css/mui.picker.min.css",
+					"library/js/city.data-3.js",
+					"library/js/mui.picker.min.js",
+					"service/img/left_nav_close.png",
+					"js/mui.js",
+					"js/vue.js",
+					"lease/css/index.css",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js",
+					"js/Strings.js"
+				],
+				"refer": [
+					"lease/classfly.html"
+				],
+				"priority": 0
+			},
+			"welcome.html": {
+				"resources": [
+					"images/welcome_1.jpg",
+					"js/util.js",
+					"js/mui.min.js",
+					"images/welcome_2.jpg",
+					"images/welcome_4.jpg",
+					"images/welcome_3.jpg",
+					"css/mui.min.css",
+					"js/Strings.js"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			},
+			"lease/classfly.html": {
+				"resources": [
+					"js/vue.js",
+					"js/jquery.min.js",
+					"lease/css/classfly.css",
+					"js/util.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"css/preimages.css",
+					"lease/js/vue-gesture.js",
+					"js/Strings.js",
+					"library/js/mui.previewimage.js",
+					"library/js/mui.zoom.js",
+					"lease/img/lease_phone.png",
+					"lease/img/lease_sc.png",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"lease/collect.html": {
+				"resources": [
+					"js/vue.js",
+					"js/jquery.min.js",
+					"lease/css/index.css",
+					"js/util.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js",
+					"js/Strings.js"
+				],
+				"refer": [
+					"lease/classfly.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_1.html": {
+				"resources": [
+					"artisan/js/evalbars.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/css/page_1.css",
+					"js/vue.js",
+					"library/css/mui.picker.min.css",
+					"js/evalHttp.js",
+					"artisan/js/pageFilter.js",
+					"lease/js/vue-gesture.js",
+					"library/css/dialog.css",
+					"library/js/dialog.js"
+				],
+				"refer": [
+					"artisan/xiugai/up_user.html",
+					"artisan/xiugai/up_shangji.html",
+					"artisan/pages/c_page_3.html",
+					"artisan/pages/page_4.html",
+					"artisan/pages/c_page_5.html",
+					"artisan/pages/c_page_7.html",
+					"artisan/pages/c_page_4_add.html"
+				],
+				"priority": 0
+			},
+			"artisan/login.html": {
+				"resources": [
+					"artisan/css/index.css",
+					"artisan/img/crmLogin.png",
+					"artisan/img/pasw.png",
+					"css/mui.min.css",
+					"artisan/css/login.css",
+					"artisan/img/user.png",
+					"js/evalHttp.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"artisan/img/user_1.png"
+				],
+				"refer": [
+					"artisan/index.html"
+				],
+				"priority": 0
+			},
+			"artisan/xiugai/up_user.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/js/city.data-3.js",
+					"library/js/mui.picker.min.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/xiugai/up_shangji.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/js/mui.picker.min.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"lease/js/vue-gesture.js",
+					"js/evalHttp.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/c_page_3_add.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"artisan/js/pageFilter.js",
+					"library/js/mui.picker.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/pages.css",
+					"js/vue.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js",
+					"js/mui.view.js"
+				],
+				"refer": [
+					"artisan/xiugai/xinzengkehu.html"
+				],
+				"priority": 0
+			},
+			"artisan/xiugai/xinzengkehu.html": {
+				"resources": [
+					"library/js/city.data-3.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js",
+					"library/js/mui.picker.min.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/page5_sub.html": {
+				"resources": [
+					"artisan/css/page_5.css",
+					"js/vue.js",
+					"lease/js/vue-gesture.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"artisan/js/pageFilter.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_5.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/c_page_5.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"artisan/js/evaloptions.js",
+					"artisan/css/page_5.css",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/c_page_5_add.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"artisan/js/evaloptions.js",
+					"artisan/css/page_5.css",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js"
+				],
+				"refer": [
+					"artisan/pages/page_1.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page1_sub.html": {
+				"resources": [
+					"js/vue.js",
+					"artisan/css/page_1.css",
+					"lease/js/vue-gesture.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"fonts/mui.ttf",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/c_page_1.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/search.html": {
+				"resources": [
+					"artisan/css/page_3.css",
+					"library/css/mui.picker.min.css",
+					"library/js/city.data-3.js",
+					"library/js/mui.picker.min.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/page_7.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/pages/page7_sub.html",
+					"library/js/scrollZIP.js"
+				],
+				"refer": [
+					"artisan/pages/search.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page7_sub.html": {
+				"resources": [
+					"js/vue.js",
+					"artisan/js/pageFilter.js",
+					"js/evalHttp.js",
+					"lease/js/vue-gesture.js",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"artisan/pages/c_page_7.html"
+				],
+				"priority": 0
+			},
+			"artisan/pages/page_8.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/c_page_7.html": {
+				"resources": [
+					"artisan/css/page_6.css",
+					"js/vue.js",
+					"artisan/img/down.png",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"artisan/js/pageFilter.js",
+					"js/file.js",
+					"library/css/dialog.css",
+					"lease/js/vue-gesture.js",
+					"library/js/dialog.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/pages1_sub.html": {
+				"resources": [
+					"artisan/css/page_1.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/page_1_s.html": {
+				"resources": [
+					"artisan/pages/pages1_sub.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/xiugai/up_me.html": {
+				"resources": [
+					"library/js/uphoto.js",
+					"library/css/mui.picker.min.css",
+					"library/js/mui.picker.min.js",
+					"js/jquery.min.js",
+					"artisan/css/index.css",
+					"artisan/css/page_3.css",
+					"artisan/img/me-bg.png",
+					"fonts/mui.ttf",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/img/me-msg.png",
+					"css/mui.min.css",
+					"js/evalHttp.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/caozyck.html": {
+				"resources": [
+					"library/js/scrollZIP.js",
+					"artisan/pages/caozyck_sub.html",
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/caozyck_sub.html": {
+				"resources": [
+					"library/css/mui.picker.min.css",
+					"artisan/js/pageFilter.js",
+					"library/js/mui.picker.min.js",
+					"lease/js/vue-gesture.js",
+					"js/mui.view.js",
+					"library/css/pages.css",
+					"js/jquery.min.js",
+					"js/vue.js",
+					"js/util.js",
+					"artisan/css/page_3.css",
+					"js/evalHttp.js",
+					"js/Strings.js"
+				],
+				"refer": [
+					"artisan/pages/c_caozyck.html"
+				],
+				"priority": 0
+			},
+			"artisan/xiugai/xinzeng.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"artisan/img/me-bg.png",
+					"fonts/mui.ttf",
+					"library/js/uphoto.js",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"library/js/mui.picker.min.js",
+					"js/evalHttp.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/c_caozyck.html": {
+				"resources": [
+					"artisan/img/me-bg.png",
+					"library/js/uphoto.js",
+					"js/jquery.min.js",
+					"js/vue.js",
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"library/js/mui.picker.min.js",
+					"js/evalHttp.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/xiugai/upPasw.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/page_3.css",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"library/css/mui.picker.min.css",
+					"css/mui.min.css",
+					"js/evalHttp.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"mail/index.html": {
+				"resources": [
+					"mail/img/banner-03.jpg",
+					"mail/img/index2-2.png",
+					"mail/img/test-1.png",
+					"mail/img/me-yfk.png",
+					"mail/img/picture-03.png",
+					"mail/img/picture-06.png",
+					"mail/img/me-yfh.png",
+					"mail/img/index4-2.png",
+					"mail/img/picture-02.png",
+					"mail/img/me-set.png",
+					"mail/img/test-4.png",
+					"mail/img/icon-04.png",
+					"mail/img/index2-1.png",
+					"js/vue.js",
+					"mail/css/index.css",
+					"mail/img/picture-14.png",
+					"mail/js/index.js",
+					"artisan/img/banner.png",
+					"lease/js/vue-gesture.js",
+					"mail/img/me-smsg.png",
+					"mail/img/tg-box-bg.png",
+					"mail/css/mail.css",
+					"mail/img/index1-1.png",
+					"images/2.jpg",
+					"mail/img/icon-08.png",
+					"mail/img/index3-1.png",
+					"mail/img/me-dfh.png",
+					"mail/img/picture-05.png",
+					"mail/img/index4-1.png",
+					"mail/img/banner-02.jpg",
+					"mail/img/picture-21.png",
+					"mail/img/index3-2.png",
+					"mail/img/icon-09.png",
+					"mail/img/sel-img.png",
+					"mail/img/me-yys.png",
+					"mail/img/picture-20.png",
+					"mail/img/icon-06.png",
+					"mail/img/icon-07.png",
+					"mail/img/picture-13.png",
+					"css/mui.min.css",
+					"mail/js/vueFilter.js",
+					"mail/img/icon-05.png",
+					"mail/img/banner-01.jpg",
+					"mail/img/test-2.png",
+					"mail/img/picture-04.png",
+					"mail/img/index1-2.png",
+					"mail/img/picture-01.png",
+					"mail/img/me.png",
+					"fonts/mui.ttf",
+					"css/preimages.css",
+					"library/js/mui.previewimage.js",
+					"library/js/mui.zoom.js",
+					"js/mui.min.js",
+					"js/jquery.min.js",
+					"mail/img/search-dd.png",
+					"library/css/htmldialog.css",
+					"images/img_loading.jpg",
+					"js/evalHttp.js"
+				],
+				"refer": [
+					"mail/pages/message.html",
+					"mail/pages/page_1.html"
+				],
+				"priority": 0
+			},
+			"mail/pages/message.html": {
+				"resources": [
+					"mail/img/msg-type-2.png",
+					"mail/css/meassage.css",
+					"mail/img/msg-type-3.png",
+					"mail/img/msg-type-show.png",
+					"mail/img/msg-type-1.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"service/server_step.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/util.js",
+					"js/mui.min.js",
+					"images/img_loading.jpg",
+					"fonts/mui.ttf",
+					"service/js/getSevices.js",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"js/Strings.js",
+					"service/css/step.css"
+				],
+				"refer": [
+					"service/server_classfly.html"
+				],
+				"priority": 0
+			},
+			"service/server_classfly.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"fonts/mui.ttf",
+					"service/img/left_nav_close.png",
+					"css/preimages.css",
+					"library/js/mui.zoom.js",
+					"js/util.js",
+					"js/mui.min.js",
+					"images/img_loading.jpg",
+					"images/1.jpg",
+					"service/js/getSevices.js",
+					"css/mui.min.css",
+					"js/evalHttp.js",
+					"js/Strings.js",
+					"service/css/classfly.css",
+					"library/js/mui.previewimage.js",
+					"service/img/item_box1.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"tender/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/index.html": {
+				"resources": [
+					"css/mui.min.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/index.css",
+					"manager/img/Report-management_gray.png",
+					"manager/img/finance.png",
+					"manager/img/Do-manager_gray.png",
+					"manager/img/system.png",
+					"manager/img/set_gray.png",
+					"manager/img/sample.png",
+					"manager/img/warehouse.png",
+					"manager/img/materiel.png",
+					"manager/img/project.png",
+					"manager/项目执行/index.html",
+					"manager/projectImplementation/index.html",
+					"manager/financial-managements/index.html",
+					"manager/pages/financial-managements/index.html",
+					"manager/pages/project_Implementation/index.html",
+					"manager/pages/warehouse/index.html",
+					"manager/pages/material-managements/index.html",
+					"manager/pages/system-setting/index.html",
+					"manager/css/mana-index.css",
+					"manager/css/mana-set.css",
+					"manager/pages/setting/person_info.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"artisan/pages/page_9.html": {
+				"resources": [
+					"js/mui.min.js",
+					"artisan/css/index.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/index.html": {
+				"resources": [
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/标段设置/项目标段详情新增.html",
+					"manager/projectImplementation/标段设置/项目标段新增.html",
+					"manager/projectImplementation/images/bid.png",
+					"manager/projectImplementation/images/plan.png",
+					"manager/projectImplementation/css/set.css",
+					"css/mui.css",
+					"manager/projectImplementation/css/index.css",
+					"manager/projectImplementation/bid/bid_see.html",
+					"manager/projectImplementation/images/company.png",
+					"manager/projectImplementation/images/compled.png",
+					"manager/projectImplementation/images/summary.png",
+					"fonts/mui.ttf",
+					"manager/projectImplementation/bid/bid_summary.html",
+					"manager/index.html",
+					"js/mui.min.js",
+					"manager/projectImplementation/plan/plan_index.html",
+					"manager/projectImplementation/Assessment/assessment_index.html",
+					"manager/projectImplementation/presentation/pre_summary.html",
+					"manager/projectImplementation/completed/com_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_see.html": {
+				"resources": [
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/images/delete.png",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css",
+					"manager/projectImplementation/index.html",
+					"manager/projectImplementation/bid/bid_summary.html",
+					"manager/projectImplementation/bid/bid_add.html",
+					"manager/projectImplementation/bid/bid_add_info.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"info.html": {
+				"resources": [
+					"css/feedback.css",
+					"css/mui.min.css",
+					"images/me.png",
+					"js/feedback.js",
+					"js/mui.view.js",
+					"library/css/pages.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_summary.html": {
+				"resources": [
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/index.html",
+					"manager/projectImplementation/bid/bid_add.html",
+					"manager/projectImplementation/bid/bid_see.html",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css",
+					"manager/projectImplementation/bid/bid_add_info.html",
+					"manager/projectImplementation/bid/bid_detail.html",
+					"manager/projectImplementation/bid/bid_content.html",
+					"manager/projectImplementation/bid/bid_summary_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_add.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_add_info.html",
+					"manager/projectImplementation/bid/bid_summary.html",
+					"manager/projectImplementation/bid/bid_see.html",
+					"manager/projectImplementation/bid/bid_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_add_info.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_add.html",
+					"manager/projectImplementation/bid/bid_see.html",
+					"manager/projectImplementation/bid/bid_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_manager_summary.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_manager_info.html",
+					"manager/projectImplementation/plan/plan_manager_add.html",
+					"manager/projectImplementation/plan/plan_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_index.html": {
+				"resources": [
+					"manager/projectImplementation/js/mui.js",
+					"manager/projectImplementation/plan/plan_manager_summary.html",
+					"manager/index.html",
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/plan/plan_staff_summary.html",
+					"manager/projectImplementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_manager_add.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_manager_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_manager_info.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_manager_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_staff_summary.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_index.html",
+					"manager/projectImplementation/plan/plan_staff_info.html",
+					"manager/projectImplementation/plan/plan_staff_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_staff_info.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_staff_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/plan/plan_staff_add.html": {
+				"resources": [
+					"manager/projectImplementation/plan/plan_staff_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_staff_summary.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/assessment_index.html",
+					"manager/projectImplementation/Assessment/ass_staff_info.html",
+					"manager/projectImplementation/Assessment/ass_staff_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/assessment_index.html": {
+				"resources": [
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/js/mui.js",
+					"manager/projectImplementation/Assessment/ass_staff_summary.html",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/index.html",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css",
+					"manager/projectImplementation/Assessment/ass_manager_summary.html",
+					"manager/projectImplementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_manager_add.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/ass_manager_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_manager_summary.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/ass_manager_add.html",
+					"manager/projectImplementation/Assessment/ass_manager_info.html",
+					"manager/projectImplementation/js/mui.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/Assessment/assessment_index.html",
+					"manager/projectImplementation/css/index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_manager_info.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/ass_manager_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_staff_info.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/ass_staff_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/Assessment/ass_staff_add.html": {
+				"resources": [
+					"manager/projectImplementation/Assessment/ass_staff_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/presentation/pre_see.html": {
+				"resources": [
+					"manager/projectImplementation/images/delete.png",
+					"manager/projectImplementation/presentation/pre_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/presentation/pre_summary.html": {
+				"resources": [
+					"manager/projectImplementation/presentation/pre_see.html",
+					"manager/projectImplementation/presentation/pre_add.html",
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css",
+					"manager/projectImplementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/presentation/pre_add.html": {
+				"resources": [
+					"manager/projectImplementation/presentation/pre_summary.html",
+					"manager/projectImplementation/images/files.png",
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_info.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_see.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_summary.html": {
+				"resources": [
+					"manager/projectImplementation/index.html",
+					"manager/projectImplementation/completed/com_see.html",
+					"manager/projectImplementation/completed/com_add.html",
+					"manager/projectImplementation/completed/com_content.html",
+					"manager/projectImplementation/completed/com_summary_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_see.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_info.html",
+					"manager/projectImplementation/images/delete.png",
+					"manager/projectImplementation/completed/com_summary.html",
+					"manager/projectImplementation/completed/com_add_info.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_add.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_add_info.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_see.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_detail.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_add.html",
+					"manager/projectImplementation/bid/bid_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_content.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_detail.html",
+					"manager/projectImplementation/bid/bid_summary.html",
+					"manager/projectImplementation/bid/bid_content_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_summary_add.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/bid/bid_content_add.html": {
+				"resources": [
+					"manager/projectImplementation/bid/bid_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_content.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_detail.html",
+					"manager/projectImplementation/completed/com_summary.html",
+					"manager/projectImplementation/completed/com_content_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_detail.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_content.html",
+					"manager/projectImplementation/js/mui.min.js",
+					"manager/projectImplementation/css/mui.css",
+					"manager/projectImplementation/fonts/mui.ttf",
+					"manager/projectImplementation/css/set.css",
+					"manager/projectImplementation/css/index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_summary_add.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/projectImplementation/completed/com_content_add.html": {
+				"resources": [
+					"manager/projectImplementation/completed/com_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/reimbursement/reim_detail-02.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/reimbursement/reim_summary.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_detail-02.html",
+					"manager/financial-managements/js/mui.min.js",
+					"manager/financial-managements/reimbursement/reim_detail-01.html",
+					"manager/financial-managements/reimbursement/reim_detail-03.html",
+					"manager/css/set.css",
+					"manager/css/index-mana.css",
+					"manager/financial-managements/reimbursement/reim_detail-04.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/index.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_summary.html",
+					"manager/financial-managements/images/icon-acture.png",
+					"manager/financial-managements/images/icon-checkwork.png",
+					"manager/financial-managements/images/icon-reimbursement.png",
+					"css/mui.css",
+					"manager/financial-managements/images/icon-receivable.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/reimbursement/reim_detail-01.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/reimbursement/reim_detail-03.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_summary.html",
+					"manager/financial-managements/images/down.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/financial-managements/reimbursement/reim_detail-04.html": {
+				"resources": [
+					"manager/financial-managements/reimbursement/reim_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/index.html": {
+				"resources": [
+					"manager/img/icon-receivable.png",
+					"manager/img/icon-reimbursement.png",
+					"manager/img/icon-checkwork.png",
+					"manager/img/icon-acture.png",
+					"manager/css/mana-set.css",
+					"manager/pages/financial-managements/reim_summary.html",
+					"manager/pages/financial-managements/check_index.html",
+					"manager/css/mana-index.css",
+					"manager/index.html",
+					"manager/pages/financial-managements/node_summary.html",
+					"manager/pages/financial-managements/01_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/reim_summary.html": {
+				"resources": [
+					"manager/pages/financial-managements/index.html",
+					"manager/pages/financial-managements/reim_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/check_index.html": {
+				"resources": [
+					"manager/pages/financial-managements/index.html",
+					"manager/pages/financial-managements/check_summary.html",
+					"manager/pages/financial-managements/check_staff_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/check_detail.html": {
+				"resources": [
+					"manager/pages/financial-managements/check_staff_add_after.html",
+					"manager/pages/financial-managements/check_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/check_summary.html": {
+				"resources": [
+					"manager/pages/financial-managements/check_detail.html",
+					"manager/pages/financial-managements/check_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/check_staff_add_after.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css",
+					"manager/pages/financial-managements/check_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/check_staff_add.html": {
+				"resources": [
+					"manager/img/test-photo.jpg",
+					"js/jquery.min.js",
+					"manager/img/icon-click_photo.png",
+					"manager/img/delete.png",
+					"manager/pages/financial-managements/check_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/reim_detail.html": {
+				"resources": [
+					"manager/img/down.png",
+					"manager/pages/financial-managements/reim_detail-modify.html",
+					"manager/pages/financial-managements/reim_detail-check.html",
+					"manager/pages/financial-managements/reim_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/reim_detail-check.html": {
+				"resources": [
+					"manager/pages/financial-managements/reim_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/reim_detail-modify.html": {
+				"resources": [
+					"manager/pages/financial-managements/reim_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/ass_staff_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/assessment_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/index.html": {
+				"resources": [
+					"manager/img/bid.png",
+					"manager/img/plan.png",
+					"manager/img/compled.png",
+					"manager/img/summary.png",
+					"manager/img/company.png",
+					"manager/css/mana-set.css",
+					"manager/pages/project_Implementation/assessment_index.html",
+					"manager/css/mana-index.css",
+					"manager/index.html",
+					"manager/pages/project_Implementation/bid_summary.html",
+					"manager/pages/project_Implementation/plan_index.html",
+					"manager/pages/project_Implementation/01_summary.html",
+					"manager/pages/project_Implementation/com_summary.html",
+					"manager/pages/project_Implementation/pre_summary.html",
+					"manager/pages/project_Implementation/02_summary.html",
+					"manager/pages/project_Implementation/03_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/assessment_index.html": {
+				"resources": [
+					"manager/pages/project_Implementation/ass_staff_summary.html",
+					"manager/pages/project_Implementation/index.html",
+					"manager/pages/project_Implementation/ass_manager_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/ass_manager_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/assessment_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/node_summary.html": {
+				"resources": [
+					"manager/pages/financial-managements/node_detail.html",
+					"manager/pages/financial-managements/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/node_detail.html": {
+				"resources": [
+					"manager/pages/financial-managements/node_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/warehouse/01_summary.html": {
+				"resources": [
+					"manager/pages/warehouse/index.html",
+					"manager/pages/warehouse/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/warehouse/index.html": {
+				"resources": [
+					"manager/pages/warehouse/01_summary.html",
+					"manager/img/icon-ware-02.png",
+					"manager/css/mana-set.css",
+					"manager/img/icon-ware-01.png",
+					"manager/css/mana-index.css",
+					"manager/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/warehouse/01_content.html": {
+				"resources": [
+					"manager/pages/warehouse/01_summary.html",
+					"js/jquery.min.js",
+					"manager/pages/warehouse/01_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/warehouse/01_detail.html": {
+				"resources": [
+					"manager/pages/warehouse/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/index.html": {
+				"resources": [
+					"manager/img/icon-yongliao.png",
+					"manager/pages/material-managements/01_summary.html",
+					"manager/img/icon-yuliao.png",
+					"manager/img/icon-lingliao.png",
+					"manager/index.html",
+					"manager/css/mana-set.css",
+					"manager/css/mana-index.css",
+					"manager/pages/material-managements/02_summary.html",
+					"manager/pages/material-managements/03_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_content_add.html": {
+				"resources": [
+					"manager/img/delete.png",
+					"manager/pages/material-managements/01_content_add_num.html",
+					"manager/pages/material-managements/01_detail.html",
+					"manager/pages/material-managements/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_summary.html": {
+				"resources": [
+					"manager/pages/material-managements/01_content.html",
+					"manager/pages/material-managements/index.html",
+					"manager/pages/material-managements/01_summary_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_detail.html": {
+				"resources": [
+					"manager/pages/material-managements/01_content_add.html",
+					"manager/pages/material-managements/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_content.html": {
+				"resources": [
+					"manager/pages/material-managements/01_detail.html",
+					"manager/pages/material-managements/01_summary.html",
+					"manager/js/mana.js",
+					"manager/pages/material-managements/01_content_add.html",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_content_add_num.html": {
+				"resources": [
+					"manager/pages/material-managements/01_content_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/01_summary_add.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css",
+					"manager/pages/material-managements/01_summary.html",
+					"manager/img/search.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/plan_staff_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/plan_index.html",
+					"manager/pages/project_Implementation/plan_staff_info.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/bid_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/plan_index.html": {
+				"resources": [
+					"manager/pages/project_Implementation/plan_staff_summary.html",
+					"manager/pages/project_Implementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/02_summary_add.html": {
+				"resources": [
+					"manager/pages/material-managements/02_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/02_summary.html": {
+				"resources": [
+					"manager/pages/material-managements/02_summary_add.html",
+					"manager/pages/material-managements/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/system-setting/01_summary.html": {
+				"resources": [
+					"manager/pages/system-setting/01_summary_add.html",
+					"manager/pages/system-setting/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/system-setting/index.html": {
+				"resources": [
+					"manager/pages/system-setting/01_summary.html",
+					"manager/img/icon-sys-05.png",
+					"manager/img/icon-sys-01.png",
+					"manager/img/icon-sys-02.png",
+					"manager/img/icon-sys-06.png",
+					"manager/img/icon-sys-03.png",
+					"manager/img/icon-sys-04.png",
+					"manager/pages/system-setting/04_index.html",
+					"manager/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/03_summary_add.html": {
+				"resources": [
+					"manager/pages/material-managements/03_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/material-managements/03_summary.html": {
+				"resources": [
+					"manager/pages/material-managements/index.html",
+					"manager/pages/material-managements/03_summary_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/system-setting/01_summary_add.html": {
+				"resources": [
+					"manager/img/down.png",
+					"manager/pages/system-setting/01_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/system-setting/04B_index.html": {
+				"resources": [
+					"manager/img/icon-form.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css",
+					"manager/img/icon-edit.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/system-setting/04_index.html": {
+				"resources": [
+					"manager/pages/system-setting/04B_index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_content.html",
+					"manager/pages/project_Implementation/index.html",
+					"manager/pages/project_Implementation/bid_summary_add.html",
+					"manager/pages/project_Implementation/01_summary_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_content.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_summary.html",
+					"manager/js/mana.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css",
+					"manager/pages/project_Implementation/01_content_add.html",
+					"manager/pages/project_Implementation/bid_detail.html",
+					"manager/pages/project_Implementation/01_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_content_add.html": {
+				"resources": [
+					"manager/pages/project_Implementation/bid_content_add.html",
+					"manager/pages/project_Implementation/01_content.html",
+					"manager/img/delete.png",
+					"manager/pages/project_Implementation/01_content_add_.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/bid_content_add.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_content_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/com_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/com_content.html",
+					"manager/pages/project_Implementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/com_content.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"manager/pages/project_Implementation/com_summary.html",
+					"manager/pages/project_Implementation/com_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/bid_summary_add.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_summary.html",
+					"manager/img/search.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/com_detail.html": {
+				"resources": [
+					"manager/pages/project_Implementation/com_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/bid_detail.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/plan_staff_info.html": {
+				"resources": [
+					"manager/pages/project_Implementation/plan_staff_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_detail.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_content.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_content_add_.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_content_add.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/02_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/02B_summary.html",
+					"manager/pages/project_Implementation/index.html",
+					"manager/pages/project_Implementation/02A_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/02B_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/02B_detail.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/02B_detail.html": {
+				"resources": [
+					"manager/img/search.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"manager/css/mana-set.css",
+					"css/mui.min.css",
+					"manager/css/mana-index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/setting/person_info.html": {
+				"resources": [
+					"manager/img/test-photo.jpg",
+					"manager/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/02A_detail.html": {
+				"resources": [
+					"manager/pages/project_Implementation/02A_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/02A_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/02A_detail.html",
+					"manager/pages/project_Implementation/02_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/03_summary.html": {
+				"resources": [
+					"manager/pages/project_Implementation/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/project_Implementation/01_summary_add.html": {
+				"resources": [
+					"manager/pages/project_Implementation/01_summary.html",
+					"manager/img/search.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/01_detail.html": {
+				"resources": [
+					"manager/img/down.png",
+					"manager/pages/financial-managements/01_summary.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"manager/pages/financial-managements/01_summary.html": {
+				"resources": [
+					"manager/pages/financial-managements/01_detail.html",
+					"manager/pages/financial-managements/index.html"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/mui.dtpicker.js",
+				"css/mui.listpicker.css",
+				"css/mui.dtpicker.css",
+				"css/mui.picker.all.css",
+				"examples/modals.html",
+				"examples/tabbar-labels-only.html",
+				"js/mui.listpicker.js",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"js/mui.picker.all.js"
+			]
+		}
+	}
+
+	
+}

@@ -1,0 +1,60 @@
+.user_type_box{
+	height: 60px;
+	width: 60px;
+	border-radius: 30px;
+	background-color: #9c005e;
+	border: none;
+	background-repeat: no-repeat;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.type_box_msg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.type_box_msg>img{
+	width: 40%;
+	height: 40%;
+	display: block;
+	margin: 8px auto;
+}
+.type_box_msg>label{
+	font-size: 14px;
+	color: #FFFFFF;
+	width: 100%;
+	display: block;
+	text-align: center;
+	height: 20px;
+	margin-top: -5px;
+	line-height: 20px;
+}
+#seletUserType{
+	margin-top: 40px;
+	margin-left: auto;
+}
+.type_up{
+	margin: 0px auto;
+	display: block;
+	height: 60px;
+}
+.type_up>.float_box{
+	margin-left: 60px;
+}
+.type_down{
+	display: block;
+	height: 60px;
+	margin: 0px auto;
+	margin-top: 50px;
+}
+.type_down>.float_box{
+	margin-left: 30px;
+	
+}
+.user_type_box>img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+

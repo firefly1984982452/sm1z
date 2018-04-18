@@ -1,0 +1,2484 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"list.html",
+			"css/indx.css",
+			"html.html",
+			"js/util.js",
+			"images/home.png",
+			"images/2.jpg",
+			"images/1.jpg",
+			"images/3.jpg",
+			"images/4.jpg",
+			"images/login/logo.png",
+			"images/index_6.png",
+			"images/index_1.png",
+			"images/index_3.png",
+			"images/index_2.png",
+			"images/index_4.png",
+			"images/index_5.png",
+			"images/img_loading.jpg",
+			"data/imgloading.json",
+			"js/Strings.js",
+			"css/mui.css",
+			"images/lb_1.png",
+			"images/lb_2.png",
+			"images/lb_3.png",
+			"images/lb_4.png",
+			"images/lb_1.jpg",
+			"images/lb_4.jpg",
+			"images/lb_2.jpg",
+			"js/jquery.min.js",
+			"css/preimages.css",
+			"library/js/mui.zoom.js",
+			"images/lb_3.jpg",
+			"library/js/mui.previewimage.js",
+			"js/evalHttp.js"
+		],
+		"refer": [
+			"list.html",
+			"html.html",
+			"login.html",
+			"service/index.html",
+			"tender/index.html",
+			"manager/index.html",
+			"artisan/index.html",
+			"mail/index.html",
+			"lease/index.html",
+			"info.html",
+			"download/download.html",
+			"artisan/login.html"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/util.js",
+			"js/mui.min.js",
+			"js/EvalHttp.js",
+			"css/mui.min.css",
+			"js/Strings.js",
+			"fonts/mui.ttf",
+			"css/login.css",
+			"images/loading.gif",
+			"js/evalHttp.js",
+			"images/login/logo.png"
+		],
+		"refer": [
+			"index.html",
+			"register_select.html",
+			"register/register_select.html"
+		]
+	},
+	"register_select.html": {
+		"resources": [
+			"images/register/register_arc.png",
+			"fonts/mui.ttf",
+			"css/registe_select.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/jquery.min.js",
+			"images/register/peple.png",
+			"images/register/construction.png",
+			"images/register/artisan.png",
+			"images/register/Suppliers.png",
+			"images/register/proprietor.png",
+			"images/login/logo.png"
+		],
+		"refer": [
+			"register.html"
+		]
+	},
+	"register.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/register.css",
+			"fonts/mui.ttf",
+			"js/util.js",
+			"js/evalHttp.js",
+			"js/Strings.js",
+			"js/jquery.min.js",
+			"js/mui.picker.min.js",
+			"css/mui.picker.min.css",
+			"js/city.data-3.js"
+		],
+		"refer": []
+	},
+	"register/register.html": {
+		"resources": [
+			"library/css/mui.picker.min.css",
+			"library/js/city.data-3.js",
+			"register/css/register.css",
+			"js/util.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"library/js/mui.picker.min.js",
+			"js/Strings.js"
+		],
+		"refer": [
+			"register/register_step1.html",
+			"login.html"
+		]
+	},
+	"register/register_select.html": {
+		"resources": [
+			"register/css/registe_select.css",
+			"images/register/register_arc.png",
+			"images/register/construction.png",
+			"js/jquery.min.js",
+			"images/register/artisan.png",
+			"images/register/peple.png",
+			"images/register/Suppliers.png",
+			"images/register/proprietor.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"register/register.html"
+		]
+	},
+	"register/register_step1.html": {
+		"resources": [
+			"register/css/registe_select.css",
+			"images/register/register_arc.png",
+			"images/register/construction.png",
+			"js/jquery.min.js",
+			"images/register/artisan.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"images/register/peple.png",
+			"css/mui.min.css",
+			"images/register/Suppliers.png",
+			"images/register/proprietor.png",
+			"js/util.js",
+			"library/css/mui.picker.min.css",
+			"library/js/city.data-3.js",
+			"register/css/register.css",
+			"js/evalHttp.js",
+			"library/js/mui.picker.min.js",
+			"js/Strings.js"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"service/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"images/1.jpg",
+			"images/img_loading.jpg",
+			"service/css/index.css",
+			"images/index_6.png",
+			"images/index_2.png",
+			"images/index_1.png",
+			"images/index_4.png",
+			"images/index_5.png",
+			"images/index_3.png",
+			"service/img/item_box1.jpg",
+			"service/img/item_box2.jpg",
+			"service/img/item_box3.jpg",
+			"service/img/item_box4.jpg",
+			"service/img/item_box5.jpg",
+			"service/img/item_box6.jpg",
+			"service/img/item_box7.jpg",
+			"service/img/item_box8.jpg",
+			"service/img/tc.png",
+			"service/img/qx.png",
+			"service/img/sc.png",
+			"service/img/zxfb.png",
+			"service/img/hnt.png",
+			"service/img/mc.png",
+			"service/getSevices.js",
+			"library/js/mui.picker.min.js",
+			"js/evalHttp.js",
+			"js/Strings.js",
+			"service/js/getSevices.js",
+			"js/jquery.min.js",
+			"js/util.js",
+			"service/img/server_1.png",
+			"service/img/server_3.png",
+			"service/img/server_2.png",
+			"service/img/server_5.png",
+			"service/img/server_4.png",
+			"service/img/server_6.png",
+			"images/3.jpg",
+			"library/js/handlebars-1.0.0.beta.6.js",
+			"service/data/case.json",
+			"library/js/doT.min.js",
+			"library/js/mui.zoom.js",
+			"library/js/mui.previewimage.js",
+			"images/2.jpg",
+			"service/img/server_1_3.png",
+			"service/img/server_1_2.png",
+			"service/img/server_3_1.png",
+			"service/img/server3_2.png",
+			"service/img/server3_1.png",
+			"service/img/server3_3.png",
+			"service/img/server3_4.png",
+			"service/img/server3_5.png",
+			"service/img/sgj-us.png",
+			"service/img/sgj-er.jpg",
+			"service/js/extras.js",
+			"images/server-index.jpg",
+			"service/img/server_LOGO.png",
+			"service/img/le_7.jpg",
+			"service/img/c-img-1.png",
+			"service/img/le_2.jpg",
+			"service/img/c-img-2.png",
+			"service/img/f.png",
+			"service/img/le_1.jpg",
+			"service/img/hzpp.png",
+			"service/img/le_logo.png",
+			"service/img/i.png",
+			"service/img/g.png",
+			"service/img/h.png",
+			"service/img/le_3.jpg",
+			"service/img/le_6.jpg",
+			"service/img/le_4.jpg",
+			"service/img/le_tixi.png",
+			"service/img/l.png",
+			"service/img/join-logo.png",
+			"service/img/l_2.jpg",
+			"service/img/le_5.jpg",
+			"service/img/le_8.jpg",
+			"images/server-index.png",
+			"service/img/server-index.jpg",
+			"service/img/s1_2.png",
+			"service/img/s5_1.jpg",
+			"service/img/s4_1.png",
+			"service/img/s5_2.jpg",
+			"service/img/s3_2.jpg",
+			"service/img/s1_1.png",
+			"service/img/s3_1.jpg",
+			"service/img/s2_1.png",
+			"service/img/s2_2.png",
+			"service/img/s4_2.png",
+			"css/preimages.css"
+		],
+		"refer": [
+			"service/server_step_1.html",
+			"service/server_step.html",
+			"service/server_classfly.html",
+			"service/join.html"
+		]
+	},
+	"tender/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"manager/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"manager/css/index.css",
+			"manager/img/Report-management_gray.png",
+			"manager/img/finance.png",
+			"manager/img/Do-manager_gray.png",
+			"manager/img/system.png",
+			"manager/img/set_gray.png",
+			"manager/img/sample.png",
+			"manager/img/warehouse.png",
+			"manager/img/materiel.png",
+			"manager/img/project.png",
+			"manager/项目执行/index.html",
+			"manager/projectImplementation/index.html",
+			"manager/financial-managements/index.html",
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/warehouse/index.html",
+			"manager/pages/material-managements/index.html",
+			"manager/pages/system-setting/index.html",
+			"manager/css/mana-index.css",
+			"manager/css/mana-set.css",
+			"manager/pages/setting/person_info.html"
+		],
+		"refer": [
+			"manager/项目执行/index.html",
+			"manager/projectImplementation/index.html",
+			"manager/financial-managements/index.html",
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/warehouse/index.html",
+			"manager/pages/material-managements/index.html",
+			"manager/pages/system-setting/index.html",
+			"manager/pages/setting/person_info.html"
+		]
+	},
+	"artisan/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/js/index.js",
+			"artisan/img/index-xqpg.png",
+			"artisan/img/index-qdht.png",
+			"artisan/css/index.css",
+			"artisan/img/index-zbdt.png",
+			"artisan/img/index-sjsx.png",
+			"artisan/img/index_sjxx.png",
+			"artisan/img/index-bzxx.png",
+			"artisan/img/index-sjpd.png",
+			"artisan/img/index-xmbj.png",
+			"artisan/img/banner.png",
+			"artisan/img/index-khbf.png",
+			"artisan/css/page_3.css",
+			"artisan/img/me-bg.png",
+			"artisan/css/page.css",
+			"js/vue.js",
+			"artisan/img/me-msg.png",
+			"artisan/img/down-block.png",
+			"artisan/img/kehu-1.png",
+			"artisan/img/kehu.png",
+			"artisan/img/user.png"
+		],
+		"refer": [
+			"artisan/pages/page_2.html",
+			"artisan/pages/page_1.html",
+			"artisan/pages/page_4.html",
+			"artisan/pages/page_3.html",
+			"artisan/pages/page_7.html",
+			"artisan/pages/page_6.html",
+			"artisan/pages/page_5.html",
+			"artisan/pages/page_9.html",
+			"artisan/pages/page_8.html",
+			"artisan/xiugai/up_me.html",
+			"artisan/pages/caozyck.html",
+			"artisan/xiugai/xinzeng.html",
+			"artisan/xiugai/upPasw.html",
+			"download/download.html"
+		]
+	},
+	"mail/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"mail/img/banner-03.jpg",
+			"mail/img/index2-2.png",
+			"mail/img/test-1.png",
+			"mail/img/me-yfk.png",
+			"mail/img/picture-03.png",
+			"mail/img/picture-06.png",
+			"mail/img/me-yfh.png",
+			"mail/img/index4-2.png",
+			"mail/img/picture-02.png",
+			"mail/img/me-set.png",
+			"mail/img/test-4.png",
+			"mail/img/icon-04.png",
+			"mail/img/index2-1.png",
+			"js/vue.js",
+			"mail/css/index.css",
+			"mail/img/picture-14.png",
+			"mail/js/index.js",
+			"artisan/img/banner.png",
+			"lease/js/vue-gesture.js",
+			"mail/img/me-smsg.png",
+			"mail/img/tg-box-bg.png",
+			"mail/css/mail.css",
+			"mail/img/index1-1.png",
+			"images/2.jpg",
+			"mail/img/icon-08.png",
+			"mail/img/index3-1.png",
+			"mail/img/me-dfh.png",
+			"mail/img/picture-05.png",
+			"mail/img/index4-1.png",
+			"mail/img/banner-02.jpg",
+			"mail/img/picture-21.png",
+			"mail/img/index3-2.png",
+			"mail/img/icon-09.png",
+			"mail/img/sel-img.png",
+			"mail/img/me-yys.png",
+			"mail/img/picture-20.png",
+			"mail/img/icon-06.png",
+			"mail/img/icon-07.png",
+			"mail/img/picture-13.png",
+			"mail/js/vueFilter.js",
+			"mail/img/icon-05.png",
+			"mail/img/banner-01.jpg",
+			"mail/img/test-2.png",
+			"mail/img/picture-04.png",
+			"mail/img/index1-2.png",
+			"mail/img/picture-01.png",
+			"mail/img/me.png",
+			"css/preimages.css",
+			"library/js/mui.previewimage.js",
+			"library/js/mui.zoom.js",
+			"js/jquery.min.js",
+			"mail/img/search-dd.png",
+			"library/css/htmldialog.css",
+			"images/img_loading.jpg",
+			"js/evalHttp.js"
+		],
+		"refer": [
+			"mail/pages/message.html",
+			"mail/pages/page_1.html"
+		]
+	},
+	"lease/index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"lease/css/index.css",
+			"images/1.jpg",
+			"lease/img/lease_zr.png",
+			"lease/img/lease_qz.png",
+			"lease/img/lease_cz.png",
+			"lease/img/lease_1.jpg",
+			"lease/img/lease_2.jpg",
+			"images/img_loading.jpg",
+			"js/vue.js",
+			"lease/js/vue-tap.js",
+			"lease/js/index.js",
+			"js/evalHttp.js",
+			"js/Strings.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.js",
+			"lease/img/lease_3.jpg",
+			"lease/img/chaozhi.png",
+			"lease/img/collect.png"
+		],
+		"refer": [
+			"lease/pullrefresh_main.html",
+			"lease/classfly.html",
+			"lease/collect.html"
+		]
+	},
+	"info.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/feedback.css",
+			"images/me.png",
+			"js/feedback.js",
+			"js/mui.view.js",
+			"js/Strings.js",
+			"js/util.js",
+			"library/css/pages.css"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"service/server_step_1.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"service/css/selector.css",
+			"service/css/step.css",
+			"service/js/evalSelector.js",
+			"js/jquery.min.js",
+			"js/mui.js",
+			"css/app.css",
+			"images/1.jpg",
+			"images/2.jpg",
+			"images/3.jpg",
+			"js/navigator.iscroll.js",
+			"js/navigator.js",
+			"css/navigator.default.css",
+			"css/navigator.iscroll.default.css"
+		],
+		"refer": []
+	},
+	"service/server_step.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/1.jpg",
+			"service/css/step.css",
+			"service/js/getSevices.js",
+			"js/Strings.js",
+			"js/evalHttp.js",
+			"js/util.js",
+			"js/jquery.min.js",
+			"images/img_loading.jpg"
+		],
+		"refer": [
+			"service/server_classfly.html"
+		]
+	},
+	"welcome.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"images/1.jpg",
+			"js/mui.js",
+			"js/jquery.min.js",
+			"images/welcome_1.jpg",
+			"images/welcome_2.jpg",
+			"images/welcome_3.jpg",
+			"images/welcome_4.jpg",
+			"js/util.js",
+			"js/Strings.js"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"service/server_classfly.html": {
+		"resources": [
+			"service/css/classfly.css",
+			"js/mui.min.js",
+			"images/img_loading.jpg",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jquery.min.js",
+			"images/1.jpg",
+			"service/img/left_nav_close.png",
+			"js/evalHttp.js",
+			"js/Strings.js",
+			"service/js/getSevices.js",
+			"service/data/servser.json",
+			"images/index_1.png",
+			"images/index_2.png",
+			"images/index_4.png",
+			"images/index_5.png",
+			"images/index_3.png",
+			"js/util.js",
+			"css/preimages.css",
+			"library/js/mui.zoom.js",
+			"library/js/mui.previewimage.js",
+			"service/img/item_box1.jpg"
+		],
+		"refer": []
+	},
+	"test.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"service/join.html": {
+		"resources": [
+			"js/mui.min.js",
+			"library/css/mui.picker.min.css",
+			"library/js/city.data-3.js",
+			"library/js/mui.picker.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/Strings.js",
+			"js/util.js",
+			"js/evalHttp.js"
+		],
+		"refer": []
+	},
+	"lease/pullrefresh_main.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"lease/pullrefresh_sub.html",
+			"lease/css/main.css",
+			"js/util.js",
+			"lease/img/search.png",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"lease/pullrefresh_sub.html",
+			"login.html"
+		]
+	},
+	"lease/pullrefresh_sub.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"lease/css/sub.css",
+			"js/util.js",
+			"js/evalHttp.js",
+			"js/Strings.js",
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"lease/css/index.css",
+			"images/img_loading.jpg",
+			"service/img/left_nav_close.png",
+			"library/css/mui.picker.min.css",
+			"library/js/city.data-3.js",
+			"library/js/mui.picker.min.js",
+			"js/mui.js",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"lease/classfly.html"
+		]
+	},
+	"lease/classfly.html": {
+		"resources": [
+			"lease/img/lease_phone.png",
+			"lease/img/lease_sc.png",
+			"lease/css/classfly.css",
+			"lease/img/lease_3.jpg",
+			"js/vue.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js",
+			"js/Strings.js",
+			"lease/img/lease_1.jpg",
+			"lease/img/lease_2.jpg",
+			"js/jquery.min.js",
+			"js/util.js",
+			"css/preimages.css",
+			"library/js/mui.previewimage.js",
+			"library/js/mui.zoom.js"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"lease/collect.html": {
+		"resources": [
+			"js/util.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js",
+			"js/Strings.js",
+			"lease/css/index.css",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"lease/classfly.html"
+		]
+	},
+	"artisan/pages/page_2.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/pages/page2_sub.html",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page2_sub.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/page_1.html": {
+		"resources": [
+			"artisan/css/page_1.css",
+			"js/mui.view.js",
+			"library/css/pages.css",
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"js/evalHttp.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/pages/page1_sub.html",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_1.html",
+			"artisan/pages/c_page_3_add.html",
+			"artisan/pages/page1_sub.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/page2_sub.html": {
+		"resources": [
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"artisan/css/page_2.css",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jquery.min.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_2.html"
+		]
+	},
+	"artisan/pages/page4_sub.html": {
+		"resources": [
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"js/evalHttp.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_4.html"
+		]
+	},
+	"artisan/pages/page_4.html": {
+		"resources": [
+			"artisan/pages/page4_sub.html",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page4_sub.html",
+			"artisan/pages/c_page_4_add.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/c_page_4_add.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"artisan/css/page_4.css",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"library/css/uphoto.css",
+			"js/jquery.min.js",
+			"library/js/uphoto.js",
+			"js/vue.js",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js"
+		],
+		"refer": [
+			"artisan/pages/page_1.html",
+			"artisan/pages/page_1_s.html"
+		]
+	},
+	"artisan/pages/page_3.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/pages/page3_sub.html",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page3_sub.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/c_page_4.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/css/page_4.css",
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"js/file.js",
+			"css/preimages.css",
+			"library/js/mui.zoom.js",
+			"js/vue.js",
+			"js/evalHttp.js",
+			"artisan/js/pageFilter.js",
+			"lease/js/vue-gesture.js",
+			"library/js/mui.previewimage.js",
+			"library/css/dialog.css",
+			"library/js/dialog.js"
+		],
+		"refer": [
+			"download/download.html"
+		]
+	},
+	"artisan/pages/page3_sub.html": {
+		"resources": [
+			"js/vue.js",
+			"artisan/css/page_3.css",
+			"lease/js/vue-gesture.js",
+			"js/evalHttp.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"artisan/pages/c_page_3.html"
+		]
+	},
+	"artisan/pages/c_page_3.html": {
+		"resources": [
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"js/vue.js",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js"
+		],
+		"refer": []
+	},
+	"artisan/pages/page6_sub.html": {
+		"resources": [
+			"artisan/css/page_6.css",
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_6.html"
+		]
+	},
+	"artisan/pages/page_6.html": {
+		"resources": [
+			"artisan/pages/page6_sub.html",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page6_sub.html",
+			"artisan/pages/c_page_6_add.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/c_page_6_add.html": {
+		"resources": [
+			"lease/js/phot.js",
+			"js/jquery.min.js",
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"js/evalHttp.js",
+			"library/js/mui.picker.min.js",
+			"artisan/css/page_6.css",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"artisan/pages/page_5.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/pages/page5_sub.html",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page5_sub.html",
+			"artisan/pages/c_page_5_add.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"test1.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"download/download.html": {
+		"resources": [
+			"download/css/index.css",
+			"js/vue.js",
+			"css/mui.min.css",
+			"lease/js/vue-gesture.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"download/img/apk.png",
+			"download/img/other.png",
+			"download/img/jpg.png",
+			"js/file.js",
+			"download/img/doc.png"
+		],
+		"refer": []
+	},
+	"artisan/pages/c_page_6.html": {
+		"resources": [
+			"artisan/img/down.png",
+			"artisan/css/page_3.css",
+			"artisan/css/page_6.css",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/file.js",
+			"library/css/dialog.css",
+			"library/js/dialog.js",
+			"js/vue.js",
+			"artisan/js/pageFilter.js",
+			"lease/js/vue-gesture.js"
+		],
+		"refer": [
+			"download/download.html"
+		]
+	},
+	"artisan/pages/c_page_1.html": {
+		"resources": [
+			"artisan/js/evalbars.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/css/page_1.css",
+			"js/vue.js",
+			"library/css/mui.picker.min.css",
+			"js/evalHttp.js",
+			"artisan/js/pageFilter.js",
+			"lease/js/vue-gesture.js",
+			"library/css/dialog.css",
+			"library/js/dialog.js"
+		],
+		"refer": [
+			"artisan/xiugai/up_user.html",
+			"artisan/xiugai/up_shangji.html",
+			"artisan/pages/c_page_3.html",
+			"artisan/pages/page_4.html",
+			"artisan/pages/c_page_5.html",
+			"artisan/pages/c_page_7.html",
+			"artisan/pages/c_page_4_add.html"
+		]
+	},
+	"artisan/login.html": {
+		"resources": [
+			"artisan/css/index.css",
+			"artisan/img/crmLogin.png",
+			"artisan/img/pasw.png",
+			"css/mui.min.css",
+			"artisan/css/login.css",
+			"artisan/img/user.png",
+			"js/evalHttp.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"artisan/img/user_1.png"
+		],
+		"refer": [
+			"artisan/index.html"
+		]
+	},
+	"artisan/xiugai/up_user.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/js/city.data-3.js",
+			"library/js/mui.picker.min.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js"
+		]
+	},
+	"artisan/xiugai/up_shangji.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/js/mui.picker.min.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"lease/js/vue-gesture.js",
+			"js/evalHttp.js"
+		]
+	},
+	"artisan/pages/c_page_3_add.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"artisan/js/pageFilter.js",
+			"library/js/mui.picker.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/pages.css",
+			"js/vue.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.view.js"
+		],
+		"refer": [
+			"artisan/xiugai/xinzengkehu.html"
+		]
+	},
+	"artisan/xiugai/xinzengkehu.html": {
+		"resources": [
+			"library/js/city.data-3.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js",
+			"library/js/mui.picker.min.js",
+			"lease/js/vue-gesture.js"
+		]
+	},
+	"artisan/pages/page5_sub.html": {
+		"resources": [
+			"artisan/css/page_5.css",
+			"js/vue.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"artisan/js/pageFilter.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_5.html"
+		]
+	},
+	"artisan/pages/c_page_5.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"artisan/js/evaloptions.js",
+			"artisan/css/page_5.css",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js"
+		]
+	},
+	"artisan/pages/c_page_5_add.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"artisan/js/evaloptions.js",
+			"artisan/css/page_5.css",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js"
+		],
+		"refer": [
+			"artisan/pages/page_1.html"
+		]
+	},
+	"artisan/pages/page1_sub.html": {
+		"resources": [
+			"js/vue.js",
+			"artisan/css/page_1.css",
+			"lease/js/vue-gesture.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"css/mui.min.css",
+			"js/evalHttp.js",
+			"fonts/mui.ttf",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/c_page_1.html"
+		]
+	},
+	"artisan/pages/search.html": {
+		"resources": [
+			"artisan/css/page_3.css",
+			"library/css/mui.picker.min.css",
+			"library/js/city.data-3.js",
+			"library/js/mui.picker.min.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"artisan/pages/page_7.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/pages/page7_sub.html",
+			"library/js/scrollZIP.js"
+		],
+		"refer": [
+			"artisan/pages/page7_sub.html",
+			"artisan/pages/search.html"
+		]
+	},
+	"artisan/pages/page7_sub.html": {
+		"resources": [
+			"js/vue.js",
+			"artisan/js/pageFilter.js",
+			"js/evalHttp.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"artisan/pages/c_page_7.html"
+		]
+	},
+	"artisan/pages/page_8.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"artisan/pages/c_page_7.html": {
+		"resources": [
+			"artisan/css/page_6.css",
+			"js/vue.js",
+			"artisan/img/down.png",
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"artisan/js/pageFilter.js",
+			"js/file.js",
+			"library/css/dialog.css",
+			"lease/js/vue-gesture.js",
+			"library/js/dialog.js"
+		]
+	},
+	"artisan/pages/pages1_sub.html": {
+		"resources": [
+			"artisan/css/page_1.css"
+		]
+	},
+	"artisan/pages/page_1_s.html": {
+		"resources": [
+			"artisan/pages/pages1_sub.html"
+		],
+		"refer": [
+			"artisan/pages/pages1_sub.html"
+		]
+	},
+	"artisan/xiugai/up_me.html": {
+		"resources": [
+			"library/js/uphoto.js",
+			"library/css/mui.picker.min.css",
+			"library/js/mui.picker.min.js",
+			"js/jquery.min.js",
+			"artisan/css/index.css",
+			"artisan/css/page_3.css",
+			"artisan/img/me-bg.png",
+			"fonts/mui.ttf",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/img/me-msg.png",
+			"css/mui.min.css",
+			"js/evalHttp.js"
+		]
+	},
+	"artisan/pages/caozyck.html": {
+		"resources": [
+			"library/js/scrollZIP.js",
+			"artisan/pages/caozyck_sub.html",
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"artisan/pages/caozyck_sub.html"
+		]
+	},
+	"artisan/pages/caozyck_sub.html": {
+		"resources": [
+			"library/css/mui.picker.min.css",
+			"artisan/js/pageFilter.js",
+			"library/js/mui.picker.min.js",
+			"lease/js/vue-gesture.js",
+			"js/mui.view.js",
+			"library/css/pages.css",
+			"js/jquery.min.js",
+			"js/vue.js",
+			"js/util.js",
+			"artisan/css/page_3.css",
+			"js/evalHttp.js",
+			"js/Strings.js"
+		],
+		"refer": [
+			"artisan/pages/c_caozyck.html"
+		]
+	},
+	"artisan/xiugai/xinzeng.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"artisan/img/me-bg.png",
+			"fonts/mui.ttf",
+			"library/js/uphoto.js",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"library/js/mui.picker.min.js",
+			"js/evalHttp.js"
+		]
+	},
+	"artisan/pages/c_caozyck.html": {
+		"resources": [
+			"artisan/img/me-bg.png",
+			"library/js/uphoto.js",
+			"js/jquery.min.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"library/js/mui.picker.min.js",
+			"js/evalHttp.js"
+		]
+	},
+	"artisan/xiugai/upPasw.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/page_3.css",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"library/css/mui.picker.min.css",
+			"css/mui.min.css",
+			"js/evalHttp.js"
+		]
+	},
+	"mail/pages/message.html": {
+		"resources": [
+			"mail/img/msg-type-2.png",
+			"mail/css/meassage.css",
+			"mail/img/msg-type-3.png",
+			"mail/img/msg-type-show.png",
+			"mail/img/msg-type-1.png"
+		]
+	},
+	"artisan/pages/page_9.html": {
+		"resources": [
+			"js/mui.min.js",
+			"artisan/css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"manager/projectImplementation/index.html": {
+		"resources": [
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/标段设置/项目标段详情新增.html",
+			"manager/projectImplementation/标段设置/项目标段新增.html",
+			"manager/projectImplementation/images/bid.png",
+			"manager/projectImplementation/images/plan.png",
+			"manager/projectImplementation/css/set.css",
+			"css/mui.css",
+			"manager/projectImplementation/css/index.css",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/images/company.png",
+			"manager/projectImplementation/images/compled.png",
+			"manager/projectImplementation/images/summary.png",
+			"fonts/mui.ttf",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/index.html",
+			"js/mui.min.js",
+			"manager/projectImplementation/plan/plan_index.html",
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/presentation/pre_summary.html",
+			"manager/projectImplementation/completed/com_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/标段设置/项目标段详情新增.html",
+			"manager/projectImplementation/标段设置/项目标段新增.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/index.html",
+			"manager/projectImplementation/plan/plan_index.html",
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/presentation/pre_summary.html",
+			"manager/projectImplementation/completed/com_summary.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_see.html": {
+		"resources": [
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/images/delete.png",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css",
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_add_info.html"
+		],
+		"refer": [
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_add_info.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_summary.html": {
+		"resources": [
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css",
+			"manager/projectImplementation/bid/bid_add_info.html",
+			"manager/projectImplementation/bid/bid_detail.html",
+			"manager/projectImplementation/bid/bid_content.html",
+			"manager/projectImplementation/bid/bid_summary_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_add_info.html",
+			"manager/projectImplementation/bid/bid_detail.html",
+			"manager/projectImplementation/bid/bid_content.html",
+			"manager/projectImplementation/bid/bid_summary_add.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_add.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_add_info.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_detail.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_add_info.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_detail.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_add_info.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_see.html",
+			"manager/projectImplementation/bid/bid_summary.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_manager_summary.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_manager_info.html",
+			"manager/projectImplementation/plan/plan_manager_add.html",
+			"manager/projectImplementation/plan/plan_index.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_manager_info.html",
+			"manager/projectImplementation/plan/plan_manager_add.html",
+			"manager/projectImplementation/plan/plan_index.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_index.html": {
+		"resources": [
+			"manager/projectImplementation/js/mui.js",
+			"manager/projectImplementation/plan/plan_manager_summary.html",
+			"manager/index.html",
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/plan/plan_staff_summary.html",
+			"manager/projectImplementation/index.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_manager_summary.html",
+			"manager/index.html",
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/plan/plan_staff_summary.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_manager_add.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_manager_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_manager_summary.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_manager_info.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_manager_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_manager_summary.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_staff_summary.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_index.html",
+			"manager/projectImplementation/plan/plan_staff_info.html",
+			"manager/projectImplementation/plan/plan_staff_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_index.html",
+			"manager/projectImplementation/plan/plan_staff_info.html",
+			"manager/projectImplementation/plan/plan_staff_add.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_staff_info.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_staff_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_staff_summary.html"
+		]
+	},
+	"manager/projectImplementation/plan/plan_staff_add.html": {
+		"resources": [
+			"manager/projectImplementation/plan/plan_staff_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/plan/plan_staff_summary.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_staff_summary.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/Assessment/ass_staff_info.html",
+			"manager/projectImplementation/Assessment/ass_staff_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/Assessment/ass_staff_info.html",
+			"manager/projectImplementation/Assessment/ass_staff_add.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/assessment_index.html": {
+		"resources": [
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/js/mui.js",
+			"manager/projectImplementation/Assessment/ass_staff_summary.html",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/index.html",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css",
+			"manager/projectImplementation/Assessment/ass_manager_summary.html",
+			"manager/projectImplementation/index.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_staff_summary.html",
+			"manager/index.html",
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/Assessment/ass_manager_summary.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_manager_add.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/ass_manager_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_manager_summary.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_manager_summary.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/ass_manager_add.html",
+			"manager/projectImplementation/Assessment/ass_manager_info.html",
+			"manager/projectImplementation/js/mui.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/css/index.css"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_manager_add.html",
+			"manager/projectImplementation/Assessment/assessment_index.html",
+			"manager/projectImplementation/Assessment/ass_manager_info.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_manager_info.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/ass_manager_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_manager_summary.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_staff_info.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/ass_staff_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_staff_summary.html"
+		]
+	},
+	"manager/projectImplementation/Assessment/ass_staff_add.html": {
+		"resources": [
+			"manager/projectImplementation/Assessment/ass_staff_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/Assessment/ass_staff_summary.html"
+		]
+	},
+	"manager/projectImplementation/presentation/pre_see.html": {
+		"resources": [
+			"manager/projectImplementation/images/delete.png",
+			"manager/projectImplementation/presentation/pre_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/presentation/pre_summary.html"
+		]
+	},
+	"manager/projectImplementation/presentation/pre_summary.html": {
+		"resources": [
+			"manager/projectImplementation/presentation/pre_see.html",
+			"manager/projectImplementation/presentation/pre_add.html",
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css",
+			"manager/projectImplementation/index.html"
+		],
+		"refer": [
+			"manager/projectImplementation/presentation/pre_see.html",
+			"manager/projectImplementation/presentation/pre_add.html",
+			"manager/projectImplementation/index.html"
+		]
+	},
+	"manager/projectImplementation/presentation/pre_add.html": {
+		"resources": [
+			"manager/projectImplementation/presentation/pre_summary.html",
+			"manager/projectImplementation/images/files.png",
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css"
+		],
+		"refer": [
+			"manager/projectImplementation/presentation/pre_summary.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_info.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_see.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_see.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_summary.html": {
+		"resources": [
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/completed/com_see.html",
+			"manager/projectImplementation/completed/com_add.html",
+			"manager/projectImplementation/completed/com_content.html",
+			"manager/projectImplementation/completed/com_summary_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/index.html",
+			"manager/projectImplementation/completed/com_see.html",
+			"manager/projectImplementation/completed/com_add.html",
+			"manager/projectImplementation/completed/com_content.html",
+			"manager/projectImplementation/completed/com_summary_add.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_see.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_info.html",
+			"manager/projectImplementation/images/delete.png",
+			"manager/projectImplementation/completed/com_summary.html",
+			"manager/projectImplementation/completed/com_add_info.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_info.html",
+			"manager/projectImplementation/completed/com_summary.html",
+			"manager/projectImplementation/completed/com_add_info.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_add.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_summary.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_add_info.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_see.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_see.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_detail.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_content.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_add.html",
+			"manager/projectImplementation/bid/bid_content.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_content.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_detail.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_content_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_detail.html",
+			"manager/projectImplementation/bid/bid_summary.html",
+			"manager/projectImplementation/bid/bid_content_add.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_summary_add.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_summary.html"
+		]
+	},
+	"manager/projectImplementation/bid/bid_content_add.html": {
+		"resources": [
+			"manager/projectImplementation/bid/bid_content.html"
+		],
+		"refer": [
+			"manager/projectImplementation/bid/bid_content.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_content.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_detail.html",
+			"manager/projectImplementation/completed/com_summary.html",
+			"manager/projectImplementation/completed/com_content_add.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_detail.html",
+			"manager/projectImplementation/completed/com_summary.html",
+			"manager/projectImplementation/completed/com_content_add.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_detail.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_content.html",
+			"manager/projectImplementation/js/mui.min.js",
+			"manager/projectImplementation/css/mui.css",
+			"manager/projectImplementation/fonts/mui.ttf",
+			"manager/projectImplementation/css/set.css",
+			"manager/projectImplementation/css/index.css"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_content.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_summary_add.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_summary.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_summary.html"
+		]
+	},
+	"manager/projectImplementation/completed/com_content_add.html": {
+		"resources": [
+			"manager/projectImplementation/completed/com_content.html"
+		],
+		"refer": [
+			"manager/projectImplementation/completed/com_content.html"
+		]
+	},
+	"manager/financial-managements/reimbursement/reim_detail-02.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		]
+	},
+	"manager/financial-managements/reimbursement/reim_summary.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_detail-02.html",
+			"manager/financial-managements/js/mui.min.js",
+			"manager/financial-managements/reimbursement/reim_detail-01.html",
+			"manager/financial-managements/reimbursement/reim_detail-03.html",
+			"manager/css/set.css",
+			"manager/css/index-mana.css",
+			"manager/financial-managements/reimbursement/reim_detail-04.html"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_detail-02.html",
+			"manager/financial-managements/reimbursement/reim_detail-01.html",
+			"manager/financial-managements/reimbursement/reim_detail-03.html",
+			"manager/financial-managements/reimbursement/reim_detail-04.html"
+		]
+	},
+	"manager/financial-managements/index.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_summary.html",
+			"manager/financial-managements/images/icon-acture.png",
+			"manager/financial-managements/images/icon-checkwork.png",
+			"manager/financial-managements/images/icon-reimbursement.png",
+			"css/mui.css",
+			"manager/financial-managements/images/icon-receivable.png"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		]
+	},
+	"manager/financial-managements/reimbursement/reim_detail-01.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		]
+	},
+	"manager/financial-managements/reimbursement/reim_detail-03.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_summary.html",
+			"manager/financial-managements/images/down.png"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		]
+	},
+	"manager/financial-managements/reimbursement/reim_detail-04.html": {
+		"resources": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		],
+		"refer": [
+			"manager/financial-managements/reimbursement/reim_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/index.html": {
+		"resources": [
+			"manager/img/icon-receivable.png",
+			"manager/img/icon-reimbursement.png",
+			"manager/img/icon-checkwork.png",
+			"manager/img/icon-acture.png",
+			"manager/css/mana-set.css",
+			"manager/pages/financial-managements/reim_summary.html",
+			"manager/pages/financial-managements/check_index.html",
+			"manager/css/mana-index.css",
+			"manager/index.html",
+			"manager/pages/financial-managements/node_summary.html",
+			"manager/pages/financial-managements/01_summary.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/reim_summary.html",
+			"manager/pages/financial-managements/check_index.html",
+			"manager/index.html",
+			"manager/pages/financial-managements/node_summary.html",
+			"manager/pages/financial-managements/01_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/reim_summary.html": {
+		"resources": [
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/financial-managements/reim_detail.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/financial-managements/reim_detail.html"
+		]
+	},
+	"manager/pages/financial-managements/check_index.html": {
+		"resources": [
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/financial-managements/check_summary.html",
+			"manager/pages/financial-managements/check_staff_add.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/index.html",
+			"manager/pages/financial-managements/check_summary.html",
+			"manager/pages/financial-managements/check_staff_add.html"
+		]
+	},
+	"manager/pages/financial-managements/check_detail.html": {
+		"resources": [
+			"manager/pages/financial-managements/check_staff_add_after.html",
+			"manager/pages/financial-managements/check_summary.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/check_staff_add_after.html",
+			"manager/pages/financial-managements/check_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/check_summary.html": {
+		"resources": [
+			"manager/pages/financial-managements/check_detail.html",
+			"manager/pages/financial-managements/check_index.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/check_detail.html",
+			"manager/pages/financial-managements/check_index.html"
+		]
+	},
+	"manager/pages/financial-managements/check_staff_add_after.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css",
+			"manager/pages/financial-managements/check_detail.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/check_detail.html"
+		]
+	},
+	"manager/pages/financial-managements/check_staff_add.html": {
+		"resources": [
+			"manager/img/test-photo.jpg",
+			"js/jquery.min.js",
+			"manager/img/icon-click_photo.png",
+			"manager/img/delete.png",
+			"manager/pages/financial-managements/check_index.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/check_index.html"
+		]
+	},
+	"manager/pages/financial-managements/reim_detail.html": {
+		"resources": [
+			"manager/img/down.png",
+			"manager/pages/financial-managements/reim_detail-modify.html",
+			"manager/pages/financial-managements/reim_detail-check.html",
+			"manager/pages/financial-managements/reim_summary.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/reim_detail-modify.html",
+			"manager/pages/financial-managements/reim_detail-check.html",
+			"manager/pages/financial-managements/reim_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/reim_detail-check.html": {
+		"resources": [
+			"manager/pages/financial-managements/reim_detail.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/reim_detail.html"
+		]
+	},
+	"manager/pages/financial-managements/reim_detail-modify.html": {
+		"resources": [
+			"manager/pages/financial-managements/reim_detail.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/reim_detail.html"
+		]
+	},
+	"manager/pages/project_Implementation/ass_staff_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/assessment_index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/assessment_index.html"
+		]
+	},
+	"manager/pages/project_Implementation/index.html": {
+		"resources": [
+			"manager/img/bid.png",
+			"manager/img/plan.png",
+			"manager/img/compled.png",
+			"manager/img/summary.png",
+			"manager/img/company.png",
+			"manager/css/mana-set.css",
+			"manager/pages/project_Implementation/assessment_index.html",
+			"manager/css/mana-index.css",
+			"manager/index.html",
+			"manager/pages/project_Implementation/bid_summary.html",
+			"manager/pages/project_Implementation/plan_index.html",
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/pages/project_Implementation/com_summary.html",
+			"manager/pages/project_Implementation/pre_summary.html",
+			"manager/pages/project_Implementation/02_summary.html",
+			"manager/pages/project_Implementation/03_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/assessment_index.html",
+			"manager/index.html",
+			"manager/pages/project_Implementation/bid_summary.html",
+			"manager/pages/project_Implementation/plan_index.html",
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/pages/project_Implementation/com_summary.html",
+			"manager/pages/project_Implementation/pre_summary.html",
+			"manager/pages/project_Implementation/02_summary.html",
+			"manager/pages/project_Implementation/03_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/assessment_index.html": {
+		"resources": [
+			"manager/pages/project_Implementation/ass_staff_summary.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/ass_manager_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/ass_staff_summary.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/ass_manager_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/ass_manager_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/assessment_index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/assessment_index.html"
+		]
+	},
+	"manager/pages/financial-managements/node_summary.html": {
+		"resources": [
+			"manager/pages/financial-managements/node_detail.html",
+			"manager/pages/financial-managements/index.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/node_detail.html",
+			"manager/pages/financial-managements/index.html"
+		]
+	},
+	"manager/pages/financial-managements/node_detail.html": {
+		"resources": [
+			"manager/pages/financial-managements/node_summary.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/node_summary.html"
+		]
+	},
+	"manager/pages/warehouse/01_summary.html": {
+		"resources": [
+			"manager/pages/warehouse/index.html",
+			"manager/pages/warehouse/01_content.html"
+		],
+		"refer": [
+			"manager/pages/warehouse/index.html",
+			"manager/pages/warehouse/01_content.html"
+		]
+	},
+	"manager/pages/warehouse/index.html": {
+		"resources": [
+			"manager/pages/warehouse/01_summary.html",
+			"manager/img/icon-ware-02.png",
+			"manager/css/mana-set.css",
+			"manager/img/icon-ware-01.png",
+			"manager/css/mana-index.css",
+			"manager/index.html"
+		],
+		"refer": [
+			"manager/pages/warehouse/01_summary.html",
+			"manager/index.html"
+		]
+	},
+	"manager/pages/warehouse/01_content.html": {
+		"resources": [
+			"manager/pages/warehouse/01_summary.html",
+			"js/jquery.min.js",
+			"manager/pages/warehouse/01_detail.html"
+		],
+		"refer": [
+			"manager/pages/warehouse/01_summary.html",
+			"manager/pages/warehouse/01_detail.html"
+		]
+	},
+	"manager/pages/warehouse/01_detail.html": {
+		"resources": [
+			"manager/pages/warehouse/01_content.html"
+		],
+		"refer": [
+			"manager/pages/warehouse/01_content.html"
+		]
+	},
+	"manager/pages/material-managements/index.html": {
+		"resources": [
+			"manager/img/icon-yongliao.png",
+			"manager/pages/material-managements/01_summary.html",
+			"manager/img/icon-yuliao.png",
+			"manager/img/icon-lingliao.png",
+			"manager/index.html",
+			"manager/css/mana-set.css",
+			"manager/css/mana-index.css",
+			"manager/pages/material-managements/02_summary.html",
+			"manager/pages/material-managements/03_summary.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_summary.html",
+			"manager/index.html",
+			"manager/pages/material-managements/02_summary.html",
+			"manager/pages/material-managements/03_summary.html"
+		]
+	},
+	"manager/pages/material-managements/01_content_add.html": {
+		"resources": [
+			"manager/img/delete.png",
+			"manager/pages/material-managements/01_content_add_num.html",
+			"manager/pages/material-managements/01_detail.html",
+			"manager/pages/material-managements/01_content.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_content_add_num.html",
+			"manager/pages/material-managements/01_detail.html",
+			"manager/pages/material-managements/01_content.html"
+		]
+	},
+	"manager/pages/material-managements/01_summary.html": {
+		"resources": [
+			"manager/pages/material-managements/01_content.html",
+			"manager/pages/material-managements/index.html",
+			"manager/pages/material-managements/01_summary_add.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_content.html",
+			"manager/pages/material-managements/index.html",
+			"manager/pages/material-managements/01_summary_add.html"
+		]
+	},
+	"manager/pages/material-managements/01_detail.html": {
+		"resources": [
+			"manager/pages/material-managements/01_content_add.html",
+			"manager/pages/material-managements/01_content.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_content_add.html",
+			"manager/pages/material-managements/01_content.html"
+		]
+	},
+	"manager/pages/material-managements/01_content.html": {
+		"resources": [
+			"manager/pages/material-managements/01_detail.html",
+			"manager/pages/material-managements/01_summary.html",
+			"manager/js/mana.js",
+			"manager/pages/material-managements/01_content_add.html",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_detail.html",
+			"manager/pages/material-managements/01_summary.html",
+			"manager/pages/material-managements/01_content_add.html"
+		]
+	},
+	"manager/pages/material-managements/01_content_add_num.html": {
+		"resources": [
+			"manager/pages/material-managements/01_content_add.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_content_add.html"
+		]
+	},
+	"manager/pages/material-managements/01_summary_add.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css",
+			"manager/pages/material-managements/01_summary.html",
+			"manager/img/search.png"
+		],
+		"refer": [
+			"manager/pages/material-managements/01_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/plan_staff_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/plan_index.html",
+			"manager/pages/project_Implementation/plan_staff_info.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/plan_index.html",
+			"manager/pages/project_Implementation/plan_staff_info.html"
+		]
+	},
+	"manager/pages/project_Implementation/bid_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/index.html"
+		]
+	},
+	"manager/pages/project_Implementation/plan_index.html": {
+		"resources": [
+			"manager/pages/project_Implementation/plan_staff_summary.html",
+			"manager/pages/project_Implementation/index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/plan_staff_summary.html",
+			"manager/pages/project_Implementation/index.html"
+		]
+	},
+	"manager/pages/material-managements/02_summary_add.html": {
+		"resources": [
+			"manager/pages/material-managements/02_summary.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/02_summary.html"
+		]
+	},
+	"manager/pages/material-managements/02_summary.html": {
+		"resources": [
+			"manager/pages/material-managements/02_summary_add.html",
+			"manager/pages/material-managements/index.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/02_summary_add.html",
+			"manager/pages/material-managements/index.html"
+		]
+	},
+	"manager/pages/system-setting/01_summary.html": {
+		"resources": [
+			"manager/pages/system-setting/01_summary_add.html",
+			"manager/pages/system-setting/index.html"
+		],
+		"refer": [
+			"manager/pages/system-setting/01_summary_add.html",
+			"manager/pages/system-setting/index.html"
+		]
+	},
+	"manager/pages/system-setting/index.html": {
+		"resources": [
+			"manager/pages/system-setting/01_summary.html",
+			"manager/img/icon-sys-05.png",
+			"manager/img/icon-sys-01.png",
+			"manager/img/icon-sys-02.png",
+			"manager/img/icon-sys-06.png",
+			"manager/img/icon-sys-03.png",
+			"manager/img/icon-sys-04.png",
+			"manager/pages/system-setting/04_index.html",
+			"manager/index.html"
+		],
+		"refer": [
+			"manager/pages/system-setting/01_summary.html",
+			"manager/pages/system-setting/04_index.html",
+			"manager/index.html"
+		]
+	},
+	"manager/pages/material-managements/03_summary_add.html": {
+		"resources": [
+			"manager/pages/material-managements/03_summary.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/03_summary.html"
+		]
+	},
+	"manager/pages/material-managements/03_summary.html": {
+		"resources": [
+			"manager/pages/material-managements/index.html",
+			"manager/pages/material-managements/03_summary_add.html"
+		],
+		"refer": [
+			"manager/pages/material-managements/index.html",
+			"manager/pages/material-managements/03_summary_add.html"
+		]
+	},
+	"manager/pages/system-setting/01_summary_add.html": {
+		"resources": [
+			"manager/img/down.png",
+			"manager/pages/system-setting/01_summary.html"
+		],
+		"refer": [
+			"manager/pages/system-setting/01_summary.html"
+		]
+	},
+	"manager/pages/system-setting/04B_index.html": {
+		"resources": [
+			"manager/img/icon-form.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css",
+			"manager/img/icon-edit.png"
+		]
+	},
+	"manager/pages/system-setting/04_index.html": {
+		"resources": [
+			"manager/pages/system-setting/04B_index.html"
+		],
+		"refer": [
+			"manager/pages/system-setting/04B_index.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_content.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/bid_summary_add.html",
+			"manager/pages/project_Implementation/01_summary_add.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_content.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/bid_summary_add.html",
+			"manager/pages/project_Implementation/01_summary_add.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_content.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/js/mana.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css",
+			"manager/pages/project_Implementation/01_content_add.html",
+			"manager/pages/project_Implementation/bid_detail.html",
+			"manager/pages/project_Implementation/01_detail.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/pages/project_Implementation/01_content_add.html",
+			"manager/pages/project_Implementation/bid_detail.html",
+			"manager/pages/project_Implementation/01_detail.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_content_add.html": {
+		"resources": [
+			"manager/pages/project_Implementation/bid_content_add.html",
+			"manager/pages/project_Implementation/01_content.html",
+			"manager/img/delete.png",
+			"manager/pages/project_Implementation/01_content_add_.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/bid_content_add.html",
+			"manager/pages/project_Implementation/01_content.html",
+			"manager/pages/project_Implementation/01_content_add_.html"
+		]
+	},
+	"manager/pages/project_Implementation/bid_content_add.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_content_add.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_content_add.html"
+		]
+	},
+	"manager/pages/project_Implementation/com_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/com_content.html",
+			"manager/pages/project_Implementation/index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/com_content.html",
+			"manager/pages/project_Implementation/index.html"
+		]
+	},
+	"manager/pages/project_Implementation/com_content.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"manager/pages/project_Implementation/com_summary.html",
+			"manager/pages/project_Implementation/com_detail.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/com_summary.html",
+			"manager/pages/project_Implementation/com_detail.html"
+		]
+	},
+	"manager/pages/project_Implementation/bid_summary_add.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/img/search.png"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/com_detail.html": {
+		"resources": [
+			"manager/pages/project_Implementation/com_content.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/com_content.html"
+		]
+	},
+	"manager/pages/project_Implementation/bid_detail.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_content.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_content.html"
+		]
+	},
+	"manager/pages/project_Implementation/plan_staff_info.html": {
+		"resources": [
+			"manager/pages/project_Implementation/plan_staff_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/plan_staff_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_detail.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_content.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_content.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_content_add_.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_content_add.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_content_add.html"
+		]
+	},
+	"manager/pages/project_Implementation/02_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/02B_summary.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/02A_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/02B_summary.html",
+			"manager/pages/project_Implementation/index.html",
+			"manager/pages/project_Implementation/02A_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/02B_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/02B_detail.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/02B_detail.html"
+		]
+	},
+	"manager/pages/project_Implementation/02B_detail.html": {
+		"resources": [
+			"manager/img/search.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"manager/css/mana-set.css",
+			"css/mui.min.css",
+			"manager/css/mana-index.css"
+		]
+	},
+	"manager/pages/setting/person_info.html": {
+		"resources": [
+			"manager/img/test-photo.jpg",
+			"manager/index.html"
+		],
+		"refer": [
+			"manager/index.html"
+		]
+	},
+	"manager/pages/project_Implementation/02A_detail.html": {
+		"resources": [
+			"manager/pages/project_Implementation/02A_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/02A_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/02A_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/02A_detail.html",
+			"manager/pages/project_Implementation/02_summary.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/02A_detail.html",
+			"manager/pages/project_Implementation/02_summary.html"
+		]
+	},
+	"manager/pages/project_Implementation/03_summary.html": {
+		"resources": [
+			"manager/pages/project_Implementation/index.html"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/index.html"
+		]
+	},
+	"manager/pages/project_Implementation/01_summary_add.html": {
+		"resources": [
+			"manager/pages/project_Implementation/01_summary.html",
+			"manager/img/search.png"
+		],
+		"refer": [
+			"manager/pages/project_Implementation/01_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/01_detail.html": {
+		"resources": [
+			"manager/img/down.png",
+			"manager/pages/financial-managements/01_summary.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/01_summary.html"
+		]
+	},
+	"manager/pages/financial-managements/01_summary.html": {
+		"resources": [
+			"manager/pages/financial-managements/01_detail.html",
+			"manager/pages/financial-managements/index.html"
+		],
+		"refer": [
+			"manager/pages/financial-managements/01_detail.html",
+			"manager/pages/financial-managements/index.html"
+		]
+	}
+}

@@ -1,0 +1,52 @@
+#dialog{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 9999999;
+	display: none;
+}
+#dialog .dialog{
+	height: 160px;
+	width: 200px;
+	border-radius: 6px;
+	background-color: #FFFFFF;
+	box-shadow: 1px 1px 4px #000000;
+	position: relative;
+	margin-left: 50%;
+	margin-top: 100%;
+	transform: translate(-50%,-100%);
+	-webkit-transform: translate(-50%,-100%);
+	overflow: hidden;
+}
+.dialog div{
+	float: left;
+	text-align: center;
+}
+.dialog .mui-spinner{
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-left: 80px;
+	margin-top: 20px;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+.dialog .msg{
+	margin: 10px 0px;
+	padding: 0;
+	height: 40px;
+	line-height: 20px;
+	color: #333333;
+	
+}
+.dialog .btn{
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	background-color: #0062CC;
+	color: #FFFFFF;
+	font-size: 14px;
+}

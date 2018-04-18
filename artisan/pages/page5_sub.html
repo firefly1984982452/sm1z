@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_5.css" />
+		<style>
+			.mui-navigate-right{
+				height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" v-for="item in jsonData" v-gesture:tap.stop.prevent="change($index)">
+						<a class="mui-navigate-right">
+							<div class="list-content">
+								<h5 class="ellipsis">商机名称:{{item.CV_businessName}}</h5>
+								<i class="line"></i>
+								<div class="info">
+									<span class="ellipsis">
+			                  			客户名称：<span class="app-style-color">{{item.CV_consumerName}}</span>
+			                  		</span>
+									<span class="ellipsis">
+			                  			评估日期：{{item.CV_datetime|sjrq}}
+			                  		</span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="../js/pageFilter.js" ></script>
+		<script>
+			mui.plusReady(function(){
+				Xeval.setUrl(Xeval.UrlModel.CRM);
+				app.init();
+			})
+			var app = {
+				datas:{
+					params:{
+						page:0,
+						rows:6,
+						A_documentaryID:"",
+						UserID:"",
+					},
+					vmData:{
+						jsonData:[]
+					},
+					vm:null,
+					isDown:false
+				},
+				methods:{
+					change:function(index){
+						mui.openWindow({
+							url:"c_page_5.html",
+							id:"c_page_5.html",
+							createNew:false,
+							extras:{
+								data:app.datas.vmData.jsonData[index]
+							}
+						})
+					},
+					_HTTP_CB_LISTENER:function(isOk,data){
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+						if(isOk){
+							if(data.state==1){
+								var arr = app.datas.vmData.jsonData;
+								if(app.datas.isDown){
+									app.datas.vmData.jsonData = data.data;
+									mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+								}else{
+									app.datas.vmData.jsonData = arr.concat(data.data);
+								}
+							}else if(data.state==2){
+								plus.nativeUI.toast("没有数据了！");
+								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+								mui('#pullrefresh').pullRefresh().endPulldownToRefresh(true);
+							}else{
+								plus.nativeUI.toast(data.msg);
+							}
+							
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					pulldownRefresh:function(){
+						app.datas.isDown = false;
+						app.datas.params.page++;
+						Xeval.Http(Xeval.Mode.HTTP_ART_GET_PG,app.datas.params,app.methods._HTTP_CB_LISTENER);
+					},
+					pullupRefresh:function(){
+						app.datas.params.page=1;
+						app.datas.isDown = true;
+						Xeval.Http(Xeval.Mode.HTTP_ART_GET_PG,app.datas.params,app.methods._HTTP_CB_LISTENER);
+					},
+					search:function() {
+						var data = JSON.parse(localStorage.getItem("search"));
+						localStorage.setItem("search", null);
+						app.utils.getToken();
+						for(var item in data) {
+							var　 value = data[item];
+							if(value != "") {
+								app.datas.params[item] = value;
+							}
+						}
+						app.methods.pullupRefresh();
+	
+					}
+				},
+				utils:{
+					getToken:function(){
+						var data = JSON.parse(localStorage.getItem("art_user"));
+						app.datas.params.A_documentaryID = data.data.ID;
+						app.datas.params.UserID = data.data.T_UserID;
+						app.datas.params.Username =  data.data.T_accountnumber;
+						app.datas.params.Token = data.guid;
+					}
+				},
+				init:function(){
+					this.utils.getToken();
+					app.datas.vm = new Vue({
+						el:".mui-table-view",
+						data:app.datas.vmData,
+						methods:app.methods
+					});
+					app.methods.pullupRefresh();
+				}
+			}
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						callback: app.methods.pulldownRefresh
+					},
+					down:{
+						callback: app.methods.pullupRefresh
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

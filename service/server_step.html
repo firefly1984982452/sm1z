@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/step.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">预约项目</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron" id="step_list">
+				<span class="mui-spinner"></span>
+			</ul>
+		</div>
+		<!--预约插件 html支持-->
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8">//获取城市地址信息。定位获取不到的情况下</script>
+		<div id="service_mark">
+			<div class="mark_content">
+				<span class="mui-spinner"></span>
+				<label>
+					正在预约，请稍等...
+				</label>
+			</div>
+			<!--预约插件 文本支持-->
+			<script type="text/javascript" src="../js/Strings.js" ></script>
+			<!--预约插件 网络支持-->
+			<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="js/getSevices.js" ></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script>
+			mui.plusReady(function(){
+				var that = plus.webview.currentWebview();
+				var dataJson = that.data;
+				$("#step_list").children().remove();
+				for(var i = 0;i<dataJson.serverList.length;i++){
+					var jsonData = dataJson.serverList[i];
+					var box = new box_li();
+					box.setTitle("<span class='title'>"+jsonData.Text+"</span>");//方便取值
+					box.setDetail(jsonData.InforText);
+					box.setImgSrc(jsonData.Images);
+					box.setIndex(i);
+					box.setID(jsonData.ID);
+					box.show();
+				}
+				mui(".mui-title")[0].innerText =dataJson.Text;
+				plus.key.addEventListener('backbutton', function(){
+					backLisener();
+				},false);
+				mui(".mui-bar").on("tap","a",function(){
+					backLisener();
+				})
+				function backLisener(){
+					var preWebview = plus.webview.getWebviewById("service_index.html");
+					mui.fire(preWebview,"closePop",{"fromId":"server_step.html"});
+				}
+				mui(".mui-table-view-cell").on("tap",".server_step_look",function(e){
+					var title = $(this).parent().parent().find(".title").text()||"--未知预约项目--";
+					var server = new evalService("正在为您预约："+dataJson.Text+"...");
+					var index = $(this).parent().parent().parent().parent().attr("data-index");
+					var serverId = dataJson.serverList[parseInt(index)].ID;
+					server.show({title:title,list:[]});
+					e.stopPropagation();
+				});
+				mui(".mui-table-view-cell").on('tap',".mui-navigate-right",function(){
+					var index = $(this).parent().attr("data-index");
+					mui.openWindow({
+						url:"server_classfly.html",
+						id:"server_classfly.html",
+						createNew:false,
+						extras:{
+							data:dataJson.serverList[parseInt(index)]
+						}
+					});
+				})
+				function box_li(){
+					this.box = $("<li class='mui-table-view-cell mui-media'></li>");
+					this.box_a = $("<a class='mui-navigate-right'></a>");
+					this.box_img = $("<img class='mui-media-object mui-pull-left' src='../images/img_loading.jpg' width='100%'></img>");
+					this.box_div = $("<div class='mui-media-body'></div>");
+					this.box_div_span = $("<span class='server_step_content'></span>");
+					this.box_div_div = $("<div class='server_step_show'></div>");
+					this.box_div_div_span = $("<span class='server_step_look'>立即预约</span>");
+					this.data = {};
+					this.setTitle = function(title){
+						this.data.title = title;
+						this.box_div.html(title);
+					}
+					this.setImgSrc = function(src){
+						this.data.src = src;
+					}
+					this.setDetail =function(detail){
+						this.data.detail = detail;
+					}
+					this.setID = function(id){
+						this.data.ID = id;
+					}
+					this.setIndex = function(index){
+						this.data.index = index;
+					}
+					this.show = function(){
+						this.box_div_div.append(this.box_div_div_span);
+						this.box_div.html(this.data.title);
+//						if(this.data.src.indexOf("http://")>=0){
+//							
+//						}
+						console.log(JSON.stringify(this.data));
+						this.box_img.attr("src",this.data.src[0].Url);
+						this.box_div_span.text(this.data.detail);
+						this.box_div.append(this.box_div_span).append(this.box_div_div);
+						this.box_a.append(this.box_img).append(this.box_div);
+						this.box.append(this.box_a).attr({"data-id":this.data.ID,"data-index":this.data.index,"data-img":this.data.src[0].Url});
+						$("#step_list").append(this.box);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+ <!--<li class="mui-table-view-cell mui-media">
+	<a class="mui-navigate-right">
+		<img class="mui-media-object mui-pull-left" src="../images/1.jpg">
+		<div class="mui-media-body">
+			Test
+			<span class="server_step_content">
+				烤炉模式的城，到黄昏，烤炉模式的城，到黄昏
+			</span>
+			<div class="server_step_show">
+				<span class="server_step_look">
+					立即预约
+				</span>
+			</div>
+		</div>
+	</a>
+</li>
+				-->

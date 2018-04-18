@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../library/css/pages.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/page_3.css" />
+		<style>
+			.mui-table-view-cell select {
+				width: 32%;
+				text-align: center;
+				margin-left: 1%;
+			}
+			
+			.mui-table-view-cell select option {
+				text-align: center;
+			}
+			
+			.mui-table-view-cell i {
+				width: 4%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			
+			.mui-table-view-cell a {
+				width: 20%;
+				float: left;
+				border: none;
+				background-color: #3A6C92;
+				color: #FFFFFF;
+				font-size: 12px;
+				height: 26px;
+				text-align: center;
+				display: block;
+				line-height: 16px;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 0px;
+			}
+			
+			.mui-page .mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			
+			.mui-card {
+				margin: 20px 8px;
+			}
+			.mui-scroll-wrapper{
+				overflow: auto;
+			}
+			.mui-table-view-cell select{
+				width: 30%;
+				  direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			.mui-table-view-cell select option{
+				text-align: center;
+			}
+			.mui-table-view-cell i{
+				width: 2%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			.mui-table-view-cell label i{
+				width: auto;
+				font-size: 10px;
+				font-weight: 400;
+				float: none;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">客户信息查看</h1>
+		</header>
+		<div class="mui-content">
+			<div class="p-search">
+				<div class="p-input">
+					<input type="text" id="keyworld" placeholder="请输入关键字搜索" />
+				</div>
+				<a class="p-button" href="javascript:app.methods._HTTP_SEARCH_USER()">搜索</a>
+			</div>
+			<div class="mui-card" style="margin-top: 20px;">
+				<ul class="mui-table-view" id="users">
+					<li class="mui-table-view-cell mui-media" v-for="item in data" v-gesture:tap.stop.prevent="addLink($index)">
+						<div class="mui-media-body">
+							客户姓名:{{item.C_name}}
+							<p class="mui-ellipsis">联系人地址:{{item.C_address}}</p>
+							<p class="mui-ellipsis">联系人名称:{{item.C_linkname}}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</body>
+		<script type="text/javascript" src="../library/js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../js/mui.view.js"></script>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="js/pageFilter.js"></script>
+		<script type="text/javascript" src="../lease/js/vue-gesture.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js"></script>
+		<script>
+			mui.plusReady(function() {
+				Xeval.setUrl("http://192.168.191.1/");
+				app.init();
+			});
+			var app = {
+				datas: {
+					searData:{
+						data:{}
+					}
+				},
+				methods: {
+					_HTTP_UPDATA_LISTENER: function(isOk, data) {
+						console.log(JSON.stringify(data));
+						plus.nativeUI.closeWaiting();
+						if(isOk) {
+							plus.nativeUI.alert(data.msg);
+							if(data.state==1){
+								mui.back();
+							}
+						} else {
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					_HTTP_SEARCH_USER:function(){
+						var val = document.getElementById("keyworld").value;
+						plus.nativeUI.showWaiting("搜索用户中...");
+						var params = app.utils.getToken();
+						params.C_name = val;
+						Xeval.Http(Xeval.Mode.HTTP_ATR_GET_USERID_BYNAME,params,app.methods._HTTP_CB_GETUSERS);
+					},
+					_HTTP_CB_GETUSERS:function(isOk,data){
+						console.log(JSON.stringify(data));
+						plus.nativeUI.closeWaiting();
+						if(isOk){
+							if(data.state==1){
+								app.datas.searData.data = data.data;
+							}else if(data.state==2){
+								plus.nativeUI.confirm("没有找到此用户，是否新增？",function(e){
+									if(e.index==1){
+										mui.openWindow({
+											url:"../xiugai/xinzengkehu.html",
+											id:".._xiugai_xinzengkehu_html"
+										})
+									}
+								},"没有搜到该用户",["朕重试一下","新增"]);
+							}
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					addLink:function(index){
+						var sel = app.datas.searData.data[index];
+						console.log(sel);
+					}
+				},
+				init: function() {
+					app.datas.searchVm = new Vue({
+						el: "#users",
+						data: app.datas.searData,
+						methods: app.methods
+					});
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					var params1 = this.utils.getToken();
+				},
+				utils: {
+					getToken: function() {
+						var jsonData = JSON.parse(localStorage.getItem("art_user"));
+						var params = {
+							Username:jsonData.data.T_accountnumber,
+							Token:jsonData.guid,
+							C_UserID:jsonData.data.T_UserID
+						}
+						return params;
+					}
+				}
+
+			}
+		</script>
+</html>

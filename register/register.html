@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">饰管家-注册</h1>
+	</header>
+	<div class="mui-content">
+		<!--个人用户-->
+		<div id="type_1" class="eval_content" >
+			<div class="mui-input-group mui-content-padded">
+				<div class="mui-input-row">
+					<label>账号</label>
+					<input type="text" id="user" class="mui-input mui-input-clear" placeholder="请输入账号" />
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="password" id="pasw" class="mui-input-password mui-input" placeholder="请输入密码" />
+				</div>
+				<div class="mui-input-row" >
+					<label>确认密码</label>
+					<input type="password" id="pasw_agin" class="mui-input-password mui-input" placeholder="请确认密码" />
+				</div>
+				<div class="mui-input-row" id="phone">
+					<label>手机号码</label>
+					<input type="number" id="mobile" class="mui-input mui-numbox-input" placeholder="请输入手机号" />
+					<button class="code">获取验证码</button>
+				</div>
+				<div class="mui-input-row" >
+					<label>验证码</label>
+					<input type="number" id="code" class="mui-input-clear mui-input " placeholder="请输入验证码" />
+				</div>
+				<div class="mui-input-row register_btn" id="register">
+					<button id="reg_btn"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/Strings.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/evalHttp.js" ></script>
+
+<script>	
+	mui.plusReady(function(){
+		var that = plus.webview.currentWebview();
+		var seletId = that.selecId;
+		var smsTimeBack = that.smsTimeBack;
+		var smsTimeBack = -1;
+		var guid ;
+		var regData = {};
+		var savaStepOne = null;//保存下一步的数据
+		var str = Strings;
+		var getCodeTimer;
+		var smsTime = 60;
+		if(smsTimeBack!=-1){
+			smsTime = smsTimeBack;
+			showSms();
+		}
+		init();
+		mui(".register_btn").on("tap","button",function(){
+			regData.name=mui("#user")[0].value;
+			regData.PWD=mui("#pasw")[0].value;
+			regData.PWD_1=mui("#pasw_agin")[0].value;
+			regData.mobile=mui("#mobile")[0].value;
+			regData.smcode=mui("#code")[0].value;
+			for(var key_ in regData){//表单非空验证
+				var value_ = regData[key_];
+				var reg_ = str.Register.msgRegx;
+				if(value_.trim()=="" || value_==null){
+					mui.alert(str.Register.msgData[key_],str.Register.registerTitle,str.Register.btnValue);
+					return;
+				}else{//表单数据正则验证
+					var regx = reg_[key_];
+					var regxJson = new Object(regx);
+					var reg = regxJson.reg;
+					if(reg!=null && typeof(reg)!="undefined"){
+						if(!reg.test(value_)){
+							mui.alert(regxJson.msg,str.Register.registerTitle,str.Register.btnValue);
+							return;
+						}
+					}
+					
+				}
+			}
+			if(regData.PWD != regData.PWD_1){
+				mui.alert(str.Register.pwdError,str.Register.registerTitle,str.Register.btnValue);
+				return;
+			}
+			if(seletId>0){//下一步
+				nextRegister();
+			}else{//注册
+				register();
+			}
+		});
+		mui("#phone").on("tap",".code",function(){
+			var phone = mui("#mobile")[0].value;
+			var that = this;
+			if(!/^1[3|4|5|7|8]\d{9}$/.test(phone)){
+				mui.alert(str.Register.phoneIsNull,str.Register.registerTitle,str.Register.btnValue);
+				return;
+			}
+			showSms();
+			Xeval.Http(Xeval.Mode.HTTP_GETCODE,{"phone":phone},function(isOk,data){
+				smsTime = 60;
+				if(isOk){//是否正常回调
+					mui.alert(data.msg,str.Register.registerTitle,str.Register.btnValue);
+				}else{
+					smsTime = 60;
+					that.removeAttribute("disabled");
+					that.innerText = "获取验证码";
+					clearTimeout(getCodeTimer);
+					mui.alert(str.App.networkError,str.Register.registerTitle,str.Register.btnValue);
+				}
+			})
+		})
+		function showSms(){
+			var codeObj = mui("#phone>.code")[0];
+			if(smsTime>0){
+				codeObj.setAttribute("disabled","true")
+				codeObj.innerText = smsTime+"s重新获取";
+				smsTime--;
+				getCodeTimer = setTimeout(showSms,1000);
+			}else{
+				smsTime = 60;
+				codeObj.removeAttribute("disabled");
+				codeObj.innerText = "获取验证码";
+				clearTimeout(getCodeTimer);
+			}
+			
+		}
+		function nextRegister(){//下一步
+			mui.openWindow({
+				url:"register_step1.html",
+				id:"register_step1.html",
+				createNew:false,
+				extras:{
+					regData:regData,
+					savaStepOne:savaStepOne,
+					seletId:seletId
+				}
+			});
+		}
+		// 关闭自身窗口
+		function close(){
+			var wsMe=plus.webview.currentWebview();
+			var sel=plus.webview.getWebviewById("register_select.html");
+			plus.webview.close(sel);
+			plus.webview.close(wsSelect);
+		}
+		function openLogin(){
+			mui.openWindow({
+				url:"../login.html",
+				id:"login.html",
+				createNew:false,
+				extras:{
+					guid:guid,
+					isBack:false
+				}
+			});
+		}
+		function register(){//注册
+			Xeval.Http(Xeval.Mode.HTTP_REGISTER,regData,function(isOk,data){
+				if(isOk){
+					mui.alert(data.msg,str.Register.registerTitle,str.Login.btnValue);
+					if(data.state==2){
+						guid = data.guid;
+						localStorage.setItem("user",regData.name);
+						openLogin();
+						setTimeout(close,300)
+					}
+				}else{
+					mui.alert(str.App.networkError,str.Register.registerTitle,str.Register.btnValue);
+				}
+			});
+		}
+		plus.key.addEventListener('backbutton', function(){
+			codeTimeListener();
+		},false);
+		mui(".mui-bar").on("tap","a",function(){
+			codeTimeListener();
+		})
+		function codeTimeListener(){//监听验证码，不让timeSms重置
+			if(smsTime!=60){
+				var preWebview = plus.webview.getWebviewById("register_select.html");
+				mui.fire(preWebview,"smsTime",{"smsTimeBack":smsTime});
+			}
+		}
+		//返回键重写
+		var old_back = mui.back;
+		mui.back = function(){
+		  mui.confirm(str.Register.backMsg,str.Register.backTitle,str.Register.backBtns,function(e){
+		    if(e.index==0){
+		    	old_back();
+		    }
+		  });
+		}
+		window.addEventListener("savaStepOne",function(data){//保存临时数据
+			savaStepOne = data.detail.regData;
+		});
+		function init(){
+			eLog.l(seletId);
+			var reg = mui("#reg_btn")[0];
+			switch(parseInt(seletId)){
+				case 0:{
+					reg.innerText="立即注册";
+				}break;
+				case 1:{
+					reg.innerText="下一步";
+				}break;
+				case 2:{
+					reg.innerText="下一步";
+				}break;
+				case 3:{
+					mui.alert("很抱歉，该角色还在开发中...",str.Register.registerTitle,str.Register.btnValue);
+					mui.back();
+				}break;
+				case 4:{
+					mui.alert("很抱歉，该角色还在开发中...",str.Register.registerTitle,str.Register.btnValue);
+					mui.back();
+				}break;
+				default:break;
+			}
+			regData = {
+				role:seletId,name:"",PWD:"",PWD_1:"",mobile:"",
+				smcode:""
+			}
+		}
+		
+	})
+	
+</script>
+</html>

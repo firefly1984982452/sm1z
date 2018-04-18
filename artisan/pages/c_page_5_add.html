@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<link rel="stylesheet" href="../css/page_5.css" />
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新增评估记录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label style="color: #9C005E;">商机名称<i>&lt;选择&gt;</i></label>
+						<span id="sjmc">{{data.CV_consumerName}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>工期要求<i>&lt;选择&gt;</i></label>
+						<span id="gqyq">{{data.A_durationneed|gqyq}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>验收要求<i>&lt;选择&gt;</i></label>
+						<span id="ysyq">{{data.A_acceptanceneed|ysyq}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>施工要求<i>&lt;选择&gt;</i></label>
+						<span id="sgyq">{{data.A_constructneed|sgyq}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>违约赔偿<i>&lt;选择&gt;</i></label>
+						<span id="wypc">{{data.A_defaultmakeup|wypc}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户资质<i>&lt;选择&gt;</i></label>
+						<span id="khzz">{{data.A_aptitudes|khzz}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目规模<i>&lt;选择&gt;</i></label>
+						<span id="xmgm">{{data.A_projectscale|xmgm}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>资金回笼<i>&lt;选择&gt;</i></label>
+						<span id="zjhl">{{data.A_fundsbackfront|zjhl}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目预算<i>&lt;选择&gt;</i></label>
+						<span id="zjys">{{data.A_budget|zjys}}</span>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="msg">请认真填写所有信息，默认评估结果为放弃</div>
+			<div class="mui-card text-show"style="margin-top:0px;">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>回扣要求<i>&lt;选择&gt;</i></label>
+						<span id="hkyq">{{data.A_kickbackneed|hkyq}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目阻力<i>&lt;选择&gt;</i></label>
+						<span id="xmzl">{{data.A_projectdrag|xmzl}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>对手分析<i>&lt;选择&gt;</i></label>
+						<span id="jzds">{{data.A_compete|jzds}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label style="width:50%;">客户关注点<i>&lt;选择&gt;</i></label>
+						<span id="khgzd" style="width:50%;">{{data.A_consumerFocus|khgzd}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>竞争力<i>&lt;选择&gt;</i></label>
+						<span id="jzl">{{data.A_competitiveness|jzl}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label style="width:50%;">客户关键人关系<i>&lt;选择&gt;</i></label>
+						<span id="khgjr" style="width:50%;">{{data.A_consumerkey|khgjr}}</span>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:app.methods._HTTP_SUBMIT()" class="mui-card edit-btn">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/evaloptions.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script>
+		var evaloptions = {
+			gqyq:{dop:"A_durationneed",opt:[{text:"宽松",value:"5"},{text:"严格",value:"3"},{text:"苛刻",value:"0"}]},
+			sgyq:{dop:"A_constructneed",opt:[{text:"宽松",value:"5"},{text:"严格",value:"3"},{text:"苛刻",value:"0"}]},
+			ysyq:{dop:"A_acceptanceneed",opt:[{text:"宽松",value:"5"},{text:"严格",value:"3"},{text:"苛刻",value:"0"}]},
+			wypc:{dop:"A_defaultmakeup",opt:[{text:"无",value:"1"},{text:"宽松",value:"5"},{text:"严格",value:"3"},{text:"苛刻",value:"0"}]},
+			khzz:{dop:"A_aptitudes",opt:[{text:"没有实力",value:"0"},{text:"一般",value:"10"},{text:"有实力",value:"20"}]},
+			zjhl:{dop:"A_fundsbackfront",opt:[{text:"快",value:"20"},{text:"账期一个月内",value:"10"},{text:"慢",value:"0"}]},
+			xmgm:{dop:"A_projectscale",opt:[{text:"超大型",value:"20"},{text:"大型",value:"15"},{text:"中型",value:"10"},{text:"小型",value:"5"}]},
+			zjys:{dop:"A_budget",opt:[{text:"<1万",value:"5"},{text:"1万-5万",value:"10"},{text:"5-10万",value:"15"},{text:">10万",value:"20"}]},
+			hkyq:{dop:"A_kickbackneed",opt:[{text:"没有",value:"0"},{text:"有",value:"5"}]},
+			jzds:{dop:"A_compete",opt:[{text:"无",value:"20"},{text:"不清楚",value:"5"},{text:"不强",value:"15"},{text:"强",value:"5"}]},
+			khgjr:{dop:"A_consumerkey",opt:[{text:"没有",value:"0"},{text:"一点",value:"5"},{text:"可以",value:"15"},{text:"搞定",value:"25"}]},
+			khgzd:{dop:"A_consumerFocus",opt:[{text:"价格",value:"5"},{text:"质量",value:"9"},{text:"品牌",value:"13"},{text:"性价比",value:"15"}]},
+			jzl:{dop:"A_competitiveness",opt:[{text:"弱",value:"5"},{text:"一般",value:"10"},{text:"强",value:"25"}]},
+			xmzl:{dop:"A_projectdrag",opt:[{text:"没有",value:"10"},{text:"有",value:"2"}]}
+		}
+		for(var item in evaloptions){
+			var itemArrs = evaloptions[item].opt;
+			bind(item,itemArrs);
+		}
+		function bind(item,list){
+			Vue.filter(item,function(val){
+				var result = '';
+				for(var it in list){
+					if(list[it].value == val){
+						result = list[it].text;
+						return result;
+					}
+				}
+				return val;
+			});
+		}
+	</script>
+	<script>
+		mui.plusReady(function() {
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			app.init();
+		});
+		var app = {
+			datas:{
+				options:evaloptions,
+				vm:null,
+				vmData:{
+					data:{
+						CV_consumerName:"请选择商机",
+						A_durationneed:"0",//工期要求（宽松、严格、苛刻）
+						A_constructneed:"0",//施工要求（宽松、严格、苛刻）
+						A_acceptanceneed:"0",////验收要求（宽松、严格、苛刻）
+						A_defaultmakeup:"0",//违约赔偿（无、宽松、严格、苛刻）
+						A_aptitudes:"0",//客户资质（没有实力、一般、有实力）
+						A_fundsbackfront:"0",//资金回笼（快、账期一个月内、慢）
+						A_projectscale:"5",//项目规模（超大型、大型、中型、小型）
+						A_budget:"5",//资金预算（<1万，1万-5万，5-10，>10）
+						A_businessmass:"0",//商机质量（按分值自动计算得出）
+						A_compete:"5",//竞争对手（无，不清楚，不强，强）
+						A_consumerkey:"0",//客户关键人（没有，一点，可以，搞定）
+						A_kickbackneed:"0",//回扣要求（没有，有）
+						A_consumerFocus:"5",//客户关注点（价格、质量、品牌、性价比）
+						A_competitiveness:"5",//竞争力（弱、一般、强）
+						A_projectdrag:"2",//项目阻力（无，有）
+						A_overorder:"0",//成单率(按分值自动计算得出)
+						A_conclusion:"0",//结论自动得出（放弃，修改筛选结果、普通商机、重点商机、鸭子商机）
+						A_businessID:"",//商机ID
+						A_customerID:"",//客户ID
+						A_documentaryID:"",//跟单人ID，可不填
+						UserID:"",//用户ID
+						Username:"",//用户名
+						Token:"",//令牌
+					}
+				},
+				opicker:new mui.PopPicker(),
+				backData:{}
+			},
+			methods:{
+				sw:function(){
+					var id = this.id;
+					var that = this;
+					switch(id){
+						case "sjmc":{
+							mui.openWindow({
+								url:"page_1_s.html",
+								id:"page_1_s.html",
+								extras:{
+									backs:{
+										back:true,
+										id:plus.webview.currentWebview().id
+									}
+								}
+							})
+						};break;
+						case "sjmc_":{
+							//从商机详情里面直接新增，禁止再次选择商机
+						};break;
+						default:{
+							app.datas.opicker.setData(evaloptions[id].opt);
+							app.datas.opicker.show(function(item){
+								app.datas.vmData.data[evaloptions[id].dop] = item[0].value;
+							})
+						};break;
+					}
+				},
+				_HTTP_SUBMIT:function(){
+					
+					var it = app.datas.vmData.data;
+					if(it.A_businessID.trim()==""){
+						plus.nativeUI.alert("请先选定一个商机！");
+						return;
+					}
+					plus.nativeUI.showWaiting("上传信息中...");
+					var flag = false;//A_kickbackneed
+					var nums = [0,0];
+					for(var item in evaloptions){
+						var key_ = evaloptions[item].dop;
+						var num = parseInt(it[key_]);
+						if(key_=='A_kickbackneed'){
+							flag = true;
+						}
+						if(key_=="A_conclusion"){
+							continue;
+						}
+						if(flag){
+							nums[1]+=num;
+						}else{
+							nums[0]+=num;
+						}
+					}
+					it.A_businessmass = nums[0];
+					it.A_overorder = nums[1];
+					var numx = (nums[0]+nums[1])/2;
+					var indx = "1";
+					if(numx<40){
+						indx = "1";
+					}else if(40<=numx&&numx<60){
+						indx = "2";
+					}else if(60<=numx&&numx<80){
+						indx = "3";
+					}else if(80<=numx){
+						indx = "4";
+					}
+					app.datas.vmData.data.A_conclusion = indx;
+					Xeval.Http(Xeval.Mode.HTTP_ART_POST_PG,app.datas.vmData.data,function(isOk,data){
+						plus.nativeUI.closeWaiting();
+						if(isOk){
+							if(data.state==1){
+								mui.back();
+							}
+							plus.nativeUI.toast(data.msg);
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络");
+						}
+					})
+				}
+			},
+			init:function(){
+				mui(".mui-table-view-cell").on("tap","span",app.methods.sw);
+				var webView = plus.webview.currentWebview();
+				var data = webView.data;
+				if(data!=null && data!=""){
+					console.log(JSON.stringify(data))
+					document.getElementById("sjmc").setAttribute("id","sjmc_")
+					app.datas.vmData.data.A_businessID = data.ID;
+					app.datas.vmData.data.A_customerID = data.CustomerID;
+					app.datas.vmData.data.CV_consumerName = data.B_name;
+					app.datas.vmData.data.A_documentaryID = data.B_documentaryID;
+				}
+				window.addEventListener("evalback",function(e){
+					var data = e.detail.data;
+					app.datas.vmData.data.A_businessID = data.ID;
+					app.datas.vmData.data.A_customerID = data.CustomerID;
+					app.datas.vmData.data.CV_consumerName = data.B_name;
+					app.datas.vmData.data.A_documentaryID = data.B_documentaryID;
+				})
+				this.datas.vm = new Vue({
+					el:".mui-content",
+					data:app.datas.vmData,
+					methods:app.methods
+				})
+				app.utils.getToken();
+			},
+			utils:{
+				getToken:function(){
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					app.datas.vmData.data.UserID = jsonData.data.T_UserID;
+					app.datas.vmData.data.Username = jsonData.data.T_accountnumber;
+					app.datas.vmData.data.Token = jsonData.guid;
+				}
+			}
+		}
+	</script>
+
+</html>

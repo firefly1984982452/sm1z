@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<ma charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			.mui-media-body .down-row{
+				float: left;
+				display: block;
+				height: 20px;
+				width: 100%;
+				line-height: 20px;
+				color: #666666;
+			}
+			.mui-media-body .down-title{
+				height: 25px;
+				color: #333333;
+			}
+			.mui-media-body .down-row span{
+				width: 50%;
+				display: block;
+				font-size: 12px;
+				float: left;
+				height: 100%;
+			}
+			.mui-media-body .down-row span:first-child{
+				width: 60%;
+			}
+			.mui-media-body .down-row span:last-child{
+				width: 40%;
+			}
+			.mui-table-view-chevron .mui-table-view-cell{
+				padding-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">下载列表</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media mui-transitioning mui-selected" v-for="item in jsonData" v-gesture:tap.stop.prevent="change($index)">
+					<img class="mui-media-object mui-pull-left" src="{{item.name|type}}">
+					<div class="mui-media-body">
+						<div class="down-title">
+							{{item.name|name}}
+						</div>
+						<div class="down-row">
+							<span class="mui-ellipsis">
+								下载日期：{{item.time}}
+							</span>
+							<span class="mui-ellipsis">
+								大小：{{item.size|size}}
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../js/file.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../lease/js/vue-gesture.js" ></script>
+		<script type="text/javascript" src=""></script>
+		<script>
+			var x = $("#app");
+			x.append('<i>1</i>')
+
+			var app = {
+				datas:{
+					vm:null,
+					data:{
+						jsonData:[
+							
+						],
+						entryList:[]
+					},
+				},
+				methods:{
+					change:function(index){
+						var url = "";
+						var a = [{
+							title: "打开文件"
+						}, {
+							title: "删除文件"
+						}];
+						plus.nativeUI.actionSheet({
+							title: "请选择操作类型",
+							cancel: "取消",
+							buttons: a
+						}, function(b) {
+							switch (b.index) {
+								case 0:
+									break;
+								case 1:
+									openFile();
+									break;
+								case 2:
+									deleFile();
+									break;
+								default:
+									break
+							}
+						})
+							
+						function openFile(){
+							var entry = app.datas.entryList[index];
+							evalFile.openFile(evalFile.datas.Dir+entry.name,function(){
+								plus.nativeUI.toast("无法打开的文件");
+							});
+						}
+						function deleFile(){
+							var entry = app.datas.entryList[index];
+							plus.nativeUI.confirm("是否删除该文件，删除后不可恢复！",function(e){
+								if(e.index==0){
+									entry.remove(function(){
+										plus.nativeUI.toast("删除成功！");
+										app.datas.entryList.splice(index,1);
+										app.datas.vm.$data.jsonData.splice(index,1);
+									},function(){
+										plus.nativeUI.toast("删除失败,请重新启动APP删除！");
+									})
+								}
+							},"删除警告",["朕知道了","取消"])
+						}
+					}
+				},
+				utils:{
+					
+				},
+				init:function(){
+					Vue.filter("name",function(val){
+						var lastIndex = val.lastIndexOf(".");
+						return val.substring(0,lastIndex);
+					})
+					Vue.filter("type",function(val){
+						var d=/\.[^\.]+$/.exec(val);
+						var result;
+						switch (d.toString()){
+							case ".ipa":{
+								result = "ipa";
+							};break;
+							case ".apk":{
+								result = "apk";
+							};break;
+							case ".zip":{
+								result = "zip";
+							};break;
+							case ".rar":{
+								result = "zip";
+							};break;
+							case ".doc":{
+								result = "doc";
+							};break;
+							case ".docx":{
+								result = "doc";
+							};break;
+							case ".jpg":{
+								result = "jpg";
+							};break;
+							case ".png":{
+								result = "jpg"; 
+							};break;
+							case "gif":{
+								result = "jpg";
+							};break;
+							case ".txt":{
+								result = "txt";
+							};break;
+							default:{
+								result = "other";
+							};break;
+								
+						}
+						return "img/"+result+".png";
+					})
+					Vue.filter("size",function(val){
+						var mb = 1024*1024;
+						var dw = "MB";
+						val = (parseInt(val)/mb);
+						if(val>1024){
+							val = val/=1024;
+							dw = "GB";
+						}
+						return val.toFixed(2)+dw;
+					})
+					app.datas.vm = new Vue({
+						el:".mui-table-view",
+						data:app.datas.data,
+						methods:app.methods
+					})
+					
+				}
+		}
+			app.init();
+			mui.plusReady(function(){
+				evalFile.getFileList(function(list){
+					app.datas.entryList = list;
+					for(var i=0;i<list.length;i++){
+						try{
+							list[i].file(function(file){
+								var tm = evalFile.dateFormart(file.lastModifiedDate);
+								var datas = {
+									name:file.name,
+									time:tm,
+									size:file.size
+								};
+								app.datas.vm.$data.jsonData.push(datas);
+							})	
+						}catch(e){
+							console.log("你有一个文件处理有问题");
+						}			
+					}
+				});
+				
+			})
+		</script>
+	</body>
+
+</html>

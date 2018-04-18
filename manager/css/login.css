@@ -1,0 +1,77 @@
+.mui-content{
+	background-image: url(../img/crmLogin.png);
+	background-size: 100%;
+	-webkit-background-size: 100% !important;
+	bottom: 0px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	position: fixed;
+}
+.mui-content-padded{
+	position: relative;
+	height: 100%;
+	background-color: #000000;
+	background-image: url(../img/login-bg.png);
+	width: 100%;
+	background-size: 100%;
+}
+.login-input{
+	height: 200px;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left:-50%;
+	margin-top:-100px;
+}
+.input-box{
+	height: 40px;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 20px;
+	border-radius: 6px;
+	border: 1px solid #a2c3e3;
+	background-color: rgba(0,0,0,0.3);
+	position: relative;
+	overflow: hidden;
+}
+.input-box img{
+	height: 39px;
+	display: block;
+}
+.input-box input{
+	background-color: rgba(0,0,0,0);
+	border: none;
+	position: absolute;
+	left: 60px;
+	right: 5px;
+	top: 0px;
+	font-size: 14px;
+	color: #FFFFFF;
+	bottom: 0px;
+	line-height: 20px;
+	padding: 10px;
+	width: auto;
+	margin: 0px;
+	
+}
+.input-box a{
+	height: 40px;
+	line-height: 38px;
+	text-align: center;
+	width: 100%;
+	display: block;
+	color: #FFFFFF;
+	font-size: 15px;
+	transition: font-size 0.2s,background-color 1s; 
+	-webkit-transition: font-size 0.2s,background-color 1s; 
+	background-color: #76a2cc;
+}
+.input-box:last-child{
+	border: 0px;
+}
+.input-box a:active{
+	font-size: 18px;
+	background-color: #0062CC;
+}

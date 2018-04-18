@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>费用报销详情查看</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mana-index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mana-set.css" />
+		<style type="text/css">
+			.mui-table-view-cell .span{
+				width: 5%;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">费用报销详情查看</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>项目名称：</label>
+						<span>{{P_cookiename}}</span>
+						<!--<i class="icon-search"></i>-->
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目编号：</label>
+						<span>{{P_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目地址：</label>
+						<span>沪松公路1177号佳预信息大厦</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>报销科目：</label>
+						<span>{{P_cookiename}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>收款人员：</label>
+						<span>{{P_cookiename}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>报销金额：</label>
+						<span>{{P_cookiename}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>经理状态：</label>
+						<span>{{P_cookiename}}</span>
+					</li>
+				</ul>
+			</div>
+						
+			<div class="mui-card text-show">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell-item text-title">摘要：</li>
+					<li class="mui-table-view-cell-item">
+						<div class="text-txt" style="width: 100%;">
+							{{data.B_needcause}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mui-card text-show">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell-item text-title">经理审核意见：</li>
+					<li class="mui-table-view-cell-item">
+						<div class="text-txt" style="width: 100%;">
+							{{data.B_needcause}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="mui-card icon-files">
+				<img src="../../img/down.png"/>
+				<span>下载原始凭证文件</span>
+			</div>
+
+			<a href="01_detail-modify.html" class="edit-btn mui-card btn-save btn-save1">去修改</a>
+			<a href="01_detail-check.html"  class="edit-btn mui-card btn-save btn-save1">去审核</a>
+			<a href="01_detail-make_loans.html"  class="edit-btn mui-card btn-save btn-save1">去放款</a>
+
+		</div>
+		<script src="../../../js/mui.min.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/classfly.css" />
+		<link rel="stylesheet" href="../css/preimages.css" />
+	</head>
+	<body onscroll="return false;">
+		<header id="header" class="mui-bar mui-bar-transparent" style="background-color: rgba(247, 247, 247, 0);">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+		</header>
+		<div class="mui-content">
+				<!--图片-->
+				<div class="mui-conten">
+					<img id="img" src="../images/img_loading.jpg" width="100%"/>
+				</div>
+				<!--收藏区-->
+				<div id="like">
+					<div class="like_magin">
+						<span class="server_title like_tr" id="Text">石材翻新研磨</span>
+						<div class="server_price like_tr">
+							服务编号：
+							<span>#</span>
+							<label id="ID">0006</label>
+						</div>
+						<div class="server_btn">
+							<a href="#" class="server">免费预约</a>
+							<a  href="javascript:void(0);" rel="4007566076"class="tel-phone collect">通话咨询</a>
+						</div>
+					</div>
+					
+				</div>
+				<div class="div-show">
+						<span class="server_number like_tr" id="InforText">石材翻新研磨</span>
+						
+					</div>
+		<!--二级加载数据-->
+		<div id="eval_popover" >
+					<div id="eval_popover_show">
+						<div class="img_box">
+							<img src="../images/1.jpg" data-preview-src="" data-preview-group="10010"  />
+						</div>
+						<img class="close" src="img/left_nav_close.png" />
+						<div class="label_box">
+							<div class="label_box_tr price" id="price_this">
+								<label>当前选定价格：</label>
+								<span class="money">￥</span>
+								<span class="show">0</span>
+							</div>
+							<div class="label_box_tr price" id="price_count">
+								<label>累计服务价格：</label>
+								<span class="money">￥</span>
+								<span class="show">0</span>
+							</div>
+							<div class="label_box_tr">
+								<button class="eval_popover_getServer">立即预约</button>
+							</div>
+						</div>
+						<div class="classfly_box">
+							<label>已选服务类别</label>
+							<ul class="classfly">
+								<p>&nbsp;&nbsp;请选定一个您最需要的预约项目.</p>
+							</ul>
+						</div>
+					</div>
+					<div id="eval_popover_content">
+						<span class="mui-spinner"></span>
+						<div class="error">
+							<label>饰管家温馨提示：</label>
+							<p class="msg"></p>
+						</div>
+						<!--<div class="eval_popover_show_titlebox">
+							<div class="eval_popover_show_title">
+								<span>石材翻新类型</span>
+							</div>
+							<ul>
+								<li>装修结束翻新</li>
+								<li>再修性翻新</li>
+							</ul>
+						</div>-->
+						<span></span>
+				</div>
+		</div>
+		<!--预约插件-->
+		<div id="service_mark">
+			<div class="mark_content">
+				<span class="mui-spinner"></span>
+				<label>
+					正在预约中，请稍等...
+				</label>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../library/js/mui.zoom.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.previewimage.js" ></script>
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8">//获取城市地址信息。定位获取不到的情况下</script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="js/getSevices.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<script>
+			mui.plusReady(function(){
+				Xeval.setUrl(Xeval.UrlModel.SERVER)
+				mui(".img_box").on("tap","img",function(){
+					$("#eval_popover").css("z-index",1000);
+				})
+				var that = plus.webview.currentWebview();
+				var jsonData = that.data;
+				init();
+				var ishowpro = false;
+				var mask = null;
+				var fromData = [];
+				var val = Strings.indexData.index.services;
+				var eHeight = $(window).height()+30;
+				mask = mui.createMask(function(){
+						$("#eval_popover").animate({top:eHeight,"display":"none"},300);
+						ishowpro = false;
+					});//callback为用户点击蒙版时自动执行的回调；
+				$(".server_btn").on("tap",".server",function(){
+					mask.show();//显示遮罩
+					ishowpro = true;
+					$("#eval_popover").css("top",eHeight-100);
+					$("#eval_popover").animate({top:100},300).css("display","block");
+				})
+				mui.previewImage({
+					open:function(){
+						ishowpro = false;
+						mask.close();
+						$("#eval_popover").animate({top:eHeight,"display":"none"},300);
+					},
+					close:function(){
+						ishowpro = true;
+						mask.show();
+						$("#eval_popover").css("top",eHeight-100);
+						$("#eval_popover").animate({top:100},300).css("display","block");
+					}
+				});
+				function init(){
+					$("#ID").text(jsonData.ID);
+					$("#Text").text(jsonData.Text);
+					$("#InforText").text(jsonData.InforText);
+					console.log(jsonData)
+					if(!!jsonData.img){
+						$("#img")[0].src = jsonData.img;
+					}else{
+						$("#img")[0].src = jsonData.Images[0].Url;
+					}
+					getService();
+				}
+				var getDataI = 0;
+				var getDataNum = 3; //递归总次数
+				var getDataTime = 2000; //下次递归开始时间
+				var JsonData ;
+				function getService() {
+					Xeval.Http(Xeval.Mode.HTTP_GET_SERVERS_BY_ID,{ID:jsonData.ID},Xsuccess);
+				}
+				function Xsuccess(isOk,data) {
+					if(isOk) {
+						$("#eval_popover_content").children().remove();
+						if(data.state==1){
+							console.log(JSON.stringify(data.data))
+							var dataList= data.data;
+							for(var i =0;i<dataList.length;i++){
+								var show = dataList[i];
+								var box = new showBox();
+								box.setTitle(show.Text);
+								box.setBoxId(show.ID)
+								box.setItems(show.Addfour);
+								box.append();
+							}
+						}
+					} else {
+						++getDataI;
+						$("#eval_popover_content").find(".msg").text(val.serverNetworkErrorAgain+":"+getDataI);
+						if(getDataI >= getDataNum) {
+							$("#eval_popover_content").children().remove();
+							plus.nativeUI.alert(val.serverNetworkError,val.serverTitle);
+							closeEvalPop();
+							mui.back();
+						} else {
+							setTimeout(getService, getDataTime);
+							getDataTime+=getDataTime;
+							eLog.l("eval --> getdata" + getDataI + " to " + getDataNum);
+						}
+					}
+				}
+				//重写mui返回键，等待关闭pop窗口再去返回到上一级
+				var old_back = mui.back;
+				mui.back = function(){
+					if(ishowpro){
+						closeEvalPop()
+					}else{
+						old_back();
+					}
+				}
+				//等待解决，滑动pop窗口时候，阻止窗口移动。特么说明鬼！
+				mui("#eval_popover").on("touch","eval_popover_show_titlebox",function(e){//阻断事件,并没什么卵用
+//					e.preventDefault && e.preventDefault();
+//					e.returnValue=false;
+//					e.stopPropagation && e.stopPropagation();
+				})
+				//评价区
+				mui("#eval_popover_show").on("tap",".close",function(){
+					closeEvalPop();
+				})
+				function closeEvalPop(){
+					$("#eval_popover").animate({top:eHeight},300);
+					ishowpro = false;
+					mask.close();//hide遮罩
+				}
+				mui("#eval_popover").on("tap",".eval_popover_getServer",function(){
+					if(fromData.length>0){
+						$("#eval_popover").animate({top:eHeight},300);
+						ishowpro = false;
+						mask.close();//hide遮罩
+						var services_ ="";
+						for(var i in fromData){
+							delete fromData[i].id;
+							delete fromData[i].parent_id;
+							services_+=fromData[i].text+"、";
+						}
+						var server = new evalService(services_+"...");
+						server.show({title:jsonData.Text,list:fromData});
+					}else{
+						plus.nativeUI.alert(val.serverLengthError,val.serverTitle,val.appointmentBtn);
+					}
+				});
+				mui("#eval_popover_content").on("tap","li",function(e){
+					eLog.l("eval  --> item tap~");
+					if(this.getAttribute("class")=="show_box_select"){
+						this.removeAttribute("class")
+						removeServer(this);
+					}else{
+						$(this).parent().children().removeClass("show_box_select")
+						$(this).addClass("show_box_select");
+						addServer(this);
+						
+					}
+				})
+				var PricesData = {
+					price_countObj:$("#price_count>.show"),
+					price_thisObj:$("#price_this>.show"),
+					price_count:0,
+					price_this:0,
+					price_pre:0
+				}
+				function addServer(e){
+					var that = e;
+					var data_id = $(that).parent().attr("data-id");
+					var img_src =  $(that).attr("data-img");
+					var prices = parseInt($(that).attr("data-price"));
+					var flag = true;
+					var showData = {};
+					showData.text = that.innerText;
+					var dataId = $(that).attr("data-id");
+					showData.parent_id = data_id;
+					showData.id = dataId;
+					fromData.push(showData);
+					PricesData.price_thisObj.text(prices);
+					PricesData.price_count+=prices;
+					$(".classfly").find("p").remove();
+					eLog.l(img_src);
+					$(".img_box>img")[0].src = img_src;
+					var isSava = $(".classfly>li[data-id='"+data_id+"']");
+					if(isSava.attr("data-id")==data_id){
+						isSava.text(that.innerText);
+						eLog.l("change");
+						PricesData.price_pre = parseInt(isSava.attr("data-price"));
+						PricesData.price_count-=PricesData.price_pre;
+						PricesData.price_countObj.text(PricesData.price_count);
+						isSava.attr("data-price",prices);
+						removeFromData(data_id);
+					}else{
+						eLog.l("add");
+						PricesData.price_pre = prices;
+						PricesData.price_countObj.text(PricesData.price_count);
+						var parentbox = mui(".classfly");
+						var children = $("<li></li>");
+						var text_ = that.innerText;
+						children.text(text_);
+						children.attr({"data-id":data_id,"data-price":prices});
+						$(parentbox).append(children);
+					}
+				}
+				function removeServer(e){
+					eLog.l("remove");
+					var that = e;
+					var prices = parseInt($(that).attr("data-price"));
+					PricesData.price_count-=prices;
+					PricesData.price_countObj.text(PricesData.price_count);
+					PricesData.price_thisObj.text(0);
+					var data_id = $(that).parent().attr("data-id");
+					var isSava = $(".classfly>li[data-id='"+data_id+"']");
+					if(isSava.attr("data-id")){
+						$(isSava).remove();
+						removeFromData(data_id);
+						return;
+					}
+				}
+				function removeFromData(data_id){
+					eLog.l("removeData");
+					for(var i in fromData){
+						if(fromData[i].parent_id == data_id){
+							fromData.splice(i,1);
+							if(fromData.length<1){
+								$(".classfly").append($("<p>&nbsp;&nbsp;请选定一个您最需要的预约项目.</p>"));
+							}
+							return;
+						}
+					}
+					
+				}
+				function showBox(){
+					this.box = $("<div class='eval_popover_show_titlebox'></div>");
+					this.titleBox = $("<div class='eval_popover_show_title'>");
+					this.title = "标题";
+					this.items = [];
+					this.img = "../images/img_loading.jpg";
+					this.boxId = -1;
+					this.show = $("#eval_popover_content");
+					this.contentBox = $("<ul></ul>");
+					this.init = function(){
+						this.show.children().remove();
+					}
+					this.setImg = function(){
+						this.img = arguments[0];
+					}
+					this.setBoxId = function(){
+						this.boxId = arguments[0];
+					}
+					this.setTitle = function(){
+						this.title =arguments[0];
+					}
+					this.setItems = function(){
+						this.items = arguments[0];
+					}
+					this.append = function(){
+						console.log(this.items[i]);
+						this.titleBox.append($("<span></span>").text(this.title));
+						for(var i = 0;i<this.items.length;i++){
+							var price = this.items[i].Price;
+							if(typeof(price)=="undefined" || price.trim()==""){
+								price = 0;
+							}
+							var li_ = $("<li></li>").text(this.items[i].Text);
+							li_.attr({"data-id":this.items[i].ID,"data-img":this.items[i].Image[0].Url,"data-price":price});
+							this.contentBox.append(li_);
+						}
+						this.contentBox.attr({"data-id":this.boxId})
+						this.box.append(this.titleBox).append(this.contentBox);
+						this.show.append(this.box);
+					}
+				}
+			})
+			window.onload = function() {
+				var ewidth = $(window).width();
+				var eheight = $(window).height();
+				var left = (ewidth-$("#eval_popover").outerWidth())/2;
+				$("#eval_popover").css({
+					"width":ewidth-20,
+					"top":eheight+30,
+					"left":10,
+					"height":eheight-100,
+					"display":"none"
+				});
+				$("#eval_popover_content").css({
+					"height":eheight-250,
+					"overflow":"auto"
+				})
+			}
+		</script>
+	</body>
+
+</html>

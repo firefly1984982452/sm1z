@@ -1,0 +1,87 @@
+
+.mui-action-back {
+	color: #FFFFFF;
+}
+
+.title {
+	color: #FFFFFF;
+	font-size: 14px;
+	color: #333333;
+}
+.title .time{
+	float: right;
+	padding: 0px 10px;
+	font-size: 12px;
+	color: #666666;
+}
+.mui-table-view.mui-grid-view {
+	margin-top: -10px;
+}
+.mui-media-body{
+	font-weight: 400;
+}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.mui-media-body .down-row {
+	float: left;
+	display: block;
+	height: 20px;
+	width: 100%;
+	line-height: 20px;
+	color: #666666;
+}
+
+.mui-media-body .down-title {
+	height: 20px;
+	color: #333333;
+	line-height: 20px;
+}
+
+.mui-media-body .down-row span {
+	width: 50%;
+	display: block;
+	font-size: 12px;
+	float: left;
+	height: 100%;
+}
+.info{
+	max-height: 34px;
+	line-height: 17px;
+	font-size: 10px;
+	color: #666666;
+}
+
+.mui-table-view .mui-media-object{
+	height: 55px;
+	max-width:55px;
+	position: relative;
+}
+.mui-table-view .mui-media-object .img{
+	height: 55px;
+	max-width:55px;
+}
+.mui-table-view .mui-media-object .show{
+	height: 10px;
+	max-width:10px;
+	position: absolute;
+	right: 0px;
+	top: -3px;
+}
+.mui-table-view-cell{
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+.mui-table-view{
+	background-color: #EFEFF4;
+}

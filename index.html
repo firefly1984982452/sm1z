@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>饰管家-平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" href="css/indx.css" />
+		<link rel="stylesheet" href="css/preimages.css" />
+		<!--App自定义的css-->
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img{
+				width: 100%;
+			}
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.mui-slider-indicator .mui-active.mui-indicator{
+				background-color: #9C005E;
+			}			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,.oa-contact-position {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<img src="images/login/logo.png" />
+			<span class="mui-icon mui-icon-gear"></span>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-community">
+				<span class="mui-icon mui-icon-star"></span>
+				<span class="mui-tab-label">社区</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-me">
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-help">
+				<span class="mui-icon mui-icon-help"></span>
+				<span class="mui-tab-label">帮助</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<!--主页-->
+			<!--主页-轮播-->
+			<div id="tabbar" class="mui-control-content mui-active">
+				<div class="mui-slider" id="slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="images/lb_4.jpg" width="100%" /></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="images/lb_1.jpg" width="100%" data-preview-src="" data-preview-group="10000" /></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="images/lb_2.jpg" width="100%" data-preview-src="" data-preview-group="10000"/></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="images/lb_3.jpg" width="100%" data-preview-src="" data-preview-group="10000"/></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="images/lb_4.jpg" width="100%" data-preview-src="" data-preview-group="10000"/></a>
+						</div>
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="images/lb_1.jpg" width="100%"  /></a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+
+				<!--主页-信息列表-->
+				<ul id="index_select" class="mui-table-view mui-grid-view mui-grid-6">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='0'>
+						<a href="#">
+							<img src="images/index_1.png" />
+							<div class="mui-media-body">
+								产品商城
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='1'>
+						<a href="#">
+							<img src="images/index_2.png" />
+							<div class="mui-media-body">
+								设备租赁
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='2'>
+						<a href="#">
+							<img src="images/index_3.png" />
+							<div class="mui-media-body">
+								服务预约
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='3'>
+						<a href="#">
+							<img src="images/index_4.png" />
+							<div class="mui-media-body">
+								CRM系统
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='4'>
+						<a href="#">
+							<img src="images/index_5.png" />
+							<div class="mui-media-body">
+								项目管理
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-select='5'>
+						<a href="#">
+							<img src="images/index_6.png" />
+							<div class="mui-media-body">
+								在线投标
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!--主页 - 最新消息推荐-->
+				<ul class="mui-table-view mui-table-view-chevron">
+			</div>
+			<!--社区-->
+			<div id="tabbar-with-community" class="mui-control-content">
+				<div class="title">该功能模块正在努力开发中...</div>
+			</div>
+			<!--我的-->
+			<div id="tabbar-with-me" class="mui-control-content">
+				<div class="me_content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">订单管理</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											我的订单
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">商品管理</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											发布商品
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											发布商品
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">设备租赁</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											发布设备
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											我发布的设备
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">我的收藏</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											我的收藏的设备
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">资金管理</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											我的账户余额
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											提现
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											提现明细
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											消费明细
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">下载管理</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" id="download">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											我的下载
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">账户资料</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											个人资料
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											邮箱修改
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											密码修改
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+						<li class="mui-collapse loginout">
+							<button type="button" class="mui-btn mui-btn-royal mui-btn-block">注销登录</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--帮助-->
+			<div id="tabbar-with-help" class="mui-control-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">网上商城</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											为您提供最适合你的商品
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											为您打开销售市场
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">租赁平台</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											把您的空闲设备利用起来
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">服务预约</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											为您提供专业的施工服务
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">技工市场</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											为您解决专业人才的培训及招聘
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right" href="#">项目管控</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right mui-table-view-cell-item">
+											为您提供全面的施工项目管理
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="library/js/mui.zoom.js" ></script>
+	<script type="text/javascript" src="library/js/mui.previewimage.js" ></script>
+	<script type="text/javascript" src="js/Strings.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js" ></script>
+	<script type="text/javascript" src="js/evalHttp.js" ></script>
+	<script type="text/javascript" src="js/util.js" ></script>
+	<script>
+		mui.previewImage();
+	</script>
+	<script>
+		mui.init({
+			swipeBack: false
+		});
+		mui.plusReady(function() {
+			plus.navigator.setStatusBarStyle("UIStatusBarStyleDefault")
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+				interval: 4000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+			var name = self.name;
+			var version = self.age
+			var val = Strings.indexData;
+//			setTimeout(initImg, 3000);
+//			//首页js代码区
+//			function initImg() { //初始化播轮图片
+//				var data = [{
+//					"src": "images/lb_1.png",
+//					"openId": "52013"
+//				}, {
+//					"src": "images/lb_2.png",
+//					"openId": "52014"
+//				}, {
+//					"src": "images/lb_3.png",
+//					"openId": "52015"
+//				}, {
+//					"src": "images/lb_4.png",
+//					"openId": "52016"
+//				}];
+//				var item_1 = mui(".mui-slider-item>a>img");
+//				var len = data.length;
+//				item_1[0].setAttribute("src", data[0].src);
+//				item_1[0].setAttribute("data-openid", data[0].openId);
+//				for(var i = 0; i < len; i++) {
+//					item_1[i + 1].setAttribute("src", data[i].src);
+//					item_1[i + 1].setAttribute("data-openid", data[i].openId);
+//				}
+//				item_1[len + 1].setAttribute("src", data[0].src);
+//				item_1[len + 1].setAttribute("data-openid", data[0].openId);
+//			}
+			mui(".mui-slider-item>a").on("tap", "img", function() {
+				mui.alert(this.getAttribute("data-openid"), "mess", "哦哦");
+			})
+			mui("#index_select").on("tap", "li", function() {
+				var self = this;
+				var index = self.getAttribute("data-select");
+				var url = "";
+				switch(parseInt(index)) {
+					case 0:
+						{
+							url = "mail"; //网上商城
+						};
+						break;
+					case 1:
+						{
+							url = "lease"; //设备租赁
+						};
+						break;
+					case 2:
+						{
+							url = "service"; //服务预约
+						};
+						break;
+					case 3:
+						{
+							isArtLogin();
+							return;
+						};
+						break;
+					case 4:
+						{
+							url = "manager"; //项目管理
+						};
+						break;
+					case 5:
+						{
+							url = "tender"; //在线投标
+						};
+						break;
+					default:
+						break;
+				}
+				mui.openWindow({
+					url: url += "/index.html",
+					id: url += "_index.html",
+					createNew: true
+				});
+			});
+			//首页头部信息
+			mui(".mui-bar").on("tap", ".mui-icon-gear", function() {
+					mui.openWindow({
+						url: "info.html",
+						id: "info.html",
+						createNew: true
+					});
+				})
+				//我的js代码区
+			mui(".loginout").on("tap", "button", function() {
+				mui.confirm(val.me.loginOutMsg, val.me.loginOutTitle, val.me.loginOutBtn, function(e) {
+					if(e.index == 0) {
+						var storage_ = new evalStorage();
+						var mode_ = storage_.Mode;
+						storage_.removeStorage(mode_.localStorage, "userinfo");
+						mui.openWindow({
+							url: "login.html",
+							id: "login.html",
+							createNew: true,
+							extras: {
+								isBack: true
+							}
+						})
+					}
+				})
+			});
+			mui("#download").on("tap","a",function(){
+//				var id = this.id;
+//				console.log(id);
+//				switch (){
+//					case "download":
+						mui.openWindow({
+							url:"download/download.html",
+							id:"download_download.html"
+						})
+//						break;
+//					default:
+//						break;
+//				}
+			})
+			function isArtLogin(){//验证是否需要重新登陆
+				plus.nativeUI.showWaiting();
+				try{
+					var data = JSON.parse(localStorage.getItem("art_user"));
+					Xeval.setUrl(Xeval.UrlModel.CRM);
+					Xeval.Http(
+						Xeval.Mode.HTTP_ART_CHANGE_USER_TOKEN,{
+							Username:data.data.T_accountnumber,
+							Token:data.guid
+						},function(isOk,data){
+							console.log(JSON.stringify(data))
+							plus.nativeUI.closeWaiting();
+							if(isOk && data.state==1){
+								localStorage.setItem("art_user",JSON.stringify(data));
+								var userinfo = localStorage.getItem("userinfo");
+								if(userinfo){
+									try{
+										var indexUser = JSON.parse(userinfo);
+										if(indexUser.user == data.data.T_accountnumber){
+											indexUser.guid = data.guid;
+											localStorage.setItem("userinfo",JSON.stringify(indexUser));
+										}
+									}catch(e){
+										
+									}
+								}
+								mui.openWindow({
+									url:"artisan/index.html",
+									id:"artisan_index.html"
+								})
+							}else{
+								open();
+							}
+						},
+						false
+					)
+					
+				}catch(e){
+					open();
+				}
+				function open(){
+					url = "artisan"; //技工市场
+					mui.openWindow({
+						url: url += "/login.html",
+						id: url += "_login.html",
+						createNew: true
+					});
+				}
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../library/css/dialog.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_1.css" />
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/evalHttp.js"></script>
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js"></script>
+		<script type="text/javascript" src="../../library/js/dialog.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<body class="mui-fullscreen">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">商机信息详情</h1>
+			</header>
+			<div class="mui-content">
+				<div class="mui-card text-show">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell-item text-title">
+							客户信息
+							<span v-gesture:tap.stop.prevent="info(5)">查看/修改</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>客户名称</label>
+							<span>{{data.C_name}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>联系人</label>
+							<span>{{data.C_linkname}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>地址</label>
+							<span>{{data.C_address}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>联系电话</label>
+							<span>{{data.C_linkphone}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="mui-card text-show">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell-item text-title text-title">
+							商机信息
+							<span v-gesture:tap.stop.prevent="info(6)">修改</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机名称</label>
+							<span>{{data.B_name}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机日期</label>
+							<span>{{data.B_datetime|sjrq}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机来源</label>
+							<span>{{data.B_source|sjly}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机类型</label>
+							<span>{{data.B_kind|sjlx}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>需求类型</label>
+							<span id="change">{{kinds.so.Text}}>{{kinds.st.Text}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>商机提供者</label>
+							<span>{{data.Addbusinessman}}</span>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<label>需求量</label>
+							<span>{{data.B_neednumber}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="mui-card text-show">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell-item text-title">
+							商机需求原因
+						</li>
+						<li class="mui-table-view-cell-item">
+							<div class="text-txt" style="width: 100%;">
+								{{data.B_needcause}}
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="mui-card text-show">
+					<ul class="mui-table-view crm-change-view">
+						<li class="mui-table-view-cell mui-media crm-change" v-gesture:tap.stop.prevent="info(0)">
+							派单状态:<i>{{data.B_status|pdzt}}</i>
+							<span>查看详情</span>
+						</li>
+						<li class="mui-table-view-cell mui-media crm-change" v-gesture:tap.stop.prevent="info(1)">
+							客户拜访记录
+							<span>查看详情</span>
+						</li>
+						<li class="mui-table-view-cell mui-media crm-change" v-gesture:tap.stop.prevent="info(2)">
+							需求评估
+							<i>{{data.B_needsassessment|fapg}}</i>
+							<span>查看详情</span>
+						</li>
+						<li class="mui-table-view-cell mui-media crm-change" v-gesture:tap.stop.prevent="info(3)">
+							项目方案报价
+							<i>{{data.B_projectQuote|fabj}}</i>
+							<span>查看详情</span>
+						</li>
+						<li class="mui-table-view-cell mui-media crm-change"  v-gesture:tap.stop.prevent="info(4)">
+							签单合同信息
+							<span>查看详情</span>
+						</li>
+					</ul>
+				</div>
+				<i class="px20"></i>
+			</div>
+			<div id="dialog">
+			<div class="dialog">
+				<div class="loging">
+					<span class="mui-spinner"></span>
+				</div>
+				<div class="msg">
+					下载中
+				</div>
+				<div class="btn">
+					取消
+				</div>
+			</div>
+		</div>
+		</body>
+		<script>
+			mui.plusReady(function() {
+				mui(".text-txt")[0].value = "";
+				Xeval.setUrl(Xeval.UrlModel.CRM);
+				app.init();
+			})
+			var app = {
+				datas: {
+					vm: null,
+					params: {},
+					vmData: {
+						data: {},
+						kinds:{}
+					}
+				},
+				methods: {
+					_HTTP_CB: function(isOk, data) {
+						app.utils.appendObject(app.datas.vmData.data, data.data);
+						app.datas.vmData.kinds = data.data.Kinds;
+					},
+					info:function(index){
+						var urls = ["c_page_3.html","page_4.html","c_page_5.html","page_6.html","c_page_7.html","../xiugai/up_user.html","../xiugai/up_shangji.html"];
+						var data = app.datas.vmData.data;//data
+						var params = {};
+						var para = app.datas.params;
+						switch (index){
+							case 0:{
+								data.gdr = "请选择..";
+								params = data;
+								open();
+							}
+							break;
+							case 1:{
+								para.CV_businessID = data.ID;
+								network(Xeval.Mode.HTTP_ART_GET_BF_SJID,function(data){
+									go({
+										url:"c_page_4_add.html",
+										data:data,
+										extras:app.datas.vmData.data
+									});
+								});
+							}
+							break;
+							case 2:{
+								para.A_businessID = data.ID;
+								network(Xeval.Mode.HTTP_ART_GET_PG_SJID,function(data){
+									go({
+										url:"c_page_5_add.html",
+										data:data,
+										extras:app.datas.vmData.data
+									});
+								},{CV_businessName:data.B_name});
+							}
+							break;
+							case 3:
+							{
+								//HTTP_ART_GET_BJ_BYSJID
+								para.O_businessID = data.ID;
+								network(Xeval.Mode.HTTP_ART_GET_BJ_BYSJID,function(data){
+									go({
+										url:null,
+										data:data,
+										extras:app.datas.vmData.data
+									});
+								},{CV_businessName:data.B_name});
+							}
+							break;
+							case 4:
+							//HTTP_ART_GET_HT_BY_SJID
+							para.P_businessID = data.ID;
+								network(Xeval.Mode.HTTP_ART_GET_HT_BY_SJID,function(data){
+									go({
+										url:null,
+										data:data,
+										extras:app.datas.vmData.data
+									});
+								},{CV_businessName:data.B_name});
+							break;
+							case 5:
+							case 6:
+							params = app.datas.vmData.data;
+							open();
+							break;
+							default:
+								break;
+						}
+						function open(){
+							console.log(urls[index])
+							console.log(JSON.stringify(params))
+							mui.openWindow({
+								url:urls[index],
+								id:urls[index],
+								extras:{
+									data:params
+								}
+							})
+						}
+						function go(options){
+							var data = options.data;
+							var url_ = options.url;
+							var extras = options.extras;
+							if(data.state==1){
+								open();
+							} else if(data.state==2){
+								if(url_!=null){
+									plus.nativeUI.confirm("未查到记录，是否新增",function(e){
+										if(e.index==0){
+											mui.openWindow({
+												url:url_,
+												id:url_,
+												creatNew:true,
+												extras:{
+													data:extras
+												}
+											})
+										}
+									},"新增提示",["新增","取消"])
+								}else{
+									plus.nativeUI.alert("没有数据，请在电脑端录入！");
+								}
+							}
+						}
+						function network(model,fn,options){
+							plus.nativeUI.showWaiting("获取数据，请稍等...");
+								Xeval.Http(model,para,function(isOk,data){
+									console.log(JSON.stringify(data))
+									plus.nativeUI.closeWaiting();
+									if(isOk){
+										if(data.state==1){
+											if(typeof(options)=='object'){
+												for(var item in options){
+													data.data[item] = options[item];
+												}
+											}
+											params = data.data;
+										}
+										fn(data);
+									}else{
+										plus.nativeUI.alert("网络错误,请检查您的网络！");	
+									}
+								})
+						}
+					}
+				},
+				init: function() {
+					var webView = plus.webview.currentWebview();
+					app.datas.vmData.data = webView.data;
+					app.datas.params.ID = app.datas.vmData.data.ID;
+					mui(".mui-title")[0].innerText = app.datas.vmData.data.B_name;
+					app.datas.vm = new Vue({
+						el: ".mui-content",
+						data: app.datas.vmData,
+						methods: app.methods
+					})
+					this.utils.extendsParams();
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_SJ_BYID, app.datas.params, app.methods._HTTP_CB);
+				},
+				utils: {
+					extendsParams: function() {
+						var data = localStorage.getItem("art_user");
+						if(data) {
+							try {
+								var jsonData = JSON.parse(data);
+								app.datas.params.Username = jsonData.data.T_accountnumber;
+								app.datas.params.Token = jsonData.guid;
+							} catch(e) {
+								//TODO handle the exception
+							}
+						}
+
+					},
+					appendObject: function(parent, options) {
+						for(var _key in options) {
+							if(options[_key]!=null){
+								parent[_key] = options[_key];
+							}
+						}
+						return parent;
+					}
+				}
+			}
+		</script>
+<script type="text/javascript" src="../js/pageFilter.js" ></script>
+</html>

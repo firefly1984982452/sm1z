@@ -1,0 +1,114 @@
+.mui-tab-item>span>img{
+	top: 3px;
+    width: 20px;
+    height: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    margin: 0px auto;
+    margin-top:5px ;
+    text-overflow: ellipsis;
+}
+.mui-tab-label{
+	height: 25px;
+	font-size: 12px;
+	line-height: 25px;
+	
+}
+.mui-slider-indicator>.mui-indicator{
+	background-color: rgba(255,255,255,0.5);
+}
+.mui-bar>img{
+	height: 30px;
+	display: block;
+	margin: 6px auto;
+}
+.mui-bar>.mui-icon{
+	display: block;
+	z-index: 88;
+	right: 6px;
+	color: #9C005E;
+	top: 0px;
+	position: absolute;
+}
+.mui-table-view-cell>a>img{
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	margin: 0px auto;
+	display: block;
+}
+.mui-media-body{
+	font-weight: bold;
+	font-size: 12px;
+}
+#index_select{
+	padding: 20px 0px;
+}
+.me_content{
+	margin-top: 10px;
+}
+.loginout{
+	padding: 6px 15px 0px 15px;
+	display: block;
+	height: 55px;
+}
+.loginout>button{
+	height: 40px;
+	background-color: #9C005E;
+	border: 1px solid #9C005E;
+	line-height: 10px;
+}
+.mui-table-view-cell > .mui-table-view-cell-item:not(.mui-btn){
+	color: #666666;
+	font-size: 15px;
+}
+#tabbar-with-help{
+	margin-top: 10px;
+}
+.mui-bar-tab .mui-tab-item.mui-active{
+	color: #1EB4C6;
+}
+.mui-bar-tab .mui-tab-item.mui-active .mui-icon{
+	color: #1EB4C6;
+	background-size: 100%;
+}
+.mui-bar-tab .mui-tab-item .mui-icon{
+	background-size: 100%;
+	-webkit-background-size: 100%;
+}
+.db {
+	background: url(../img/Do-manager_gray.png) no-repeat;
+}
+.mui-bar-tab .mui-tab-item.mui-active .db{
+	background: url(../img/Do-manager.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+}
+.bb {
+	background: url(../img/Report-management_gray.png) no-repeat;
+}
+.mui-bar-tab .mui-tab-item.mui-active .bb{
+	background: url(../img/Report-management.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+}
+.set {
+	background: url(../img/set_gray.png) no-repeat;
+}
+.mui-bar-tab .mui-tab-item.mui-active .set{
+	background: url(../img/set.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+}
+.mui-bar-tab .mui-tab-item .mui-icon{
+	width: 20px;
+	height: 20px;
+	box-sizing: border-box;
+}
+.mui-bar-tab .mui-tab-item .mui-icon-home{
+	width: 24px;
+	height: 24px;
+}

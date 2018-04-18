@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>员工打卡</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mana-index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mana-set.css" />
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">员工打卡</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>项目名称：</label>
+						<input class="input-search" type="text" >
+							<a href="02_summary_select.html" class="search-icon"></a>
+						</input>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目编号：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目地址：</label>
+						<input class="input-search" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>考勤日期：</label>
+						<input class="input-date" type="text" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>打卡状态：</label>
+						<input class="input-date" type="text" />
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mui-card div-photo">
+				<img class="photo" src="../../img/icon-click_photo.png"/>
+				<label>
+					<span>点击拍照</span>
+				</label>
+			</div>
+			
+			<a href="#"  class="edit-btn mui-card btn-save btn-save1 mui-action-back">提交</a>
+
+		</div>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".div-photo").on('tap',function(){
+				$(".photo").attr('src','../../img/test-photo.jpg');
+				$(this).find("label").html("<i id='change_photo'></i><span>换一张</span>");
+			});
+		</script>
+	</body>
+
+</html>

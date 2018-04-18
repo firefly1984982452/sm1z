@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">客户信息详情</h1>
+		</header>
+		<div class="mui-content" id="user">
+			<div class="mui-card" >
+				<ul class="mui-table-view" >
+					<li class="mui-table-view-cell mui-media">
+						<label>客户名称</label>
+						<input type="text" v-model='data.C_name' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系人员</label>
+						<input type="text" v-model='data.C_linkname' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系电话</label>
+						<input type="text" v-model='data.C_linkphone' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>所属行业</label>
+						<input type="text" v-model='data.C_industry' />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户类型</label>
+						<span id="khlx">{{data.C_kind|khlx}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>所属区域</label>
+						<span id="city" data-id='{{data.city.provinces.provinceid}}-{{data.city.cities.cityid}}-{{data.city.areass.areaid}}'>{{data.city.provinces.province}}-{{data.city.cities.city}}-{{data.city.areass.area}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>详细地址</label>
+						<input type="text" v-model='data.C_address'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户性质</label>
+						<span id="hzfs">{{data.C_cooperation|hzfs}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户规模</label>
+						<span id="khgm">{{data.C_scale|khgm}}</span>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="xiugai"  v-bind:style="{display: data.display}">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../library/js/city.data-3.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			Xeval.setUrl("http://192.168.191.1/");
+			app.init();
+		})
+		var app = {
+			datas:{
+				plusData:{},
+				vm:null,
+				vmData:{
+					data:{
+						display:"none"
+					}
+				},
+				webData:{},
+				cityOptions:{
+					city:cityData3,
+					khlx:[
+						{
+							text:"个人",
+							value:"1"
+						},
+						{
+							text:"企业",
+							value:"2"
+						}
+					],
+					hzfs:[
+						{
+							text:"临时",
+							value:"1"
+						},
+						{
+							text:"长期",
+							value:"2"
+						},
+						{
+							text:"战略合作",
+							value:"3"
+						}
+					],
+					khgm:[
+						{
+							text:"小型",
+							value:"1"
+						},
+						{
+							text:"中型",
+							value:"2"
+						},
+						{
+							text:"大型",
+							value:"3"
+						}
+					]
+				},
+				pickers:{
+					cityPicker:new mui.PopPicker({layer: 3}),
+					khlxPicker:new mui.PopPicker(),
+					hzfsPicker:new mui.PopPicker(),
+					khgmPicker:new mui.PopPicker()
+				}
+			},
+			methods:{
+				_HTTP_CB:function(isOk,data){
+					if(isOk){
+						if(data.state == 1){
+							if(app.datas.webData.data.T_UserRole == 1 || app.datas.webData.data.T_role==1){
+								 data.data.isubmit = "block";
+							}
+							app.datas.vmData.data = data.data;
+						}else{
+							plus.nativeUI.alert(data.msg);
+						}
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络环境！");
+					}
+				},
+				_PICKER_OPTIONS:function(){
+					var pics = app.datas.pickers;
+					pics.cityPicker.blur;
+					pics.hzfsPicker.blur;
+					pics.khlxPicker.blur;
+					pics.khgmPicker.blur;
+					var that = this;
+					switch (that.id){
+						case "khlx":
+						{
+							pics.khlxPicker.setData(app.datas.cityOptions.khlx);
+							pics.khlxPicker.show(function(item){
+								app.datas.vmData.data.C_kind = item[0].value;
+							});
+						}
+						break;
+						case "city":
+						{
+							pics.cityPicker.setData(app.datas.cityOptions.city);
+							pics.cityPicker.show(function(item){
+								var city = {
+									provinces:{
+										provinceid:item[0].value,
+										province:item[0].text
+									},
+									cities:{
+										cityid:item[1].value,
+										city:item[1].text
+									},
+									areass:{
+										areaid:item[2].value,
+										area:item[2].text
+									}
+								}
+								app.datas.vmData.data.city = city;
+							});
+						}
+						break;
+						case "hzfs":
+						{
+							pics.hzfsPicker.setData(app.datas.cityOptions.hzfs);
+							pics.hzfsPicker.show(function(item){
+								app.datas.vmData.data.C_cooperation = item[0].value;
+							});
+						};break;
+						case "khgm":
+						{
+							pics.khgmPicker.setData(app.datas.cityOptions.khgm);
+							pics.khgmPicker.show(function(item){
+								app.datas.vmData.data.C_scale = item[0].value;
+							});
+						}
+						break;
+						default:
+							break;
+					}
+				},
+				_HTTP_XIUGAI:function(){
+					const data = app.datas.vmData.data;
+					const updata = app.utils.copyObject(data);
+					updata.Username=app.datas.webData.data.T_accountnumber;
+					updata.Token=app.datas.webData.guid;
+					updata.C_province = data.city.provinces.provinceid;
+					updata.C_city = data.city.cities.cityid;
+					updata.C_district = data.city.areass.areaid;
+					delete updata.city;
+					app.utils.regUpdata(updata);
+					Xeval.Http(Xeval.Mode.HTTP_ART_UPDATA_USER,updata,app.methods.__HTTP_XIUGAI_LISTENER);
+				},
+				__HTTP_XIUGAI_LISTENER:function(isOk,data){
+					if(isOk){
+						plus.nativeUI.alert(data.msg);
+					}else{
+						plus.nativeUI.alert("网络错误，请检查您的网络环境！");
+					}
+				}
+			},
+			init:function(){
+				var webView = plus.webview.currentWebview();
+				app.datas.plusData = webView.data;
+				mui(".mui-table-view-cell").on("tap","input,span",app.methods._PICKER_OPTIONS);
+				document.getElementById("xiugai").addEventListener("touchend",app.methods._HTTP_XIUGAI,false);
+				var data = localStorage.getItem("art_user");
+				app.datas.webData = JSON.parse(data);
+				app.datas.vm = new Vue({
+					el:"#user",
+					data:app.datas.vmData,
+					methods:app.methods
+				})
+				Xeval.Http(
+					Xeval.Mode.HTTP_ART_GET_USER_BYID,
+					{
+						Username:app.datas.webData.data.T_accountnumber,
+						Token:app.datas.webData.guid,
+						ID:app.datas.plusData.CustomerID
+					},
+					app.methods._HTTP_CB
+				);
+			},
+			utils:{
+				copyObject:function(obj){
+					var _result = {};
+					for(var item in obj){
+						_result[item] = obj[item];
+					}
+					return _result;
+					
+				},
+				regUpdata:function(updata){
+					var regx = {
+						C_name:{
+							txt:"客户名称不能为空！",
+							reg: null
+						}, 
+						C_linkname:{
+							txt:"联系人输入错误！",
+							reg: null
+						},
+						C_linkphone:{
+							txt:"联系电话格式输入错误！",
+							reg:/^1[3|4|5|7|8]\d{9}$/
+						},
+						C_industry:{
+							txt:"行业不能为空！",
+							reg: null
+						},
+						C_address:{
+							txt:"联系地址不能为空！",
+							reg: null
+						}, 
+						
+					}
+					for(var item in regx){
+						const val = updata[item];
+						if(regx[item].reg==null){
+							if(val.trim()==""){
+								plus.nativeUI.alert(regx[item].txt);
+								throw new Error("for in con't return!");
+								return;
+							}
+						}else{
+							if(regx[item].reg.test()){
+								plus.nativeUI.alert(regx[item].txt);
+								throw new Error("for in con't return!");
+								return;
+							}
+						}
+					}
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,25 @@
+#dialog{
+	min-width: 80%;
+	min-height: 20%;
+	border:none;
+	position: fixed;
+	box-shadow: 1px 2px 2px #333333;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 8px;
+}
+#dialog>img{
+	display: block;
+	margin: 20% auto;
+}
+.content_logo>img{
+	height: 61px;
+	display: block;
+	margin: 0px auto;
+}
+#login{
+	background-color: #9C005E;
+	border: #9C005E;
+}
+#reg,#forgetPassword{
+	color: #9C005E;
+}

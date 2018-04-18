@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../library/css/pages.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			.mui-scroll-wrapper{
+				overflow: auto;
+			}
+			.mui-table-view-cell select{
+				width: 30%;
+				  direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			.mui-table-view-cell select option{
+				text-align: center;
+			}
+			.list-content .info .ellipsis{
+				width: 50%;
+			}
+			.list-content .info .ellipsis:first-child{
+				width: 50%;
+			}
+			.list-content .info .ellipsis:last-child{
+				width: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+					<ul class="mui-table-view" id="user">
+						<li class="mui-table-view-cell" v-for="item in data" v-gesture:tap.stop.prevent="addLink($index)" v-gesture:longtap.stop.prevent="call(item.C_linkphone)">
+						<a class="mui-navigate-right">
+							<div class="list-content">
+								<h5 class="ellipsis">姓名:{{item.T_name}}</h5>
+								<div class="info">
+									<span class="ellipsis">
+			                  			部门：{{item.T_demartment}}
+			                  		</span>
+			                  		<span class="ellipsis">
+			                  			职务：{{item.T_duct}}
+			                  		</span>
+									<span class="ellipsis">
+			                  			工号：{{item.T_jobnumber}}
+			                  		</span>
+									<span class="ellipsis">
+			                  			手机：{{item.T_phone}}
+			                  		</span>
+								</div>
+							</div>
+						</a>
+					</li>
+					</ul>
+			</div>
+		</div>
+		</body>
+		<script type="text/javascript" src="../../library/js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.view.js"></script>
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../js/pageFilter.js"></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../js/evalHttp.js"></script>
+		<script type="text/javascript" src="../../js/Strings.js" ></script>
+		<script type="text/javascript" src="../../js/util.js" ></script>
+		<script>
+			var app = {
+				datas: {
+					searData:{
+						data:[]
+					},
+					params:{
+						
+					},
+					isDown:false
+				},
+				methods: {
+					_HTTP_UPDATA_LISTENER: function(isOk, data) {
+						console.log(JSON.stringify(data));
+						plus.nativeUI.closeWaiting();
+						if(isOk) {
+							plus.nativeUI.alert(data.msg);
+							if(data.state==1){
+								mui.back();
+							}
+						} else {
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					_HTTP_SEARCH_USER:function(keyword){
+						plus.nativeUI.showWaiting("数据加载中...");
+						Xeval.Http(Xeval.Mode.HTTP_ART_GET_CHILDRENS,app.datas.params,app.methods._HTTP_CB_GETUSERS);
+					},
+					_HTTP_CB_GETUSERS:function(isOk,data){
+						plus.nativeUI.closeWaiting();
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+						if(isOk){
+							if(data.state==1){
+								if(app.datas.isDown){
+									app.datas.searData.data = data.data;
+								}else{
+									var arr = app.datas.searData.data;
+									app.datas.searData.data = arr.concat(data.data);
+								}
+							}else if(data.state==2){
+								plus.nativeUI.toast("没有数据");
+							}else{
+								plus.nativeUI.toast(data.msg);
+							}
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+					},
+					addLink:function(index){
+						plus.nativeUI.showWaiting("获取客户信息中...");
+						var sel = app.datas.searData.data[index];
+						app.datas.params.T_accountnumber = sel.T_accountnumber;
+						Xeval.Http(Xeval.Mode.HTTP_ART_GET_CHILDRENS_BYID,app.datas.params,function(isOk,data){
+							plus.nativeUI.closeWaiting();
+							if(isOk){
+								if(data.state==1){
+									mui.openWindow({
+										url:"c_caozyck.html",
+										id:"c_caozyck.html",
+										extras:{
+											data:data.data
+										}
+									})
+								}else{
+									plus.nativeUI.toast(data.msg);
+								}
+							}else{
+								plus.nativeUI.alert("网络错误,请检查您的网络！");
+							}
+						})
+					},
+					pullupRefresh:function(){
+						app.datas.isDown = false;
+						app.datas.params.page++;
+						app.methods._HTTP_SEARCH_USER("");
+					},
+					pulldownRefresh:function(){
+						app.datas.isDown = true;
+						app.datas.params.page=1;
+						app.methods._HTTP_SEARCH_USER("");
+					},
+					search:function(){
+						var data = JSON.parse(localStorage.getItem("search"));
+						localStorage.setItem("search",null);
+						for(var item in data){
+							var　value = data[item];
+							if(value != null){
+								app.datas.params[item]= value;
+							}
+						}
+						console.log(JSON.stringify(data))
+						app.methods.pulldownRefresh();
+					},
+					call:function(phone){
+						callPhone(phone)
+					}
+				},
+				init: function() {
+					app.datas.searchVm = new Vue({
+						el: "#user",
+						data: app.datas.searData,
+						methods: app.methods
+					});
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					app.datas.params = app.utils.getToken();
+					app.methods.pulldownRefresh();
+				},
+				utils: {
+					getToken: function() {
+						var jsonData = JSON.parse(localStorage.getItem("art_user"));
+						var params = {
+							Username:jsonData.data.T_accountnumber,
+							Token:jsonData.guid,
+							ID:jsonData.data.T_UserID,
+							page:1,
+							rows:6
+						}
+						return params;
+					}
+				}
+
+			}
+			mui.plusReady(function() {
+				Xeval.setUrl(Xeval.UrlModel.CRM); //初始化网络地址
+				plus.webview.currentWebview().parent().evalJS("childReady()");
+			});
+			mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				up: {
+					callback: app.methods.pullupRefresh
+				},
+				down:{
+					callback: app.methods.pulldownRefresh
+				}
+			}
+		});
+		</script>
+</html>

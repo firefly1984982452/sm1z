@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../css/index.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">需求评估信息</h1>
+			<a type="button" class="mui-left mui-btn  mui-btn-link  mui-pull-right" href="#topPopover" >
+				<span class="mui-icon mui-icon-plusempty"></span>
+			</a>
+		</header>
+		<div class="mui-content">
+			<div class="search">
+				<div class="search-box">
+					<div class="search-input">
+						<input type="text" id="keyword" placeholder="请输入查询关键字" />
+						<a href="javascript:searchByWord();" class="btn">
+							搜索
+						</a>
+					</div>
+					<a href="javascript:search();" class="search-btn">条件查找</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			gestureConfig:{
+				doubletap:true
+			},
+			subpages:[{
+				url:'page5_sub.html',
+				id:'page5_sub.html',
+				styles:{
+					top: '85px',
+					bottom: '0px',
+				}
+			}]
+		});
+		mui.plusReady(function(){
+			mui(".mui-bar").on("tap",".mui-pull-right",function(){
+				mui.openWindow({
+					url:"c_page_5_add.html",
+					id:"c_page_5_add.html"
+				})
+			})
+		})
+		function childReady(){
+			plus.webview.currentWebview().children()[0].evalJS("app.init()");
+		}
+		function setTitle(title){
+			mui(".mui-title")[0].innerText = title;
+		}
+		function searchByWord(){
+			var name  = document.getElementById("keyword").value;
+			go({
+				BussName:name
+			});
+		}
+		function search(){
+			mui.openWindow({
+				url:"search.html",
+				id:"search.html",
+				creatNew:true,
+				extras:{
+					data:{
+						name:"拜访信息",
+						index:4,
+						id:plus.webview.currentWebview().id
+					}
+				}
+			})
+		}
+		window.addEventListener("searchback",function(e){
+			var data = e.detail.data;
+			go(data);
+		})
+		function go(data){
+			localStorage.setItem("search",JSON.stringify(data));
+			setTimeout(function(){
+				plus.webview.currentWebview().children()[0].evalJS("app.methods.search()");
+			})
+		}
+	</script>
+
+	<script type="text/javascript" src="../../library/js/scrollZIP.js" ></script>
+</html>

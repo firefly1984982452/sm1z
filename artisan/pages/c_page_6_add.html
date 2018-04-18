@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<link rel="stylesheet" href="../css/page_6.css" />
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新增报价记录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>商机名称</label>
+						<input type="text" id="sjmc" placeholder="请选择一个商机" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系日期</label>
+						<span> </span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>商谈地点</label>
+						<span> </span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>商谈人员</label>
+						<span> </span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户反馈</label>
+						<span> </span>
+					</li>
+				</ul>
+			</div>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					沟通内容
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="请输入客户反馈" value="" style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					下步计划
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="请输入客户反馈" value="" style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+			<ul class="mui-card text-show mui-table-view">
+				<li class="mui-table-view-cell-item text-title">
+					请上传拜访信息(自动压缩文档)
+				</li>
+				<li class="mui-table-view-cell-item">
+					<div class="pro">
+						<progress value="0" max="100" id="imgSeek"></progress>
+						<div>
+							图片上传进度：
+							<span class="protxt">0%</span>
+						</div>
+					</div>
+					<ul id='image-list' class="row image-list">
+						<li class="add">
+							<label>+</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="mui-card text-show mui-table-view" style="margin-bottom: 40px;">
+				<li class="mui-table-view-cell-item text-title">
+					备注
+				</li>
+				<li class="mui-table-view-cell-item">
+					<textarea class="text-txt" placeholder="请输入客户反馈" value="" style="width: 100%;">
+						
+					</textarea>
+				</li>
+			</ul>
+			<a href="javascript:void(0)" class="mui-card edit-btn">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../../lease/js/phot.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script>
+		mui.plusReady(function() {
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			//setPhotUrl("http://139.224.164.183/")
+			var webView = plus.webview.currentWebview();
+			var data = webView.data_index;
+			var bfpicker = new mui.PopPicker();
+			var sjpicker = new mui.PopPicker();
+			var bfOptions = [
+				{text:"电话",value:"2"},
+				{text:"上门",value:"1"}
+			]
+			var testOptions = [
+				{text:"雨佳科技大厦01",value:"0"},
+				{text:"雨佳科技大厦02",value:"1"},
+				{text:"雨佳科技大厦03",value:"2"}
+			]
+			bfpicker.setData(bfOptions);
+			sjpicker.setData(testOptions);
+			var txtItems = mui(".text-txt");
+			for(var i = 0;i < txtItems.length;i++){
+				txtItems[i].value = "";
+			}
+			mui(".mui-table-view-cell").on("tap","input",function(){
+				var id = this.id;
+				var that = this;
+				bfpicker.blur;
+				sjpicker.blur;
+				switch(id){
+					case "sjmc":{
+						sjpicker.show(function(item){
+							that.value = item[0].text;
+							that.setAttribute("data-id",item[0].value)
+						})
+					};break;
+					case "bfxs":{
+						bfpicker.show(function(item){
+							that.value = item[0].text;
+							that.setAttribute("data-id",item[0].value)
+						})
+					};break;
+					case "lxrq":{
+						
+					};break;
+					default:break;
+				}
+			})
+		})
+	</script>
+
+</html>

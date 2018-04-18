@@ -1,0 +1,19 @@
+.list-content .info .ellipsis:first-child {
+	width: 50%;
+}
+
+.list-content .info .ellipsis:last-child {
+	width: 50%;
+}
+.list-content .line{
+	left: 0px;
+	right: 16px;
+	height: 1px;
+	display: block;
+	position: absolute;
+	border-bottom: 1px solid #EEEEEE;
+}
+.list-content .app-style-color{
+	color: #0062CC;
+	font-weight: 600;
+}

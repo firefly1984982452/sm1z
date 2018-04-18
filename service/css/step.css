@@ -1,0 +1,110 @@
+.mui-table-view .mui-media-object {
+	max-width: 100px;
+	height: 90px;
+}
+
+.mui-ellipsis {}
+
+.mui-media .server_step_content {
+	height: 45px;
+	display: block;
+	white-space: normal;
+	font-size: 12px;
+	color: #666;
+	line-height: 15px;
+}
+#step_list>.mui-spinner{
+	display: block;margin: 0px auto;
+}
+.mui-table-view .mui-media {
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+
+.mui-table-view {
+	background-color: #DDDDDD;
+}
+
+.server_step_show {
+	height: 25px;
+	position: absolute;
+	width: 60%;
+}
+
+.server_step_show .server_step_show_money {
+	display: inline-block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	width: 60px;
+	text-align: center;
+	margin-top: 3px;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #9C005E;
+	border: none;
+	border-radius: 4px;
+}
+
+.server_step_show_money>span {
+	font-size: 12px;
+	padding: 0px -1px;
+}
+
+.server_step_show .server_step_look {
+	display: inline-block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	width: 60px;
+	text-align: center;
+	margin-top: 3px;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #9C005E;
+	border: none;
+	border-radius: 4px;
+}
+/*遮罩层*/
+#service_mark{
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    z-index: 998;
+    background-color: rgba(0,0,0,0.5);
+}
+.mark_content{
+	position: fixed;
+    display: block;
+    width: 60%; min-height: 20%;
+    top: 40%;
+  	left: 20%;
+  	background-color: rgba(255,255,255,0.8);
+  	border-radius: 4px;
+  	overflow: hidden;
+}
+.mark_content>span{
+	display: block;
+	margin: 10% auto;
+}
+.mark_content>label{
+	width: 100%;
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	color: #9C005E;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	background-color: rgba(0,0,0,0.2);
+}
+.mark_content>p{
+	width: 90%;
+	margin: 5px auto;
+	color: #333333;
+}
+/*end*/
+

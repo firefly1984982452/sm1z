@@ -1,0 +1,529 @@
+body {
+	font-size: 14px;
+}
+
+.edit-btn {
+	border-radius: 0;
+	margin: 0;
+}
+
+.bd-info {
+	width: 60%;
+	height: 40px;
+	float: left;
+	border-radius: 6px 0 0 6px;
+	text-align: left;
+	padding-left: 15px;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+
+.bd-updata {
+	margin-top: 20px;
+	background-color: #21b2b2;
+	width: 30%;
+	height: 40px;
+	border-radius: 0 6px 6px 0;
+}
+
+.single {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	-webkit-line-clamp: 1;
+}
+
+.input-search {
+	width: 60%;
+}
+
+.icon-search {
+	background: url(../images/search.png) no-repeat;
+	float: right;
+	position: absolute;
+	right: 10px;
+	width: 22px;
+	height: 22px;
+	background-size: 100%;
+}
+
+.input-date {
+	float: left;
+}
+
+.mui-table-view-cell input[type=text].input-right {
+	float: right;
+	width: 30%;
+}
+
+.set-btn {
+	height: 40px;
+	background-color: #25c8c8;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	margin: 15px 15px 0;
+}
+
+.set-btn .set {
+	text-align: center;
+	float: right;
+	background-color: #21b2b2;
+	padding: 0 20px;
+}
+
+.set-btn a {
+	height: 100%;
+	line-height: 40px;
+	padding-left: 5px;
+	color: #FFF;
+	font-size: 14px;
+}
+
+.search {
+	position: relative;
+	height: 40px;
+	margin: 6px;
+}
+
+.search .search-box {
+	position: absolute;
+	top: 4px;
+	left: 10px;
+	right: 10px;
+	bottom: 4px;
+}
+
+.search .search-input {
+	position: absolute;
+	right: 85px;
+	height: 100%;
+	left: 0;
+	border-radius: 6px;
+	border: 1px solid #25c8c8;
+	overflow: hidden;
+}
+
+.search-input input {
+	height: 100%;
+	border: none;
+	line-height: 24px;
+	right: 140px;
+	font-size: 14px;
+	color: #333;
+	padding: 4px 50px 4px 10px;
+}
+
+.search-input a {
+	height: 32px;
+	width: 46px;
+	float: right;
+	color: #FFF;
+	line-height: 32px;
+	font-size: 14px;
+	text-align: center;
+	border: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #25c8c8;
+	border-radius: 0;
+}
+
+.search .search-btn {
+	width: 80px;
+	float: right;
+	height: 100%;
+	border-radius: 6px;
+	border: none;
+	background-color: #25c8c8;
+	color: #FFF;
+	text-align: center;
+	line-height: 32px;
+	font-size: 14px;
+}
+
+.content-box li>label {
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	color: #333;
+	display: block;
+	box-sizing: border-box;
+}
+
+.content-box .content {
+	background-color: #FFF;
+	display: block;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.content-box .content label {
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	color: #666;
+	font-size: 12px;
+}
+
+.content-box .content .name .span1 {
+	width: 60%;
+	font-weight: 700;
+}
+
+.content-box .content .name .span2 {
+	color: #3390cc;
+	width: 40%;
+}
+
+.content-box .content .name .span3 {
+	color: red;
+	width: 40%;
+}
+
+.content-box .content .info-name {
+	color: #333;
+	background-color: #bdbdbd;
+	margin-top: -10px;
+}
+
+.content-box .content label span {
+	width: 50%;
+	display: block;
+	float: left;
+}
+
+.left-icon {
+	left: 15px;
+	position: absolute;
+}
+
+.mui-table-view-cell> a:not(.mui-btn) {
+	margin: -11px 20px;
+}
+
+.mui-table-view {
+	background-color: transparent;
+}
+
+.mui-bar>.mui-icon {
+	right: 0;
+	color: #fff;
+
+}
+.btn-save {
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	margin: 10px 15px;
+}
+
+.btn-save1 {
+	background-color: #25c862;
+}
+
+.btn-save2 {
+	background-color: #3eccdd;
+}
+
+.bd-btn-search {
+	width: 19%;
+	height: 40px;
+	float: left;
+	margin-right: 2px;
+	background-color: #f6b849;
+	font-size: 14px;
+}
+
+.bd-btn-tjsearch {
+	width: 20%;
+	height: 40px;
+	background-color: #f6b849;
+	font-size: 14px;
+}
+
+.mui-navigate-right .content {
+	height: 50px;
+}
+
+.icon-right {
+	width: 5px;
+	height: 13px;
+	margin-right: 10px;
+}
+
+.icon-delete {
+	width: 20px;
+	height: 20px;
+}
+
+.bd-intro span {
+	color: #000;
+}
+
+.bd-con span {
+	color: #666;
+}
+
+.mui-bar-nav.mui-bar .mui-pull-right{
+	width: 60px;
+	text-align: center;
+}
+.mui-pull-right i {
+	background: url(../images/add.png) no-repeat;
+}
+
+.content-box .mui-card {
+	height: auto;
+	position: relative;
+	padding: 10px;
+}
+
+.mui-checkbox.mui-left input[type=checkbox] {
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+}
+
+.mui-checkbox input[type=checkbox]:before,
+.mui-radio input[type=radio]:before {
+	font-size: 1.25rem;
+}
+
+.car-item {
+	margin-left: 30px;
+	height: 100px;
+}
+
+.div-photo {
+	height: 110px;
+	position: relative;
+	background-color: #222;
+}
+
+.photo {
+	position: absolute;
+	width: auto;
+	height: 65px;
+	display: block;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 10px 0;
+}
+
+.div-photo label {
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.div-photo label>i {
+	width: 20px;
+	height: 20px;
+	top: 3px;
+	left: 0;
+	transform: inherit;
+}
+
+.delete {
+	position: absolute;
+	background: url(../img/delete.png) no-repeat;
+	width: 25px;
+	height: 25px;
+	background-size: 100%;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.div-photo label>span {
+	position: absolute;
+	left: 30px;
+	font-size: 14px;
+	color: #25c8c8;
+}
+
+.sel-box ul {
+	background-color: #25c8c8;
+}
+
+.sel-box ul li {
+	display: block;
+	width: 60px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: 500;
+	transition: all .2s;
+}
+
+.sel-box {
+	width: 60px;
+	height: 100%;
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 40px;
+}
+
+.mui-checkbox.mui-left label {
+	padding-left: 0;
+}
+
+.content-box .content .num-label .num {
+	width: 100px;
+	text-align: center;
+	height: 26px;
+	line-height: 26px;
+	font-size: 16px;
+}
+
+.right-font {
+	position: absolute;
+	width: 60px;
+	text-align: center;
+	line-height: 20px;
+	height: 20px;
+	background-size: 100%;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.mui-input-row .mui-numbox {
+	float: left;
+	width: 170px;
+	height: 25px;
+}
+
+.mui-table-view-cell input[type=text] {
+	width: 65%;
+}
+
+.mui-table-view-cell>a.search-icon {
+	width: 20px;
+	height: 20px;
+	background: url(../img/search.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+	padding: 0;
+}
+
+.icon-files {
+	height: 45px;
+	line-height: 45px;
+	color: #333;
+	font-size: 14px;
+	position: relative;
+}
+
+.icon-files img {
+	width: 20px;
+	height: 30px;
+	margin: 5px 15px;
+}
+
+.icon-files span {
+	position: absolute;
+	left: 45px;
+}
+
+.mui-checkbox.mui-left .name3 .isFirst {
+	color: #3390CC;
+	position: absolute;
+	right: 70px;
+	display: none;
+}
+
+.mui-checkbox.mui-left .name3 .state {
+	color: #00C909;
+	position: absolute;
+	right: 20px;
+}
+
+.mui-checkbox.mui-left .name3 .state2 {
+	color: #FD0000;
+	position: absolute;
+	right: 20px;
+}
+
+.content-box .content>span {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 14px;
+	color: #25c8c8;
+}
+
+.text-title>span {
+	float: right;
+	letter-spacing: 1px;
+	padding: 0 20px;
+}
+
+.mui-media label {
+	padding: 0 0 5px;
+}
+
+.mui-table-view-cell:after {
+	height: 1px;
+	width: 100%;
+	left: 0;
+}
+
+.audit {
+	width: 37px;
+	height: 37px;
+	text-align: center;
+	line-height: 37px;
+	right: 15px;
+	top: 0;
+	position: absolute;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #000;
+}
+
+.mui-table-view-cell #label,
+.mui-table-view-cell input[type=text].input-date {
+	width: 30%;
+}
+
+.content-box,
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.content-box li,
+.mui-card {
+	margin: 15px;
+}
+
+.content-box .content .name,
+.bd-info span {
+	color: #333;
+}
+
+.content-box .content .num-label span,
+.mui-checkbox.mui-left .name3>span {
+	width: auto;
+}
+
+.mui-table-view-cell input,
+.mui-checkbox.mui-left .name3 {
+	position: relative;
+}

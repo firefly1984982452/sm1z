@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			.mui-table-view-cell select {
+				width: 30%;
+				direction: right;
+				margin-left: 1%;
+				float: left;
+			}
+			
+			.mui-table-view-cell select option {
+				text-align: center;
+			}
+			
+			.mui-table-view-cell i {
+				width: 2%;
+				text-align: center;
+				float: left;
+				display: block;
+				color: #007AFF;
+				font-size: 14px;
+				font-weight: 700;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个人信息修改</h1>
+		</header>
+		<div class="mui-content"  style="background-color: #FFFFFF;padding-bottom: 20px;">
+			<div class="me-header">
+				<div class="me-img-head" id="image-list">
+					<img src="{{T_photoUrl}}" class="add" data-id='{{T_photoUrlID}}' />
+					<span>{{T_name}}</span>
+				</div>
+			</div>
+			<div class="mui-content-padded" >
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>姓名</label>
+						<input type="text" v-model='T_name'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>性     别</label>
+						<span id="sex">{{T_Sex}}<i>&nbsp;</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>籍     贯</label>
+						<input type="text" v-model='T_nativeplace'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>部     门</label>
+						<input type="text" v-model='T_demartment'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>职     务</label>
+						<input type="text" v-model='T_duct'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>手     机</label>
+						<input type="text" v-model='T_phone' onblur="javascript:app.datas.sexPicker.blur()"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>生日</label>
+						<span id="birth">{{T_Birth|birth}}<i>&nbsp;</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>现居住地</label>
+						<input type="text" v-model='T_Nowhous'/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>身份证号</label>
+						<input type="text"  v-model='T_IDcard'/>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)"  class="mui-card edit-btn" id="submit" >
+				提交信息
+			</a>
+		</div>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../library/js/uphoto.js" ></script>
+		<script>
+			var app = {
+				datas:{
+					vm:null,
+					sexOptions:[
+						{text:"男",value:"1"},
+						{text:"女",value:"0"}
+					],
+					meData:{},
+					sexPicker:new mui.PopPicker()
+				},
+				methods:{
+					_BIRTH:function(){
+						var birth = app.datas.meData.T_Birth;
+						var yearB = birth.replace(".","-");
+						var picker = new mui.DtPicker({
+					    type: "month",//设置日历初始视图模式 
+					    beginDate: new Date(1900, 1,1),//设置开始日期 
+					    endDate: new Date()//设置结束日期 
+					    });
+						picker.setSelectedValue(yearB);
+						picker.show(function(rs){
+							var time = rs.y.text+"."+rs.m.text;
+							app.datas.meData.T_Birth = time;
+							app.datas.meData.T_Birth1 = rs.y.text;
+							app.datas.meData.T_Birth2 = rs.m.text;
+							picker.dispose();
+						});
+					},
+					_SEX:function(){
+						app.datas.sexPicker.setData(app.datas.sexOptions);
+						app.datas.sexPicker.show(function(item){
+							app.datas.meData.T_Sex = item[0].text;
+						})
+					},
+					_SUBMIT:function(){
+						plus.nativeUI.showWaiting("修改信息中,请稍等...")
+						var imgId = document.querySelector("#image-list .add").getAttribute("data-id");
+						if(imgId){
+							app.datas.meData.T_photoUrl = imgId
+						}
+						if(!app.datas.meData.T_Birth1){
+							var birth = app.datas.meData.T_Birth;
+							var births = birth.split(".");
+							if(births.length>0){
+								app.datas.meData.T_Birth1 = births[0];
+								app.datas.meData.T_Birth2 = births[1];
+							}else{
+								app.datas.meData.T_Birth1 = "";
+								app.datas.meData.T_Birth2 = "";
+							}
+						}
+						Xeval.Http(Xeval.Mode.HTTP_ART_UPDATA_USER_BYID,app.datas.meData,function(isOk,data){
+							if(isOk){
+								var msg = data.msg;
+								if(data.state==1){
+									Xeval.Http(Xeval.Mode.HTTP_ART_GET_USER_BYUSER,{
+										Username:app.datas.meData.T_accountnumber,
+										Token:app.datas.meData.Token,
+										T_accountnumber:app.datas.meData.T_accountnumber
+									},function(isOk,data){
+										plus.nativeUI.closeWaiting();
+										plus.nativeUI.toast(msg);
+										console.log(JSON.stringify(data))
+										if(isOk){
+											if(data.state==1){
+												data.guid = app.datas.meData.Token;
+												localStorage.setItem("art_user",JSON.stringify(data));
+												/*
+												 * 更改一下主页面的guid！,保证退出crm后，不影响其他功能。
+												 *                  <---不背锅！
+												 * */
+												var userinfo = localStorage.getItem("userinfo");
+												if(userinfo){
+													try{
+														var indexUser = JSON.parse(userinfo);
+														if(indexUser.user == data.data.T_accountnumber){
+															indexUser.guid = data.guid;
+															localStorage.setItem("userinfo",JSON.stringify(indexUser));
+														}
+													}catch(e){
+														
+													}
+												}
+												plus.webview.getWebviewById("artisan_index.html").evalJS("app.init()");
+											}
+										}
+										setTimeout(function(){
+											mui.back();
+										})
+									})
+								}else{
+									plus.nativeUI.closeWaiting();
+									plus.nativeUI.toast(msg);
+									mui.back();
+								}
+							}else{
+								plus.nativeUI.closeWaiting();
+								plus.nativeUI.alert("网络错误，请检查您的网络!");
+							}
+						})
+					},
+					_UPFILE:function(url,id){
+						if(!!id){
+							var dom = document.querySelector("#image-list .add");
+							app.datas.meData.T_photoUrl=url;
+							dom.setAttribute("data-id",id);
+						}
+					}
+				},
+				init:function(){
+					app.datas.meData = app.utils.getMsg();
+					if(app.datas.meData.T_photoUrl && app.datas.meData.T_photoUrl.state==1){
+						var data = app.datas.meData.T_photoUrl.data[0];
+						app.datas.meData.T_photoUrlID = data.ID;
+						app.datas.meData.T_photoUrl = data.Url;
+					}else{
+						app.datas.meData.T_photoUrlID = "";
+						app.datas.meData.T_photoUrl = "";
+					}
+					app.datas.vm = new Vue({
+						el:".mui-content",
+						data:app.datas.meData,
+						methods:app.methods,
+						filters:{
+							birth:function(val){
+								if(typeof(val)=="string"&&val.indexOf(".")>0){
+									var vals = val.split(".");
+									return vals[0]+"年"+vals[1]+"月"
+								}else{
+									return val;
+								}
+							}
+						}
+					})
+					document.getElementById("birth").addEventListener("touchend",app.methods._BIRTH);
+					document.getElementById("sex").addEventListener("touchend",app.methods._SEX);
+					document.getElementById("submit").addEventListener("touchend",app.methods._SUBMIT);
+				},
+				utils:{
+					getMsg:function(){
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					jsonData.data.Token = jsonData.guid;
+					jsonData.data.Username = jsonData.data.T_accountnumber;
+					return jsonData.data;
+				}
+				}
+			}
+		mui.plusReady(function(){
+			saveUrl = "http://192.168.191.1/PicturesService/PicPunlic";
+			Xeval.setUrl("http:192.168.191.1/");
+			model = Xeval.Mode.HTTP_ART_DELFILE_BYIF;
+			app.init();
+			var par = {
+				Username:app.datas.meData.T_accountnumber,
+				Token:app.datas.meData.Token
+			};
+			setPhotUrl(saveUrl,model,par,app.methods._UPFILE);
+		})
+		</script>
+	</body>
+
+</html>

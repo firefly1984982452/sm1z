@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">饰管家-更多信息</h1>
+	</header>
+	<div class="mui-content">
+		<!--个人用户-->
+		<div id="type_1" class="eval_content" >
+			<div class="mui-input-group mui-content-padded">
+				<div class="mui-input-row">
+				<label>企业名称</label>
+				<input type="text" id="name_1" class="mui-input mui-input-clear" placeholder="请输入企业名称" />
+			</div>
+			<div class="mui-input-row">
+				<label>地区</label>
+				<input type="text" id="province" class="mui-input" placeholder="请选择" />
+			</div>
+			<div class="mui-input-row" >
+				<label>地址</label>
+				<input type="text" id="address" class="mui-input" placeholder="请输入详细地址" />
+			</div>
+			<div class="mui-input-row" >
+				<label>联系人</label>
+				<input type="text" id="contactor" class="mui-input-clear mui-input" placeholder="请输入联系人名称" />
+			</div>
+			<div class="mui-input-row" >
+				<label>Email</label>
+				<input type="text" id="Email" class="mui-input-clear mui-input" placeholder="请输入邮件地址" />
+			</div>
+			<div class="mui-input-row" >
+				<label>fax</label>
+				<input type="text" id="fax" class="mui-input-clear mui-input" placeholder="请输入传真地址" />
+			</div>
+			<div class="mui-input-row" >
+				<label>URL</label>
+				<input type="text" id="URL" class="mui-input-clear mui-input" placeholder="请输入公司网址" />
+			</div>
+			<div class="mui-input-row" >
+				<label>邮编</label>
+				<input type="text" id="postcode" class="mui-input-clear mui-input" placeholder="请输入邮编地址" />
+			</div>
+			<div class="mui-input-row" >
+				<label>QQ</label>
+				<input type="number" id="qq" class="mui-input-clear mui-input mui-input-numbox" placeholder="请输入QQ号" />
+			</div>
+			<div class="mui-input-row type_2">
+				<label>营业执照</label>
+				<input type="text" id="Licenseno" class="mui-input mui-input-clear" placeholder="请输入营业执照" />
+			</div>
+			<div class="mui-input-row" >
+				<label>税务号</label>
+				<input type="text" id="Taxcode" class="mui-input-clear mui-input" placeholder="请输入税务号" />
+			</div>
+			<div class="mui-input-row">
+				<label>公司性质</label>
+				<input type="text" id="kind" class="mui-input" placeholder="请选择公司性质" />
+			</div>
+			<div class="mui-input-row type_2" >
+				<label>公司规模</label>
+				<input type="text" id="scale" class="mui-input" placeholder="请选择公司规模" />
+			</div>
+			<div class="mui-input-row type_2" >
+				<label>利润</label>
+				<input type="number" id="profit" value="100086" class="mui-input-clear mui-input mui-input-numbox" placeholder="请输入利润" />
+			</div>
+			<div class="mui-input-row register_btn" id="register">
+				<button id="reg_btn">立即注册</button>
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../library/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../library/js/mui.picker.min.js" ></script>
+<script type="text/javascript" src="../js/Strings.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/evalHttp.js" ></script>
+<script>	
+	mui.plusReady(function(){
+		var that = plus.webview.currentWebview();
+		var savaData = that.savaStepOne;
+		var regData = that.regData;
+		var picker = new mui.PopPicker({layer: 3});
+		var kindPicker = new mui.PopPicker();
+		var scalePicker = new mui.PopPicker();
+		var pickerOptions = cityData3;
+		var str = Strings;
+		var getCodeTimer;
+		var smsTime = 60;
+		if(parseInt(regData.role)<0){//判断是否传入了role和基本信息
+			mui.back();
+			return;
+		}
+		init();
+		mui(".register_btn").on("tap","button",function(){
+			getFormData();
+			for(var key_ in regData){//表单非空验证，地区、公司性质、公司规模需要另外处理。只是检查有没有值
+				var value_ = regData[key_];
+				var reg_ = str.Register.msgRegx;
+				if(typeof(value_)=="string"){
+					if(value_.trim()=="" || value_==null){
+						mui.alert(str.Register.msgData[key_],str.Register.registerTitle,str.Register.btnValue);
+						return;
+					}else{//表单正则验证
+						var regx = reg_[key_];
+						var regxJson = new Object(regx);
+						var reg = regxJson.reg;
+						if(reg!=null && typeof(reg)!="undefined"){
+							if(!reg.test(value_)){
+								mui.alert(regxJson.msg,str.Register.registerTitle,str.Register.btnValue);
+								return;
+							}
+						}
+					}
+				}else if(typeof(value_)=="object"){
+					if(value_.text.trim()=="" || value_==null){
+						mui.alert(str.Register.msgData[key_],str.Register.registerTitle,str.Register.btnValue);
+						return;
+					}
+				}
+				
+			}
+			register();
+			
+		});
+		function register(){
+			mui(".register_btn>button")[0].setAttribute("disabled","true");
+			var province_ = mui("#province")[0].getAttribute("data-value");
+			var Kind_ = mui("#kind")[0].getAttribute("data-value");
+			var Scale_ = mui("#scale")[0].getAttribute("data-value");
+			regData.kind = Kind_;
+			regData.scale = Scale_;
+			var pros = province_.split("-");
+			eLog.l(pros[0]+"-"+pros[1]+"-"+pros[2]);
+			regData.province = pros[0];
+			regData.city = pros[1];
+			regData.district = pros[2];
+			Xeval.Http(Xeval.Mode.HTTP_REGISTER,regData,function(isOk,data){
+				mui(".register_btn>button")[0].removeAttribute("disabled");
+				if(isOk){
+					mui.alert(data.msg,str.Register.registerTitle,str.Login.btnValue);
+					if(data.state==2){
+						openLogin();
+						closeme();
+					}
+				}else{
+					mui.alert(str.App.networkError,str.Register.registerTitle,str.Register.btnValue);
+					eLog.l(JSON.stringify(data));
+				}
+			});
+		}
+		function pickerBlur(){
+			picker.blur;
+			kindPicker.blur;
+			scalePicker.blur;
+		}
+		mui(".mui-input-row").on("tap","#province",function(){//省市区pop窗口
+			var slef = this;
+			picker.setData(pickerOptions)
+			picker.show(function(SelectedItem) {
+			    slef.value = SelectedItem[0].text+"-"+SelectedItem[1].text+"-"+SelectedItem[2].text;
+			    slef.setAttribute("data-value",SelectedItem[0].value+"-"+SelectedItem[1].value+"-"+SelectedItem[2].value);
+			});
+		})
+		mui(".mui-input-row").on("tap","#kind",function(){//公司性质pop窗口
+			var slef = this;
+			var kindOptions= [
+				{text:"私营企业",value:"1"},
+				{text:"国有企业",value:"2"},
+				{text:"股份有限公司",value:"3"},
+				{text:"外资",value:"4"},
+				{text:"中外合资",value:"5"}
+			];
+			kindPicker.setData(kindOptions)
+			kindPicker.show(function(SelectedItem) {
+			    slef.value = SelectedItem[0].text;
+			    slef.setAttribute("data-value",SelectedItem[0].value);
+			});
+		})
+		mui(".mui-input-row").on("tap","#scale",function(){//公司规模pop窗口
+			var slef = this;
+			var scaleOptions= [
+				{text:"小型（10-30人）",value:"1"},
+				{text:"中型（100-2000人）",value:"2"},
+				{text:"大型（2000人以上）",value:"3"},
+				{text:"上市公司",value:"4"}
+			];
+			scalePicker.setData(scaleOptions)
+			scalePicker.show(function(SelectedItem) {
+			    slef.value = SelectedItem[0].text;
+			    slef.setAttribute("data-value",SelectedItem[0].value);
+			});
+		})
+		mui(".mui-input-row").on("tap","input",function(){
+			pickerBlur();
+		});
+		mui(".mui-input-row").on("focus","input",function(){
+			pickerBlur();
+		});
+		plus.key.addEventListener('backbutton', function(){
+			codeTimeListener();
+		},false);
+		mui(".mui-bar").on("tap","a",function(){
+			codeTimeListener();
+		})
+		function codeTimeListener(){//监听返回，保存已经录入的信息
+			getFormData();
+			var preWebview = plus.webview.getWebviewById("register.html");
+			mui.fire(preWebview,"savaStepOne",{"regData":regData});
+		}
+		function init(){//初始化操作，如果已经有保存的数据，将保存的数据写入页面
+			if(savaData!=null){
+				for(var key_ in savaData){
+					var self = document.getElementById(key_);
+					if(self){
+						var value_ = savaData[key_];
+						if(typeof(value_)=="string"){
+							self.value = savaData[key_];
+						}else if(typeof(value_)=="object"){
+							self.value = savaData[key_].text;
+							self.setAttribute("data-value",savaData[key_].value)
+						}
+						
+					}
+				}
+				
+			}
+				if(regData.role=="2"){//隐藏企业业主不需要显示的字段
+					var obj = mui(".type_2");
+					var len = obj.length;
+					for(var i=0;i<len;i++){
+						var temp_ = obj[i];
+						temp_.style.display="none";
+						var childrens_ = temp_.childNodes;
+						childrens_[3].setAttribute("data-value","0");
+						childrens_[3].value = "0";
+					}
+			}
+		}
+		// 关闭自身窗口
+		function closeme(){
+			var wsMe=plus.webview.currentWebview();
+			var sel=plus.webview.getWebviewById("register_select.html");
+			var reg = plus.webview.getWebviewById("register.html");
+			plus.webview.close(sel);
+			plus.webview.close(reg);
+			plus.webview.close(wsMe);
+		}
+		function openLogin(){
+			mui.openWindow({
+				url:"../login.html",
+				id:"login.html",
+				createNew:false,
+				extras:{
+					isBack:false
+				}
+			});
+		}
+		function getFormData(){//获取表单数据
+			regData.name_1 = mui("#name_1")[0].value;
+			regData.province = {text:mui("#province")[0].value,value:mui("#province")[0].getAttribute("data-value")};
+			regData.address = mui("#address")[0].value;
+			regData.contactor = mui("#contactor")[0].value;
+			regData.Email = mui("#Email")[0].value;
+			regData.fax = mui("#fax")[0].value;
+			regData.URL = mui("#URL")[0].value;
+			regData.postcode = mui("#postcode")[0].value;
+			regData.kind = {text:mui("#kind")[0].value,value:mui("#kind")[0].getAttribute("data-value")};
+			regData.Taxcode = mui("#Taxcode")[0].value;
+			regData.qq = mui("#qq")[0].value;
+			regData.scale = {text:mui("#scale")[0].value,value:mui("#scale")[0].getAttribute("data-value")};
+			regData.profit = mui("#profit")[0].value;
+			regData.Licenseno = mui("#Licenseno")[0].value;	
+			
+		}
+		});
+		
+</script>
+</html>

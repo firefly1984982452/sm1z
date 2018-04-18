@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+		.mui-table-view-cell span{
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">客户信息详情</h1>
+		</header>
+		<div class="mui-content" id="user">
+			<div class="mui-card" >
+				<ul class="mui-table-view" >
+					<li class="mui-table-view-cell mui-media">
+						<label>客户名称</label>
+						<span>{{data.C_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系人员</label>
+						<span>{{data.C_linkname}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>联系电话</label>
+						<span class="tel-phone"v-gesture:tap.stop.prevent="call(data.C_linkphone)" >{{data.C_linkphone}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>所属行业</label>
+						<span>{{data.C_industry}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户类型</label>
+						<span id="khlx">{{data.C_kind|khlx}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>所属区域</label>
+						<span id="city">{{data.city|city}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>详细地址</label>
+						<span>{{data.C_address}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户性质</label>
+						<span id="hzfs">{{data.C_cooperation|hzfs}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>客户规模</label>
+						<span id="khgm">{{data.C_scale|khgm}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../library/js/city.data-3.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script type="text/javascript" src="../../js/Strings.js" ></script>
+	<script type="text/javascript" src="../../js/util.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			var data = plus.webview.currentWebview().data;
+			var vm = new Vue({
+				el:"#user",
+				data:data,
+				methods:{
+					call:function(phone){
+						callPhone(phone);	
+					}
+				},
+				filters:{
+					city:function(val){
+						if(typeof val=="object"){
+							return val.provinces.province+"-"+val.cities.city+"-"+val.areass.area;
+						}
+					}
+				}
+			})
+		})
+		
+	</script>
+</html>

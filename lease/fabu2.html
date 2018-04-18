@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.register_btn>button{
+				height: 40px;
+				width: 100%;
+				background-color: #9C005E;
+				color: #FFFFFF;
+				border: 1px solid #9C005E;
+				margin-left: 0px;
+				display: block;
+				transition: margin-left 1s;
+			}
+			#register,#next{
+				width: 100%;
+				height: 60px;
+				padding: 10px;
+			}
+			.mui-input-row input{
+				color: #666666;
+			}
+			.mui-input-group textarea {
+				font-size: 14px;
+				height: 100%;
+				line-height: 20px;
+				display: block;
+			}
+			.mui-input-group #clear{
+				min-height: 40px;
+			}
+			h5{
+				font-size: 14px;
+				color: #000000;
+				padding-left: 4px;
+			}
+		</style>
+		<link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../library/css/uphoto.css" />
+	</head>
+
+	<body>
+				<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../library/js/formjs.js" ></script>
+		<script type="text/javascript" src="../library/js/city.data-3.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">发布求租</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group mui-content-padded">
+				<div class="mui-input-row" >
+					<label>所在地区</label>
+					<input type="text" placeholder="请输入商品所在地区" id="dqu" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row">
+					<label>品牌 </label>
+					<input type="text" placeholder="请输入商品品牌" id="ppai" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row">
+					<label>求租商品</label>
+					<input type="text" placeholder="请输入求租商品" id="spin" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>求租数量</label>
+					<input type="number" placeholder="请输入求租数量"  id="sliang" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>商品单位</label>
+					<input type="text" placeholder="请输入求租单位(台/个)" id="dwei" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row mui-checkbox mui-right">
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+							是否同城
+							<div id="isCity" class="mui-switch">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="mui-input-row" >
+					<label>联系人</label>
+					<input type="text" placeholder="请输入联系人" id="lxr" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>联系电话</label>
+					<input type="number" placeholder="请输入联系电话" id="dhua" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>租金范围</label>
+						<input type="number" placeholder="最小价格"  id="fwei1" class="mui-input" />
+						<div class="line">~</div>
+						<input type="number"  placeholder="最大价格" id="fwei2" class="mui-input" />
+				</div>
+				<div class="mui-input-row">
+					<label>型号规格</label>
+					<input type="text"  placeholder="请输入商品型号" id="xhao" class="mui-input mui-input-clear"/>
+				</div>
+				<div class="mui-input-row" >
+					<label>配送方式 </label>
+					<input type="text"  placeholder="请选择配送方式" id="psong" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-content-padded">
+					<h5>求租说明</h5>
+					<div class="row mui-input-row" id="clear">
+						<textarea id='sming' class="mui-input-clear question" placeholder="请详细描述..." ></textarea>
+					</div>
+				</div>
+				<div class="mui-input-row register_btn" id="register">
+					<button id="btn">提交</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+				var val = Strings.indexData.index.lease.updataRegs;
+				var data_op = self.data_op;
+				var data_data = self.data_data;
+				var JoinData = {
+					isCity:"否"
+				};
+				getAllSeek();
+				var cityPicker = new mui.PopPicker({layer: 3});
+				var seekPicker = new mui.PopPicker({layer: 2});
+				var psongPicker = new mui.PopPicker();
+				var seekOptions = [];
+				var psongOptions = [
+					{
+						text:"自取",
+						value:"1",
+					},
+					{
+						text:"物流",
+						value:"2",
+					},
+					{
+						text:"送货上门",
+						value:"3",
+					}
+				]
+				var pickerOptions = cityData3;
+					//高中（包括：高中，职高，中专，技校），大专（大学学专科），大本（大学本科），硕士（硕士研究生），博士（博士研究生）
+				mui(".mui-input-row").on("tap","input,button",function(e){
+					var thisId = e.target.getAttribute("id");
+					var slef = this;
+					cityPicker.blur;
+					seekPicker.blur;
+					psongPicker.blur;
+					switch(thisId){
+						case "dqu":{
+							cityPicker.setData(pickerOptions)
+							cityPicker.show(function(item) {
+								inputText(item,slef,3)
+							});
+						};break;
+						case "spin":{
+							leibie();
+						};break;
+						case "btn":{
+							postData(slef);
+						};break;
+						case "psong":{
+							psongPicker.setData(psongOptions);
+							psongPicker.show(function(item) {
+								inputText(item,slef)
+							});
+						};break;
+						default:{
+//isCity
+						};break;
+					}
+					e.stopPropagation();
+				})
+				var isActive = document.getElementById("isCity").classList.contains("mui-active");
+				function inputText(SelectedItem,self,num){
+						var that;
+						if(typeof(self)=="string"){
+							that = document.getElementById(self);
+						}else{
+							that = self;
+						}
+						var text = SelectedItem[0].text;
+						var val = SelectedItem[0].value;
+						if(num==2){
+							text+="-"+SelectedItem[1].text;
+							val +="-"+SelectedItem[1].value;
+						}
+						if(num==3){
+							text+="-"+SelectedItem[1].text;
+							val +="-"+SelectedItem[1].value;
+							text+="-"+SelectedItem[2].text;
+							val +="-"+SelectedItem[2].value;
+						}
+						that.value = text;
+						that.setAttribute("data-value",val);
+					}
+				function postData(e){
+					if(getNewData()){
+						var slef = e;
+						slef.setAttribute("disabled","disabled");
+						slef.innerHTML = "正在提交您的信息...";
+						console.log(JSON.stringify(JoinData));
+						Xeval.Http(Xeval.Mode.HTTP_POST_QIUZU,JoinData,function(isOk,data){
+							slef.removeAttribute("disabled");
+							slef.innerHTML = "提交";
+							if(isOk){
+								mui.alert(data.msg);
+								if(data.state==1){
+									setTimeout(function(){
+										mui.back();
+									},18)
+								}
+							}else{
+								mui.confirm(val.postError,val.title,val.postBtn,function(e){
+									if(e.index==0){
+										postData(self);
+									}
+								});
+							}
+						},true);
+					}else{
+					}
+				}
+				function getNewData(){
+					var value = isActive?"是":"否";
+					JoinData.isCity = value;
+					JoinData.ppai = mui("#ppai")[0].value;
+					JoinData.dqu = $("#dqu").attr("data-value");
+					JoinData.sliang = mui("#sliang")[0].value;
+					JoinData.spin = $("#spin").attr("data-value");
+					JoinData.lxr = mui("#lxr")[0].value;
+					JoinData.dhua = mui("#dhua")[0].value;
+					JoinData.dwei = mui("#dwei")[0].value;
+					JoinData.fwei1 = mui("#fwei1")[0].value;
+					JoinData.fwei2 = mui("#fwei2")[0].value;
+					JoinData.xhao = mui("#xhao")[0].value;
+					JoinData.psong = $("#psong").attr("data-value");
+					JoinData.sming = mui("#sming")[0].value;
+					for(var item in JoinData){
+						var value_ = JoinData[item];
+						var sel ='"#'+item+'"';
+						if(value_=="" || value_==null){
+							mui.alert(val[item].msg);
+							return false;
+						}else{//表单正则验证
+							var regx = val[item];
+							var regxJson = new Object(regx);
+							var reg = regxJson.reg;
+							if(reg!=null && typeof(reg)!="undefined"){
+								if(!reg.test(value_)){
+									mui.alert(regxJson.msg);
+									return false;
+								}
+							}
+						}
+					}
+					var dq = JoinData.dqu;
+					var lb = JoinData.spin;
+					var diqus = dq.split("-");
+					var leibies = lb.split("-");
+					var upData = {
+						Contactor:JoinData.lxr,
+						Phone:JoinData.dhua,
+						Device_Brand:JoinData.ppai, 
+						Device_Kind1:leibies[1],
+						Device_Kind:leibies[0], 
+						Device_Mode:JoinData.xhao,
+						Province:diqus[0], 
+						City:diqus[1], 
+						District:diqus[2], 
+						Rental1:JoinData.fwei1,//（价格）, 
+						Rental2:JoinData.fwei2,//（价格）,
+						Description:JoinData.bzou,// 
+						Description:JoinData.sming,//求租说明
+						Delivery:JoinData.psong,
+						Quantity:JoinData.sliang,
+						isInCity:JoinData.isCity,
+						Device_Unit:JoinData.dwei//（使用时间的单位年/天）,
+					};
+					JoinData = upData;
+					return true;
+			}
+			function leibie(data){
+				if(seekOptions.length==0){
+					getAllSeek();
+				}else{
+					seekPicker.setData(seekOptions)
+					seekPicker.show(function(item){
+						inputText(item,"spin",2);
+					});
+				}
+			}
+			function getAllSeek() {
+				var clientNum = 0;
+				var http = function() {
+					Xeval.setUrl("http://139.196.113.126/");
+					Xeval.Http(Xeval.Mode.HTTP_GET_LEASE_GET_SEEK, {}, seekListener, true)
+					Xeval.setUrl("http://139.224.164.193/");
+				};
+				http();
+				function seekListener(isOk, data) {
+					if(isOk) {
+						seekOptions = formarSeek(data);
+					} else {
+						if(clientNum<3){
+							clientNum++;
+							setTimeout(http,1000);
+						}else{
+							mui.alert("网络错误,请检查您的网络环境！");
+						}
+					}
+				}
+			}
+			function formarSeek(data){
+		  		var jsonc = [],jsonp = [];
+					data.forEach(function(item){
+						if(item.rt_kind==0){
+							jsonp.push(item);
+						}else{
+							jsonc.push(item);
+						}
+					})
+					var result = [];
+					jsonp.forEach(function(itemp,i){
+						var pid = itemp.rt_code;
+						jsonp[i].children = [];
+						var sl = {};
+						sl.text = jsonp[i].rt_name;
+						sl.value = jsonp[i].rt_code;
+						sl.children  = [];
+						jsonc.forEach(function(itemc,j){
+							if(itemc.rt_parent==pid){
+								var cd = {};
+								cd.text = itemc.rt_name;
+								cd.value = itemc.rt_code;
+								sl.children.push(cd);
+							}
+						})
+						result.push(sl);
+					})
+					return result;
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

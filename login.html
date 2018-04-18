@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			.mui-input-row label~select{
+				position: absolute;
+			}
+			#sel-user{
+				display: none;
+			}
+			#selct{
+				position: absolute;
+				height: 15px;
+				width: 15px;
+				right: 10px;
+				top: 12px;
+			}
+		</style>
+		<link rel="stylesheet" href="css/login.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">饰管家-登录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<div class="content_logo">
+					<img src="images/login/logo.png" />
+				</div>
+			</div>
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>账号</label>
+					<input type="text" value="" id="account" />
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="password" class="mui-input-password mui-input" placeholder="请输入密码">
+				</div>
+			</form>
+			<form class="mui-input-group">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						自动登录
+						<div id="autoLogin" class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+			</form>
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+				<div class="link-area"><a id='reg'>注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/Strings.js" ></script>
+		<script type="text/javascript" src="js/util.js" ></script>
+		<script type="text/javascript" src="js/evalHttp.js" ></script>
+		<script></script>
+		<script>
+			mui.init(function(){
+				swipeBack: false
+			})
+			var isBack_ = false;
+			mui.plusReady(function(){
+				var val = Strings.Login;
+				var app =Strings.App; 
+				var storage_ = new evalStorage();
+				var mode_ = storage_.Mode;
+				var cookie_ = new evalCookie();
+				var userInfo = JSON.parse(storage_.getStorage(mode_.localStorage,"userinfo"));
+				if(userInfo!= null && userInfo.autoLogin==1){
+					havaSession();
+				}
+				mui("#account")[0].value = storage_.getStorage(mode_.localStorage,"user");
+				function havaSession(){
+					var autoLogin = document.getElementById("login");
+					autoLogin.setAttribute("disabled",true);
+					autoLogin.innerText = val.autoLoging;
+					var aotoLoginData = {};
+					aotoLoginData.name = userInfo.name;
+					aotoLoginData.guid = userInfo.guid;
+					eLog.l("eval - autoLogin -->"+JSON.stringify(aotoLoginData));
+					Xeval.Http(Xeval.Mode.HTTP_CHANGE_TOKEN,aotoLoginData,function(isOk,data){
+						eLog.l("eval - autoLogin -->"+JSON.stringify(data));
+						if(isOk){
+							if(data.state == 0){
+								userInfo.guid = data.guid;
+								var jsonUserinfo = JSON.stringify(userInfo);
+								storage_.addStorage(mode_.localStorage,"userinfo",jsonUserinfo);
+								setTimeout(loginged,400);
+							}else{
+								autoLogin.innerText = val.login;
+								mui.alert(val.autoLoginError,val.LoginTitle,val.btnValue);
+							}
+							autoLogin.removeAttribute("disabled");
+						}else{
+							autoLogin.removeAttribute("disabled");
+							autoLogin.innerText = val.login;
+						}
+					},false);
+				}
+				function loginged(){
+					document.getElementById("account").value="";
+					document.getElementById("password").value="";
+					if(isBack_){
+						mui.back();
+					}else{
+						mui.openWindow({
+						    url:"index.html",
+						    id:"index.html",
+						    createNew:true,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						    show:{
+						      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+						      aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+						      duration:150//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						    },
+						    waiting:{
+						      autoShow:false
+						    }
+						});
+					}
+				}
+				mui(".mui-content-padded").on("tap","#login",function(){
+					var loginInfo = new Object();
+					loginInfo.name = document.getElementById("account").value;
+					loginInfo.PWD = document.getElementById("password").value;
+					if(loginInfo.name ==null || loginInfo.name.trim()=="" || loginInfo.PWD ==null || loginInfo.PWD.trim()==""){
+						mui.alert(val.userPaswNull,val.LoginTitle,val.btnValue);
+						return;
+					}
+					var autoLogin = document.getElementById("login");
+					autoLogin.setAttribute("disabled",true);
+					autoLogin.innerText=val.loging;
+					Xeval.Http(Xeval.Mode.HTTP_LOGIN,loginInfo,function(isHttpOk,data){
+						map = null;
+						autoLogin.removeAttribute("disabled");
+						autoLogin.innerText=val.login;
+						if(isHttpOk){
+							if(data.state==2){
+								//1.本地保存用户信息
+								//2.保存用户当前操作token令牌
+								mui.toast(data.msg)
+								//是否保存用户登陆状态
+								var isActive = document.getElementById("autoLogin").classList.contains("mui-active");
+								delete loginInfo.PWD;
+								if(isActive){
+									data.autoLogin = 1;
+								}else{
+									data.autoLogin = 0;
+								}
+								data.user = loginInfo.name;
+								var jsonUserinfo = JSON.stringify(data);
+								storage_.addStorage(mode_.localStorage,"userinfo",jsonUserinfo);
+								console.log(jsonUserinfo);
+								storage_.addStorage(mode_.localStorage,"user",data.user);
+								var ecookie = new evalCookie();
+								ecookie.addCookie("UserName",data.name);
+								ecookie.addCookie("Token",data.guid);
+								loginged();
+							}else{
+								mui.alert(data.msg,val.LoginTitle,val.btnValue);
+							}
+						}else{
+							mui.alert(app.networkError,val.LoginTitle,val.btnValue);
+						}
+						
+					},false)
+					
+				})
+				mui(".mui-content-padded").on("tap","#reg",function(){
+					//注册账号	
+					mui.openWindow({
+						url:"register/register_select.html",
+						id:"register/register_select.html",
+						createNew:false,
+						  show:{
+					      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+					      aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+					      duration:50//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					   }
+					})
+				});
+				mui(".mui-content-padded").on("tap","#forgetPassword",function(){
+					//找回密码
+					eLog.l("forget");
+				})
+				})
+				mui.plusReady(function(){
+					var first = null;
+					var that = plus.webview.currentWebview();
+					var isFristLogin = that.isBack;//需要返回主页携带参数
+					var isLogin = that.isLogin;
+					isBack_ = isFristLogin;
+					plus.key.addEventListener('backbutton', function(){
+						if(!isFristLogin){
+							if(!first){
+					            first = new Date().getTime();
+					            mui.toast(Strings.App.twoBack);
+					            setTimeout(function(){
+					                first = null;
+					            },1000);
+						    }else{
+					            if(new Date().getTime()-first<1000){
+					                plus.runtime.quit();
+					            }
+						    }
+						}else{
+							old_back();
+						}
+					},false);
+					var old_back = mui.back;
+					mui.back = function(){//返回键重写，监听是否退出登录(不能返回)
+					 	if(isFristLogin){
+					 		old_back();
+					 	}
+					}
+					if(isFristLogin){
+						var backHtml = '<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>';
+						mui(".mui-bar-nav")[0].innerHTML+=backHtml;
+					}
+				})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			.del-all{
+				height: 35px;
+				margin-top: 5px;
+				line-height: 35px;
+				float: right;
+				font-size: 0.8em;
+				color: #CF2D28;
+			}
+			.del-msg{
+				height: 30px;
+				background-color: rgba(0,0,0,0.5);
+				line-height: 30px;
+				position: absolute;
+				top: 50%;
+				color: #FFFFFF;
+				font-size: 0.8em;
+				text-align: center;
+				transform: translateY(-50%);
+				width: 100%;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				gestureConfig:{
+					longtap:true
+				}
+			})
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">租赁收藏夹</h1>
+		    <span class="del-all">删除全部</span>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-grid-view mui-grid-6" id="hot-lease-cz">
+				<template v-for="key in Rents">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6 anim" v-tronslation v-gesture:tap.stop.prevent="CzTap(key.objectID)"  v-gesture:longTap.stop.prevent="CzLtap(key.ID,$index,$event)" >
+					<div class="hot-box">
+						<img src="{{key.picture|picture}}" width="100%" height="150em" />
+						<div class="del-msg">长按删除收藏</div>
+						<div class="hot-box-info">
+							{{key.name}}
+						</div>
+						<div class="hot-box-price">￥{{key.price}}</div>
+					</div>
+				</li>
+				</template>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/Strings.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script type="text/javascript" src="js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../js/util.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			var val = Strings.indexData.index.lease.collect;
+			var base_url = "http://139.196.113.126";
+			Xeval.setUrl(base_url+"/");
+			var storage_ = new evalStorage();
+			var mode_ = storage_.Mode;
+			var userInfo = JSON.parse(storage_.getStorage(mode_.localStorage, "userinfo"));
+			tapMethods={
+				CzTap:function(cid){
+					mui.openWindow({
+						url:"classfly.html",
+						id:"classfly.html",
+						createNew:true,
+						extras:{
+							data_op:1,
+							data_id:cid
+						}
+					})
+				},
+				CzLtap:function(cid,index,ev){
+					mui.confirm(val.removeCollect,val.leaseTitle,val.removeConllectBtns,function(e){
+						if(e.index==0){
+							$(ev.target).parents("li").hide(400,function(){
+								delCollect(cid,true);
+								vm.$data.Rents.splice(index,1);
+							})
+							
+						}
+					});
+				}
+			};
+			 Vue.filter('picture', function(value) {
+			    if(value && Array.isArray(value)){
+		       		var index = Math.ceil(Math.random()*value.length)-1;
+		       		return value[index].Url;
+		       }else{
+		       		return "../images/img_loading.jpg";
+		       }
+			});
+			var vm = new Vue({
+				el:"#hot-lease-cz",
+				data:{
+					Rents:[]
+				},
+				methods:tapMethods
+			})
+			Xeval.Http(Xeval.Mode.HTTP_GET_LEASE_GET_COLLEC,{},function(isOk,data){
+				console.log(JSON.stringify(data));
+				vm.$data.Rents = data.data;
+			},true)
+			function delCollect(cid,isAlert){
+				Xeval.Http(Xeval.Mode.HTTP_GET_LEASE_DEL_COLLEC,{ID:cid},function(isOk,data){
+					if(isAlert &&　isOk){
+						mumui.toast(data.msg);
+					}
+				},true)
+			}
+			mui(".mui-bar").on("tap",".del-all",function(){
+				mui.confirm(val.removeCollectAll,val.leaseTitle,val.removeConllectBtns,function(e){
+					if(e.index==0){
+						if(vm){
+							var len = vm.$data.Rents.length;
+							for(var i =0;i<len;i++){
+								if(i+1==len){
+									delCollect(vm.$data.Rents[i].ID,true);
+									vm.$data.Rents = [];
+								}else{
+									delCollect(vm.$data.Rents[i].ID);
+								}
+							}
+						}
+					}
+				});
+			})
+		})
+	</script>
+</html>

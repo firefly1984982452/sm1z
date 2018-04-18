@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+	<body>
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 100%;
+			}
+			.mui-content{
+				height: 100%;
+			}
+			#slider{
+				height: 100%;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			.mui-slider-group{
+				height: 100%;
+			}
+			.control{
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				z-index: 999;
+			}
+			.control-box{
+				width: 80px;
+				margin: 0px auto;
+			}
+			.control-box ul{
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+				position: relative;
+			}
+			.control-box li{
+				width: 15px;
+				height: 15px;
+				border-radius: 15px;
+				background-color: #333;
+				opacity: 0.8;
+				float: left;
+				margin-left: 5px;
+			}
+			.control-box .control-show{
+				position: absolute;
+				background-color: #FFFFFF;
+				opacity: 0.8;
+				left: 0px;
+				top: 0px;
+			}
+			#start_sm1z{
+				width: 100%;
+				height: 60px;
+				bottom: 60px;
+				position: absolute;
+			}
+			#start_sm1z input{
+				width: 50%;
+				box-shadow: 1px 2px 2px #333;
+				height: 40px;
+				display: block;
+				border-radius: 40px;
+				margin: 0px auto;
+				border: none;
+				background-color: #9C005E;
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 16px;
+				letter-spacing: 1px;
+				border: 4px solid #f91ba1;
+			}
+			#start_sm1z center{
+				height: 20px;
+				margin-top: 10px;
+				line-height: 20px;
+			}
+			html,body{
+				height: 100%;
+			}
+		</style>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<img src="images/welcome_1.jpg" width="100%" height="100%"/>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<img src="images/welcome_2.jpg" width="100%" height="100%"/>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<img src="images/welcome_3.jpg" width="100%" height="100%"/>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<img src="images/welcome_4.jpg" width="100%" height="100%"/>
+						<div id="start_sm1z">
+						<input type="button" value="开始财富之旅" onclick="login()" />
+						<center>
+							<p id="version">饰管家 v0.10</p>
+						</center>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="control">
+				<div class="control-box">
+					<ul>
+						<li class="control-item"></li>
+						<li class="control-item"></li>
+						<li class="control-item"></li>
+						<li class="control-item"></li>
+						<li class="control-show" id="control-show"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/Strings.js" ></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/util.js" ></script>
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					var index = e.detail.slideNumber;
+					var move = document.getElementById("control-show");
+					move.style.left = index*20+"px";
+				});
+			})(mui);
+		</script>
+		<script>
+			mui.plusReady(function(){
+				var storage_ = new evalStorage();
+				var mode_ = storage_.Mode;
+				var userInfo = storage_.getStorage(mode_.localStorage,"userinfo");
+				if(userInfo!=null && !Strings.App.isDebug){
+					login();
+				}
+				var first = null;
+				plus.key.addEventListener('backbutton', function(){
+					if(!first){
+			            first = +new Date();
+			            mui.toast(Strings.App.twoBack);
+			            setTimeout(function(){
+			                first = null;
+			            },1000);
+					}else{
+			            if(+new Date()-first<1000){
+			                plus.runtime.quit();
+			            }
+					}
+				},false);
+			})
+			document.getElementById("version").innerHTML=Strings.App.version+Strings.App.copyright;
+			function login(){
+				mui.openWindow({
+					url:"login.html",
+					id:"login.html",
+					createNew:false
+				})
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>项目竣工结算新增</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mana-index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mana-set.css" />
+		<style type="text/css">	
+		/*每个地方的图片大小不一样,这个留下暂时是必要的	*/	
+			.icon-files{
+				height: 40px;
+				line-height: 40px;    
+				color: #333333;
+				font-size: 14px;
+			}
+			
+			.icon-files img{
+				width: 20px;
+				height: 20px;
+				margin: 0px 5px 0px 15px;
+				padding-top: 5px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">项目竣工结算新增</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>项目名称：</label>
+						<input class="input-search" type="text" >
+							<a href="05_summary_select.html" class="search-icon"></a>
+						</input>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>结算日期：</label>
+						<span>{{P_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>项目地址：</label>
+						<span>{{P_name}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-card icon-files">
+				<img src="../../img/files.png"/>
+				上传完工报告文件及图片
+			</div>
+			<a href="#" class="edit-btn mui-card btn-save btn-save1">保存并添加项目竣工结算</a>
+			<a class="edit-btn mui-card btn-save btn-save2 mui-action-back">保存并返回汇总</a>
+
+		</div>
+		<script src="../../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

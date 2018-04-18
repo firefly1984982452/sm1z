@@ -1,0 +1,524 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="../css/preimages.css" />
+		<link rel="stylesheet" href="css/mail.css" />
+		<link rel="stylesheet" href="../library/css/htmldialog.css" />
+		<style>
+			.mui-checkbox.mui-left input[type=checkbox],
+			.mui-radio.mui-left input[type=radio] {
+				left: 0px;
+			}
+			body{
+				max-width: 720px;
+				margin: 0px auto;
+				position: relative;
+			}
+			.mui-input-group .mui-input-row{
+				margin: 10px;
+			}
+			#index{
+				overflow: hidden;
+			}
+			.mui-col-xs-3, .mui-control-content{
+				overflow: auto;
+			}
+			.mui-checkbox.mui-left label,
+			.mui-radio.mui-left label {
+				padding-left: 35px;
+				font-size: 14px;
+			}
+			
+			.car-box input[type=checkbox] {
+				top: 40px;
+				z-index: 88;
+			}
+			
+			.mui-checkbox input[type=checkbox]:checked:before,
+			.mui-radio input[type=radio]:checked:before {
+				color: #37d300;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="search">
+				<div class="sel-box">
+					<span class="sel-text">商品</span>
+					<ul class="sel-item">
+						<li class="item">商品</li>
+						<li class="item">店铺</li>
+						<li class="item">品牌</li>
+					</ul>
+				</div>
+				<div class="input-box">
+					<input type="text" class="keysearch" placeholder="请输入商品名称或者店铺名称" />
+				</div>
+				<div class="msg">
+					<a href="javascript:void(0)" class="search-btn">搜索</a>
+				</div>
+			</div>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="javascript:void(0);" data-index="0" style="color: #e00b1f;">
+				<img src="img/index1-1.png" style="display: none;" />
+				<img src="img/index1-2.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="javascript:void(0);" data-index="1">
+				<img src="img/index2-1.png" />
+				<img src="img/index2-2.png" style="display: none;" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="javascript:void(0);" data-index="2">
+				<img src="img/index3-1.png" />
+				<img src="img/index3-2.png" style="display: none;" />
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item" href="javascript:void(0);" data-index="3">
+				<img src="img/index4-1.png" />
+				<img src="img/index4-2.png" style="display: none;" />
+				<span class="mui-tab-label">我的饰管家</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-control-content mui-active" id="index">
+				<div class="mui-slider" id="slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="img/banner-03.jpg" /></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner-01.jpg" data-preview-src="" data-preview-group="10000" /></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner-02.jpg" data-preview-src="" data-preview-group="10000" /></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner-03.jpg" data-preview-src="" data-preview-group="10000" /></a>
+						</div>
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="img/banner-01.jpg" /></a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<ul class="mui-table-view mui-grid-view mui-grid-9" id="index-box">
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='1'>
+							<a href="#">
+								<img src="img/icon-04.png" />
+								<div class="mui-media-body">精品团购</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='2'>
+							<a href="#">
+								<img src="img/icon-05.png" />
+								<div class="mui-media-body">新品上线</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='3'>
+							<a href="#">
+								<img src="img/icon-06.png" />
+								<div class="mui-media-body">爆款精品</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='4'>
+							<a href="#">
+								<img src="img/icon-07.png" />
+								<div class="mui-media-body">专家推荐</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='5'>
+							<a href="#">
+								<img src="img/icon-08.png" />
+								<div class="mui-media-body">特卖活动</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='6'>
+							<a href="#">
+								<img src="img/icon-09.png" />
+								<div class="mui-media-body">招商加盟</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="tuangou">
+					<div class="imgbox">
+						<img src="img/picture-01.png" />
+					</div>
+					<template v-for="item in groupbuy">
+						<div class="tg-box" id="{{$index|clockId}}">
+						<div class="index-fl-5">
+							<img src="{{item.pd_picture|icon}}" v-gesture:tap.stop.prevent="goods(item.id)" />
+						</div>
+						<div class="index-fl-5">
+						<div class="title ellipsis">{{item.pd_name}}</div>
+						<div class="info ellipsis">{{item.pd_warrant}}</div>
+						<div class="apay">
+							<span>￥</span>{{item.pd_price}}
+						</div>
+						<div class="timer">
+							<label class="msg">剩余时间
+								<span class="timer-day" style="color: #9C005E;padding: 0px 4px;">0</span>(天)
+							</label>
+							<ul>
+								<li class="num">1</li>
+								<li class="num">2</li>
+								<li class="show">:</li>
+								<li class="num">3</li>
+								<li class="num">4</li>
+								<li class="show">:</li>
+								<li class="num">5</li>
+								<li class="num">6</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					</template>
+				</div>
+				<div class="xinping">
+					<div class="imgbox">
+						<img src="img/picture-02.png" />
+					</div>
+					<ul class="newgoods">
+						<li class="box" v-for="item in newarrival" id="box-{{$index}}" v-if='$index<6'>
+							<img src="{{item.pd_picture|icon}}" alt="" v-gesture:tap.stop.prevent="goods(item.id)"'/>
+							<div class="control">
+								<span class='ellipsis'>{{item.pd_name}}</span>
+								<span class='ellipsis'>￥{{item.pd_price}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="baokuang">
+					<div class="imgbox">
+						<img src="img/picture-03.png" />
+					</div>
+					<ul class="bk">
+						<li class="box" v-for="item in explosionModel" id="box-{{$index}}" v-if='$index<8'>
+							<img src="{{item.pd_picture|icon}}" alt="" v-gesture:tap.stop.prevent="goods(item.id)" />
+							<div class="control">
+								<span class='ellipsis'>{{item.pd_name}}</span>
+								<span class='ellipsis'>￥{{item.pd_price}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tuijian">
+					<div class="imgbox">
+						<img src="img/picture-05.png" />
+					</div>
+					<ul class="bk cx">
+						<li class="box" v-for="item in activity_lst" id="box-{{$index}}" v-if='$index<8'>
+							<img src="{{item.pd_picture|icon}}" alt="" v-gesture:tap.stop.prevent="goods(item.id)"' />
+							<div class="control">
+								<span class='ellipsis'>{{item.title}}</span>
+								<span class='ellipsis'>￥{{item.pd_price}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="huodong">
+					<div class="imgbox">
+						<img src="img/picture-04.png" />
+					</div>
+					<ul class="bk hd">
+						<li class="box" v-for="item in recommend" id="box-{{$index}}" v-if='$index<8'>
+							<img src="{{item.pd_picture|icon}}" alt="" v-gesture:tap.stop.prevent="goods(item.id)" />
+							<div class="control">
+								<span class='ellipsis'>{{item.pd_name}}</span>
+								<span class='ellipsis'>￥{{item.pd_price}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--<div class="gengduo">
+					<div class="imgbox">
+						<img src="img/picture-06.png" />
+					</div>
+				</div>-->
+			</div>
+			<div class="mui-control-content" id="cars">
+				<div class="cars">
+					<div>总计：<span class="price">5</span>件 合计：<span class="price">10000000086</span></div>
+					<a class="btn">结算</a>
+				</div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-divider">
+						<div class="mui-input-row mui-checkbox mui-left">
+							<label class="ellipsis">老王情人专卖店</label>
+							<input type="checkbox" name="box" data-rel='box1'>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-checkbox mui-left car-box">
+							<input type="checkbox" name="box1">
+							<div class="car-item ellipsis">
+								<img src="../artisan/img/banner.png" />
+								<div class="item-info">
+									<div class="item-title ellipsis">老王情人专卖店1号</div>
+									<div class="item-msg ellipsis">活动主题/或者产品介绍</div>
+									<div class="item-price ellipsis">
+										<span>￥</span>10075
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="xiaoji">
+							小计￥：<span class="price">10075</span>
+							<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-checkbox mui-left car-box">
+							<input type="checkbox" name="box1">
+							<div class="car-item ellipsis">
+								<img src="../artisan/img/banner.png" />
+								<div class="item-info">
+									<div class="item-title ellipsis">老王情人专卖店2号</div>
+									<div class="item-msg ellipsis">活动主题/或者产品介绍</div>
+									<div class="item-price ellipsis">
+										<span>￥</span>10075
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="xiaoji">
+							小计￥：<span class="price">10075</span>
+							<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-checkbox mui-left car-box">
+							<input type="checkbox" name="box1">
+							<div class="car-item ellipsis">
+								<img src="../artisan/img/banner.png" />
+								<div class="item-info">
+									<div class="item-title ellipsis">老王情人专卖店3号</div>
+									<div class="item-msg ellipsis">活动主题/或者产品介绍</div>
+									<div class="item-price ellipsis">
+										<span>￥</span>10075
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="xiaoji">
+							小计￥：<span class="price">10075</span>
+							<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-divider">
+						<div class="mui-input-row mui-checkbox mui-left">
+							<label class="ellipsis">北京酱板鸭</label>
+							<input type="checkbox" name="box" data-rel='box2'>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-checkbox mui-left car-box">
+							<input type="checkbox" name="box2">
+							<div class="car-item ellipsis">
+								<img src="../artisan/img/banner.png" />
+								<div class="item-info">
+									<div class="item-title ellipsis">关东煮</div>
+									<div class="item-msg ellipsis">活动主题/或者产品介绍</div>
+									<div class="item-price ellipsis">
+										<span>￥</span>10075
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="xiaoji">
+							小计￥：<span class="price">10075</span>
+							<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-checkbox mui-left car-box">
+							<input type="checkbox" name="box2">
+							<div class="car-item ellipsis">
+								<img src="../artisan/img/banner.png" />
+								<div class="item-info">
+									<div class="item-title ellipsis">麻辣烫</div>
+									<div class="item-msg ellipsis">活动主题/或者产品介绍</div>
+									<div class="item-price ellipsis">
+										<span>￥</span>10075
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="xiaoji">
+							小计￥：<span class="price">10075</span>
+							<div class="mui-numbox" data-numbox-min="0" data-numbox-max="99">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-control-content" id="classfly">
+				<div class="classfly-content">
+					<div class="classfly-info">
+						<div class="mui-content mui-row mui-fullscreen">
+							<div class="mui-col-xs-3 class-left">
+								<div  class="mui-segmented-control mui-segmented-control-inverted" id="class-2">
+									<span class="item-l mui-active" class="item-r" href="javascript:void(0)" data-id='{{item.code}}' v-for='item in list_2'>{{item.name}}</span>
+								</div>
+							</div>
+							<div class="mui-col-xs-9 class-box" style="border-left: 1px solid #c8c7cc;">
+								<ul class="item-box mui-table-view mui-grid-view mui-grid-9" >
+				            		<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" v-for="item in list_3" data-id="{{item.code}}">
+				            			<a href="#" class="mui-card">
+					                    <img class="mui-icon" src="{{item.icon|icon}}">
+					                   	 <span class="item-3-text">{{item.name}}</span>
+				            			</a>
+				            		</li>
+				        		</ul>
+								<ul class="item-goods mui-table-view mui-grid-view mui-grid-9">
+				            		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+				            			<a href="#" class="mui-card">
+					                    <span class="mui-icon mui-icon-arrowdown"></span>
+					                    <div class="mui-media-body">GOODS</div></a>
+				            		</li>
+				            		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+				            			<a href="#" class="mui-card">
+					                    <span class="mui-icon mui-icon-arrowright"></span>
+					                    <div class="mui-media-body">GOODS</div></a>
+				            		</li>
+				            		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+				            			<a href="#" class="mui-card">
+					                    <span class="mui-icon mui-icon-settings"></span>
+					                    <div class="mui-media-body">GOODS</div></a>
+				            		</li>
+				        		</ul>
+							</div>
+						</div>
+					</div>
+					<div class="classfly-bottom">
+						<div  class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<div class="mui-scroll" id="class-1">
+								<a class="mui-control-item" v-for='item in list_1' v-bind:class='{"mui-active":$index==0}' data-id='{{item.code}}' href="javascript:void(0)">
+									{{item.name}}
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-control-content" id="me">
+				<div class="me">
+					<div class="me-header">
+						<img src="img/me-set.png" class="set" />
+						<img src="img/me-smsg.png" class="msg" />
+					</div>
+					<div class="me-log">
+						<div class="img">
+							<img src="../images/2.jpg" />
+						</div>
+						<p>一个年轻的老司机</p>
+					</div>
+				</div>
+				<div class="search-dd">
+					<a class="mui-navigate-right">
+						<img src="img/search-dd.png" />
+						查看全部订单
+					</a>
+				</div>
+				<ul class="mui-table-view mui-grid-view mui-grid-9" id="index-box">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='1'>
+						<a href="#">
+							<img src="img/me-yfk.png" />
+							<div class="mui-media-body">已付款</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='2'>
+						<a href="#">
+							<img src="img/me-dfh.png" />
+							<div class="mui-media-body">代发货</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='3'>
+						<a href="#">
+							<img src="img/me-yfh.png" />
+							<div class="mui-media-body">已发货</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-xs-4" data-index='4'>
+						<a href="#">
+							<img src="img/me-yys.png" />
+							<div class="mui-media-body">已验收</div>
+						</a>
+					</li>
+				</ul>	
+			</div>
+			<div id="popover" class="mui-popover">
+				<div class="mui-popover-arrow"></div>
+				<span class="mui-spinner"></span>
+				<div class="txt">加载中,请稍等...</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../library/js/mui.zoom.js"></script>
+		<script type="text/javascript" src="../library/js/mui.previewimage.js"></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../lease/js/vue-gesture.js"></script>
+		<script type="text/javascript" src="js/vueFilter.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			})
+			mui.previewImage({
+				footer: "活动介绍"
+			});
+			mui("#slider").slider({
+				interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+			mui.ready(function() {
+			//	mui.openWindow('pages/dialog.html','pages/message.html')
+			})
+//			if (mui.os.plus && mui.os.ios) {
+//				mui.plusReady(function() { //屏蔽popGesture功能
+//					plus.webview.currentWebview().setStyle({
+//						'popGesture': 'none'
+//					});
+//				});
+//			}
+		</script>
+	</body>
+
+</html>

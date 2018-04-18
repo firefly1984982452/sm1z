@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+		</style>
+	</head>
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">密码修改</h1>
+		</header>
+		<div class="mui-content" id="user">
+			<div class="mui-card" >
+				<ul class="mui-table-view" >
+					<li class="mui-table-view-cell mui-media">
+						<label>旧密码</label>
+						<input type="password" class="mui-input-password" id="oldpasw" placeholder="请输入旧密码"/>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>新密码</label>
+						<input type="password" class="mui-input-password" placeholder="请输入新密码" id="newpasw" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>确认密码</label>
+						<input type="password" class="mui-input-password" placeholder="请确认新密码" id="aginpasw" />
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="xiugai">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			app.init();
+		})
+		var app = {
+			init:function(){
+				var params = this.getToken();
+				document.getElementById("xiugai").addEventListener("touchend",function(){
+					var form = {
+						oldpasw:mui("#oldpasw")[0].value,
+						newpasw:mui("#newpasw")[0].value,
+						aginpasw:mui("#aginpasw")[0].value
+					}
+					if(form.oldpasw=="" || form.oldpasw.trim()==""){
+						plus.nativeUI.alert("旧密码不能为空");
+						return;
+					}
+					if(form.newpasw=="" || form.newpasw.trim()==""){
+						plus.nativeUI.alert("新密码不能为空");
+						return;
+					}
+					if(form.newpasw != form.aginpasw){
+						plus.nativeUI.alert("新密码两次输入不一样");
+						return;
+					}
+					params.pwd = form.oldpasw;
+					plus.nativeUI.showWaiting("密码修改中,请稍等...");
+					Xeval.Http(Xeval.Mode.HTTP_ART_PASW_ISTRUE,params,function(isOk,data){
+						if(isOk){
+							if(data.state==1){
+								params.pwd = form.newpasw;
+								Xeval.Http(Xeval.Mode.HTTp_ART_UPDATA_PASW,params,function(isOk,data){
+									plus.nativeUI.closeWaiting();
+									if(isOk){
+										plus.nativeUI.alert(data.msg);
+										if(data.state==1){
+											mui.back();
+										}
+									}else{
+										plus.nativeUI.alert("网络错误,请检查您的网络！");
+									}
+								})
+							}else{
+								plus.nativeUI.closeWaiting();
+								plus.nativeUI.alert(data.msg);	
+							}
+						}else{
+							plus.nativeUI.closeWaiting();
+							plus.nativeUI.alert("网络错误,请检查您的网络！");
+						}
+					})
+				})
+			},
+			getToken:function(){
+				var jsonData = JSON.parse(localStorage.getItem("art_user"));
+				var result = {
+					Token:jsonData.guid,
+					Username:jsonData.data.T_accountnumber
+				}
+				return result;
+			}
+		}
+	</script>
+</html>

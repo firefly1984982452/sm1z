@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/index.css" />
+	<link rel="stylesheet" href="../css/page_1.css" />
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view" id="sj-list">
+					<li class="mui-table-view-cell" v-for="item in list" v-gesture:tap.stop.prevent="sjInfo($index)">
+						<a class="mui-navigate-right">
+							<div class="list-content">
+								<h5 class="ellipsis">商机名称:{{item.B_name}}</h5>
+								<div class="info">
+									<span class="ellipsis">
+			                  			需求原因：{{item.B_needcause}}
+			                  		</span>
+									<span class="ellipsis">
+			                  			日期：{{item.B_datetime}}
+			                  		</span>
+									<span class="ellipsis">
+			                  			商机类型：{{item.B_kind}}
+			                  		</span>
+								</div>
+							</div>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/evalHttp.js"></script>
+	<script type="text/javascript" src="../../js/vue.js"></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js"></script>
+	
+	<script>
+		mui("#sj-list")[0].style.display = 'none';
+		var app = {
+			datas: {
+				vm: null,
+				data: {
+					list: []
+				},
+				params: {
+
+				},
+				backs: {},
+				isDown:false
+			},
+			methods: {
+				sjInfo: function(index) {
+					const data = app.datas.data.list[index];
+					var preWebview = plus.webview.getWebviewById(app.datas.backs.id);
+					mui.fire(preWebview, "evalback", {
+						"data": data
+					});
+					mui.back();
+				},
+				pulldownRefresh:function(){
+					app.datas.isDown  = true;
+					app.datas.params.page = 1;
+					app.methods.HTTP_GET_DATA();
+				},
+				pullupRefresh:function(){
+					app.datas.isDown  = false;
+					app.datas.params.page++;
+					app.methods.HTTP_GET_DATA();
+				},
+				HTTP_CB:function(isOk, data){
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+						if(isOk) {
+							if(data.state == 1) {
+								mui("#sj-list")[0].style.display = 'block';
+								var list = app.datas.data.list.concat(data.data)
+								if(app.datas.isDown){
+									app.datas.data.list = data.data;
+									mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+								}else{
+									app.datas.data.list = list;
+								}
+							}else if(data.state==2){
+								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+								app.datas.params.page--;
+								plus.nativeUI.alert(data.msg);
+							}else{
+								plus.nativeUI.alert(data.msg);
+							}
+						} else {
+							plus.nativeUI.alert("网络错误，请检查您的网络！");
+						}
+				},
+				HTTP_GET_DATA:function(){
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_SJ,app.datas.params,app.methods.HTTP_CB, false);
+				},
+				search:function(){
+					var data = JSON.parse(localStorage.getItem("search"));
+					localStorage.setItem("search",null);
+					app.utils.extendsParams();
+					for(var item in data){
+						var　value = data[item];
+						if(value != ""){
+							app.datas.params[item]= value;
+						}
+					}
+					app.methods.pulldownRefresh();
+					
+				}
+			},
+			init: function() {
+				app.datas.backs = plus.webview.currentWebview().parent().backs;
+				if(app.datas.backs.back) {
+					plus.webview.currentWebview().parent().evalJS("setTitle('选择商机')");
+				}
+				app.datas.vm = new Vue({
+					el: '#sj-list',
+					data: app.datas.data,
+					methods: app.methods
+				})
+				app.utils.extendsParams(); 
+				app.methods.pulldownRefresh();
+			},
+			utils: {
+				extendsParams: function() {
+					var data = localStorage.getItem("art_user");
+					if(data) {
+						try {
+							var jsonData = JSON.parse(data);
+							app.datas.params = {
+								Username: jsonData.data.T_accountnumber,
+								Token: jsonData.guid,
+								page: 0,
+								rows: 10,
+								UserID: jsonData.data.T_UserID,
+								B_documentaryID: jsonData.data.ID
+							}
+						} catch(e) {
+							//TODO handle the exception
+						}
+					}
+
+				}
+			}
+		}
+		mui.plusReady(function() {
+			Xeval.setUrl(Xeval.UrlModel.CRM); //初始化网络地址
+			plus.webview.currentWebview().parent().evalJS("childReady()");
+		});
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				up: {
+					callback: app.methods.pullupRefresh
+				},
+				down:{
+					callback: app.methods.pulldownRefresh
+				}
+			}
+		});
+	</script>
+
+</html>

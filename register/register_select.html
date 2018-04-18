@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/registe_select.css" />
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">饰管家-类别选择</h1>
+	</header>
+	<div class="mui-content">
+		<div class="mui-content-padded">
+			请选择用户类别：
+		</div>
+		<div id="seletUserType">
+			<div class="type_up">
+				<div class="user_type_box" data-seletid='0'>
+					<img src="../images/register/register_arc.png" />
+					<div class="type_box_msg">
+						<img src="../images/register/peple.png"/>
+						<label>个人用户</label>
+					</div>
+				</div>
+				<div class="user_type_box float_box" data-seletid='1'>
+					<img src="../images/register/register_arc.png" />
+					<div class="type_box_msg">
+						<img src="../images/register/construction.png"/>
+						<label>供应商</label>
+					</div>
+				</div>
+			</div>
+			<div class="type_down">
+				<div class="user_type_box" data-seletid='2'>
+					<img src="../images/register/register_arc.png" />
+					<div class="type_box_msg">
+						<img src="../images/register/Suppliers.png"/>
+						<label>施工商</label>
+					</div>
+				</div>
+				<div class="user_type_box float_box" data-seletid='3'>
+					<img src="../images/register/register_arc.png" />
+					<div class="type_box_msg">
+						<img src="../images/register/proprietor.png"/>
+						<label>业主</label>
+					</div>
+				</div>
+				<div class="user_type_box float_box" data-seletid='4'>
+					<img src="../images/register/register_arc.png" />
+					<div class="type_box_msg">
+						<img src="../images/register/artisan.png"/>
+						<label>技工</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script>
+			mui.plusReady(function(){
+				mui("#seletUserType").on("tap",".user_type_box",function(){
+				var selectId = this.getAttribute("data-seletid");
+				var smsTimeBack = -1;
+					mui.openWindow({
+						url:"register.html",
+						id:"register.html",
+						createNew:false,
+						show:{
+						      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+						      aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+						      duration:200//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						},
+						extras:{
+							"selecId":selectId,
+							smsTimeBack:smsTimeBack
+						}
+					})
+				})				
+			window.addEventListener("smsTime", function (e) {
+			    var msg = parseInt(e.detail.smsTimeBack);
+				if(msg>0){
+	    			smsTimeBack = msg;
+				}
+			});
+			})
+			window.onload = (function FormartWindow(){//窗口自适应
+					var content = $(window);
+					var heigth =  content.outerHeight();
+					var width =  content.outerWidth();
+					var box_width = parseInt(width/5);
+					var sel_top = parseInt(heigth/2)-box_width*2-50;
+					var seletUser = $("#seletUserType");
+					seletUser.css({
+						"height":box_width*2+50,
+						"marginTop":sel_top
+					});
+					seletUser.find(".user_type_box").css({
+						"width":box_width,
+						"height":box_width,
+						"border-radius":box_width+2
+					});
+					seletUser.find(".type_up").find(".user_type_box").css({
+						"marginLeft":box_width
+					});
+					seletUser.find(".type_down").find(".user_type_box").css({
+						"marginLeft":box_width/2,
+					});
+			})();
+		</script>
+	</div>
+</body>
+</html>

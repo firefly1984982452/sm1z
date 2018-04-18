@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../css/index.css" />
+	</head>
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" v-for="item in jsonData" v-gesture:tap.stop.prevent="change($index)">
+						<a class="mui-navigate-right">
+							<div class="list-content">
+								<h5 class="ellipsis">商机名称：{{item.CV_businessName}}</h5>
+								<i class="line"></i>
+								<span class="ellipsis msg">客户名称:{{item.CV_consumerName}}</span>
+								<div class="info">
+			                  		<span style="width: 100%;" class="ellipsis">拜访日期：{{item.CV_datetime|sjrq}}</span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+		<script type="text/javascript" src="../js/pageFilter.js" ></script>
+		<script>
+			var app = {
+					datas: {
+						vm: null,
+						data: {
+							jsonData:[]
+						},
+						params: {
+							
+						},
+						changeIndex:0,
+						isDown:false
+					},
+					methods: {
+						change: function(index) {
+							plus.nativeUI.showWaiting("加载数据中...");
+							var items = app.datas.data.jsonData[index];
+							app.datas.changeIndex = index;
+							app.methods._HTTP_GET_DATA_OPEN(items);
+					},
+				_HTTP_CB_LISTENER: function(isOk, data) {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+					if(isOk) {
+						if(data.state == 1) {
+							if(data.data.length > 0) {
+								var arr = app.datas.data.jsonData;
+								if(app.datas.isDown){
+									app.datas.data.jsonData = data.data;
+									mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+								}else{
+									app.datas.data.jsonData= arr.concat(data.data);
+								}
+							} else {
+								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+								app.datas.params.page -= 1;
+								plus.nativeUI.toast("没有更多数据了");
+							}
+						} else if(data.state!=2) {
+							plus.nativeUI.toast(data.msg);
+						}else{
+							plus.nativeUI.toast("没有数据了!");
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+						}
+					} else {
+						plus.nativeUI.alert("网络错误，请检查您的网络！");
+					}
+				},
+				pullupRefresh: function() {
+					app.datas.isDown = false;
+					app.datas.params.page++;
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_PF, app.datas.params,app.methods._HTTP_CB_LISTENER);
+				},
+				_HTTP_CB_UPDATA:function(isOk,data){
+					
+					if(isOk){
+						if(data.state>0||data.state<4){
+							app.datas.data.jsonData[app.datas.changeIndex].B_status = data.state;
+						}else{
+							plus.nativeUI.alert(data.msg);
+						}
+					}
+				},
+				_HTTP_GET_DATA_OPEN:function(items){
+					app.datas.params.ID = items.ID;
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_PF_BYID,app.datas.params,function(isOk,data){
+						plus.nativeUI.closeWaiting();
+						data.data.name = items.CV_businessName;
+						if(isOk){
+							if(data.state==1){
+								mui.openWindow({
+									url:"c_page_4.html",
+									id:"c_page_4.html",
+									extras:{
+										data:data.data
+									}
+								})
+							}else{
+								plus.nativeUI.toast(data.msg);
+							}
+						}else{
+							plus.nativeUI.alert("网络错误，请检查您的网络环境！");
+						}
+					});
+					
+				},
+				pulldownRefresh:function(){
+					app.datas.isDown = true;
+					app.datas.params.page = 1;
+					Xeval.Http(Xeval.Mode.HTTP_ART_GET_PF, app.datas.params,app.methods._HTTP_CB_LISTENER);
+				},
+				search:function() {
+					var data = JSON.parse(localStorage.getItem("search"));
+					localStorage.setItem("search", null);
+					app.utils.getToken();
+					for(var item in data) {
+						var　 value = data[item];
+						if(value != "") {
+							app.datas.params[item] = value;
+						}
+					}
+					app.methods.pulldownRefresh();
+
+				}
+			},
+			init:function(params) {
+				app.utils.getToken();
+				var data = plus.webview.currentWebview().parent().data;
+				app.datas.vm = new Vue({
+					el: ".mui-table-view",
+					data: app.datas.data,
+					methods: app.methods
+				})
+				if(!data){
+					app.methods.pullupRefresh();
+				}else{
+					app.datas.data.jsonData = data;
+					mui('#pullrefresh').pullRefresh().setStopped(true);
+				}
+			},
+			utils:{
+					getToken: function() {
+						var jsonData = JSON.parse(localStorage.getItem("art_user"));
+						app.datas.params = {
+							Username: jsonData.data.T_accountnumber,
+							Token: jsonData.guid,
+							UserID: jsonData.data.T_UserID,
+							CV_documentaryID:jsonData.data.CV_documentaryID,
+							page: 0,
+							rows: 6
+						}
+					}
+			}
+			}
+			mui.plusReady(function() {
+				Xeval.setUrl(Xeval.UrlModel.CRM);
+				plus.webview.currentWebview().parent().evalJS("childReady()")
+			})
+			mui.init({
+				pullRefresh: {
+					container:"#pullrefresh",
+					up: {
+						contentrefresh:"正在加载...",
+						callback:app.methods.pullupRefresh
+					},
+					down:{
+						callback: app.methods.pulldownRefresh
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

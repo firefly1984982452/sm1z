@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.register_btn>button{
+				height: 40px;
+				width: 100%;
+				background-color: #9C005E;
+				color: #FFFFFF;
+				border: 1px solid #9C005E;
+				margin-left: 0px;
+				display: block;
+				transition: margin-left 1s;
+			}
+			#register,#next{
+				width: 100%;
+				height: 60px;
+				padding: 10px;
+			}
+			.mui-input-row input{
+				color: #666666;
+			}
+		</style>
+		<link rel="stylesheet" href="../library/css/mui.picker.min.css" />
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">加入我们</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group mui-content-padded">
+				<div class="mui-input-row">
+					<label>公司性质</label>
+					<input type="text" id="kind" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row">
+					<label>您的姓名</label>
+					<input type="text" id="name" class="mui-input mui-input-clear"/>
+				</div>
+				<div class="mui-input-row" >
+					<label>联系手机</label>
+					<input type="text"  id="phone" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>所在城市</label>
+					<input type="text" id="city" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>您的户籍</label>
+					<input type="text" id="huji" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>您的性别</label>
+					<input type="text" id="sex" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>您的年龄</label>
+					<input type="text" id="age" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>您的学历</label>
+					<input type="text" id="xueli" class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>从事行业</label>
+					<input type="text" id="hy"  class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row" >
+					<label>工作年限</label>
+					<input type="text" id="nianxian"  class="mui-input mui-input-clear" />
+				</div>
+				<div class="mui-input-row register_btn" id="register">
+					<button id="btn">提交</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../library/js/city.data-3.js" ></script>
+		<script type="text/javascript" src="../library/js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../js/Strings.js" ></script>
+		<script type="text/javascript" src="../js/util.js" ></script>
+		<script type="text/javascript" src="../js/evalHttp.js" ></script>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var val = Strings.indexData.index.services.join;
+				var cityPicker = new mui.PopPicker({layer: 3});
+				var kindPicker = new mui.PopPicker();
+				var xuliPicker = new mui.PopPicker();
+				var sexPicker = new mui.PopPicker();
+				var JoinData = {
+						kind:"",
+						name:"",
+						phone:"",
+						city:"",
+						huji:"",
+						sex:"",
+						age:"",
+						xueli:"",
+						hy:"",
+						nianxian:""
+				}
+				var kindOptions= [
+						{text:"私营企业",value:"1"},
+						{text:"国有企业",value:"2"},
+						{text:"股份有限公司",value:"3"},
+						{text:"外资",value:"4"},
+						{text:"中外合资",value:"5"}
+					];
+				var sexOptions = [
+					{text:"女",value:0},
+					{text:"男",value:1},
+					{text:"保密",value:2},
+				]
+				var xuliOptions= [
+						{text:"高中（包括：高中，职高，中专，技校）",value:"1"},
+						{text:"大专（大学学专科）",value:"2"},
+						{text:"大本（大学本科）",value:"3"},
+						{text:"硕士（硕士研究生）",value:"4"},
+						{text:"博士（博士研究生）",value:"5"}
+					];
+				var pickerOptions = cityData3;
+					//高中（包括：高中，职高，中专，技校），大专（大学学专科），大本（大学本科），硕士（硕士研究生），博士（博士研究生）
+				mui(".mui-input-row").on("tap","input,button",function(e){
+					var thisId = e.target.getAttribute("id");
+					var slef = this;
+					cityPicker.blur;
+					kindPicker.blur;
+					xuliPicker.blur;
+					sexPicker.blur;
+					switch(thisId){
+						case "kind":{
+							kindPicker.setData(kindOptions)
+							kindPicker.show(inputText);
+						};break;
+						case "city":{
+							
+							cityPicker.setData(pickerOptions)
+							cityPicker.show(function(SelectedItem) {
+							    slef.value = SelectedItem[0].text+"-"+SelectedItem[1].text+"-"+SelectedItem[2].text;
+							    slef.setAttribute("data-value",SelectedItem[0].value+"-"+SelectedItem[1].value+"-"+SelectedItem[2].value);
+							});
+						};break;
+						case "btn":{
+							postData();
+						};break;
+						case "sex":{
+							sexPicker.setData(sexOptions)
+							sexPicker.show(inputText);
+						};break;
+						case "xueli":{
+							xuliPicker.setData(xuliOptions)
+							xuliPicker.show(inputText);
+						};break;
+						default:{
+							eLog.l("other:"+thisId);
+						};break;
+					}
+					function inputText(SelectedItem){
+						slef.value = SelectedItem[0].text;
+						slef.setAttribute("data-value",SelectedItem[0].value);
+					}
+					e.stopPropagation();
+				})
+				function postData(e){
+					if(getNewData()){
+						var slef = mui("#btn")[0];
+						slef.setAttribute("disabled","disabled");
+						slef.innerHTML = "正在提交您的信息..";
+						eLog.l(JSON.stringify(JSON.stringify(JoinData)));
+						Xeval.Http(Xeval.Mode.HTTP_GET_SERVERS_JOIN,JoinData,function(isOk,data){
+							slef.removeAttribute("disabled");
+							slef.innerHTML = "提交";
+							if(isOk){
+								eLog.l(JSON.stringify(data))
+								.alert(data.msg,val.title,val.btnValue);
+							}else{
+								mui.confirm(val.postError,val.title,val.postBtn,function(e){
+									eLog.l(e.index);
+									if(e.index==0){
+										postData(self);
+									}
+								});
+							}
+						});
+					}
+				}
+				function getNewData(){
+					JoinData.kind = mui("#kind")[0].value;
+					JoinData.name = mui("#name")[0].value;
+					JoinData.phone = mui("#phone")[0].value;
+					JoinData.city = mui("#city")[0].value;
+					JoinData.huji = mui("#huji")[0].value;
+					JoinData.sex = mui("#sex")[0].value;
+					JoinData.age = mui("#age")[0].value;
+					JoinData.xueli = mui("#xueli")[0].value;
+					JoinData.hy = mui("#hy")[0].value;
+					JoinData.nianxian = mui("#nianxian")[0].value;
+					for(var item in JoinData){
+						var value_ = JoinData[item];
+						if(value_.trim()=="" || value_==null){
+							mui.alert(val.msgData[item],val.title,val.btnValue);
+							eLog.l("value:"+value_);
+							return false;
+						}else{//表单正则验证
+							var regx = val.regData[item];
+							var regxJson = new Object(regx);
+							var reg = regxJson.reg;
+							if(reg!=null && typeof(reg)!="undefined"){
+								if(!reg.test(value_)){
+									eLog.l(value_+"reg:"+reg.toString());
+									mui.alert(regxJson.msg,val.title,val.btnValue);
+									return false;
+								}
+							}
+						}
+					}
+					return true;
+				}
+			})
+		</script>
+	</body>
+
+</html>

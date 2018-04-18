@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+		<style>
+			#msg{
+				list-style: none;
+			}
+			#msg li{
+				font-size: 12px;
+				height: 16px;
+				line-height: 16px;
+				color: #9C005E;
+			}
+			#msg li:first-child{
+				color: #333333;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">派单信息详情</h1>
+		</header>
+		<div class="mui-content"  id="pd-list">
+			<ul id="msg">
+				<li>商机派单注意：</li>
+				<li>1.需要选择一个跟单人</li>
+				<li>2.派单状态必须为派单</li>
+			</ul>
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>客户姓名</label>
+						<span>{{data.C_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>商机名称</label>
+						<span>{{data.B_name}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media" v-if='data.B_remark1'>
+						<label>派单人</label>
+						<span>{{data.B_remark1}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>跟单人</label>
+						<span id="gdr"><i>{{data.gdr}}</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>派单状态</label>
+						<span  id="pdzt">
+							<i style="color: #0062CC;">{{data.B_status|pdzt}}</i>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-card text-show" v-show="data.B_status==3">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell-item text-title">
+						放弃原因
+					</li>
+					<li class="mui-table-view-cell-item">
+						<textarea class="text-txt" id="cancel-text" placeholder="请输入放弃原因" v-model="data.B_giveupcause"  style="width: 100%;">
+							
+						</textarea>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-card text-show" >
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell-item text-title">
+						跟单人职责
+					</li>
+					<li class="mui-table-view-cell-item">
+						<textarea class="text-txt" v-model='data.B_documentaryneed' placeholder="请输入派单人职责"  style="width: 100%;">
+							
+						</textarea>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:void(0)" class="mui-card edit-btn" id="submit">
+				提交信息
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript" src="../../js/evalHttp.js" ></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../lease/js/vue-gesture.js" ></script>
+	<script type="text/javascript" src="../js/pageFilter.js" ></script>
+	<script>
+	mui("#pd-list")[0].style.display = "none";
+		mui.plusReady(function(){
+			Xeval.setUrl(Xeval.UrlModel.CRM);
+			app.init();
+		})
+		var app = {
+			datas:{
+				userOptions:[],
+				pdztOptions:[
+					{
+						text:"未被筛选",
+						value:"0"
+					},
+					{
+						text:"派单",
+						value:"1"
+					},
+					{
+						text:"转单",
+						value:"2"
+					},
+					{
+						text:"放弃",
+						value:"3"
+					},
+				],
+				webData:{
+					data:{},
+					pdr:""
+				},
+				gdrpicker:new mui.PopPicker(),
+				pdztPicker:new mui.PopPicker(),
+				vm:null
+			},
+			methods:{
+				_HTTP_CB_LISTENER:function(isOk,data){
+					mui("#pd-list")[0].style.display = "block";
+					if(isOk){
+						var dat = data.data;
+						for(var i = 0;i<dat.length;i++){
+							var params ={
+								text:dat[i].name,
+								value:dat[i].ID
+							}
+							if(params.value==app.datas.webData.data.B_documentaryID){//如果是当前用户,显示在第一位
+								app.datas.userOptions.unshift(params);
+								app.datas.webData.data.gdr = params.text;
+								mui("#gdr")[0].setAttribute("data-id",params.value);
+							}else{
+								app.datas.userOptions.push(params);
+							}
+						}
+					}else{
+						
+					}
+					
+				},
+				_gdr_listener:function(){
+					app.datas.gdrpicker.blur;
+					app.datas.pdztPicker.blur;
+					var that = this;
+					var params = app.utils.getUserParams();
+					app.datas.gdrpicker.setData(app.datas.userOptions)
+					app.datas.gdrpicker.show(function(item){
+						that.value = item[0].text;
+						app.datas.webData.data.B_documentaryID = item[0].value;
+						app.datas.webData.data.B_status = 1;
+						app.datas.webData.data.gdr = item[0].text;
+					})
+				},
+				_pdzt_listener:function(){
+					app.datas.gdrpicker.blur;
+					app.datas.pdztPicker.blur;
+					app.datas.pdztPicker.setData(app.datas.pdztOptions);
+					app.datas.pdztPicker.show(function(item){
+						app.datas.webData.data.B_status = item[0].value;
+					})
+				},
+				_submit_listener:function(){
+					var params = app.utils.getUserParams();
+					if(app.datas.webData.data.B_status==3){
+						var val = mui("#cancel-text")[0].value;
+						if(val.trim()==""){
+							plus.nativeUI.alert("请输入放弃原因");
+							return;
+						}
+						params.B_giveupcause = val;
+					}
+					params.B_status = app.datas.webData.data.B_status;
+					plus.nativeUI.showWaiting("派单状态修改中,请稍等...");
+					Xeval.Http(Xeval.Mode.HTTP_ART_UPDATA_PD_STATA,params,app.methods._HTTP_UP_STATE);
+					
+				},
+				_HTTP_UP_STATE:function(isOk,data){
+					plus.nativeUI.closeWaiting();
+					if(isOk){
+						if(data.state==1){
+							plus.nativeUI.toast("派单状态修改完成..");
+						}else{
+							plus.nativeUI.toast(data.msg);
+						}
+					}else{
+						plus.nativeUI.toast("派单状态修改失败..");
+					}
+					if(app.datas.webData.data.B_status!=3){//如果放弃就不显示
+						setTimeout(function(){
+							plus.nativeUI.showWaiting("跟单人修改中,请稍等...");
+							var params = app.utils.getUserParams();
+							params.B_documentaryID = app.datas.webData.data.B_documentaryID;
+							params.B_documentaryneed = app.datas.webData.data.B_documentaryneed;
+							console.log(JSON.stringify(params))
+							Xeval.Http(Xeval.Mode.HTTP_ATR_UPDATA_PD_USER,params,app.methods._HTTP_CB_UPUSER);
+							mui.back();
+						},1500)
+					}else{
+						mui.back();
+					}
+				},
+				_HTTP_CB_UPUSER:function(isOk,data){
+					plus.nativeUI.closeWaiting();
+					if(isOk){
+						if(data.state==1){
+							plus.nativeUI.toast("跟单人修改完成..");
+						}else{
+							plus.nativeUI.toast(data.msg);
+						}
+					}else{
+						plus.nativeUI.toast("跟单人修改失败..");
+					}
+				}
+			},
+			init:function(){
+				app.datas.webData.data = plus.webview.currentWebview().data;
+				console.log(JSON.stringify(app.datas.webData.data))
+				const params = app.utils.getUserParams();
+				Xeval.Http(Xeval.Mode.HTTP_ART_GET_USERS,params,app.methods._HTTP_CB_LISTENER)
+				mui(".mui-title")[0].innerText = app.datas.webData.data.B_name;
+				document.getElementById("gdr").addEventListener("touchend",app.methods._gdr_listener);
+				document.getElementById("pdzt").addEventListener("touchend",app.methods._pdzt_listener);
+				document.getElementById("submit").addEventListener("touchend",app.methods._submit_listener);
+				app.datas.vm = new Vue({
+					el:"#pd-list",
+					data:app.datas.webData,
+					methods:app.methods
+				})
+			},
+			utils:{
+				getUserParams:function(){
+					var jsonData = JSON.parse(localStorage.getItem("art_user"));
+					var params = {
+						Username:jsonData.data.T_accountnumber,
+						Token:jsonData.guid,
+						UserID:jsonData.data.T_UserID,
+						Addbusinessman:jsonData.data.T_name,
+						ID:app.datas.webData.data.ID
+					}
+					return params;
+				}
+			}
+		}
+	</script>
+</html>

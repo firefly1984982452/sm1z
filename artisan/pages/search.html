@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../library/css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/page_3.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title"><span id="name"></span>检索</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<label>商机名称</label>
+						<input type="text" placeholder="" v-model="BussName" />
+					</li>
+					<li class="mui-table-view-cell mui-media" v-if="index==1">
+						<label>派单状态</label>
+						<span id="sjzt">{{status|sjzt}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media" v-else>
+						<label>客户名称</label>
+						<input type="text" placeholder="" v-model="customerName" />
+					</li>
+					<li class="mui-table-view-cell mui-media" v-show="index==0">
+						<label>商机类型</label>
+						<span id="sjlx">{{Kind|sjlx}}</span>
+					</li>
+					<li class="mui-table-view-cell mui-media" v-show="index==6">
+						<label>合同名称</label>
+						<input type="text" placeholder="" v-model="P_name" />
+					</li>
+					<li class="mui-table-view-cell mui-media" v-show="index==6">
+						<label>合同签订人</label>
+						<input type="text" placeholder="" v-model="P_cookiename" />
+					</li>
+					<li class="mui-table-view-cell mui-media" v-show="index==2">
+						<label>联系人姓名</label>
+						<input type="text" placeholder="" v-model="documentaryname" />
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>最小日期</label>
+						<span id="time1">{{Dates1}}<i>请选择最小日期</i></span>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<label>最大日期</label>
+						<span id="time2">{{Dates2}}<i>请选择最大日期</i></span>
+					</li>
+				</ul>
+			</div>
+			<a href="javascript:app.back();" class="mui-card edit-btn">
+				立即查询
+			</a>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+	<script type="text/javascript" src="../../library/js/city.data-3.js" ></script>
+	<script type="text/javascript" src="../../library/js/mui.picker.min.js" ></script>
+	<script type="text/javascript">
+	var sjlxOptions = [
+		{
+			text:"项目施工",
+			value:"1"
+		},
+		{
+			text:"服务保养",
+			value:"2"
+		}
+	];
+	var sjztOptions = [
+		{
+			text:"未筛选",
+			value:"0"
+		},
+		{
+			text:"派单",
+			value:"1"
+		},
+		{
+			text:"转单",
+			value:"2"
+		},
+		{
+			text:"放弃",
+			value:"3"
+		}
+	]
+	Vue.filter("sjlx",function(val){
+		var index = parseInt(val);
+		var vals = ["请选择商机类型","项目施工", "服务保养"];
+		return vals[index];
+	})
+	Vue.filter("sjzt",function(val){
+		var index = parseInt(val)+1;
+		var vals = ["请选择派单状态","未筛选", "派单", "转单", "放弃"];
+		return vals[index];
+	})
+		var app = {
+			params:{
+				BussName:"",
+				customerName:"",
+				P_name:"",
+				P_cookiename:"",
+				documentaryname:"",
+				Dates1:"",
+				Dates2:"",
+				index:"",
+				Kind:"",
+				status:""
+			},
+			datas:{
+				data:{
+					BussName:"",
+					customerName:"",
+					P_name:"",
+					P_cookiename:"",
+					documentaryname:"",
+					Dates1:"",
+					Dates2:"",
+					index:0,
+					Kind:0,
+					status:-1
+				},
+				webData:{},
+				sjlxPicker:new mui.PopPicker(),
+				sjztPicker:new mui.PopPicker()
+			},
+			back:function(){
+				var preWebview = plus.webview.getWebviewById(app.datas.webData.id);
+				mui.fire(preWebview, "searchback", {
+					"data": app.params
+				});
+				mui.back();
+			},
+			init:function(){
+				app.datas.data.index = app.datas.webData.index|0;
+				document.getElementById("name").innerText = app.datas.webData.name;
+				vm = new Vue({
+					el:'.mui-table-view',
+					data:app.datas.data,
+					methods:{},
+					watch:{
+						BussName:function(val){
+							 app.params.BussName = val;
+						},
+						customerName:function(val){
+							 app.params.customerName = val;
+						},
+						P_name:function(val){
+							 app.params.P_name = val;
+						},
+						P_cookiename:function(val){
+							 app.params.BussName = val;
+						},
+						documentaryname:function(val){
+							 app.params.documentaryname = val;
+						},
+						Dates1:function(val){
+							 app.params.Dates1 = val;
+						},
+						Dates2:function(val){
+							 app.params.Dates2 = val;
+						},
+						index:function(val){
+							 app.params.index = val;
+						},
+						Kind:function(val){
+							 app.params.Kind = val;
+						},
+						status:function(val){
+							 app.params.status = val;
+						}
+					}
+				})
+				mui(".mui-table-view-cell").on("tap","span",app.PickerTap)
+			},
+			PickerTap:function(){
+				var that = this;
+				var id = that.id;
+				app.datas.sjlxPicker.blur;
+				app.datas.sjztPicker.blur;
+				switch (id){
+					case "sjlx":{
+						app.datas.sjlxPicker.setData(sjlxOptions);
+						app.datas.sjlxPicker.show(function(item){
+							app.datas.data.Kind = item[0].value;
+						})
+					}
+					break;
+					case "sjzt":{
+						app.datas.sjztPicker.setData(sjztOptions);
+						app.datas.sjztPicker.show(function(item){
+							app.datas.data.status = item[0].value;
+						})
+					}
+					break;
+					case "time1":{
+						time(that);
+					}
+					break;
+					case "time2":{
+						time(that);
+					}
+					break;
+					default:
+						break;
+				}
+				function time(dom){
+					var picker = new mui.DtPicker({"type":"date"});
+					picker.setSelectedValue("1994")
+					picker.show(function(rs){
+						var time = rs.text;
+						if(dom.id=='time1'){
+							app.datas.data.Dates1 = time;
+						}else{
+							app.datas.data.Dates2 = time;
+						}
+						dom.innerHTML = time;
+						picker.dispose();
+					});
+				}
+				
+			}
+		}
+		mui.plusReady(function(){
+			app.datas.webData = plus.webview.currentWebview().data;
+			app.init();
+		})
+	</script>
+
+</html>
